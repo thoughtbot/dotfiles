@@ -1,0 +1,13 @@
+alias migrate="rake db:migrate db:test:prepare"
+alias remigrate="rake db:migrate && rake db:migrate:redo && rake db:schema:dump db:test:prepare"
+alias remongrate="rake mongoid:migrate && rake mongoid:migrate:redo"
+alias g="git"
+alias s="bundle exec rspec"
+alias cuc="bundle exec cucumber"
+alias gi="gem install"
+alias giv="gem install -v"
+alias gci="git pull --rebase && rake && git push"
+alias tlf="tail -f"
+alias b="bundle"
+alias be="bundle exec"
+
