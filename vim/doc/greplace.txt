@@ -1,0 +1,161 @@
+*greplace.txt*	Plugin for replacing pattern across multiple files
+
+Author: Yegappan Lakshmanan  (yegappan AT yahoo DOT com)
+For Vim version 7.0 and above
+Last change: 2007 March 2
+
+Overview~
+
+The Global Replace plugin allows you to search and replace a pattern across
+multiple files. The lines containing a specified pattern in multiple files are
+displayed in a buffer. You can edit the lines in this buffer and make the
+desired modifications to them. The plugin can then incorporate these changes
+back into the corresponding files interactively.
+
+==============================================================================
+
+Installation~
+
+1. Download the greplace.vim file and unzip the files into the $HOME/.vim
+   or the $HOME/vimfiles or the $VIM/vimfiles directory.  After this step, you
+   should have the following two files (the directory structure should be
+   preserved):
+
+	plugin/greplace.vim - main global replace plugin file
+	doc/greplace.txt    - documentation (help) file
+
+2. Change to the $HOME/.vim/doc or $HOME/vimfiles/doc or $VIM/vimfiles/doc
+   directory, start Vim and run the ":helptags ." command to process the
+   help file. Without this step, you cannot jump to the help topics.
+3. Restart Vim.
+
+To uninstall the global replace plugin, remove the plugin/greplace.vim and
+doc/greplace.txt files from the $HOME/.vim or $HOME/vimfiles directory.
+
+==============================================================================
+
+The following commands are provided by this plugin:
+
+:Gsearch         Search for a given pattern in the specified group of
+                 files and display the matches in the replace buffer.
+:Gbuffersearch   Search for a given pattern in all the buffers
+                 in the Vim buffer list.
+:Gargsearch      Search for a given pattern in all the files in the
+                 Vim argument list.
+:Gqfopen         Use the results from the quickfix list.
+:Greplace        Incorporate the modifications from the replace buffer
+                 into the corresponding files.
+
+One example sequence of commands for using this plugin is:
+
+    :Gsearch mypattern *.java *.c
+    <The above command will search for mypattern in *.java and *.c
+    files in the current directory and display the matching lines
+    in a buffer.>
+    <You can now use the Vim editing commands to modify the buffer>
+
+    :Greplace
+    <The above command will load each of the buffer which needs to be changed
+    and ask you to confirm whether to make the change or not>
+    
+    :wall
+    <To save all the modified buffers>
+
+In the above sequence, instead of ":Gsearch", you can use ":Gbuffersearch" or
+":Gargsearch" commands to search for a pattern in the files in the Vim buffer
+list or the argument list.
+
+The ":Gsearch" command uses the Vim ":grep" command to search for the pattern
+in the specified files. The ":grep" command uses the program specified by the
+"grepprg" option to search for the pattern. By default, the "grepprg" option
+is set to either grep (on Unix) or findstr (on MS-Windows). By modifying the
+"grepprg" option, you can also use other programs for searching. To use the
+Vim internal grep, set the "grepprg" option to "internal".
+
+The syntax of the ":Gsearch" command is:
+>
+    :Gsearch [<grep-option(s)>] [[<pattern>] [<filename(s)>]]
+<
+The arguments to the ":Gsearch" command are optional.
+
+The first set of arguments, if present, specify the options to the grep
+program. These options must start with "-" (for Unix) and "/" (for
+MS-Windows). For example, to ignore case, you can use "-i" for the Unix
+grep program.
+
+The next argument specifies the pattern. You cannot use space characters in
+the pattern. To specify space characters in the pattern, don't specify the
+pattern in the command-line. See below for more information.
+
+The last set of arguments specify the filenames. You can use wildcards in the
+filenames. You can also complete directory and file names by pressing <Tab>.
+
+If the pattern or the filenames is not supplied as argument to the ":Gsearch"
+command, then you will be prompted to enter the pattern and the filenames. The
+default value for the search pattern is the keyword under the cursor. In the
+prompt for entering the pattern, you can enter a pattern with space
+characters. In the prompt for entering the filenames, you can press <Tab> to
+complete the directory and file names.
+
+To search for a pattern in the files in the Vim buffer list, use the
+":Gbuffersearch" command. The syntax of this command is:
+>
+    :Gbuffersearch [<grep-option(s)>]
+<
+This command is similar to the ":Gsearch" command.  This command searches for
+the specified pattern in all the files in the buffer list. You cannot specify
+filenames to this command.
+
+To search for a pattern in the files in the Vim argument list, use the
+":Gargsearch" command. The syntax of this command is:
+>
+    :Gargsearch [<grep-option(s)>]
+<
+This command is similar to the ":Gsearch" command.  This command will search
+for the specified pattern in all the files in the argument list. You cannot
+specify filenames to this command.
+
+The difference between the ":Gbuffersearch" command and the Vim
+":bufdo %s/pattern/replace/c" command is that the ":Gbuffersearch" command
+allows you to inspect and change the matching lines in a buffer and then
+incorporate the changes. You can also make different changes to different
+lines. With a single ":bufdo" command, you can make only the one type of
+change in all the buffers.  The same difference applies for the ":Gargsearch"
+and the ":argdo" command.
+
+Sometimes, you may have the desired list of filenames and the matching lines
+in them already in the quickfix list. For example, you can run tools like
+cscope, GNU id-utils, GNU global, etc., and get the results into the quickfix
+list. To use this list of files for replacing text, you can use the ":Gqfopen"
+command. This command doesn't take the pattern or filenames arguments. It
+parses the file names and lines in them from the current quickfix list and
+displays it in the replace buffer.
+
+You can edit the contents of the replace buffer using the Vim editing
+commands. You cannot save the contents to a regular file. You should not
+change the filename or line numbers in the replace buffer. You should not add
+additional lines in this buffer. If you don't want to make any changes, you
+can close the replace buffer.
+
+You can use the ":Greplace" command to store the modified lines from the
+replace buffer back to the corresponding files. This command is available only
+in the replace buffer.
+
+The ":Greplace" command will prompt you to confirm each of the changes.  At
+this prompt, you can press 'y' to accept the change, 'n' to reject the change,
+'a' to accept all the changes, 'b' to accept all the changes in the current
+buffer and 'q' or <Escape> to exit the replace prompt and stop making the
+changes.
+
+To incorporate the modifications without the prompt, add "!" to the
+":Greplace" command. This will force the ":Greplace" command to make the
+changes without any prompts for confirmation.
+
+The modified files will not be automatically saved. You can save all of them
+using the ":wall" command or you can individually inspect the buffers for the
+changes and then save the buffer using the ":w" command. You can undo the
+changes individually by using the Vim "u" command.
+
+==============================================================================
+
+vim:tw=78:ts=8:noet:ft=help:

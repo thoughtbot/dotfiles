@@ -1,0 +1,208 @@
+*tComment.txt*  tComment -- An easily extensible & universal comment plugin
+
+Author: Thomas Link, micathom AT gmail com?subject=vim
+
+tComment provides easy to use, file-type sensible comments for Vim. It 
+can handle embedded syntax.
+
+
+                                                    *tComment-Installation*
+Installation~
+Edit the vba file and type:
+
+    :so %
+
+See :help vimball for details. If you use vim 7.0, you may need to 
+update your vimball installation first.
+
+
+                                                    *tComment-Usage*
+Usage~
+TComment works like a toggle, i.e., it will comment out text that 
+contains uncommented lines, and it will remove comment markup for 
+already commented text (i.e. text that contains no uncommented lines).
+
+If the file-type is properly defined, TComment will figure out which 
+comment string to use. Otherwise you use |TCommentDefineType()| to 
+override the default choice.
+
+TComment can properly handle an embedded syntax, e.g., ruby/python/perl 
+regions in vim scripts, HTML or JavaScript in php code etc.
+
+
+                                                    *tComment-Key-Bindings*
+Key bindings~
+
+Most of the time the default toggle keys will do what you want (or to be 
+more precise: what I think it should to ;-).
+
+                                                    *g:tcommentMapLeaderOp1*
+                                                    *g:tcommentMapLeaderOp2*
+As operator (the prefix can be customized via g:tcommentMapLeaderOp1 
+and g:tcommentMapLeaderOp2):
+
+    gc{motion}   :: Toggle comments (for small comments within one line 
+                    the &filetype_inline style will be used, if 
+                    defined)
+    gcc          :: Toggle comment for the current line
+    gC{motion}   :: Comment region
+    gCc          :: Comment the current line
+
+                                                    *g:tcommentOpModeExtra*
+By default the cursor stays put. If you want the cursor to the end of 
+the commented text, set g:tcommentOpModeExtra to '>' (but this may not 
+work properly with exclusive motions).
+
+Primary key maps:
+
+    <c-_><c-_>   :: :TComment
+    <c-_><space> :: :TComment <QUERY COMMENT-BEGIN ?COMMENT-END>
+    <c-_>b       :: :TCommentBlock
+    <c-_>a       :: :TCommentAs <QUERY COMMENT TYPE>
+    <c-_>n       :: :TCommentAs &filetype <QUERY COUNT>
+    <c-_>s       :: :TCommentAs &filetype_<QUERY COMMENT SUBTYPE>
+    <c-_>i       :: :TCommentInline
+    <c-_>r       :: :TCommentRight
+    <c-_>p       :: Comment the current inner paragraph
+
+A secondary set of key maps is defined for normal mode.
+
+    <Leader>__       :: :TComment
+    <Leader>_p       :: Comment the current inner paragraph
+    <Leader>_<space> :: :TComment <QUERY COMMENT-BEGIN ?COMMENT-END>
+    <Leader>_i       :: :TCommentInline
+    <Leader>_r       :: :TCommentRight
+    <Leader>_b       :: :TCommentBlock
+    <Leader>_a       :: :TCommentAs <QUERY COMMENT TYPE>
+    <Leader>_n       :: :TCommentAs &filetype <QUERY COUNT>
+    <Leader>_s       :: :TCommentAs &filetype_<QUERY COMMENT SUBTYPE>
+
+Keymaps are configurable via the following variables:
+
+                                                    *g:tcommentMapLeader1*
+g:tcommentMapLeader1    string (default: <c-_>)
+        Prefix for the keymaps. Set to '' to disable keymaps with this 
+        prefix.
+                                                    *g:tcommentMapLeader2*
+g:tcommentMapLeader2    string (default: <Leader>_)
+        Secondary prefix. (The reason for why there are two prefixes is 
+        that <c-_> appears preferable with gvim but can be difficult to 
+        type on the terminal. The secondary prefix isn't used for insert 
+        mode maps. Set to '' to disable keymaps with this prefix.
+
+                                                    *tComment-commands*
+Alternatively, you can type (? meaning "optional argument"):
+
+                                                    *:TComment*
+    :?<range> TComment ?commentBegin ?commentEnd
+    :?<range> TComment! ?commentBegin ?commentEnd
+    NOTE: If there is a visual selection that begins and ends in the same 
+    line, then TCommentInline is used instead.
+
+    NOTE: The range is optional and defaults to the current line.
+
+                                                    *:TCommentInline*
+    :?<range> TCommentInline ?commentBegin ?commentEnd
+    :?<range> TCommentInline! ?commentBegin ?commentEnd
+    Use the {&ft}_inline comment style.
+
+                                                    *:TCommentBlock*
+    :?<range> TCommentBlock ?commentBegin ?commentEnd
+    :?<range> TCommentBlock! ?commentBegin ?commentEnd
+    Comment as "block", e.g. use the {&ft}_block comment style.
+    NOTE: This command is kind of crude. It doesn't indent or reformat 
+    the text.
+
+                                                    *:TCommentAs*
+    :?<range> TCommentAs filetype
+    :?<range> TCommentAs! filetype
+    NOTE: TCommentAs requires g:tcomment_{filetype} to be defined.
+    NOTE: This command supports command line completion. See 'wildmode' 
+    and 'wildmenu' for how to get the most out of it.
+
+                                                    *:TCommentRight*
+    :?<range> TCommentRight
+    :?<range> TCommentRight!
+    NOTE: This command comments out the text to the right of the cursor. 
+    If a visual selection was made (be it block-wise or not), all lines 
+    are commented out at from the current cursor position downwards.
+
+    The bang (!) variants always comment out the selected text and don't 
+    work as toggles.
+
+                                                    *TCommentDefineType()*
+    Using this command you can also use different comment styles with 
+    the TCommentDefineType(name, commentstring) function. This function 
+    takes two arguments:
+        name :: The name is either &filetype or {&filetype}_{style}. 
+            I.e., For block comments the {&filetype}_block and for 
+            inline comments the {&filetype}_inline styles are used.
+        comment string :: a string mostly as described in 
+            'commentstring'.
+    
+    If you want to define, e.g., a fancy block comment style for html 
+    you put something like this into ~/.vim/after/plugin/tComment.vim:>
+
+        call TCommentDefineType("html_fancy_block", "<!--%s  -->\n  -- ")
+
+<   The part after the newline character is used for marking "middle" 
+    lines.
+
+    This comment style could then be accessed via (this command has 
+    command line completion): >
+
+        '<,'>TCommentAs html_fancy_block
+
+<   If you're editing a html file, this could best be done by the <c-_>s     
+    key map.
+
+
+Goals~
+- Maintain indentation of selected text; the comment markers are left 
+  aligned but the text on the right (i.e., the comment) is indented 
+  like the original text
+
+- Handle embedded syntax like php+html or html+javaScript+css; you 
+  have to set g:tcommentGuessFileType_{&filetype} to 1 or to the 
+  fall-back file-type in order to activate this feature for other file 
+  types than php or html
+  
+  tComment deduces the correct file type from the syntax name, similar 
+  to the way EnhancedCommentify.vim does it. In opposition to 
+  EnhancedCommentify.vim, it matches the syntax name against a list the 
+  known file types, so that it can deal with, e.g., embedded javaScript
+
+- Easy to customize/adapt for an yet unknown syntax by setting buffer 
+  local variables (b:commentStart, b:commentEnd, or b:commentstring), 
+  global variables (g:tcomment_{&ft} and g:tcomment_{&ft}_block), or the 
+  buffer local &commentstring option (which can be set on a vim 
+  |modeline|)
+
+- Use 'commentstring' or 'comments' as a fallback (i.e., if a file-type 
+  is properly defined, TComment will automatically support it)
+
+- Same short-cut for commenting text and for removing comment markup
+
+- The decision whether text should be commented or uncommented is made 
+  on the basis of the whole selection (not line by line); comments in 
+  code that should be commented aren't uncommented as it is the case 
+  with some other plug-ins
+
+As of version 1.5, the following file types are explicitly defined 
+(other file-types are most likely supported through the 'commentstring' 
+or 'comments' variables):
+
+    ada, apache, autoit, catalog, cpp, css, c, cfg, conf, desktop, 
+    docbk, dosbatch, dosini, dsl, dylan, eiffel, gtkrc, haskell, html, 
+    io, javaScript, java, lisp, m4, nroff, objc, ocaml, pascal, perl, 
+    php, prolog, ruby, r, scheme, sgml, sh, sql, spec, sps, tcl, tex, 
+    tpl, viki, vim, websec, xml, xslt, yaml
+
+
+Credits~
+The way we check for embedded syntax was originally adapted 
+from/inspired by Meikel Brandmeyer's EnhancedCommentify.vim
+(vimscript #23) but has evolved since.
+
+
+vim: tw=72
