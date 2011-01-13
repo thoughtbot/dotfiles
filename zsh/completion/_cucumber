@@ -1,0 +1,3 @@
+#compdef cucumber
+
+compadd -P features/ -S .feature `ls features/**/*.feature | sed -E "s/features\/|\.feature//g"`
