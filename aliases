@@ -10,4 +10,11 @@ alias gci="git pull --rebase && rake && git push"
 alias tlf="tail -f"
 alias b="bundle"
 alias be="bundle exec"
+alias ln='ln -v'
+alias mkdir='mkdir -p'
+alias ...='../..'
 
+alias -g G='| grep'
+alias -g M='| less'
+alias -g L='| wc -l'
+alias -g ONE="| awk '{ print \$1}'"
