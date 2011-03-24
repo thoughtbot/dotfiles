@@ -1,5 +1,4 @@
 set nocompatible  " Use Vim settings, rather then Vi settings
-set backspace=    " don't allow backspacing over everything in insert mode
 set nobackup
 set nowritebackup
 set history=50
