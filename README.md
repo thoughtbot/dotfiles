@@ -25,16 +25,16 @@ Track thoughtbot/dotfiles
 
 One time:
 
-    git remote add thoughtbot git@github.com:thoughtbot/dotfiles.git
-    git fetch thoughtbot
-    git checkout -b thoughtbot thoughtbot/master
+    git remote add upstream git@github.com:thoughtbot/dotfiles.git
+    git fetch upstream
+    git checkout -b upstream upstream/master
 
 Update
 ------
 
 Each time you want to update:
 
-    git checkout thoughtbot
-    git pull --rebase
+    git checkout upstream
+    git pull
     git checkout master
-    git merge thoughtbot
+    git rebase upstream
