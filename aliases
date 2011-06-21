@@ -13,6 +13,9 @@ alias be="bundle exec"
 alias ln='ln -v'
 alias mkdir='mkdir -p'
 alias ...='../..'
+alias l='ls'
+alias ll='ls -al'
+alias lh='ls -Alh'
 
 alias -g G='| grep'
 alias -g M='| less'
