@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 cutstring="DO NOT EDIT BELOW THIS LINE"
 
