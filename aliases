@@ -10,12 +10,15 @@ alias gci="git pull --rebase && rake && git push"
 alias tlf="tail -f"
 alias b="bundle"
 alias be="bundle exec"
+alias bake="bundle exec rake"
 alias ln='ln -v'
 alias mkdir='mkdir -p'
 alias ...='../..'
 alias l='ls'
 alias ll='ls -al'
 alias lh='ls -Alh'
+alias staging='heroku run console --remote staging'
+alias production='heroku run console --remote production'
 
 alias -g G='| grep'
 alias -g M='| less'
