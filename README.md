@@ -13,6 +13,11 @@ Flow:
 Install
 -------
 
+The repository is heavily based on submodules, so after cloning run:
+
+    git submodule init
+    git submodule update
+
 From your cloned directory:
 
     ./install.sh
@@ -42,3 +47,4 @@ Each time you want to update:
     git pull
     git checkout master
     git rebase upstream
+    git submodule foreach git pull origin master
