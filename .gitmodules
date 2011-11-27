@@ -19,3 +19,24 @@
 [submodule "vim/bundle/textile.vim"]
 	path = vim/bundle/textile.vim
 	url = https://github.com/timcharper/textile.vim.git
+[submodule "vim/bundle/vim-endwise"]
+	path = vim/bundle/vim-endwise
+	url = https://github.com/tpope/vim-endwise.git
+[submodule "vim/bundle/greplace.vim"]
+	path = vim/bundle/greplace.vim
+	url = https://github.com/vim-scripts/greplace.vim.git
+[submodule "vim/bundle/vim-matchit"]
+	path = vim/bundle/vim-matchit
+	url = https://github.com/mhz/vim-matchit
+[submodule "vim/bundle/vim-surround"]
+	path = vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/bundle/tComment"]
+	path = vim/bundle/tComment
+	url = https://github.com/vim-scripts/tComment.git
+[submodule "vim/bundle/vim-markdown"]
+	path = vim/bundle/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown.git
+[submodule "vim/bundle/treetop.vim"]
+	path = vim/bundle/treetop.vim
+	url = https://github.com/nanki/treetop.vim.git
