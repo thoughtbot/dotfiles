@@ -1,33 +1,37 @@
 thoughtbot dotfiles
 ===================
 
-Flow:
-
-* Fork this repo.
-* Clone your fork.
-* Install.
-* Track thoughtbot/dotfiles.
-* Customize in master.
-* Update.
-
 Install
 -------
 
-From your cloned directory:
+First, [fork this repo](https://github.com/thoughtbot/dotfiles#fork_box) on Github.
 
+Then, clone your Github fork (replace "your-github-name" with your Github name) onto your laptop and install it:
+
+    git clone git@github.com:your-github-name/dotfiles.git
+    cd dotfiles
     ./install.sh
 
 This will create symlinks for all config files in your home directory. You can
 safely run this file multiple times to update.
 
-Note that there is configuration for `zsh` so if you'd like to switch your shell from the default `bash` to `zsh`, on OS X you do:
+There is configuration for `zsh` so switch your shell from the default `bash` to `zsh` on OS X:
 
     chsh -s /bin/zsh
 
-Track thoughtbot/dotfiles
--------------------------
+Why fork?
+---------
 
-One time:
+dotfiles are fairly personal. You should be able to modify your dotfiles, and save them in version control in your fork.
+
+However, the thoughtbot folks are often tweaking these dotfiles and you want to be able to get those updates.
+
+So, your master branch is meant for your customizations and use the `upstream` branch to get thoughtbot's updates.
+
+Set up the upstream branch
+--------------------------
+
+You only have to do this once:
 
     git remote add upstream git@github.com:thoughtbot/dotfiles.git
     git fetch upstream
