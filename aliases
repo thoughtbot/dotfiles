@@ -36,19 +36,18 @@ alias remongrate="bundle exec mongoid:migrate mongoid:migrate:redo"
 
 # Heroku staging
 alias staging='heroku run console --remote staging'
-alias staging-process='watch bundle exec heroku ps --remote staging'
-alias staging-releases='bundle exec heroku releases --remote staging'
-alias staging-tail='bundle exec heroku logs --tail --remote staging'
+alias staging-process='watch heroku ps --remote staging'
+alias staging-releases='heroku releases --remote staging'
+alias staging-tail='heroku logs --tail --remote staging'
 
 # Heroku production
 alias production='heroku run console --remote production'
-alias production-process='watch bundle exec heroku ps --remote production'
-alias production-releases='bundle exec heroku releases --remote production'
-alias production-tail='bundle exec heroku logs --tail --remote production'
+alias production-process='watch heroku ps --remote production'
+alias production-releases='heroku releases --remote production'
+alias production-tail='heroku logs --tail --remote production'
 
 # Heroku databases
 alias db-pull-staging='heroku db:pull --remote staging --confirm `basename $PWD`-staging'
 alias db-pull-production='heroku db:pull --remote production --confirm `basename $PWD`-production'
 alias db-copy-production-to-staging='heroku pgbackups:restore DATABASE `heroku pgbackups:url --remote production` --remote staging  --confirm `basename $PWD`-staging'
 alias db-backup-production='heroku pgbackups:capture --remote production'
-alias db-backups='heroku pgbackups --remote production'
