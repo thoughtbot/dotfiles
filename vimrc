@@ -1,3 +1,7 @@
+" loading pathogen at runtime as it's bundled
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
+
 set nocompatible  " Use Vim settings, rather then Vi settings
 set nobackup
 set nowritebackup
@@ -39,8 +43,8 @@ set expandtab
 set list listchars=tab:»·,trail:·
 
 " Local config
-if filereadable(".vimrc.local")
-  source .vimrc.local
+if filereadable("~/.vimrc.local")
+  source ~/.vimrc.local
 endif
 
 " Use Ack instead of Grep when available
