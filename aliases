@@ -1,26 +1,53 @@
-alias migrate="rake db:migrate db:test:prepare"
-alias remigrate="rake db:migrate && rake db:migrate:redo && rake db:schema:dump db:test:prepare"
-alias remongrate="rake mongoid:migrate && rake mongoid:migrate:redo"
-alias g="git"
-alias s="bundle exec rspec"
-alias cuc="bundle exec cucumber"
-alias gi="gem install"
-alias giv="gem install -v"
-alias gci="git pull --rebase && rake && git push"
+# Unix
 alias tlf="tail -f"
-alias b="bundle"
-alias be="bundle exec"
-alias bake="bundle exec rake"
 alias ln='ln -v'
 alias mkdir='mkdir -p'
 alias ...='../..'
 alias l='ls'
 alias ll='ls -al'
 alias lh='ls -Alh'
-alias staging='heroku run console --remote staging'
-alias production='heroku run console --remote production'
-
 alias -g G='| grep'
 alias -g M='| less'
 alias -g L='| wc -l'
 alias -g ONE="| awk '{ print \$1}'"
+
+# git
+alias g="git"
+alias gci="git pull --rebase && rake && git push"
+
+# Ruby
+alias help-strftime='ruby ~/bin/help-strftime.rb'
+
+# Bundler
+alias b="bundle"
+alias be="bundle exec"
+alias bake="bundle exec rake"
+alias s="bundle exec rspec"
+alias cuc="bundle exec cucumber"
+
+# Rubygems
+alias gi="gem install"
+alias giv="gem install -v"
+
+# Rails
+alias migrate="bundle exec db:migrate db:test:prepare"
+alias remigrate="bundle exec db:migrate db:migrate:redo db:schema:dump db:test:prepare"
+alias remongrate="bundle exec mongoid:migrate mongoid:migrate:redo"
+
+# Heroku staging
+alias staging='heroku run console --remote staging'
+alias staging-process='watch bundle exec heroku ps --remote staging'
+alias staging-releases='bundle exec heroku releases --remote staging'
+alias staging-tail='bundle exec heroku logs --tail --remote staging'
+
+# Heroku production
+alias production='heroku run console --remote production'
+alias production-process='watch bundle exec heroku ps --remote production'
+alias production-releases='bundle exec heroku releases --remote production'
+alias production-tail='bundle exec heroku logs --tail --remote production'
+
+# Heroku databases
+alias db-pull-staging='heroku db:pull --remote staging --confirm `basename $PWD`-staging'
+alias db-pull-production='heroku db:pull --remote production --confirm `basename $PWD`-production'
+alias db-copy-production-to-staging='heroku pgbackups:restore DATABASE `heroku pgbackups:url --remote production` --remote staging  --confirm `basename $PWD`-staging'
+alias db-backup-production='heroku pgbackups:capture --remote production'
