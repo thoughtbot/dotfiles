@@ -37,10 +37,22 @@ You only have to do this once:
     git fetch upstream
     git checkout -b upstream upstream/master
 
-Update
-------
+Update thoughtbot's changes into your customizations
+----------------------------------------------------
 
-Each time you want to update:
+You will want to customize your environment. We suggest making changes in files that are not in thoughtbot's files.
+
+For example, to customize your `zsh` config, make your changes in `~/.zshenv`:
+
+    # RVM
+    [[ -s '/Users/croaky/.rvm/scripts/rvm' ]] && source '/Users/croaky/.rvm/scripts/rvm'
+
+    # recommended by brew doctor
+    export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
+Commit those kinds of things in your master branch.
+
+Then, each time you want to update thoughtbot's changes.
 
     git checkout upstream
     git pull
