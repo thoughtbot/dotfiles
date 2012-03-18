@@ -39,8 +39,8 @@ set expandtab
 set list listchars=tab:»·,trail:·
 
 " Local config
-if filereadable(".vimrc.local")
-  source .vimrc.local
+if filereadable("~/.vimrc.local")
+  source ~/.vimrc.local
 endif
 
 " Use Ack instead of Grep when available
