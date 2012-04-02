@@ -4,7 +4,7 @@ thoughtbot dotfiles
 Install
 -------
 
-First, [fork this repo](https://github.com/thoughtbot/dotfiles#fork_box) on Github.
+First, [fork this repo](https://github.com/thoughtbot/dotfiles/fork_select) on Github.
 
 Then, clone your Github fork (replace "your-github-name" with your Github name) onto your laptop and install it:
 
