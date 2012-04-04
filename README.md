@@ -8,8 +8,8 @@ First, [fork this repo](https://github.com/thoughtbot/dotfiles#fork_box) on Gith
 
 Then, clone your Github fork (replace "your-github-name" with your Github name) onto your laptop and install it:
 
-    git clone git@github.com:your-github-name/dotfiles.git
-    cd dotfiles
+    git clone git@github.com:your-github-name/dotfiles-1.git
+    cd dotfiles-1
     ./install.sh
 
 This will create symlinks for all config files in your home directory. You can
@@ -33,7 +33,7 @@ Set up the upstream branch
 
 You only have to do this once:
 
-    git remote add upstream git@github.com:thoughtbot/dotfiles.git
+    git remote add upstream git@github.com:thoughtbot/dotfiles-1.git
     git fetch upstream
     git checkout -b upstream upstream/master
 
