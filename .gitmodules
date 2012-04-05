@@ -40,3 +40,6 @@
 [submodule "vim/bundle/treetop.vim"]
 	path = vim/bundle/treetop.vim
 	url = https://github.com/nanki/treetop.vim.git
+[submodule "vim/bundle/vim-fugitive"]
+	path = vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
