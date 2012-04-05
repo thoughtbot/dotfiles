@@ -27,7 +27,7 @@
 	url = https://github.com/vim-scripts/greplace.vim.git
 [submodule "vim/bundle/vim-matchit"]
 	path = vim/bundle/vim-matchit
-	url = https://github.com/mhz/vim-matchit
+	url = https://github.com/edsono/vim-matchit.git
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
