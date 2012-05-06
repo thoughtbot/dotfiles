@@ -1,19 +1,13 @@
 " rails.vim - Detect a rails application
-" Author:       Tim Pope <vimNOSPAM@tpope.info>
+" Author:       Tim Pope <http://tpo.pe/>
 " GetLatestVimScripts: 1567 1 :AutoInstall: rails.vim
-" URL:          http://rails.vim.tpope.net/
 
 " Install this file as plugin/rails.vim.  See doc/rails.txt for details. (Grab
 " it from the URL above if you don't have it.)  To access it from Vim, see
 " :help add-local-help (hint: :helptags ~/.vim/doc) Afterwards, you should be
 " able to do :help rails
 
-" ============================================================================
-
-" Exit quickly when:
-" - this plugin was already loaded (or disabled)
-" - when 'compatible' is set
-if &cp || (exists("g:loaded_rails") && g:loaded_rails) && !(exists("g:rails_debug") && g:rails_debug)
+if exists('g:loaded_rails') || &cp || v:version < 700
   finish
 endif
 let g:loaded_rails = 1
@@ -61,22 +55,17 @@ call s:SetOptDefault("rails_statusline",1)
 call s:SetOptDefault("rails_syntax",1)
 call s:SetOptDefault("rails_mappings",1)
 call s:SetOptDefault("rails_abbreviations",1)
-call s:SetOptDefault("rails_ctags_arguments","--exclude=\"*.js\"")
-call s:SetOptDefault("rails_expensive",1)
-call s:SetOptDefault("rails_dbext",g:rails_expensive)
+call s:SetOptDefault("rails_ctags_arguments","--languages=-javascript")
 call s:SetOptDefault("rails_default_file","README")
-call s:SetOptDefault("rails_default_database","")
 call s:SetOptDefault("rails_root_url",'http://localhost:3000/')
 call s:SetOptDefault("rails_modelines",0)
-call s:SetOptDefault("rails_menu",1)
+call s:SetOptDefault("rails_menu",0)
 call s:SetOptDefault("rails_gnu_screen",1)
 call s:SetOptDefault("rails_history_size",5)
-call s:SetOptDefault("rails_generators","controller\nintegration_test\nmailer\nmigration\nmodel\nobserver\nplugin\nresource\nscaffold\nsession_migration")
-if g:rails_dbext
-  if exists("g:loaded_dbext") && executable("sqlite3") && ! executable("sqlite")
-    " Since dbext can't find it by itself
-    call s:SetOptDefault("dbext_default_SQLITE_bin","sqlite3")
-  endif
+call s:SetOptDefault("rails_generators","controller\ngenerator\nhelper\nintegration_test\nmailer\nmetal\nmigration\nmodel\nobserver\nperformance_test\nplugin\nresource\nscaffold\nscaffold_controller\nsession_migration\nstylesheets")
+if exists("g:loaded_dbext") && executable("sqlite3") && ! executable("sqlite")
+  " Since dbext can't find it by itself
+  call s:SetOptDefault("dbext_default_SQLITE_bin","sqlite3")
 endif
 
 " }}}1
@@ -90,6 +79,9 @@ function! s:escvar(r)
 endfunction
 
 function! s:Detect(filename)
+  if exists('b:rails_root')
+    return s:BufInit(b:rails_root)
+  endif
   let fn = substitute(fnamemodify(a:filename,":p"),'\c^file://','','')
   let sep = matchstr(fn,'^[^\\/]\{3,\}\zs[\\/]')
   if sep != ""
@@ -118,7 +110,7 @@ function! s:Detect(filename)
       return s:BufInit(fn)
     endif
     let ofn = fn
-    let fn = fnamemodify(ofn,':s?\(.*\)[\/]\(app\|config\|db\|doc\|features\|lib\|log\|public\|script\|spec\|stories\|test\|tmp\|vendor\)\($\|[\/].*$\)?\1?')
+    let fn = fnamemodify(ofn,':s?\(.*\)[\/]\(app\|config\|db\|doc\|extras\|features\|lib\|log\|public\|script\|spec\|stories\|test\|tmp\|vendor\)\($\|[\/].*$\)?\1?')
   endwhile
   return 0
 endfunction
@@ -144,6 +136,42 @@ augroup railsPluginDetect
 augroup END
 
 command! -bar -bang -nargs=* -complete=dir Rails :if s:autoload()|call rails#new_app_command(<bang>0,<f-args>)|endif
+
+" }}}1
+" abolish.vim support {{{1
+
+function! s:function(name)
+    return function(substitute(a:name,'^s:',matchstr(expand('<sfile>'), '<SNR>\d\+_'),''))
+endfunction
+
+augroup railsPluginAbolish
+  autocmd!
+  autocmd VimEnter * call s:abolish_setup()
+augroup END
+
+function! s:abolish_setup()
+  if exists('g:Abolish') && has_key(g:Abolish,'Coercions')
+    if !has_key(g:Abolish.Coercions,'l')
+      let g:Abolish.Coercions.l = s:function('s:abolish_l')
+    endif
+    if !has_key(g:Abolish.Coercions,'t')
+      let g:Abolish.Coercions.t = s:function('s:abolish_t')
+    endif
+  endif
+endfunction
+
+function! s:abolish_l(word)
+  let singular = rails#singularize(a:word)
+  return a:word ==? singular ? rails#pluralize(a:word) : singular
+endfunction
+
+function! s:abolish_t(word)
+  if a:word =~# '\u'
+    return rails#pluralize(rails#underscore(a:word))
+  else
+    return rails#singularize(rails#camelize(a:word))
+  endif
+endfunction
 
 " }}}1
 " Menus {{{1
@@ -179,40 +207,40 @@ function! s:CreateMenus() abort
     let menucmd = s:menucmd(200)
     if exists("$CREAM")
       exe menucmd.g:rails_installed_menu.'.-PSep- :'
-      exe menucmd.g:rails_installed_menu.'.&Related\ file\	:R\ /\ Alt+] :R<CR>'
-      exe menucmd.g:rails_installed_menu.'.&Alternate\ file\	:A\ /\ Alt+[ :A<CR>'
-      exe menucmd.g:rails_installed_menu.'.&File\ under\ cursor\	Ctrl+Enter :Rfind<CR>'
+      exe menucmd.g:rails_installed_menu.'.&Related\ file\  :R\ /\ Alt+] :R<CR>'
+      exe menucmd.g:rails_installed_menu.'.&Alternate\ file\  :A\ /\ Alt+[ :A<CR>'
+      exe menucmd.g:rails_installed_menu.'.&File\ under\ cursor\  Ctrl+Enter :Rfind<CR>'
     else
       exe menucmd.g:rails_installed_menu.'.-PSep- :'
-      exe menucmd.g:rails_installed_menu.'.&Related\ file\	:R\ /\ ]f :R<CR>'
-      exe menucmd.g:rails_installed_menu.'.&Alternate\ file\	:A\ /\ [f :A<CR>'
-      exe menucmd.g:rails_installed_menu.'.&File\ under\ cursor\	gf :Rfind<CR>'
+      exe menucmd.g:rails_installed_menu.'.&Related\ file\  :R\ /\ ]f :R<CR>'
+      exe menucmd.g:rails_installed_menu.'.&Alternate\ file\  :A\ /\ [f :A<CR>'
+      exe menucmd.g:rails_installed_menu.'.&File\ under\ cursor\  gf :Rfind<CR>'
     endif
-    exe menucmd.g:rails_installed_menu.'.&Other\ files.Application\ &Controller :find app/controllers/application.rb<CR>'
-    exe menucmd.g:rails_installed_menu.'.&Other\ files.Application\ &Helper :find app/helpers/application_helper.rb<CR>'
-    exe menucmd.g:rails_installed_menu.'.&Other\ files.Application\ &Javascript :find public/javascripts/application.js<CR>'
+    exe menucmd.g:rails_installed_menu.'.&Other\ files.Application\ &Controller :Rcontroller application<CR>'
+    exe menucmd.g:rails_installed_menu.'.&Other\ files.Application\ &Helper :Rhelper application<CR>'
+    exe menucmd.g:rails_installed_menu.'.&Other\ files.Application\ &Javascript :Rjavascript application<CR>'
     exe menucmd.g:rails_installed_menu.'.&Other\ files.Application\ &Layout :Rlayout application<CR>'
-    exe menucmd.g:rails_installed_menu.'.&Other\ files.Application\ &README :find doc/README_FOR_APP<CR>'
-    exe menucmd.g:rails_installed_menu.'.&Other\ files.&Environment :find config/environment.rb<CR>'
-    exe menucmd.g:rails_installed_menu.'.&Other\ files.&Database\ Configuration :find config/database.yml<CR>'
+    exe menucmd.g:rails_installed_menu.'.&Other\ files.Application\ &README :R doc/README_FOR_APP<CR>'
+    exe menucmd.g:rails_installed_menu.'.&Other\ files.&Environment :Renvironment<CR>'
+    exe menucmd.g:rails_installed_menu.'.&Other\ files.&Database\ Configuration :R config/database.yml<CR>'
     exe menucmd.g:rails_installed_menu.'.&Other\ files.Database\ &Schema :Rmigration 0<CR>'
-    exe menucmd.g:rails_installed_menu.'.&Other\ files.R&outes :find config/routes.rb<CR>'
-    exe menucmd.g:rails_installed_menu.'.&Other\ files.&Test\ Helper :find test/test_helper.rb<CR>'
+    exe menucmd.g:rails_installed_menu.'.&Other\ files.R&outes :Rinitializer<CR>'
+    exe menucmd.g:rails_installed_menu.'.&Other\ files.&Test\ Helper :Rintegrationtest<CR>'
     exe menucmd.g:rails_installed_menu.'.-FSep- :'
-    exe menucmd.g:rails_installed_menu.'.Ra&ke\	:Rake :Rake<CR>'
+    exe menucmd.g:rails_installed_menu.'.Ra&ke\ :Rake :Rake<CR>'
     let menucmd = substitute(menucmd,'200 $','500 ','')
-    exe menucmd.g:rails_installed_menu.'.&Server\	:Rserver.&Start\	:Rserver :Rserver<CR>'
-    exe menucmd.g:rails_installed_menu.'.&Server\	:Rserver.&Force\ start\	:Rserver! :Rserver!<CR>'
-    exe menucmd.g:rails_installed_menu.'.&Server\	:Rserver.&Kill\	:Rserver!\ - :Rserver! -<CR>'
-    exe substitute(menucmd,'<script>','<script> <silent>','').g:rails_installed_menu.'.&Evaluate\ Ruby\.\.\.\	:Rp :call <SID>menuprompt("Rp","Code to execute and output: ")<CR>'
-    exe menucmd.g:rails_installed_menu.'.&Console\	:Rscript :Rscript console<CR>'
-    exe menucmd.g:rails_installed_menu.'.&Preview\	:Rpreview :Rpreview<CR>'
-    exe menucmd.g:rails_installed_menu.'.&Log\ file\	:Rlog :Rlog<CR>'
-    exe substitute(s:sub(menucmd,'anoremenu','vnoremenu'),'<script>','<script> <silent>','').g:rails_installed_menu.'.E&xtract\ as\ partial\	:Rextract :call <SID>menuprompt("'."'".'<,'."'".'>Rextract","Partial name (e.g., template or /controller/template): ")<CR>'
-    exe menucmd.g:rails_installed_menu.'.&Migration\ writer\	:Rinvert :Rinvert<CR>'
+    exe menucmd.g:rails_installed_menu.'.&Server\ :Rserver.&Start\  :Rserver :Rserver<CR>'
+    exe menucmd.g:rails_installed_menu.'.&Server\ :Rserver.&Force\ start\ :Rserver! :Rserver!<CR>'
+    exe menucmd.g:rails_installed_menu.'.&Server\ :Rserver.&Kill\ :Rserver!\ - :Rserver! -<CR>'
+    exe substitute(menucmd,'<script>','<script> <silent>','').g:rails_installed_menu.'.&Evaluate\ Ruby\.\.\.\ :Rp :call <SID>menuprompt("Rp","Code to execute and output: ")<CR>'
+    exe menucmd.g:rails_installed_menu.'.&Console\  :Rscript :Rscript console<CR>'
+    exe menucmd.g:rails_installed_menu.'.&Preview\  :Rpreview :Rpreview<CR>'
+    exe menucmd.g:rails_installed_menu.'.&Log\ file\  :Rlog :Rlog<CR>'
+    exe substitute(s:sub(menucmd,'anoremenu','vnoremenu'),'<script>','<script> <silent>','').g:rails_installed_menu.'.E&xtract\ as\ partial\  :Rextract :call <SID>menuprompt("'."'".'<,'."'".'>Rextract","Partial name (e.g., template or /controller/template): ")<CR>'
+    exe menucmd.g:rails_installed_menu.'.&Migration\ writer\  :Rinvert :Rinvert<CR>'
     exe menucmd.'         '.g:rails_installed_menu.'.-HSep- :'
-    exe substitute(menucmd,'<script>','<script> <silent>','').g:rails_installed_menu.'.&Help\	:help\ rails :if <SID>autoload()<Bar>exe RailsHelpCommand("")<Bar>endif<CR>'
-    exe substitute(menucmd,'<script>','<script> <silent>','').g:rails_installed_menu.'.Abo&ut\	 :if <SID>autoload()<Bar>exe RailsHelpCommand("about")<Bar>endif<CR>'
+    exe substitute(menucmd,'<script>','<script> <silent>','').g:rails_installed_menu.'.&Help\ :help\ rails :if <SID>autoload()<Bar>exe RailsHelpCommand("")<Bar>endif<CR>'
+    exe substitute(menucmd,'<script>','<script> <silent>','').g:rails_installed_menu.'.Abo&ut\   :if <SID>autoload()<Bar>exe RailsHelpCommand("about")<Bar>endif<CR>'
     let g:rails_did_menus = 1
     call s:ProjectMenu()
     call s:menuBufLeave()
@@ -231,7 +259,7 @@ function! s:ProjectMenu()
     let menu = s:gsub(g:rails_installed_menu,'\&','')
     silent! exe "aunmenu <script> ".menu.".Projects"
     let dots = s:gsub(menu,'[^.]','')
-    exe 'anoremenu <script> <silent> '.(exists("$CREAM") ? '87' : '').dots.'.100 '.menu.'.Pro&jects.&New\.\.\.\	:Rails :call <SID>menuprompt("Rails","New application path and additional arguments: ")<CR>'
+    exe 'anoremenu <script> <silent> '.(exists("$CREAM") ? '87' : '').dots.'.100 '.menu.'.Pro&jects.&New\.\.\.\ :Rails :call <SID>menuprompt("Rails","New application path and additional arguments: ")<CR>'
     exe 'anoremenu <script> '.menu.'.Pro&jects.-FSep- :'
     while history =~ '\n'
       let proj = matchstr(history,'^.\{-\}\ze\n')
@@ -256,12 +284,12 @@ function! s:menuBufEnter()
     silent! exe 'aunmenu       '.menu.'.Generate'
     silent! exe 'aunmenu       '.menu.'.Destroy'
     if rails#app().cache.needs('rake_tasks') || empty(rails#app().rake_tasks())
-      exe substitute(s:menucmd(300),'<script>','<script> <silent>','').g:rails_installed_menu.'.Rake\ &tasks\	:Rake.Fill\ this\ menu :call rails#app().rake_tasks()<Bar>call <SID>menuBufLeave()<Bar>call <SID>menuBufEnter()<CR>'
+      exe substitute(s:menucmd(300),'<script>','<script> <silent>','').g:rails_installed_menu.'.Rake\ &tasks\ :Rake.Fill\ this\ menu :call rails#app().rake_tasks()<Bar>call <SID>menuBufLeave()<Bar>call <SID>menuBufEnter()<CR>'
     else
       let i = 0
       while i < len(rails#app().rake_tasks())
         let task = rails#app().rake_tasks()[i]
-        exe s:menucmd(300).g:rails_installed_menu.'.Rake\ &tasks\	:Rake.'.s:sub(task,':',':.').' :Rake '.task.'<CR>'
+        exe s:menucmd(300).g:rails_installed_menu.'.Rake\ &tasks\ :Rake.'.s:sub(task,':',':.').' :Rake '.task.'<CR>'
         let i += 1
       endwhile
     endif
@@ -269,8 +297,8 @@ function! s:menuBufEnter()
     let menucmd = substitute(s:menucmd(400),'<script>','<script> <silent>','').g:rails_installed_menu
     while i < len(rails#app().generators())
       let generator = rails#app().generators()[i]
-      exe menucmd.'.&Generate\	:Rgen.'.s:gsub(generator,'_','\\ ').' :call <SID>menuprompt("Rgenerate '.generator.'","Arguments for script/generate '.generator.': ")<CR>'
-      exe menucmd.'.&Destroy\	:Rdestroy.'.s:gsub(generator,'_','\\ ').' :call <SID>menuprompt("Rdestroy '.generator.'","Arguments for script/destroy '.generator.': ")<CR>'
+      exe menucmd.'.&Generate\  :Rgen.'.s:gsub(generator,'_','\\ ').' :call <SID>menuprompt("Rgenerate '.generator.'","Arguments for script/generate '.generator.': ")<CR>'
+      exe menucmd.'.&Destroy\ :Rdestroy.'.s:gsub(generator,'_','\\ ').' :call <SID>menuprompt("Rdestroy '.generator.'","Arguments for script/destroy '.generator.': ")<CR>'
       let i += 1
     endwhile
   endif
@@ -280,15 +308,15 @@ function! s:menuBufLeave()
   if exists("g:rails_installed_menu") && g:rails_installed_menu != ""
     let menu = s:gsub(g:rails_installed_menu,'\&','')
     exe 'amenu disable '.menu.'.*'
-    exe 'amenu enable  '.menu.'.Help\	'
-    exe 'amenu enable  '.menu.'.About\	'
+    exe 'amenu enable  '.menu.'.Help\ '
+    exe 'amenu enable  '.menu.'.About\  '
     exe 'amenu enable  '.menu.'.Projects'
     silent! exe 'aunmenu       '.menu.'.Rake\ tasks'
     silent! exe 'aunmenu       '.menu.'.Generate'
     silent! exe 'aunmenu       '.menu.'.Destroy'
-    exe s:menucmd(300).g:rails_installed_menu.'.Rake\ tasks\	:Rake.-TSep- :'
-    exe s:menucmd(400).g:rails_installed_menu.'.&Generate\	:Rgen.-GSep- :'
-    exe s:menucmd(400).g:rails_installed_menu.'.&Destroy\	:Rdestroy.-DSep- :'
+    exe s:menucmd(300).g:rails_installed_menu.'.Rake\ tasks\  :Rake.-TSep- :'
+    exe s:menucmd(400).g:rails_installed_menu.'.&Generate\  :Rgen.-GSep- :'
+    exe s:menucmd(400).g:rails_installed_menu.'.&Destroy\ :Rdestroy.-DSep- :'
   endif
 endfunction
 
