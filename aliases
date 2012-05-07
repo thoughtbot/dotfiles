@@ -22,6 +22,9 @@ alias help-strftime='ruby ~/bin/help-strftime.rb'
 alias b="bundle"
 alias be="bundle exec"
 alias bake="bundle exec rake"
+
+# Tests and Specs
+alias t="ruby -I test"
 alias s="bundle exec rspec"
 alias cuc="bundle exec cucumber"
 
