@@ -56,3 +56,6 @@ alias db-pull-staging='heroku db:pull --remote staging --confirm `staging-name`'
 alias db-pull-production='heroku db:pull --remote production --confirm `production-name`'
 alias db-copy-production-to-staging='heroku pgbackups:restore DATABASE `heroku pgbackups:url --app production-name` --app `staging-name` --confirm `staging-name`'
 alias db-backup-production='heroku pgbackups:capture --remote production'
+
+# Network
+alias whats-my-ip="curl -s checkip.dyndns.org | grep -Eo '[0-9\.]+'"
