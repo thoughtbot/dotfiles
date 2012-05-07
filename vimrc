@@ -96,5 +96,6 @@ nnoremap <Down> :echoe "Use j"<CR>
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
-" Syntax highlight Gemfile
+" Improve syntax highlighting
 au BufRead,BufNewFile Gemfile set filetype=ruby
+au BufRead,BufNewFile *.md set filetype=markdown
