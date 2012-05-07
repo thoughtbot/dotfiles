@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+#
+# Interact with the staging environment on Heroku.
+#
+# staging console
+# staging migrate
+# staging open
+# watch staging ps
+# staging tail
+
+class Staging
+  def initialize(subcommands)
+    @subcommands = subcommands
+    @subcommand = @subcommands.first
+  end
+
+  def run
+    case @subcommand
+    when 'console'
+      system 'heroku run console -r staging'
+    when 'migrate'
+      system 'heroku run rake db:migrate -r staging && heroku restart -r staging'
+    when 'log' || 'logs' || 'tail'
+      system 'heroku logs --tail -r staging'
+    else
+      system "heroku #{@subcommands.join(' ')} -r staging"
+    end
+  end
+end
+
+staging = Staging.new(ARGV)
+staging.run
