@@ -1,3 +1,6 @@
+# Todo
+alias todo='$EDITOR ~/.todo'
+
 # Unix
 alias tlf="tail -f"
 alias ln='ln -v'
@@ -14,9 +17,6 @@ alias -g ONE="| awk '{ print \$1}'"
 # git
 alias g="git"
 alias gci="git pull --rebase && rake && git push"
-
-# Ruby
-alias help-strftime='ruby ~/bin/help-strftime.rb'
 
 # Bundler
 alias b="bundle"
