@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Load production data from Heroku into local Postgres database.
+#
+# Assumes conventions:
+#
+# App name is working directory name.
+# Heroku app name is appname-production.
+# Local database name is appname_development.
+
+db-load-production()
+{
+  heroku pgbackups:capture --expire
+  rake db:drop
+  rake db:create
+  app=$(basename `pwd`)
+  path=`heroku pgbackups:url --app ${app}-production`
+  db=`${app}_development`
+  curl $path | pg_restore --verbose --clean --no-acl --no-owner -d $db
+}
