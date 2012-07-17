@@ -2,3 +2,6 @@
   default = tracking
 [format]
   pretty = %Cblue%h%Creset %Cgreen[%ar]%Creset (%an) %s
+[alias]
+  up = !git fetch origin && git rebase origin/master
+  down = !git checkout master && git merge @{-1} --ff-only
