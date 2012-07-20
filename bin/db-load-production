@@ -11,8 +11,6 @@
 db-load-production()
 {
   heroku pgbackups:capture --expire
-  rake db:drop
-  rake db:create
   app=$(basename `pwd`)
   path=`heroku pgbackups:url --app ${app}-production`
   db=`${app}_development`
