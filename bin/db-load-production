@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
 # Load production data from Heroku into local Postgres database.
 #
@@ -7,12 +7,9 @@
 # App name is working directory name.
 # Heroku app name is appname-production.
 
-db-load-production()
-{
-  app=$(basename `pwd`-production)
-  heroku pgbackups:capture --expire --app $app
-  path=`heroku pgbackups:url --app ${app}`
-  yaml='YAML.load(IO.read("config/database.yml"))["development"]["database"]'
-  db=`ruby -ryaml -e "puts ${yaml}"`
-  curl $path | pg_restore --verbose --clean --no-acl --no-owner -d $db
-}
+app=$(basename `pwd`-production)
+heroku pgbackups:capture --expire --app $app
+path=`heroku pgbackups:url --app ${app}`
+yaml='YAML.load(IO.read("config/database.yml"))["development"]["database"]'
+db=`ruby -ryaml -e "puts ${yaml}"`
+curl $path | pg_restore --verbose --clean --no-acl --no-owner -d $db

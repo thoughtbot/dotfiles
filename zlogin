@@ -19,6 +19,5 @@ setopt prompt_subst
 # prompt
 export PS1='$(git_prompt_info)[${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%~%{$reset_color%}] '
 
-# load custom functions
+# load thoughtbot/dotfiles scripts
 export PATH="$HOME/.bin:$PATH"
-source "$HOME/.bin/db-load-production"
