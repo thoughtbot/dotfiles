@@ -6,13 +6,13 @@
 #
 # App name is working directory name.
 # Heroku app name is appname-production.
-# Local database name is appname_development.
 
 db-load-production()
 {
-  heroku pgbackups:capture --expire
-  app=$(basename `pwd`)
-  path=`heroku pgbackups:url --app ${app}-production`
-  db=`${app}_development`
+  app=$(basename `pwd`-production)
+  heroku pgbackups:capture --expire --app $app
+  path=`heroku pgbackups:url --app ${app}`
+  yaml='YAML.load(IO.read("config/database.yml"))["development"]["database"]'
+  db=`ruby -ryaml -e "puts ${yaml}"`
   curl $path | pg_restore --verbose --clean --no-acl --no-owner -d $db
 }
