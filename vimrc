@@ -100,5 +100,7 @@ let g:html_indent_tags = 'li\|p'
 au BufRead,BufNewFile Gemfile set filetype=ruby
 au BufRead,BufNewFile *.md set filetype=markdown
 
-" Leader
-let mapleader = "<Space>"
+" Leader: set to <Space>
+" Space is inserted via <C-v><Space>
+" see ':h map_space' in vim for further info
+let mapleader = " "
