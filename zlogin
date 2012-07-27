@@ -17,7 +17,7 @@ export CLICOLOR=1
 setopt prompt_subst
 
 # prompt
-export PS1='$(git_prompt_info)[${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%~%{$reset_color%}] '
+export PS1='$(git_prompt_info)[${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%1~%{$reset_color%}] '
 
 # load thoughtbot/dotfiles scripts
 export PATH="$HOME/.bin:$PATH"
