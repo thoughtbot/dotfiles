@@ -77,5 +77,7 @@ if [[ -d $HOME/.oh-my-zsh ]]; then
   # Set name of the theme to load.
   ZSH_THEME="skwp"
 
+  plugins=(zsh-syntax-highlighting)
+
   source $ZSH/oh-my-zsh.sh
 fi
