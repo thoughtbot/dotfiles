@@ -11,11 +11,6 @@ setopt auto_cd
 # use vim as an editor
 export EDITOR=vim
 
-# aliases
-if [ -e "$HOME/.aliases" ]; then
-  source "$HOME/.aliases"
-fi
-
 # Put secret configuration settings in ~/.secrets
 if [[ -a ~/.secrets ]] then
   source ~/.secrets
@@ -69,37 +64,5 @@ setopt CORRECT CORRECT_ALL
 # Enable extended globbing
 setopt EXTENDED_GLOB
 
-# Source oh-my-zsh if it is installed.
-if [[ -d $HOME/.oh-my-zsh ]]; then
-  # Path to your oh-my-zsh configuration.
-  ZSH=$HOME/.oh-my-zsh
-
-  # Set name of the theme to load.
-  ZSH_THEME="skwp"
-
-  plugins=(zsh-syntax-highlighting)
-
-  source $ZSH/oh-my-zsh.sh
-fi
-
-# only init if installed.
-if [[ -f $HOME/.fasd ]]; then
-  # Initialize fasd (https://github.com/clvv/fasd)
-  eval "$(fasd --init auto)"
-
-  # aliases
-
-  # jump to recently used items
-  alias a='fasd -a' # any
-  alias s='fasd -s' # show / search / select
-  alias d='fasd -d' # directory
-  alias f='fasd -f' # file
-  alias z='fasd_cd -d' # cd, same functionality as j in autojump
-  alias v='f -e vim' # quick opening files with vim
-fi
-
-# Speed up git completion
-# http://talkings.org/post/5236392664/zsh-and-slow-git-completion
-__git_files () {
-  _wanted files expl 'local files' _files
-}
+# Configuration
+for config_file (~/dotfiles/zsh/*.zsh) source $config_file
