@@ -1,5 +1,9 @@
-# Todo
-alias todo='$EDITOR ~/.todo'
+# Alias Editing
+alias ae='vi ~/dotfiles/aliases' #alias edit
+alias ar='source ~/dotfiles/aliases'  #alias reload
+
+# vimrc editing
+alias ve='vi ~/.vimrc'
 
 # Unix
 alias tlf="tail -f"
@@ -14,15 +18,40 @@ alias -g M='| less'
 alias -g L='| wc -l'
 alias -g ONE="| awk '{ print \$1}'"
 
+# PS
+alias psa="ps aux"
+alias psg="ps aux | grep "
+
 # git
 alias g="git"
-alias gci="git pull --rebase && rake && git push"
+alias gs='git status -s'
+alias gst='git stash'
+alias gsh='git show'
+alias gshow='git show'
+alias gi='vi .gitignore'
+alias gall='git add -A'
+alias gc='git ci'
+alias gcm='git ci -m'
+alias gcam='git ci -am'
+alias gco='git co'
+alias gcob='git co -b'
+alias gr='git rebase'
+alias gra='git rebase --abort'
+alias grc='git rebase --continue'
+alias gl='git l'
+alias gf='git fetch'
+alias gd='git diff'
+alias gb='git b'
+alias gpl='git pull'
+alias gplr='git pull --rebase'
+alias gps='git push'
+alias grs='git reset'
+alias grsh='git reset --hard'
 
 # Bundler
 alias b="bundle"
 
 # Tests and Specs
-alias t="ruby -I test"
 alias s="rspec"
 alias cuc="cucumber"
 
@@ -32,8 +61,6 @@ alias giv="gem install -v"
 
 # Rails
 alias migrate="rake db:migrate db:test:prepare"
-alias remigrate="rake db:migrate db:migrate:redo db:schema:dump db:test:prepare"
-alias remongrate="rake mongoid:migrate mongoid:migrate:redo"
 
 # Heroku staging
 alias staging='heroku run console --remote staging'
