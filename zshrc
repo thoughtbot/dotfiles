@@ -16,6 +16,11 @@ if [ -e "$HOME/.aliases" ]; then
   source "$HOME/.aliases"
 fi
 
+# Put secret configuration settings in ~/.secrets
+if [[ -a ~/.secrets ]] then
+  source ~/.secrets
+fi
+
 # vi mode
 bindkey -v
 bindkey "^F" vi-cmd-mode
