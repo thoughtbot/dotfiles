@@ -1,12 +1,25 @@
-set history=50
-set incsearch     " do incremental searching
+set nocompatible  " Use Vim settings, rather then Vi settings, must be first
+set history=1000
 set laststatus=2  " Always display the status line
+
+" Turn of swapfiles
 set nobackup
-set nocompatible  " Use Vim settings, rather then Vi settings
 set noswapfile
 set nowritebackup
+
+" Search
+set incsearch     " do incremental searching
+set hlsearch      " Highlight searches by default
+
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
+set autoread      " Reload files changed outside
+set visualbell    " No sounds
+
+" Scrolling
+set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+set sidescrolloff=15
+set sidescroll=1
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -51,12 +64,9 @@ endif
 
 " Color scheme
 colorscheme solarized
-highlight NonText guibg=#060606
-highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
 " Numbers
 set number
-set numberwidth=5
 
 " Snippets are activated by Shift+Tab
 let g:snippetsEmu_key = "<S-Tab>"
