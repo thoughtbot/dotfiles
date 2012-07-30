@@ -110,9 +110,8 @@ let g:html_indent_tags = 'li\|p'
 au BufRead,BufNewFile Gemfile set filetype=ruby
 au BufRead,BufNewFile *.md set filetype=markdown
 
-" Leader: set to <Space>
-" Space is inserted via <C-v><Space>
-" see ':h map_space' in vim for further info
-let mapleader = " "
+let mapleader = "\\"
 
 set guifont=Monaco:h13
+
+call pathogen#runtime_append_all_bundles()
