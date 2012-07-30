@@ -1,6 +1,6 @@
 # Alias Editing
-alias ae='vi ~/dotfiles/aliases' #alias edit
-alias ar='source ~/dotfiles/aliases'  #alias reload
+alias ae='vi ~/dotfiles/zsh/aliases.zsh' #alias edit
+alias ar='source ~/dotfiles/zsh/aliases.zsh'  #alias reload
 
 # vimrc editing
 alias ve='vi ~/.vimrc'
@@ -50,6 +50,7 @@ alias grsh='git reset --hard'
 
 # Bundler
 alias b="bundle"
+alias be="bundle exec"
 
 # Tests and Specs
 alias s="rspec"
