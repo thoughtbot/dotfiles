@@ -63,6 +63,8 @@ if executable("ack")
 endif
 
 " Color scheme
+syntax enable
+set background=dark
 colorscheme solarized
 
 " Numbers
@@ -111,6 +113,7 @@ au BufRead,BufNewFile Gemfile set filetype=ruby
 au BufRead,BufNewFile *.md set filetype=markdown
 
 let mapleader = "\\"
+imap jj <Esc>
 
 set guifont=Monaco:h13
 
