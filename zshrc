@@ -60,3 +60,5 @@ setopt EXTENDED_GLOB
 
 # Configuration
 for config_file (~/dotfiles/zsh/*.zsh) source $config_file
+
+export PATH=/usr/local/bin:$PATH
