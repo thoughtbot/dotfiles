@@ -7,15 +7,3 @@
 [submodule "vim/bundle/vim-cucumber"]
 	path = vim/bundle/vim-cucumber
 	url = git://github.com/tpope/vim-cucumber.git
-[submodule "vim/bundle/vim-ruby"]
-	path = vim/bundle/vim-ruby
-	url = git://github.com/vim-ruby/vim-ruby.git
-[submodule "vim/bundle/file-line"]
-	path = vim/bundle/file-line
-	url = git://github.com/bogado/file-line.git
-[submodule "vim/bundle/vim-rails"]
-	path = vim/bundle/vim-rails
-	url = git://github.com/tpope/vim-rails.git
-[submodule "vim/bundle/skwp-vim-colors-solarized"]
-	path = vim/bundle/skwp-vim-colors-solarized
-	url = git://github.com/skwp/vim-colors-solarized.git
