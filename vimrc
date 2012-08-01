@@ -1,4 +1,6 @@
 set nocompatible  " Use Vim settings, rather then Vi settings, must be first
+call pathogen#infect()
+
 set history=1000
 set laststatus=2  " Always display the status line
 
@@ -116,8 +118,6 @@ let mapleader = "\\"
 imap jj <Esc>
 
 set guifont=Monaco:h13
-
-call pathogen#runtime_append_all_bundles()
 
 set cursorline
 autocmd WinEnter * setlocal cursorline
