@@ -118,3 +118,7 @@ imap jj <Esc>
 set guifont=Monaco:h13
 
 call pathogen#runtime_append_all_bundles()
+
+set cursorline
+autocmd WinEnter * setlocal cursorline
+autocmd WinLeave * setlocal nocursorline
