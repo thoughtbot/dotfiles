@@ -53,4 +53,4 @@ endif
 " Tags
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 
-filetype plugin on
+filetype plugin indent on
