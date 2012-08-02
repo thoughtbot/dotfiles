@@ -43,3 +43,9 @@
 [submodule "vim/bundle/vim-pasta"]
 	path = vim/bundle/vim-pasta
 	url = git://github.com/sickill/vim-pasta.git
+[submodule "vim/bundle/vim-turbux"]
+	path = vim/bundle/vim-turbux
+	url = git://github.com/jgdavey/vim-turbux.git
+[submodule "vim/bundle/tslime"]
+	path = vim/bundle/tslime
+	url = git://github.com/jgdavey/tslime.vim.git
