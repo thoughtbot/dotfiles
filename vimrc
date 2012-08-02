@@ -29,7 +29,6 @@ set number
 set guifont=Monaco:h13
 
 let mapleader = "\\"
-imap jj <Esc>
 
 augroup vimrcEx
   au!
@@ -53,11 +52,5 @@ endif
 
 " Tags
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
-
-" Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
 
 filetype plugin on
