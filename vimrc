@@ -26,7 +26,7 @@ set sidescroll=1
 " Line Numbers
 set number
 
-set guifont=Menlo:h13
+set guifont=Monaco:h13
 
 let mapleader = "\\"
 
