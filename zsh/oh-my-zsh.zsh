@@ -6,7 +6,7 @@ if [[ -d $HOME/.oh-my-zsh ]]; then
   # Set name of the theme to load.
   ZSH_THEME="skwp"
 
-  plugins=(zsh-syntax-highlighting)
+  plugins=(zsh-syntax-highlighting vi-mode history-substring-search)
 
   source $ZSH/oh-my-zsh.sh
 fi
