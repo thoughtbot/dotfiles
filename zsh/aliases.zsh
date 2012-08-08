@@ -33,6 +33,7 @@ alias gall='git add -A'
 alias gc='git ci'
 alias gcm='git ci -m'
 alias gcam='git ci -am'
+alias gcl='git clone'
 alias gco='git co'
 alias gcob='git co -b'
 alias gr='git rebase'
@@ -51,6 +52,7 @@ alias grsh='git reset --hard'
 # Bundler
 alias b="bundle"
 alias be="bundle exec"
+alias bi="bundle install --binstubs"
 
 # Tests and Specs
 alias s="rspec"
