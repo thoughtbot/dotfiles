@@ -19,22 +19,22 @@ set autoread      " Reload files changed outside
 set visualbell    " No sounds
 
 " Scrolling
-set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+set scrolloff=8   "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
+
+set shiftround    " When at 3 spaces and I hit >>, go to 4, not 5.
+set grepprg=ack   " Use ack instead of grep
 
 " Line Numbers
 set number
 
 set guifont=Monaco:h13
 
-let mapleader = "\\"
+let mapleader=","
 
 augroup vimrcEx
   au!
-
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
@@ -44,11 +44,6 @@ augroup vimrcEx
     \   exe "normal g`\"" |
     \ endif
 augroup END
-
-" Use Ack instead of Grep when available
-if executable("ack")
-  set grepprg=ack\ -H\ --nogroup\ --nocolor
-endif
 
 " Tags
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"

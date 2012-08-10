@@ -6,3 +6,5 @@ augroup cursorline
   autocmd WinEnter * setlocal cursorline
   autocmd WinLeave * setlocal nocursorline
 augroup END
+
+set colorcolumn=80
