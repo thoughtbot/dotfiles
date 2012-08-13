@@ -1,0 +1,36 @@
+snippet p
+	<% ${1} %>
+snippet pe
+	<%= ${1} %>
+snippet end
+	<% end %>
+snippet cf
+	<% content_for :${1:yield_label_in_layout} do %>
+		${2}
+	<% end %>
+snippet cs
+	<%= collection_select ${1:object}, ${2:method}, ${3:collection}, ${4:value_method}, ${5:text_method}, ${6:options}, ${7:html_options} %>
+snippet ff
+	<% form_for @${1:model} do |f| %>
+		${2}
+	<% end %>
+snippet lt
+	<%= link_to ${1:name}, ${2:dest} %>
+snippet lts
+	<%= link_to "${1:name}", ${2:dest} %>
+snippet rp
+	<%= render :partial => "${1:file}"${2} %>
+snippet if
+	<% if ${1:condition} %>
+		${2}
+	<% end %>
+snippet ife
+	<% if ${1:condition} %>
+		${2}
+	<% else %>
+		${3}
+	<% end %>
+snippet unless
+	<% unless ${1:condition} %>
+		${2}
+	<% end %>

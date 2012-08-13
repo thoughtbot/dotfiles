@@ -41,7 +41,7 @@ setopt cdablevars
 setopt EXTENDED_GLOB
 
 # Configuration
-for config_file (~/dotfiles/zsh/*.zsh) source $config_file
+for config_file (~/.zsh/*.zsh) source $config_file
 
 PATH=/usr/local/bin:$PATH
 

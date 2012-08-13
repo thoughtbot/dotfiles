@@ -49,3 +49,6 @@
 [submodule "vim/bundle/tslime"]
 	path = vim/bundle/tslime
 	url = git://github.com/jgdavey/tslime.vim.git
+[submodule "vim/bundle/snipmate"]
+	path = vim/bundle/snipmate
+	url = git://github.com/msanders/snipmate.vim.git
