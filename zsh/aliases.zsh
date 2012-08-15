@@ -48,6 +48,7 @@ alias gplr='git pull --rebase'
 alias gps='git push'
 alias grs='git reset'
 alias grsh='git reset --hard'
+alias gcpk='git cherry-pick'
 
 # Bundler
 alias b="bundle"
@@ -56,7 +57,6 @@ alias bi="bundle install --binstubs"
 
 # Tests and Specs
 alias s="rspec"
-alias cuc="cucumber"
 
 # Rubygems
 alias gi="gem install"
