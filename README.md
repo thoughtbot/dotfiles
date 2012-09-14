@@ -58,3 +58,19 @@ Then, each time you want to update thoughtbot's changes.
     git pull
     git checkout master
     git rebase upstream
+
+Credits
+-------
+
+![thoughtbot](http://thoughtbot.com/images/tm/logo.png)
+
+dotfiles are maintained and funded by [thoughtbot, inc](http://thoughtbot.com/community)
+
+Thank you to all [the contributors](https://github.com/thoughtbot/dotfiles/contributors)!
+
+The names and logos for thoughtbot are trademarks of thoughtbot, inc.
+
+License
+-------
+
+dotfiles is Copyright © 2009-2012 thoughtbot, inc.. It is free software, and may be redistributed under the terms specified in the MIT-LICENSE file.
