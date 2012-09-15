@@ -15,13 +15,11 @@ alias -g ONE="| awk '{ print \$1}'"
 alias g="git"
 alias gci="git pull --rebase && rake && git push"
 
-# Ruby
-alias help-strftime='ruby ~/bin/help-strftime.rb'
-
 # Bundler
 alias b="bundle"
-alias be="bundle exec"
-alias bake="bundle exec rake"
+
+# Tests and Specs
+alias t="ruby -I test"
 alias s="bundle exec rspec"
 alias cuc="bundle exec cucumber"
 
@@ -30,24 +28,20 @@ alias gi="gem install"
 alias giv="gem install -v"
 
 # Rails
-alias migrate="bundle exec rake db:migrate db:test:prepare"
-alias remigrate="bundle exec rake db:migrate db:migrate:redo db:schema:dump db:test:prepare"
-alias remongrate="bundle exec rake mongoid:migrate mongoid:migrate:redo"
+alias migrate="rake db:migrate && rake db:rollback && rake db:migrate && rake db:test:prepare"
 
 # Heroku staging
-alias staging='heroku run console --remote staging'
+alias staging-console='heroku run console --remote staging'
 alias staging-process='watch heroku ps --remote staging'
 alias staging-releases='heroku releases --remote staging'
 alias staging-tail='heroku logs --tail --remote staging'
 
 # Heroku production
-alias production='heroku run console --remote production'
+alias production-console='heroku run console --remote production'
 alias production-process='watch heroku ps --remote production'
 alias production-releases='heroku releases --remote production'
 alias production-tail='heroku logs --tail --remote production'
 
 # Heroku databases
-alias db-pull-staging='heroku db:pull --remote staging --confirm `basename $PWD`-staging'
-alias db-pull-production='heroku db:pull --remote production --confirm `basename $PWD`-production'
-alias db-copy-production-to-staging='heroku pgbackups:restore DATABASE `heroku pgbackups:url --remote production` --remote staging  --confirm `basename $PWD`-staging'
 alias db-backup-production='heroku pgbackups:capture --remote production'
+alias db-copy-production-to-staging='heroku pgbackups:restore DATABASE `heroku pgbackups:url --remote production` --remote staging  --confirm `basename $PWD`-staging'
