@@ -1,4 +1,17 @@
 [push]
   default = tracking
+[color]
+  branch = auto
+  diff = auto
+  status = auto
 [format]
   pretty = %Cblue%h%Creset %Cgreen[%ar]%Creset (%an) %s
+[alias]
+  ci = commit -v
+  create-branch = !sh -c 'git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
+  delete-branch = !sh -c 'git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1' -
+  merge-branch = !git checkout master && git merge @{-1} --ff-only
+  rebase-origin = !git fetch origin && git rebase origin/master
+[core]
+  excludesfile = ~/.gitignore
+  autocrlf = input
