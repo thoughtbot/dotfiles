@@ -129,3 +129,56 @@ let g:html_indent_tags = 'li\|p'
 
 " Markdown files end in .md
 au BufRead,BufNewFile *.md set filetype=markdown
+
+" rspec mappings
+map ,t :call RunSpecFile()<CR>
+map ,s :call RunNearestSpec()<CR>
+map ,l :call RunLastSpec()<CR>
+
+function! RunSpecFile()
+  if InSpecFile()
+    let t:last_spec_file_command = "bundle exec rspec " . @% . " -f documentation"
+  endif
+
+  call RunLastSpecFile()
+endfunction
+
+function! RunNearestSpec()
+  if InSpecFile()
+    let t:last_nearest_spec_command = "bundle exec rspec " . @% . " -l " . line(".") . " -f documentation"
+  endif
+
+  call RunLastNearestSpec()
+endfunction
+
+function! RunLastSpec()
+  call RunSpecs()
+endfunction
+
+function! InSpecFile()
+  return match(expand("%"), "_spec.rb$") != -1
+endfunction
+
+function! RunLastNearestSpec()
+  if exists("t:last_nearest_spec_command")
+    call SetLastSpecCommand(t:last_nearest_spec_command)
+    call RunSpecs()
+  endif
+endfunction
+
+function! RunLastSpecFile()
+  if exists("t:last_spec_file_command")
+    call SetLastSpecCommand(t:last_spec_file_command)
+    call RunSpecs()
+  endif
+endfunction
+
+function! RunSpecs()
+  if exists("t:last_spec_command")
+    execute ":w\|!clear && echo " . t:last_spec_command . " && echo && " . t:last_spec_command
+  endif
+endfunction
+
+function! SetLastSpecCommand(command)
+  let t:last_spec_command = a:command
+endfunction
