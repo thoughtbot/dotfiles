@@ -131,54 +131,40 @@ let g:html_indent_tags = 'li\|p'
 au BufRead,BufNewFile *.md set filetype=markdown
 
 " rspec mappings
-map ,t :call RunSpecFile()<CR>
-map ,s :call RunNearestSpec()<CR>
-map ,l :call RunLastSpec()<CR>
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
 
-function! RunSpecFile()
+function! RunCurrentSpecFile()
   if InSpecFile()
-    let t:last_spec_file_command = "zeus rspec " . @% . " -f documentation"
+    let l:command = "zeus rspec " . @% . " -f documentation"
+    call SetLastSpecCommand(l:command)
+    call RunSpecs(l:command)
   endif
-
-  call RunLastSpecFile()
 endfunction
 
 function! RunNearestSpec()
   if InSpecFile()
-    let t:last_nearest_spec_command = "zeus rspec " . @% . " -l " . line(".") . " -f documentation"
+    let l:command = "zeus rspec " . @% . " -l " . line(".") . " -f documentation"
+    call SetLastSpecCommand(l:command)
+    call RunSpecs(l:command)
   endif
-
-  call RunLastNearestSpec()
 endfunction
 
 function! RunLastSpec()
-  call RunSpecs()
+  if exists("t:last_spec_command")
+    call RunSpecs(t:last_spec_command)
+  endif
 endfunction
 
 function! InSpecFile()
   return match(expand("%"), "_spec.rb$") != -1
 endfunction
 
-function! RunLastNearestSpec()
-  if exists("t:last_nearest_spec_command")
-    call SetLastSpecCommand(t:last_nearest_spec_command)
-    call RunSpecs()
-  endif
-endfunction
-
-function! RunLastSpecFile()
-  if exists("t:last_spec_file_command")
-    call SetLastSpecCommand(t:last_spec_file_command)
-    call RunSpecs()
-  endif
-endfunction
-
-function! RunSpecs()
-  if exists("t:last_spec_command")
-    execute ":w\|!clear && echo " . t:last_spec_command . " && echo && " . t:last_spec_command
-  endif
-endfunction
-
 function! SetLastSpecCommand(command)
   let t:last_spec_command = a:command
+endfunction
+
+function! RunSpecs(command)
+  execute ":w\|!clear && echo " . a:command . " && echo && " . a:command
 endfunction
