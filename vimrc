@@ -137,7 +137,7 @@ map ,l :call RunLastSpec()<CR>
 
 function! RunSpecFile()
   if InSpecFile()
-    let t:last_spec_file_command = "bundle exec rspec " . @% . " -f documentation"
+    let t:last_spec_file_command = "zeus rspec " . @% . " -f documentation"
   endif
 
   call RunLastSpecFile()
@@ -145,7 +145,7 @@ endfunction
 
 function! RunNearestSpec()
   if InSpecFile()
-    let t:last_nearest_spec_command = "bundle exec rspec " . @% . " -l " . line(".") . " -f documentation"
+    let t:last_nearest_spec_command = "zeus rspec " . @% . " -l " . line(".") . " -f documentation"
   endif
 
   call RunLastNearestSpec()
