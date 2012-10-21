@@ -2,9 +2,7 @@
 *.sw[nop]
 .bundle
 .sass-cache/
-bin/
 db/*.sqlite3
-db/schema.rb
 log/*.log
 rerun.txt
 tags
