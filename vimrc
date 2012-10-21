@@ -61,12 +61,16 @@ set numberwidth=5
 " Snippets are activated by Shift+Tab
 let g:snippetsEmu_key = "<S-Tab>"
 
-" Tab completion options
+" Tab completion
 set wildmode=list:longest,list:full
 set complete=.,w,t
+imap <Tab> <C-P>
 
-" Tags
+" Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
+
+" Index ctags from any project, including those outside Rails
+map <Leader>ct :!ctags -R .<CR>
 
 " Cucumber navigation commands
 autocmd User Rails Rnavcommand step features/step_definitions -glob=**/* -suffix=_steps.rb
