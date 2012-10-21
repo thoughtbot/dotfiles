@@ -1,0 +1,15 @@
+*.DS_Store
+*.sw[nop]
+.bundle
+.sass-cache/
+bin/
+db/*.sqlite3
+db/schema.rb
+log/*.log
+rerun.txt
+tags
+tmp/**/*
+!tmp/cache/.keep
+vendor/bundler_gems
+vim/.netrwhist
+zeus.json
