@@ -1,32 +1,39 @@
 thoughtbot dotfiles
 ===================
 
+Requirements
+------------
+
+Set zsh as your login shell.
+
+    chsh -s /bin/zsh
+
 Install
 -------
 
-First, [fork this repo](https://github.com/thoughtbot/dotfiles#fork_box) on Github.
+First, [fork this repo](/thoughtbot/dotfiles#fork_box) on Github.
 
-Then, clone your Github fork (replace "your-github-name" with your Github name) onto your laptop and install it:
+Then, clone your Github fork onto your laptop and install it:
 
     git clone git@github.com:your-github-name/dotfiles.git
     cd dotfiles
     ./install.sh
 
-This will create symlinks for all config files in your home directory. You can
-safely run this file multiple times to update.
+This will create symlinks for config files in your home directory. If you
+include the line "DO NOT EDIT BELOW THIS LINE" anywhere in a config file, it
+will copy that file over instead of symlinking it, and it will leave
+everything above that line in your local config intact.
 
-There is configuration for `zsh` so switch your shell from the default `bash` to `zsh` on OS X:
-
-    chsh -s /bin/zsh
+You can safely run `./install.sh` multiple times to update.
 
 Why fork?
 ---------
 
-dotfiles are fairly personal. You should be able to modify your dotfiles, and save them in version control in your fork.
+You should be able to experiment with your own dotfiles, save them in version
+control, and still get updates from `thoughtbot/dotfiles`.
 
-However, the thoughtbot folks are often tweaking these dotfiles and you want to be able to get those updates.
-
-So, your master branch is meant for your customizations and use the `upstream` branch to get thoughtbot's updates.
+The `master` branch is for your customizations and the `upstream` branch is for
+thoughtbot's updates.
 
 Set up the upstream branch
 --------------------------
@@ -37,22 +44,37 @@ You only have to do this once:
     git fetch upstream
     git checkout -b upstream upstream/master
 
-Update thoughtbot's changes into your customizations
-----------------------------------------------------
+Make your own customizations
+----------------------------
 
-You will want to customize your environment. We suggest making changes in files that are not in thoughtbot's files.
+Put your customizations at the top of files, separated by "DO NOT EDIT BELOW
+THIS LINE."
 
-For example, to customize your `zsh` config, make your changes in `~/.zshenv`:
+For example, the top of your `~/.gitconfig` might look like this:
+
+    [user]
+      name = Joe Ferris
+      email = jferris@thoughtbot.com
+
+    # DO NOT EDIT BELOW THIS LINE
+
+    [push]
+      default = current
+
+The top of your `~/.zlogin` might look like this:
 
     # RVM
     [[ -s '/Users/croaky/.rvm/scripts/rvm' ]] && source '/Users/croaky/.rvm/scripts/rvm'
 
+    # DO NOT EDIT BELOW THIS LINE
+
     # recommended by brew doctor
     export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
-Commit those kinds of things in your master branch.
+Get thoughtbot's updates
+------------------------
 
-Then, each time you want to update thoughtbot's changes.
+Each time you want to include thoughtbot's changes:
 
     git checkout upstream
     git pull
@@ -62,15 +84,12 @@ Then, each time you want to update thoughtbot's changes.
 Credits
 -------
 
+Thank you, [contributors](/thoughtbot/dotfiles/graphs/contributors)!
+
 ![thoughtbot](http://thoughtbot.com/images/tm/logo.png)
 
-dotfiles are maintained and funded by [thoughtbot, inc](http://thoughtbot.com/community)
-
-Thank you to all [the contributors](https://github.com/thoughtbot/dotfiles/contributors)!
-
+Dotfiles is maintained by [thoughtbot, inc](http://thoughtbot.com/community)
 The names and logos for thoughtbot are trademarks of thoughtbot, inc.
 
-License
--------
-
-dotfiles is Copyright © 2009-2012 thoughtbot, inc.. It is free software, and may be redistributed under the terms specified in the MIT-LICENSE file.
+Dotfiles is © 2009-2012 thoughtbot, inc. It is free software and may be
+redistributed under the terms specified in the MIT-LICENSE file.
