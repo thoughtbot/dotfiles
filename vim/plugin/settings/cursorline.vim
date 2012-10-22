@@ -1,10 +1,2 @@
-set cursorline
-
-augroup cursorline
-  au!
-
-  autocmd WinEnter * setlocal cursorline
-  autocmd WinLeave * setlocal nocursorline
-augroup END
-
-set colorcolumn=80
+autocmd BufWinEnter,WinEnter * setlocal colorcolumn=80
+autocmd BufWinLeave,WinLeave * setlocal colorcolumn=0
