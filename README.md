@@ -4,7 +4,7 @@ thoughtbot dotfiles
 Install
 -------
 
-[Fork this repo](https://github.com/thoughtbot/dotfiles/fork_select) on Github.
+[Fork this repo](https://github.com/jsteiner/dotfiles/fork_select) on Github.
 
 Clone your fork (replace `your-github-name` with your Github name).
 
@@ -18,29 +18,33 @@ Run the installer.
 It creates symlinks for all dotfiles in your home directory. You can safely run
 this file multiple times to update.
 
-Included are `zsh` dotfiles. To switch your shell to `zsh` on OS X:
+Install [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh/).
 
-    chsh -s /bin/zsh
+    cp oh-my-zsh/themes/skwp.zsh-theme ~/.oh-my-zsh/themes
+
+Install [homebrew](http://mxcl.github.com/homebrew/).
+
+    brew install ack tmux fasd
 
 Why fork?
 ---------
 
 Your master branch is meant for your customizations. Use the `upstream` branch
-to get thoughtbot's updates.
+to get updates.
 
 Set up upstream
 ---------------
 
 Do this once:
 
-    git remote add upstream git@github.com:thoughtbot/dotfiles.git
+    git remote add upstream git@github.com:jsteiner/dotfiles.git
     git fetch upstream
     git checkout -b upstream upstream/master
 
 Update upstream
 ---------------
 
-Make changes in files that are not in thoughtbot's dotfiles.
+Make changes in files that are not in my dotfiles.
 
 For example, to customize your `zsh` config, make your changes in `~/.zshenv`:
 
@@ -52,7 +56,7 @@ For example, to customize your `zsh` config, make your changes in `~/.zshenv`:
 
 Commit those kinds of things in your master branch.
 
-Then, each time you want to update thoughtbot's changes.
+Then, each time you want to update my changes.
 
     git checkout upstream
     git pull
