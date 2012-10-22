@@ -22,7 +22,7 @@
   ca = commit -am                   # commit all with message
   ci = commit                       # commit
   amend = commit --amend            # ammend your last commit
-  ammend = commit --amend           # ammend your last commit
+  amendr = commit --amend --reuse-message=HEAD
 
   # checkout
   co = checkout                     # checkout
