@@ -1,3 +1,6 @@
+" Leader
+let mapleader = " "
+
 set nocompatible  " Use Vim settings, rather then Vi settings
 set nobackup
 set nowritebackup
