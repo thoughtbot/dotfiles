@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# Run specs with great speed and daring-do.
+#
+
+if [ -f zeus.json ]; then
+  zeus rspec $1
+else
+  bundle exec rspec $1
+fi
