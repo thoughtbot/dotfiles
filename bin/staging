@@ -4,9 +4,13 @@
 #
 # staging console
 # staging migrate
+# staging tail
+#
+# The script also acts as a pass-through, so you can do anything with it that
+# you can do with `heroku ______ -r staging`:
+#
 # staging open
 # watch staging ps
-# staging tail
 
 class Staging
   def initialize(subcommands)
@@ -20,7 +24,7 @@ class Staging
       system 'heroku run console -r staging'
     when 'migrate'
       system 'heroku run rake db:migrate -r staging && heroku restart -r staging'
-    when 'log' || 'logs' || 'tail'
+    when 'tail'
       system 'heroku logs --tail -r staging'
     else
       system "heroku #{@subcommands.join(' ')} -r staging"

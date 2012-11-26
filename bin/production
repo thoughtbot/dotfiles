@@ -5,9 +5,13 @@
 # production backup
 # production console
 # production migrate
+# production tail
+#
+# The script also acts as a pass-through, so you can do anything with it that
+# you can do with `heroku ______ -r production`:
+#
 # production open
 # watch production ps
-# production tail
 
 class Production
   def initialize(subcommands)
@@ -23,7 +27,7 @@ class Production
       system 'heroku run console -r production'
     when 'migrate'
       system 'heroku run rake db:migrate -r production && heroku restart -r production'
-    when 'log' || 'logs' || 'tail'
+    when 'tail'
       system 'heroku logs --tail -r production'
     else
       system "heroku #{@subcommands.join(' ')} -r production"

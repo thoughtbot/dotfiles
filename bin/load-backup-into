@@ -31,7 +31,7 @@ class Backup
   end
 
   def db_backup_url
-    'heroku pgbackups:url --remote production'
+    'heroku pgbackups:url -r production'
   end
 
   def db_development
