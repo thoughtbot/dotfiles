@@ -4,7 +4,7 @@
 #
 
 if [ -f zeus.json ]; then
-  zeus rspec $1
+  zeus rspec "$@"
 else
-  bundle exec rspec $1
+  bundle exec rspec "$@"
 fi
