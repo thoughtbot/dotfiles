@@ -130,6 +130,12 @@ let g:html_indent_tags = 'li\|p'
 " Markdown files end in .md
 au BufRead,BufNewFile *.md set filetype=markdown
 
+" Enable spellchecking for Markdown
+au BufRead,BufNewFile *.md setlocal spell
+
+" Automatically wrap at 80 characters for Markdown
+au BufRead,BufNewFile *.md setlocal textwidth=80
+
 " rspec mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
