@@ -1,0 +1,8 @@
+# Show more colorful RSpec results
+--color
+
+# List 10 slowest specs when tests complete
+# --profile
+
+# Run specs in random order to expose order dependencies
+# --order random
