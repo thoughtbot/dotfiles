@@ -27,6 +27,5 @@ alias gi="gem install"
 alias giv="gem install -v"
 
 # Rails
-alias c="zeus console"
 alias m="rk db:migrate && rk db:rollback && rk db:migrate && rk db:test:prepare"
 alias z="zeus"
