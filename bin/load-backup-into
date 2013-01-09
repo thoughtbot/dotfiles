@@ -14,9 +14,14 @@ class Backup
 
   def load
     if into_development?
-      system "curl -s `#{db_backup_url}` | pg_restore --verbose --clean --no-acl --no-owner -d #{db_development}"
+      system %{
+        curl -s `#{db_backup_url}` | \
+        pg_restore --verbose --clean --no-acl --no-owner -d #{db_development}
+      }
     elsif into_staging?
-      system "heroku pgbackups:restore DATABASE `#{db_backup_url}` -r staging"
+      system %{
+        heroku pgbackups:restore DATABASE `#{db_backup_url}` --remote staging
+      }
     end
   end
 
@@ -31,7 +36,7 @@ class Backup
   end
 
   def db_backup_url
-    'heroku pgbackups:url -r production'
+    'heroku pgbackups:url --remote production'
   end
 
   def db_development
