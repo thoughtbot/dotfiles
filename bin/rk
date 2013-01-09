@@ -4,7 +4,7 @@
 #
 
 if [ -f zeus.json ]; then
-  zeus rake $1
+  zeus rake "$@"
 else
-  bundle exec rake $1
+  bundle exec rake "$@"
 fi
