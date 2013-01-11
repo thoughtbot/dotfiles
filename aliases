@@ -13,7 +13,7 @@ alias -g ONE="| awk '{ print \$1}'"
 
 # git
 alias g="git"
-alias gci="git pull --rebase && rake && git push"
+alias gci="git pull --rebase && rk && git push"
 
 # Bundler
 alias b="bundle"
@@ -27,20 +27,5 @@ alias gi="gem install"
 alias giv="gem install -v"
 
 # Rails
-alias migrate="rake db:migrate && rake db:rollback && rake db:migrate && rake db:test:prepare"
-
-# Heroku staging
-alias staging-console='heroku run console --remote staging'
-alias staging-process='watch heroku ps --remote staging'
-alias staging-releases='heroku releases --remote staging'
-alias staging-tail='heroku logs --tail --remote staging'
-
-# Heroku production
-alias production-console='heroku run console --remote production'
-alias production-process='watch heroku ps --remote production'
-alias production-releases='heroku releases --remote production'
-alias production-tail='heroku logs --tail --remote production'
-
-# Heroku databases
-alias db-backup-production='heroku pgbackups:capture --remote production'
-alias db-copy-production-to-staging='heroku pgbackups:restore DATABASE `heroku pgbackups:url --remote production` --remote staging  --confirm `basename $PWD`-staging'
+alias m="rk db:migrate && rk db:rollback && rk db:migrate && rk db:test:prepare"
+alias z="zeus"
