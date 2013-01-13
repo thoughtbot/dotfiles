@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# Run rake with great speed and daring-do.
+#
+
+if [ -f zeus.json ]; then
+  zeus rake "$@"
+else
+  bundle exec rake "$@"
+fi
