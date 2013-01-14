@@ -27,6 +27,11 @@ Install [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh/).
 
     cp oh-my-zsh/themes/skwp.zsh-theme ~/.oh-my-zsh/themes
 
+Install zsh syntax highlighting
+
+    cd ~/.oh-my-zsh/custom/plugins
+    git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
+
 Install [homebrew](http://mxcl.github.com/homebrew/).
 
     brew install ack tmux fasd
