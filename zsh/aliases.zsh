@@ -1,6 +1,6 @@
 # Alias Editing
-alias ae='vi ~/dotfiles/zsh/aliases.zsh' #alias edit
-alias ar='source ~/dotfiles/zsh/aliases.zsh'  #alias reload
+alias ae='vi ~/.zsh/aliases.zsh' #alias edit
+alias ar='source ~/.zsh/aliases.zsh'  #alias reload
 
 # vimrc editing
 alias ve='vi ~/.vimrc'
