@@ -11,6 +11,11 @@ Clone your fork (replace `your-github-name` with your Github name).
     git clone git@github.com:your-github-name/dotfiles.git
     cd dotfiles
 
+Download submodules
+
+    git submodule init
+    git submodule update
+
 Run the installer.
 
     ./install.sh
