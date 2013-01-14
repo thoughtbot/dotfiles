@@ -53,3 +53,5 @@ source /usr/local/opt/chruby/share/chruby/chruby.sh
 
 # automatically change ruby version when changing directories
 source /usr/local/share/chruby/auto.sh
+
+RUBIES=(~/.rubies/*)
