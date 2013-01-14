@@ -10,6 +10,6 @@ if [[ -f $HOME/.fasd ]]; then
   alias s='fasd -s' # show / search / select
   alias d='fasd -d' # directory
   alias f='fasd -f' # file
-  alias z='fasd_cd -d' # cd, same functionality as j in autojump
+  alias j='fasd_cd -d' # cd, same functionality as j in autojump
   alias v='f -e vim' # quick opening files with vim
 fi
