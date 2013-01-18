@@ -1,0 +1,7 @@
+rspec() {
+  if [ -f zeus.json ]; then
+    zeus rspec "$@"
+  else
+    command rspec
+  fi
+}
