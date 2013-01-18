@@ -1,5 +1,5 @@
 rake() {
-  if [ -f .zeus.sock ]; then
+  if [ -S .zeus.sock ]; then
     zeus rake "$@"
   else
     command rake
