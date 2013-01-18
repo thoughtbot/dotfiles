@@ -25,6 +25,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " Define bundles via Github repos
+Bundle 'croaky/vim-colors-github'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'nanki/treetop.vim'
 Bundle 'timcharper/textile.vim'
