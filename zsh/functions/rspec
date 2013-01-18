@@ -1,5 +1,5 @@
 rspec() {
-  if [ -f zeus.json ]; then
+  if [ -S .zeus.sock ]; then
     zeus rspec "$@"
   else
     command rspec
