@@ -1,3 +1,20 @@
+[user]
+  name = Thomas Ricard
+  email = thomas.ricard@gmai.com
+
+[alias]
+  pr = pull --rebase
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  hist = log --all --graph --pretty
+  wsadd = "!sh -c 'git diff -- \"$@\" | git apply --cached --whitespace=fix;\
+             git checkout -- ${1-.} \"$@\"' -"
+  di = diff
+
+[core]
+  whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+
+# DO NOT EDIT BELOW THIS LINE.
+
 [push]
   default = tracking
 [color]
