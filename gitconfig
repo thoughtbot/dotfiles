@@ -1,6 +1,9 @@
 [user]
   name = Thomas Ricard
-  email = thomas.ricard@gmai.com
+  email = thomas.ricard@gmail.com
+
+[github]
+  user = mastooo
 
 [alias]
   pr = pull --rebase
