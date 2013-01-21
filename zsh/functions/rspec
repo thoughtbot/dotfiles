@@ -2,6 +2,6 @@ rspec() {
   if [ -S .zeus.sock ]; then
     zeus rspec "$@"
   else
-    command rspec
+    command rspec "$@"
   fi
 }
