@@ -1,4 +1,4 @@
---type-add=ruby=.haml,.rake,.ru
+--type-add=ruby=.haml,.rake,.ru,.thor
 --type-add=html=.html.erb,.html.haml,.mustache,.jst,.ejs
 --type-add=js=.js.erb,.coffee
 --type-add=css=.sass,.less,.scss
