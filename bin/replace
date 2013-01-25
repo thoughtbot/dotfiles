@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+# Find and replace by a given list of files.
+#
+# replace foo bar '**/*.rb'
+
+ack -l $1 `eval $3` | xargs sed -i '' "s/$1/$2/g"
