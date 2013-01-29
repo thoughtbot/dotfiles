@@ -27,6 +27,7 @@ Bundle 'gmarik/vundle'
 " Define bundles via Github repos
 Bundle 'croaky/vim-colors-github'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'kien/ctrlp.vim'
 Bundle 'nanki/treetop.vim'
 Bundle 'timcharper/textile.vim'
 Bundle 'tpope/vim-cucumber'
