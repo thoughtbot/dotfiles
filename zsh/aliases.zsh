@@ -59,7 +59,7 @@ alias gcd='cd $(git rev-parse --show-toplevel)'
 # Bundler
 alias b="bundle"
 alias be="bundle exec"
-alias bi="bundle install --binstubs"
+alias bi="bundle install --binstubs=bin/stubs"
 
 # Tests and Specs
 alias s="rspec"

@@ -45,9 +45,6 @@ for config_file (~/.zsh/*.zsh) source $config_file
 
 PATH=/usr/local/bin:$PATH
 
-# binstubs -> https://twitter.com/tpope/statuses/165631968996900865
-export PATH=.git/safe/../../bin:$PATH
-
 # chruby
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 
@@ -61,3 +58,5 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # Add npm utils (coffeescript)
 export PATH="/usr/local/share/npm/bin:$PATH"
+
+export PATH=".git/safe/../../bin:.git/safe/../../bin/stubs:$PATH"
