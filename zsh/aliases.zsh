@@ -71,6 +71,9 @@ alias giv="gem install -v"
 # Rails
 alias migrate="rake db:migrate db:test:prepare"
 
+# Rake
+alias rake='noglob rake' # fix zsh trying to glob rake arguments
+
 # Heroku staging
 alias staging='heroku run console --remote staging'
 alias staging-name='echo `basename $PWD`-staging'
