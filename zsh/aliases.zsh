@@ -53,7 +53,7 @@ alias gplr='git pull --rebase'
 alias gps='git push'
 alias grs='git reset'
 alias grsh='git reset --hard'
-alias gcpk='git cherry-pick'
+alias gcp='git cherry-pick'
 alias gcd='cd $(git rev-parse --show-toplevel)'
 
 # Bundler
