@@ -1,35 +1,13 @@
-# OSX       taken from: https://github.com/github/gitignore/blob/master/Global/OSX.gitignore
-# ----------------------------------------------------------------------------------------------
-.DS_Store
-# Thumbnails
-._*
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
-
-# Windows   taken from: https://github.com/github/gitignore/blob/master/Global/Windows.gitignore
-# ----------------------------------------------------------------------------------------------
-# Windows image file caches
-Thumbs.db
-
-# Folder config file
-Desktop.ini
-
-# Tags      taken from: https://github.com/github/gitignore/blob/master/Global/Tags.gitignore
-# ----------------------------------------------------------------------------------------------
-# Ignore tags created by etags and ctags
-TAGS
+*.DS_Store
+*.sw[nop]
+.bundle
+.sass-cache/
+db/*.sqlite3
+log/*.log
+rerun.txt
 tags
-
-# Vim       taken from: https://github.com/github/gitignore/blob/master/Global/vim.gitignore
-# ----------------------------------------------------------------------------------------------
-.*.sw[a-z]
-*.un~
-Session.vim
-
-# SASS
-# ----------------------------------------------------------------------------------------------
-.sass-cache
-
-# Binstubs
-bin
+tmp/**/*
+!tmp/cache/.keep
+vendor/bundler_gems
+vim/.netrwhist
+zeus.json
