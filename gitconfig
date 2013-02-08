@@ -89,6 +89,7 @@
   autocrlf = false
   editor = vim
   excludesfile = /Users/jsteiner/.gitignore
+  pager = cat
 [advice]
   statusHints = false
 [diff]
