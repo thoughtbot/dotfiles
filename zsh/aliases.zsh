@@ -94,5 +94,5 @@ alias db-pull-production='heroku db:pull --remote production --confirm `producti
 alias db-copy-production-to-staging='heroku pgbackups:restore DATABASE `heroku pgbackups:url --app production-name` --app `staging-name` --confirm `staging-name`'
 alias db-backup-production='heroku pgbackups:capture --remote production'
 
-# Network
-alias whats-my-ip="curl -s checkip.dyndns.org | grep -Eo '[0-9\.]+'"
+# Open ports
+alias open_ports="lsof -i -P | grep -i 'listen'"
