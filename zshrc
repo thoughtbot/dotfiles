@@ -57,3 +57,6 @@ export PATH=".git/safe/../../bin:.git/safe/../../bin/stubs:$PATH"
 export PATH="$PATH:/Users/jsteiner/Desktop/AWS-ElasticBeanstalk-CLI-2.3/eb/macosx/python2.7/"
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# Alias hub to git
+eval "$(hub alias -s)"
