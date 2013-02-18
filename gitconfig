@@ -82,9 +82,9 @@
   summary = true
   verbosity = 1
 [push]
-  # 'git push' will push the current branch to its tracking branch
+  # 'git push' will push the current branch to its upstream branch
   # the usual default is to push all branches
-  default = tracking
+  default = upstream
 [core]
   autocrlf = false
   editor = vim
