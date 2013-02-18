@@ -1,5 +1,5 @@
 [push]
-  default = tracking
+  default = upstream
 [color]
   branch = auto
   diff = auto
