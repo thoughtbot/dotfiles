@@ -4,8 +4,6 @@
   branch = auto
   diff = auto
   status = auto
-[format]
-  pretty = %Cblue%h%Creset %Cgreen[%ar]%Creset (%an) %s
 [alias]
   aa = add --all
   am = commit --amend
