@@ -11,3 +11,5 @@ tmp/**/*
 vendor/bundler_gems
 vim/.netrwhist
 zeus.json
+.powder
+.powenv
