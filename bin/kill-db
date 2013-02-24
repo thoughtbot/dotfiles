@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+# Kill Postgres connection to given database.
+#
+
+ps xa | grep postgres: | grep $1 | grep -v grep | awk '{print $1}' | xargs kill
