@@ -1,5 +1,7 @@
 [push]
   default = upstream
+[pull]
+  rebase = true
 [color]
   branch = auto
   diff = auto
