@@ -73,9 +73,10 @@ if filereadable(".vimrc.local")
   source .vimrc.local
 endif
 
-" Use Ack instead of Grep when available
-if executable("ack")
-  set grepprg=ack\ -H\ --nogroup\ --nocolor
+" Use Ag (https://github.com/ggreer/the_silver_searcher) instead of Grep when
+" available
+if executable("ag")
+  set grepprg=ag\ --noheading\ --nogroup\ --nocolor
 endif
 
 " Color scheme
@@ -114,8 +115,6 @@ map <Leader>ct :!ctags -R .<CR>
 " Cucumber navigation commands
 autocmd User Rails Rnavcommand step features/step_definitions -glob=**/* -suffix=_steps.rb
 autocmd User Rails Rnavcommand config config -glob=**/* -suffix=.rb -default=routes
-" :Cuc my text (no quotes) -> runs cucumber scenarios containing "my text"
-command! -nargs=+ Cuc :!ack --no-heading --no-break <q-args> | cut -d':' -f1,2 | xargs bundle exec cucumber --no-color
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>

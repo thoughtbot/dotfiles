@@ -1,4 +1,4 @@
-#compdef ack
+#compdef ag
 
 if (( CURRENT == 2 )); then
   if [[ -a tmp/tags ]]; then
