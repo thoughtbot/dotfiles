@@ -1,13 +1,13 @@
 # load our own completion functions
 fpath=(~/.zsh/completion $fpath)
 
-for function in ~/.zsh/functions/*; do
-  source $function
-done
-
 # completion
 autoload -U compinit
 compinit
+
+for function in ~/.zsh/functions/*; do
+  source $function
+done
 
 # automatically enter directories without cd
 setopt auto_cd
