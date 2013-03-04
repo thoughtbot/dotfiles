@@ -11,11 +11,15 @@ Set zsh as your login shell.
 Install
 -------
 
-First, [fork this repo](/thoughtbot/dotfiles#fork_box) on Github.
+Clone onto your laptop:
 
-Then, clone your Github fork onto your laptop and install it:
+    git clone git://github.com/thoughtbot/dotfiles.git
 
-    git clone git@github.com:your-github-name/dotfiles.git
+(Or, [fork and keep your fork
+updated](http://robots.thoughtbot.com/post/5133345960)).
+
+Install:
+
     cd dotfiles
     ./install.sh
 
@@ -25,24 +29,6 @@ will copy that file over instead of symlinking it, and it will leave
 everything above that line in your local config intact.
 
 You can safely run `./install.sh` multiple times to update.
-
-Why fork?
----------
-
-You should be able to experiment with your own dotfiles, save them in version
-control, and still get updates from `thoughtbot/dotfiles`.
-
-The `master` branch is for your customizations and the `upstream` branch is for
-thoughtbot's updates.
-
-Set up the upstream branch
---------------------------
-
-You only have to do this once:
-
-    git remote add upstream git@github.com:thoughtbot/dotfiles.git
-    git fetch upstream
-    git checkout -b upstream upstream/master
 
 Make your own customizations
 ----------------------------
@@ -63,23 +49,13 @@ For example, the top of your `~/.gitconfig` might look like this:
 
 The top of your `~/.zlogin` might look like this:
 
-    # RVM
-    [[ -s '/Users/croaky/.rvm/scripts/rvm' ]] && source '/Users/croaky/.rvm/scripts/rvm'
+    # Productivity
+    alias todo='$EDITOR ~/.todo'
 
     # DO NOT EDIT BELOW THIS LINE
 
     # recommended by brew doctor
     export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-
-Get thoughtbot's updates
-------------------------
-
-Each time you want to include thoughtbot's changes:
-
-    git checkout upstream
-    git pull
-    git checkout master
-    git rebase upstream
 
 Credits
 -------
