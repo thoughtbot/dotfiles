@@ -116,7 +116,7 @@ Shell aliases and scripts:
 Credits
 -------
 
-Thank you, [contributors](/thoughtbot/dotfiles/graphs/contributors)!
+Thank you, [contributors](https://github.com/thoughtbot/dotfiles/contributors)!
 
 ![thoughtbot](http://thoughtbot.com/images/tm/logo.png)
 
