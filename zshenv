@@ -12,4 +12,4 @@ export RBENV_ROOT=$HOME/.rbenv
 [[ -d $RBENV_ROOT/shims ]] && eval "$(rbenv init -)"
 
 # Find bin stubs in /bin and bin/stubs using T. Pope's git safe method
-export PATH=".git/safe/../../bin:.git/safe/../../bin/stubs:$PATH"
+export PATH=".git/safe/../../bin:.git/safe/../../bin/stubs:$HOME/.bin:$PATH"
