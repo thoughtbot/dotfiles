@@ -76,6 +76,7 @@ What's in it?
 * Use [Exuberant Ctags](http://ctags.sourceforge.net/) for tab completion.
 * Use [GitHub color scheme](https://github.com/croaky/vim-colors-github).
 * Use [Vundle](https://github.com/gmarik/vundle) to manage plugins.
+* Autosave on <Esc>
 
 [tmux](http://robots.thoughtbot.com/post/2641409235/a-tmux-crash-course)
 configuration:
