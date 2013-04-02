@@ -142,12 +142,6 @@ au BufRead,BufNewFile *.md setlocal textwidth=80
 set splitbelow
 set splitright
 
-" Use leader keys to open splits faster
-nmap <leader>s<left> :leftabove vnew<CR>
-nmap <leader>s<right> :rightbelow vnew<CR>
-nmap <leader>s<up> :leftabove new<CR>
-nmap <leader>s<down> :rightbelow new<CR>
-
 " Easier navigation between splits. Instead of ctrl-w then j, it’s just ctrl-j
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
