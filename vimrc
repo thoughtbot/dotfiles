@@ -138,6 +138,16 @@ au BufRead,BufNewFile *.md setlocal spell
 " Automatically wrap at 80 characters for Markdown
 au BufRead,BufNewFile *.md setlocal textwidth=80
 
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+" Easier navigation between splits. Instead of ctrl-w then j, it’s just ctrl-j
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 " rspec mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
