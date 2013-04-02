@@ -70,11 +70,6 @@ set expandtab
 " Display extra whitespace
 set list listchars=tab:»·,trail:·
 
-" Local config
-if filereadable(".vimrc.local")
-  source .vimrc.local
-endif
-
 " Use Ag (https://github.com/ggreer/the_silver_searcher) instead of Grep when
 " available
 if executable("ag")
@@ -138,3 +133,8 @@ au BufRead,BufNewFile *.md setlocal spell
 
 " Automatically wrap at 80 characters for Markdown
 au BufRead,BufNewFile *.md setlocal textwidth=80
+
+" Local config
+if filereadable($HOME . "/.vimrc.local")
+  source ~/.vimrc.local
+endif
