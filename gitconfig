@@ -1,9 +1,7 @@
 [push]
   default = upstream
 [color]
-  branch = auto
-  diff = auto
-  status = auto
+  ui = auto
 [alias]
   aa = add --all
   ap = add --patch
