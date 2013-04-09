@@ -75,7 +75,7 @@ set list listchars=tab:»·,trail:·
 " Use Ag (https://github.com/ggreer/the_silver_searcher) instead of Grep when
 " available
 if executable("ag")
-  set grepprg=ag\ --noheading\ --nogroup\ --nocolor
+  set grepprg=ag\ --nogroup\ --nocolor
 endif
 
 " Color scheme
