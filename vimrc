@@ -32,6 +32,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'nanki/treetop.vim'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'timcharper/textile.vim'
+Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
@@ -80,9 +81,6 @@ endif
 colorscheme github
 highlight NonText guibg=#060606
 highlight Folded  guibg=#0A0A0A guifg=#9090D0
-
-" Syntax highlighting
-autocmd BufNewFile,BufRead Gemfile set filetype=ruby
 
 " Numbers
 set number
