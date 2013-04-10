@@ -13,6 +13,7 @@ case $state in
       "install[Install the gems specified by the Gemfile or Gemfile.lock]" \
       "update[Update dependencies to their latest versions]" \
       "package[Package the .gem files required by your application]" \
+      "binstubs[Create bin stubs for a particular gem to ./bin]" \
       "exec[Execute a script in the context of the current bundle]" \
       "config[Specify and read configuration options for bundler]" \
       "check[Determine whether the requirements for your application are installed]" \
@@ -29,7 +30,7 @@ case $state in
   args)
     case $line[1] in
       help)
-        _values 'commands' 'install update package exec config check list show console open viz init gem help' && ret=0
+        _values 'commands' 'install update package binstubs exec config check list show console open viz init gem help' && ret=0
         ;;
       install)
         _arguments \
@@ -48,7 +49,7 @@ case $state in
       exec)
         _normal && ret=0
         ;;
-      (open|show)
+      (open|show|binstubs)
         _gems=( $(bundle show 2> /dev/null | sed -e '/^  \*/!d; s/^  \* \([^ ]*\) .*/\1/') )
         if [[ $_gems != "" ]]; then
           _values 'gems' $_gems && ret=0
