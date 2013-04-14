@@ -5,7 +5,6 @@
 [alias]
   aa = add --all
   ap = add --patch
-  br = branch
   ca = commit --amend
   ci = commit -v
   co = checkout
