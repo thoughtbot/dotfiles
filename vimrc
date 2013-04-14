@@ -42,6 +42,7 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-surround'
 Bundle 'tsaleh/vim-matchit'
+Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/ctags.vim'
 Bundle 'vim-scripts/greplace.vim'
 Bundle 'vim-scripts/tComment'
@@ -132,7 +133,7 @@ nnoremap <Leader>l :call RunLastSpec()<CR>
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
-" Markdown files end in .md
+" Set syntax highlighting for specific file types
 au BufRead,BufNewFile *.md set filetype=markdown
 
 " Enable spellchecking for Markdown
