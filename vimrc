@@ -141,6 +141,10 @@ au BufRead,BufNewFile *.md setlocal spell
 " Automatically wrap at 80 characters for Markdown
 au BufRead,BufNewFile *.md setlocal textwidth=80
 
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
 " Local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
