@@ -132,10 +132,8 @@ nnoremap <Leader>l :call RunLastSpec()<CR>
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
-" Rackup files end in .ru
+" Set syntax highlighting for specific file types
 au BufRead,BufNewFile *.ru set filetype=ruby
-
-" Markdown files end in .md
 au BufRead,BufNewFile *.md set filetype=markdown
 
 " Enable spellchecking for Markdown
