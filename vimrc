@@ -69,6 +69,9 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+" Automatically change working directory to last file opened
+set autochdir
+
 " Display extra whitespace
 set list listchars=tab:»·,trail:·
 
