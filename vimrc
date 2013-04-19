@@ -42,6 +42,7 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-surround'
 Bundle 'tsaleh/vim-matchit'
+Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/ctags.vim'
 Bundle 'vim-scripts/greplace.vim'
 Bundle 'vim-scripts/tComment'
@@ -133,9 +134,7 @@ nnoremap <Leader>l :call RunLastSpec()<CR>
 let g:html_indent_tags = 'li\|p'
 
 " Set syntax highlighting for specific file types
-au BufRead,BufNewFile Appraisals set filetype=ruby
 au BufRead,BufNewFile *.md set filetype=markdown
-au BufRead,BufNewFile *.ru set filetype=ruby
 
 " Enable spellchecking for Markdown
 au BufRead,BufNewFile *.md setlocal spell
