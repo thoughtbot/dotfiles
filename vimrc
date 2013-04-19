@@ -133,8 +133,9 @@ nnoremap <Leader>l :call RunLastSpec()<CR>
 let g:html_indent_tags = 'li\|p'
 
 " Set syntax highlighting for specific file types
-au BufRead,BufNewFile *.ru set filetype=ruby
+au BufRead,BufNewFile Appraisals set filetype=ruby
 au BufRead,BufNewFile *.md set filetype=markdown
+au BufRead,BufNewFile *.ru set filetype=ruby
 
 " Enable spellchecking for Markdown
 au BufRead,BufNewFile *.md setlocal spell
