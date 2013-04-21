@@ -3,7 +3,6 @@
 [color]
   ui = auto
 [alias]
-  aa = add --all
   ap = add --patch
   ca = commit --amend
   ci = commit -v
