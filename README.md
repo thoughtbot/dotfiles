@@ -124,4 +124,4 @@ Dotfiles is maintained by [thoughtbot, inc](http://thoughtbot.com/community)
 The names and logos for thoughtbot are trademarks of thoughtbot, inc.
 
 Dotfiles is © 2009-2013 thoughtbot, inc. It is free software and may be
-redistributed under the terms specified in the MIT-LICENSE file.
+redistributed under the terms specified in the [LICENSE](LICENSE) file.
