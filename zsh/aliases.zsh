@@ -3,14 +3,10 @@ alias ae='vi ~/.zsh/aliases.zsh' #alias edit
 alias ar='source ~/.zsh/aliases.zsh'  #alias reload
 alias zr='source ~/.zshrc' #reload zsh
 
-# vimrc editing
-alias ve='vi ~/.vimrc'
-
 # Unix
 alias tlf="tail -f"
 alias ln='ln -v'
 alias mkdir='mkdir -p'
-function mkcd() { mkdir -p "$@" && cd "\"\$$#\""; }
 alias ...='../..'
 alias l='ls'
 alias ll='ls -al'
@@ -35,19 +31,19 @@ alias ga='git add'
 alias gall='git add -A'
 alias gb='git branch'
 alias gba='git branch -a'
-alias gc='git ci'
-alias gcm='git ci -m'
-alias gcam='git ci -am'
+alias gc='git commit'
+alias ga='git commit -a'
+alias gcm='git commit -m'
+alias gcam='git commit -am'
 alias gcl='git clone'
-alias gco='git co'
-alias gnb='git co -b'
+alias gco='git checkout'
+alias gnb='git checkout -b'
 alias gr='git rebase'
 alias gra='git rebase --abort'
 alias grc='git rebase --continue'
 alias gl='git l -10'
 alias gf='git fetch'
 alias gd='git diff'
-alias gb='git b'
 alias gpl='git pull'
 alias gplr='git pull --rebase'
 alias gps='git push'
@@ -55,6 +51,8 @@ alias grs='git reset'
 alias grsh='git reset --hard'
 alias gcp='git cherry-pick'
 alias gcd='cd $(git rev-parse --show-toplevel)'
+alias amend='git commit --amend'
+alias standup='git standup'
 
 # Bundler
 alias b="bundle"
@@ -71,26 +69,6 @@ alias giv="gem install -v"
 # Rails
 alias migrate="rake db:migrate db:test:prepare"
 alias c="rails console"
-
-# Heroku staging
-alias staging='heroku run console --remote staging'
-alias staging-name='echo `basename $PWD`-staging'
-alias staging-process='watch heroku ps --remote staging'
-alias staging-releases='heroku releases --remote staging'
-alias staging-tail='heroku logs --tail --remote staging'
-
-# Heroku production
-alias production='heroku run console --remote production'
-alias production-name='echo `basename $PWD`-production'
-alias production-process='watch heroku ps --remote production'
-alias production-releases='heroku releases --remote production'
-alias production-tail='heroku logs --tail --remote production'
-
-# Heroku databases
-alias db-pull-staging='heroku db:pull --remote staging --confirm `staging-name`'
-alias db-pull-production='heroku db:pull --remote production --confirm `production-name`'
-alias db-copy-production-to-staging='heroku pgbackups:restore DATABASE `heroku pgbackups:url --app production-name` --app `staging-name` --confirm `staging-name`'
-alias db-backup-production='heroku pgbackups:capture --remote production'
 
 # Open ports
 alias open_ports="lsof -i -P | grep -i 'listen'"
