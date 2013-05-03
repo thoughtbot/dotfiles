@@ -70,9 +70,7 @@ alias giv="gem install -v"
 
 # Rails
 alias migrate="rake db:migrate db:test:prepare"
-
-# Rake
-alias rake='noglob rake' # fix zsh trying to glob rake arguments
+alias c="rails console"
 
 # Heroku staging
 alias staging='heroku run console --remote staging'
@@ -96,3 +94,7 @@ alias db-backup-production='heroku pgbackups:capture --remote production'
 
 # Open ports
 alias open_ports="lsof -i -P | grep -i 'listen'"
+
+# tmux
+alias tat='tmux attach -t'
+alias tns='tmux new -s'

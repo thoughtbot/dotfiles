@@ -17,6 +17,7 @@ set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
 set autoread      " Reload files changed outside
 set visualbell    " No sounds
+set ignorecase    " Ignore case in search
 
 " Scrolling
 set scrolloff=8   "Start scrolling when we're 8 lines away from margins
@@ -25,6 +26,9 @@ set sidescroll=1
 
 set shiftround    " When at 3 spaces and I hit >>, go to 4, not 5.
 set grepprg=ack   " Use ack instead of grep
+
+" Backspace
+set backspace=indent,eol,start
 
 " Line Numbers
 set number

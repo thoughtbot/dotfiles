@@ -1,0 +1,6 @@
+log
+tags
+tmp
+doc
+*.sql
+vendor

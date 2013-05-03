@@ -37,7 +37,7 @@
   last = diff HEAD^                 # diff last committed change
 
   # log
-  l = log --graph --date=short
+  l = log --graph --date=relative
   changes = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
   short = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\"
   changelog = log --pretty=format:\" * %s\"
@@ -76,15 +76,16 @@
   # tag
   t = tag -n                        # show tags with <n> lines of each tag message
 
+  rename = branch -m
+
 [format]
   pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 [merge]
+  ff = only
   summary = true
   verbosity = 1
 [push]
-  # 'git push' will push the current branch to its upstream branch
-  # the usual default is to push all branches
-  default = upstream
+  default = current
 [core]
   autocrlf = false
   editor = vim

@@ -6,3 +6,4 @@ set expandtab
 " Display extra whitespace
 set list listchars=tab:»·,trail:·
 
+au BufRead,BufNewFile *.md,*.txt setlocal textwidth=80

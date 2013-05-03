@@ -34,3 +34,11 @@ function! RenameFile()
   endif
 endfunction
 map <leader>n :call RenameFile()<cr>
+
+" Reload snippets
+map <leader>rr :call ReloadAllSnippets()<cr>
+
+" Reindent file and return to current line
+map <leader>i mmgg=G`m<cr>
+
+nmap <leader>9 :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<cr>
