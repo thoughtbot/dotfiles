@@ -8,19 +8,7 @@ set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
 
 " Line Numbers
-set relativenumber
-au InsertEnter * :set nu
-au InsertLeave * :set rnu
-
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
-
-nnoremap <C-n> :call NumberToggle()<cr>
+set number
 
 " Scrolling
 set scrolloff=8   "Start scrolling when we're 8 lines away from margins
