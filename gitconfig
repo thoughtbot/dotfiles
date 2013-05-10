@@ -25,7 +25,7 @@
   summary = true
   verbosity = 1
 [push]
-  default = current
+  default = upstream
 [core]
   autocrlf = false
   editor = vim
