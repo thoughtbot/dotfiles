@@ -10,6 +10,8 @@ class DeploymentEnvironment
       system "heroku pgbackups:capture --expire --remote #{@environment}"
     when 'console'
       system "heroku run console --remote #{@environment}"
+    when 'log2viz'
+      system "open https://log2viz.herokuapp.com/app/#{heroku_app_name}"
     when 'migrate'
       system %{
         heroku run rake db:migrate --remote #{@environment} &&
@@ -20,5 +22,15 @@ class DeploymentEnvironment
     else
       system "heroku #{@subcommands.join(' ')} --remote #{@environment}"
     end
+  end
+
+  private
+
+  def heroku_app_name
+    [app_name, @environment].join('-')
+  end
+
+  def app_name
+    Dir.pwd.split('/').last
   end
 end
