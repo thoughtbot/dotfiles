@@ -18,6 +18,7 @@ alias -g ONE="| awk '{ print \$1}'"
 
 # PS
 alias psa="ps aux"
+alias psag="ps aux | ag "
 alias psg="ps aux | grep "
 
 # git
