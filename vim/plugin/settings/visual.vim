@@ -17,6 +17,10 @@ set sidescroll=1
 
 set shiftround    " When at 3 spaces and I hit >>, go to 4, not 5.
 
+" Open new splits the the right and bottom. More natural than the default
+set splitbelow
+set splitright
+
 " Display extra whitespace
 set list listchars=tab:»·,trail:·
 
