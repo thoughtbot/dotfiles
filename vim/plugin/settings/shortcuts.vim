@@ -42,3 +42,9 @@ map <leader>rr :call ReloadAllSnippets()<cr>
 map <leader>i mmgg=G`m<cr>
 
 nmap <leader>9 :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<cr>
+
+" Quicker window movement
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-h> <C-w>h
+noremap <C-l> <C-w>l
