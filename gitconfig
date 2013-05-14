@@ -26,6 +26,8 @@
   verbosity = 1
 [push]
   default = upstream
+[pull]
+  rebase = true
 [core]
   autocrlf = false
   editor = vim
