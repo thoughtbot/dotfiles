@@ -53,6 +53,7 @@ alias grsh='git reset --hard'
 alias gcp='git cherry-pick'
 alias gcd='cd $(git rev-parse --show-toplevel)'
 alias amend='git commit --amend'
+alias amendne='git commit --amend --no-edit'
 alias standup='git standup'
 
 # Bundler
