@@ -12,8 +12,8 @@ let g:rails_gem_projections = {
       \   "app/serializers/*_serializer.rb": {
       \     "command": "serializer",
       \     "affinity": "model",
-      \     "test": "spec/serializers/%i_spec.rb",
-      \     "related": "app/models/%i.rb",
+      \     "test": "spec/serializers/%s_spec.rb",
+      \     "related": "app/models/%s.rb",
       \     "template": "class %SSerializer < ActiveModel::Serializer\nend"
       \   }
       \ },
@@ -21,8 +21,8 @@ let g:rails_gem_projections = {
       \   "app/decorators/*_decorator.rb": {
       \     "command": "decorator",
       \     "affinity": "model",
-      \     "test": "spec/decorators/%i_spec.rb",
-      \     "related": "app/models/%i.rb",
+      \     "test": "spec/decorators/%s_spec.rb",
+      \     "related": "app/models/%s.rb",
       \     "template": "class %SDecorator < Draper::Decorator\nend"
       \   }
       \ },
