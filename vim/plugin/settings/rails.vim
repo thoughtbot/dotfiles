@@ -49,7 +49,7 @@ let g:rails_gem_projections = {
       \     "command": "jview",
       \     "alternate": "spec/javascripts/views/%s_spec.js.coffee",
       \     "related": "app/assets/javascripts/templates/%s.hbs",
-      \     "template": "%SView = Ember.View.extend"
+      \     "template": "App.%SView = Ember.View.extend"
       \   },
       \
       \   "app/assets/javascripts/router.js.coffee": {
