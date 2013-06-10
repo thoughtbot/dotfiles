@@ -1,0 +1,33 @@
+#!/usr/bin/env zsh
+#
+# Credit: Caleb Thompson
+#
+# Run this when your Pull Request has been accepted and you're ready to merge
+# into master.
+#
+# * Fetches and rebases your branch (interactively) onto origin/master
+# * Pushes up the new changes into your branch so that the Pull Request will be
+#   closed automatically.
+# * Merges the changes into your local master so that you get any upstream
+#   changes as well as the changes from your branch.
+# * Pushes to origin
+# * Deletes your branch on origin and master
+#
+
+set -e
+
+successfully() {
+  $* || (echo "failed" 1>&2 && exit 1)
+}
+
+branch=`git current`
+
+successfully git fetch
+successfully git rebase -i origin/master
+git diff master --check || successfully git diff master --check
+successfully git push -f
+successfully git checkout master
+successfully git merge $branch --ff-only
+successfully git push
+successfully git push origin --delete $branch
+successfully git branch -d $branch
