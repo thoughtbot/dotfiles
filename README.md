@@ -90,6 +90,8 @@ configuration:
 * Adds a `create-branch` alias to create feature branches.
 * Adds a `delete-branch` alias to delete feature branches.
 * Adds a `merge-branch` alias to merge feature branches into master.
+* Adds an `up` alias to fetch and rebase `origin/master` into the feature
+  branch. Use `git up -i` for interactive rebases.
 
 Shell aliases and scripts:
 
