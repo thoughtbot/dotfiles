@@ -14,7 +14,7 @@
   pr = !hub pull-request
   squash = !git fetch origin && git rebase -i origin/master
   st = status
-  sync = !git fetch origin && git rebase origin/master
+  up = !git fetch origin && git rebase origin/master
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
