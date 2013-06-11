@@ -53,6 +53,7 @@ alias gcd='cd $(git rev-parse --show-toplevel)'
 alias amend='git commit --amend'
 alias amendne='git commit --amend --no-edit'
 alias standup='git standup'
+alias gpr='hub pull-request'
 
 # Bundler
 alias b="bundle"
