@@ -112,6 +112,9 @@ Credits
 -------
 
 Thank you, [contributors](https://github.com/thoughtbot/dotfiles/contributors)!
+Also, thank you to Corey Haines, Gary Bernhardt, and others for sharing your
+dotfiles and other shell scripts from which we derived inspiration for items
+in this project.
 
 ![thoughtbot](http://thoughtbot.com/images/tm/logo.png)
 
