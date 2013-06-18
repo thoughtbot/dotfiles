@@ -1,7 +1,5 @@
 #!/usr/bin/ruby
 #
-# Credits: Corey Haines, Gary Bernhardt, Dan Croak
-#
 # Put this on your $PATH (~/bin is recommended).
 #
 # Show churn for the files changed in the branch:
