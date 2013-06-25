@@ -104,6 +104,10 @@ map <Leader>ct :!ctags -R .<CR>
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
+" Save with two keystrokes instead of five
+map <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>
+
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>

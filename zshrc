@@ -68,3 +68,6 @@ setopt CORRECT CORRECT_ALL
 
 # Enable extended globbing
 setopt EXTENDED_GLOB
+
+# Disable XON/XOFF flow control
+stty -ixon -ixoff
