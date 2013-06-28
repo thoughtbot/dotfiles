@@ -19,3 +19,5 @@
   autocrlf = input
 [merge]
   ff = only
+[include]
+  path = .gitconfig.local
