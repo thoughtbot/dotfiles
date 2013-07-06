@@ -33,3 +33,6 @@ alias m="migrate"
 alias rk="rake"
 alias s="rspec"
 alias z="zeus"
+
+# Include custom aliases
+[[ -f .aliases.local ]] && source ~/.aliases.local
