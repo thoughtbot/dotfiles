@@ -16,11 +16,6 @@ setopt auto_cd
 export VISUAL=vim
 export EDITOR=$VISUAL
 
-# aliases
-if [ -e "$HOME/.aliases" ]; then
-  source "$HOME/.aliases"
-fi
-
 # vi mode
 bindkey -v
 bindkey "^F" vi-cmd-mode
@@ -68,3 +63,9 @@ setopt CORRECT CORRECT_ALL
 
 # Enable extended globbing
 setopt EXTENDED_GLOB
+
+# aliases
+[[ -f ~/.aliases ]] && source ~/.aliases
+
+# Local config
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
