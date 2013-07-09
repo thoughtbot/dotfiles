@@ -23,36 +23,38 @@ Install:
     cd dotfiles
     ./install.sh
 
-This will create symlinks for config files in your home directory. If you
-include the line "DO NOT EDIT BELOW THIS LINE" anywhere in a config file, it
-will copy that file over instead of symlinking it, and it will leave
-everything above that line in your local config intact.
+This will create symlinks for config files in your home directory.
 
 You can safely run `./install.sh` multiple times to update.
 
 Make your own customizations
 ----------------------------
 
-Put your customizations at the top of files, separated by "DO NOT EDIT BELOW
-THIS LINE."
+Put your customizations in dotfiles appended with `.local`:
 
-For example, the top of your `~/.gitconfig` might look like this:
+* `~/.aliases.local`
+* `~/.gitconfig.local`
+* `~/.zshrc.local`
 
-    [user]
-      name = Joe Ferris
-      email = jferris@thoughtbot.com
-
-    # DO NOT EDIT BELOW THIS LINE
-
-    [push]
-      default = current
-
-The top of your `~/.zlogin` might look like this:
+For example, your `~/.aliases.local` might look like this:
 
     # Productivity
     alias todo='$EDITOR ~/.todo'
 
-    # DO NOT EDIT BELOW THIS LINE
+Your `~/.gitconfig.local` might look like this:
+
+    [alias]
+      l = log --pretty=colored
+    [pretty]
+      colored = format:%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset
+    [user]
+      name = Dan Croak
+      email = dan@thoughtbot.com
+
+Your `~/.zshrc.local` might look like this:
+
+    # load rbenv
+    eval "$(rbenv init -)"
 
     # recommended by brew doctor
     export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
