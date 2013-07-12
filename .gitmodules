@@ -64,3 +64,6 @@
 [submodule "vim/bundle/vim-tmux-navigator"]
 	path = vim/bundle/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator.git
+[submodule "vim/bundle/vim-flavored-markdown"]
+	path = vim/bundle/vim-flavored-markdown
+	url = git@github.com:jtratner/vim-flavored-markdown.git
