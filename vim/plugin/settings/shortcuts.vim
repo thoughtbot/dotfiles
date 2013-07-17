@@ -2,8 +2,15 @@
 " Visual mode: D
 vmap D y'>p
 
+" Disabling
+"""""""""""
+
 " Disable shift+k
 map K <Nop>
+command! Q q " Bind :Q to :q
+
+" Movement
+""""""""""
 
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
@@ -15,7 +22,14 @@ nnoremap <Down> :echoe "Use j"<CR>
 nmap j gj
 nmap k gk
 
-command! Q q " Bind :Q to :q
+" Quicker window movement
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-h> <C-w>h
+noremap <C-l> <C-w>l
+
+" File Handling
+"""""""""""""""
 
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
@@ -36,23 +50,20 @@ function! RenameFile()
 endfunction
 map <leader>n :call RenameFile()<cr>
 
-" Reload snippets
-map <leader>rr :call ReloadAllSnippets()<cr>
+" Formatting
+""""""""""""
 
 " Reindent file and return to current line
 map <leader>i mmgg=G`m<cr>
+" Rehash with 1.9 style hash syntax
+nmap <leader>rh :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<cr>
 
-nmap <leader>9 :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<cr>
+" Other
+"""""""
 
-" Quicker window movement
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-h> <C-w>h
-noremap <C-l> <C-w>l
-
-" Leaders
-map <Leader>bi :!bundle install<cr>
-map <Leader>co ggVG"*y
-
-" Git
 map <Leader>gs :Gstatus<CR>
+map <Leader>bi :!bundle install<cr>
+" copy entire file
+map <Leader>co ggVG"*y
+map <leader>rr :call ReloadAllSnippets()<cr>
+
