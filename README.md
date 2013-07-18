@@ -35,6 +35,7 @@ Put your customizations in dotfiles appended with `.local`:
 * `~/.aliases.local`
 * `~/.gitconfig.local`
 * `~/.zshrc.local`
+* `~/.vimrc.local`
 
 For example, your `~/.aliases.local` might look like this:
 
@@ -58,6 +59,14 @@ Your `~/.zshrc.local` might look like this:
 
     # recommended by brew doctor
     export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
+Your `~/.vimrc.local` might look like this:
+
+    "" For .rabl type
+    au BufRead,BufNewFile *.rabl set filetype=ruby
+
+    "" Color scheme
+    colorscheme railscasts
 
 What's in it?
 -------------
