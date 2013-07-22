@@ -35,9 +35,10 @@ Put your customizations in dotfiles appended with `.local`:
 * `~/.aliases.local`
 * `~/.gitconfig.local`
 * `~/.gvimrc.local`
+* `~/.tmux.conf.local`
 * `~/.vimrc.local`
-* `~/.zshrc.local`
 * `~/.vimrc.bundles.local`
+* `~/.zshrc.local`
 
 For example, your `~/.aliases.local` might look like this:
 
