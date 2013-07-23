@@ -34,6 +34,7 @@ Put your customizations in dotfiles appended with `.local`:
 
 * `~/.aliases.local`
 * `~/.gitconfig.local`
+* `~/.tmux.conf.local`
 * `~/.zshrc.local`
 
 For example, your `~/.aliases.local` might look like this:
