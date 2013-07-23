@@ -35,4 +35,4 @@ alias s="rspec"
 alias z="zeus"
 
 # Include custom aliases
-[[ -f .aliases.local ]] && source ~/.aliases.local
+[[ -f ~/.aliases.local ]] && source ~/.aliases.local
