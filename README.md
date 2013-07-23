@@ -34,6 +34,8 @@ Put your customizations in dotfiles appended with `.local`:
 
 * `~/.aliases.local`
 * `~/.gitconfig.local`
+* `~/.gvimrc.local`
+* `~/.vimrc.local`
 * `~/.zshrc.local`
 
 For example, your `~/.aliases.local` might look like this:
