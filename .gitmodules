@@ -67,3 +67,6 @@
 [submodule "vim/bundle/vim-flavored-markdown"]
 	path = vim/bundle/vim-flavored-markdown
 	url = git@github.com:jtratner/vim-flavored-markdown.git
+[submodule "vim/bundle/vim-repeat"]
+	path = vim/bundle/vim-repeat
+	url = git://github.com/tpope/vim-repeat.git
