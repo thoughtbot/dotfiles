@@ -14,7 +14,7 @@ colors
 export CLICOLOR=1
 
 # expand functions in the prompt
-setopt prompt_subst
+setopt promptsubst
 
 # prompt
 export PS1='$(git_prompt_info)[${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%~%{$reset_color%}] '
