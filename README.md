@@ -37,6 +37,7 @@ Put your customizations in dotfiles appended with `.local`:
 * `~/.gvimrc.local`
 * `~/.vimrc.local`
 * `~/.zshrc.local`
+* `~/.vimrc.bundles.local`
 
 For example, your `~/.aliases.local` might look like this:
 
@@ -60,6 +61,11 @@ Your `~/.zshrc.local` might look like this:
 
     # recommended by brew doctor
     export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
+Your `~/.vimrc.bundles.local` might look like this:
+
+    Bundle 'Lokaltog/vim-powerline'
+    Bundle 'stephenmckinney/vim-solarized-powerline'
 
 What's in it?
 -------------
