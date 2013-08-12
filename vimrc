@@ -20,6 +20,9 @@ set autowrite     " Automatically :write before running commands
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
+  set background=dark
+else
+  set background=light
 endif
 
 if filereadable(expand("~/.vimrc.bundles"))
@@ -79,7 +82,7 @@ if executable('ag')
 endif
 
 " Color scheme
-colorscheme github
+colorscheme solarized
 highlight NonText guibg=#060606
 highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
