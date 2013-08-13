@@ -1,3 +1,5 @@
 [user]
   name = Jessie A. Young
   email = jessie.a.young@gmail.com
+[alias]
+  bmr = bundle && migrate && time rake
