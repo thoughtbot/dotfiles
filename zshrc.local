@@ -1,5 +1,2 @@
-load rbenv
+# load rbenv
 eval "$(rbenv init -)"
-
-# recommended by brew doctor and rbenv
-export PATH="~/.rbenv/shims:/usr/local/bin:/usr/bin:/bin/usr/local/bin:/usr/local/sbin:$PATH"
