@@ -58,6 +58,9 @@
 [submodule "vim/bundle/ag.vim"]
 	path = vim/bundle/ag.vim
 	url = git://github.com/epmatsw/ag.vim.git
+[submodule "vim/bundle/ctrlp.vim"]
+  path = vim/bundle/ctrlp.vim
+  url = git://github.com/kien/ctrlp.vim.git
 [submodule "vim/bundle/vim-bundler"]
 	path = vim/bundle/vim-bundler
 	url = git://github.com/tpope/vim-bundler.git
@@ -66,7 +69,7 @@
 	url = https://github.com/christoomey/vim-tmux-navigator.git
 [submodule "vim/bundle/vim-flavored-markdown"]
 	path = vim/bundle/vim-flavored-markdown
-	url = git@github.com:jtratner/vim-flavored-markdown.git
+	url = git://github.com/jtratner/vim-flavored-markdown.git
 [submodule "vim/bundle/vim-repeat"]
 	path = vim/bundle/vim-repeat
 	url = git://github.com/tpope/vim-repeat.git
