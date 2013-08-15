@@ -23,9 +23,23 @@ Run the installer.
 It creates symlinks for all dotfiles in your home directory. You can safely run
 this file multiple times to update.
 
+Install Xcode and the Xcode Command Line Tools.
+
 Install [homebrew](http://mxcl.github.com/homebrew/).
 
-    brew install the_silver_searcher tmux fasd
+    brew install git vim zsh the_silver_searcher fasd
+    brew install tmux reattach-to-user-namespace
+    brew install rbenv ruby-build
+
+Install
+[tmux-vim-select-pane](https://github.com/derekprior/tmux-vim-select-pane)
+
+Install [Solarized for
+iTerm2](https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized)
+
+Remap `Caps Lock` to `Control`. Thank me later.
+
+Set scrollback buffer in iTerm2 to 0. Use tmux!
 
 Why fork?
 ---------
