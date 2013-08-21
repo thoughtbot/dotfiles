@@ -4,3 +4,4 @@ tmp
 doc
 *.sql
 vendor
+coverage
