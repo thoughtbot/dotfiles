@@ -41,6 +41,13 @@ Remap `Caps Lock` to `Control`. Thank me later.
 
 Set scrollback buffer in iTerm2 to 0. Use tmux!
 
+Git Safe
+--------
+
+`.git/safe/../../bin` has been added to the path.
+Do `mkdir .git/safe` in the root of repositories that you trust, for binstubs
+in those repos to be added to your path.
+
 Why fork?
 ---------
 
