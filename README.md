@@ -1,8 +1,6 @@
-thoughtbot dotfiles
-===================
+# dotfiles
 
-Install
--------
+## Install
 
 [Fork this repo](https://github.com/jsteiner/dotfiles/fork_select) on Github.
 
@@ -22,6 +20,8 @@ Run the installer.
 
 It creates symlinks for all dotfiles in your home directory. You can safely run
 this file multiple times to update.
+
+## Dependencies
 
 Install Xcode and the Xcode Command Line Tools.
 
@@ -47,21 +47,18 @@ iTerm2](https://github.com/altercation/solarized/tree/master/iterm2-colors-solar
   * Disable `Draw bold text in bright colors`
 
 
-Git Safe
---------
+## Git Safe
 
 `.git/safe/../../bin` has been added to the path.
 Do `mkdir .git/safe` in the root of repositories that you trust, for binstubs
 in those repos to be added to your path.
 
-Why fork?
----------
+## Why fork?
 
 Your master branch is meant for your customizations. Use the `upstream` branch
 to get updates.
 
-Set up upstream
----------------
+## Set up upstream
 
 Do this once:
 
@@ -69,8 +66,7 @@ Do this once:
     git fetch upstream
     git checkout -b upstream upstream/master
 
-Update upstream
----------------
+## Update upstream
 
 Make changes in files that are not in my dotfiles.
 
