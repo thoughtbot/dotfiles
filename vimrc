@@ -1,5 +1,4 @@
 set nocompatible  " Use Vim settings, rather then Vi settings, must be first
-call pathogen#infect()
 
 set history=1000
 set autoread      " Reload files changed outside
