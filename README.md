@@ -34,12 +34,18 @@ Install [homebrew](http://mxcl.github.com/homebrew/).
 Install
 [tmux-vim-select-pane](https://github.com/derekprior/tmux-vim-select-pane)
 
-Install [Solarized for
-iTerm2](https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized)
-
 Remap `Caps Lock` to `Control`. Thank me later.
 
-Set scrollback buffer in iTerm2 to 0. Use tmux!
+Configure iTerm:
+
+* Install [Solarized for
+iTerm2](https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized)
+* Under Profiles > Terminal
+  * Set `Scrollback Lines` to 0 if you are using tmux.
+  * Set `Report Terminal Type` to xterm-256color
+* Under Profiles > Text
+  * Disable `Draw bold text in bright colors`
+
 
 Git Safe
 --------
