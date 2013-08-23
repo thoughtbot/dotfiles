@@ -46,6 +46,12 @@ iTerm2](https://github.com/altercation/solarized/tree/master/iterm2-colors-solar
 * Under Profiles > Text
   * Disable `Draw bold text in bright colors`
 
+## Vundle
+
+Set up vundle: `git clone https://github.com/gmarik/vundle.git
+~/.vim/bundle/vundle`
+
+Then just run `:BundleInstall` from within vim.
 
 ## Git Safe
 

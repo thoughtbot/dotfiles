@@ -22,12 +22,6 @@ nnoremap <Down> :echoe "Use j"<CR>
 nmap j gj
 nmap k gk
 
-" Quicker window movement
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-h> <C-w>h
-noremap <C-l> <C-w>l
-
 " File Handling
 """""""""""""""
 
@@ -66,4 +60,3 @@ map <Leader>bi :!bundle install<cr>
 " copy entire file
 map <Leader>co ggVG"*y
 map <leader>rr :call ReloadAllSnippets()<cr>
-
