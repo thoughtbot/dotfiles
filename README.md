@@ -65,9 +65,6 @@ Your `~/.gitconfig.local` might look like this:
 
 Your `~/.zshrc.local` might look like this:
 
-    # load rbenv
-    eval "$(rbenv init -)"
-
     # recommended by brew doctor
     export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
@@ -111,6 +108,11 @@ configuration:
 * Adds a `merge-branch` alias to merge feature branches into master.
 * Adds an `up` alias to fetch and rebase `origin/master` into the feature
   branch. Use `git up -i` for interactive rebases.
+
+[Ruby](https://www.ruby-lang.org/en/) configuration:
+
+* Add trusted binstubs to the `PATH`.
+* Load rbenv into the shell, adding shims onto our `PATH`.
 
 Shell aliases and scripts:
 
