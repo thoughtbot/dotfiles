@@ -1,0 +1,2 @@
+--regex-ruby=/([A-Z][A-Z0-9_]+)[ \t]*=/\1/C,constant/
+--regex-ruby=/^[ \t]*attr_reader :([a-z0-9_]+)/\1/r,attr_reader/
