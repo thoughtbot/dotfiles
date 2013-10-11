@@ -8,6 +8,11 @@ Set zsh as your login shell.
 
     chsh -s /bin/zsh
 
+Install [rcm](https://github.com/mike-burns/rcm).
+
+    brew tap mike-burns/rcm
+    brew install rcm
+
 Install
 -------
 
@@ -20,12 +25,11 @@ updated](http://robots.thoughtbot.com/keeping-a-github-fork-updated)).
 
 Install:
 
-    cd dotfiles
-    ./install.sh
+    rcup -d dotfiles -x README.md
 
 This will create symlinks for config files in your home directory.
 
-You can safely run `./install.sh` multiple times to update.
+You can safely run `rcup` multiple times to update.
 
 Make your own customizations
 ----------------------------
