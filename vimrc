@@ -1,5 +1,5 @@
 " Leader
-let mapleader = " "
+let mapleader = ","
 
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nocompatible  " Use Vim settings, rather then Vi settings
@@ -136,6 +136,59 @@ nnoremap <C-l> <C-w>l
 
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
+
+set clipboard=unnamed
+
+
+map W <Plug>CamelCaseMotion_w
+map B <Plug>CamelCaseMotion_b
+map E <Plug>CamelCaseMotion_e
+sunmap W
+sunmap B
+sunmap E
+
+" ========================================
+" extensions for tComment plugin. Normally
+" tComment maps 'gcc' to comment current line
+" this adds 'gcp' comment current paragraph (block)
+" using tComment's built in <c-_>p mapping
+nmap <silent> gcp <c-_>p
+
+" Command-/ to toggle comments
+map <D-/> :TComment<CR>
+imap <D-/> <Esc>:TComment<CR>
+
+" Create window splits easier. The default
+" way is Ctrl-w,v and Ctrl-w,s. I remap
+" this to vv and ss
+nnoremap <silent> vv <C-w>v
+nnoremap <silent> ss <C-w>s
+
+"Clear current search highlight by double tapping //
+nmap <silent> // :nohlsearch<CR>
+
+" We don't want to use Ctrl-p as the mapping because
+" it interferes with YankRing (paste, then hit ctrl-p)
+let g:ctrlp_map = ',t'
+nnoremap <silent> ,t :CtrlP<CR>
+
+" via: http://rails-bestpractices.com/posts/60-remove-trailing-whitespace
+" Strip trailing whitespace
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+command! StripTrailingWhitespaces call <SID>StripTrailingWhitespaces()
+nmap ,w :StripTrailingWhitespaces<CR>
+
+runtime macros/matchit.vim
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")

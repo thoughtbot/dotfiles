@@ -23,6 +23,23 @@ Bundle 'tpope/vim-surround'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'vim-scripts/ctags.vim'
 Bundle 'vim-scripts/tComment'
+Bundle 'sickill/vim-pasta'
+
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'kana/vim-textobj-user'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
+
+Bundle 'nmills/vimux'
+Bundle 'vim-scripts/camelcasemotion.git'
+
+" Markup
+Bundle "groenewege/vim-less.git"
+Bundle "itspriddle/vim-jquery.git"
+Bundle "skwp/vim-html-escape"
+Bundle "slim-template/vim-slim.git"
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
