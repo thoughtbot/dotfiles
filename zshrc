@@ -1,6 +1,9 @@
 # load our own completion functions
 fpath=(~/.zsh/completion $fpath)
 
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+
 # completion
 autoload -U compinit
 compinit
@@ -76,10 +79,10 @@ fi
 source "$fasd_cache"
 unset fasd_cache
 
+
 if [ "$(command -v rbenv)" ]; then
   eval "$(rbenv init -)"
 fi
-
 
 # jump to recently used items
 alias a='fasd -a' # any
