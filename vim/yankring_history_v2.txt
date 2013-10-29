@@ -1,0 +1,6 @@
+bind -n C-k send-keys -R \; clear-history,V
+    before do      visit new_order_path(@offer.identifier)    end,v
+    before do      visit new_order_path(@offer.identifier),V
+,V
+nnoremap <leader>y :call system('nc localhost 8377', @0)<CR>,V
+/,v

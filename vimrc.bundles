@@ -32,14 +32,17 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 
-Bundle 'nmills/vimux'
+Bundle 'benmills/vimux'
+Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'vim-scripts/camelcasemotion.git'
+Bundle 'vim-scripts/YankRing.vim'
 
 " Markup
 Bundle "groenewege/vim-less.git"
 Bundle "itspriddle/vim-jquery.git"
 Bundle "skwp/vim-html-escape"
 Bundle "slim-template/vim-slim.git"
+
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

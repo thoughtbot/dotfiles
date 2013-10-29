@@ -190,6 +190,10 @@ nmap ,w :StripTrailingWhitespaces<CR>
 
 runtime macros/matchit.vim
 
+nnoremap <leader>y :call system('nc localhost 8377', @0)<CR>
+
+let g:yankring_history_dir = "~/.vim"
+
 " Local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
