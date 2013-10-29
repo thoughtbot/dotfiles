@@ -12,12 +12,21 @@ set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
+set autoread
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
+
+" ================ Search Settings  =================
+"
+set incsearch       " Find the next match as we type the search
+set hlsearch        " Hilight searches by default
+set viminfo='100,f1 " Save up to 100 marks, enable capital marks
+set ignorecase      " Ignore case when searching...
+set smartcase       " ...unless we type a capital
 
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
@@ -55,9 +64,14 @@ augroup vimrcEx
 augroup END
 
 " Softtabs, 2 spaces
-set tabstop=2
+set autoindent
+set smartindent
+set smarttab
 set shiftwidth=2
+set softtabstop=2
+set tabstop=2
 set expandtab
+set nowrap
 
 " Display extra whitespace
 set list listchars=tab:»·,trail:·
@@ -192,7 +206,11 @@ runtime macros/matchit.vim
 
 nnoremap <leader>y :call system('nc localhost 8377', @0)<CR>
 
-let g:yankring_history_dir = "~/.vim"
+let g:yankring_history_file = '.yankring-history'
+
+ let g:no_turbux_mappings = 1
+ map <leader>rt <Plug>SendTestToTmux
+ map <leader>rT <Plug>SendFocusedTestToTmux
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
