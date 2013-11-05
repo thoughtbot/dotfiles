@@ -14,5 +14,8 @@ for name in *; do
   fi
 done
 
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+if [ ! -e ~/.vim/bundle/vundle ]; then
+  git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+fi
+
 vim -u ~/.vimrc.bundles +BundleInstall +qa
