@@ -1,4 +1,5 @@
 *.DS_Store
+.DS_Store
 *.sw[nop]
 .bundle
 .env
