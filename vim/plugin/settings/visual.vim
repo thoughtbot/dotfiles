@@ -24,4 +24,7 @@ set splitright
 " Display extra whitespace
 set list listchars=tab:»·,trail:·
 
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+
 au BufRead,BufNewFile *.md,*.txt setlocal textwidth=80
