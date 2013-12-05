@@ -19,6 +19,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
+Bundle 'pbrisbin/vim-mkdir'
 
 " tmux
 Bundle 'jgdavey/tslime.vim'
