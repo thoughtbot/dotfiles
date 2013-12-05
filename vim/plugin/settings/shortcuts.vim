@@ -60,3 +60,6 @@ map <Leader>bi :!bundle install<cr>
 " copy entire file
 map <Leader>co ggVG"*y
 map <leader>rr :call ReloadAllSnippets()<cr>
+
+" run the current file in ruby
+map <Leader>r :w\|:!ruby %<cr>
