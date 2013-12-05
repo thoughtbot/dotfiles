@@ -25,11 +25,16 @@ updated](http://robots.thoughtbot.com/keeping-a-github-fork-updated)).
 
 Install:
 
-    rcup -d dotfiles -x README.md
+    rcup -d dotfiles -x README.md -x LICENSE
 
-This will create symlinks for config files in your home directory.
+This will create symlinks for config files in your home directory. The
+`-x` options, which exclude the `README.md` and `LICENSE` files, are
+needed during installation but can be skipped once the `.rcrc`
+configuration file is symlinked in.
 
-You can safely run `rcup` multiple times to update.
+You can safely run `rcup` multiple times to update:
+
+    rcup
 
 Make your own customizations
 ----------------------------
