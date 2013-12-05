@@ -17,6 +17,8 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
+Bundle 'mattn/webapi-vim'
+Bundle 'mattn/gist-vim'
 
 " tmux
 Bundle 'jgdavey/tslime.vim'
