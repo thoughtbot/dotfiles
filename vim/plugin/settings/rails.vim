@@ -39,12 +39,14 @@ let g:rails_gem_projections = {
       \   "app/assets/javascripts/models/*.js.coffee": {
       \     "command": "jmodel",
       \     "alternate": "spec/javascripts/models/%s_spec.js.coffee",
+      \     "related": "app/assets/javascripts/controllers/%s_controller.js.coffee",
       \     "template": "App.%S = DS.Model.extend"
       \   },
       \
       \   "app/assets/javascripts/controllers/*_controller.js.coffee": {
       \     "command": "jcontroller",
       \     "alternate": "spec/javascripts/controllers/%s_spec.js.coffee",
+      \     "related": "app/assets/javascripts/models/%s.js.coffee",
       \     "template": "App.%SController = Ember.ObjectController.extend"
       \   },
       \
@@ -65,13 +67,22 @@ let g:rails_gem_projections = {
       \     "template": "App.%SRoute = Ember.Route.extend"
       \   },
       \
+      \   "app/assets/javascripts/helpers/*.js.coffee": {
+      \     "command": "jhelper",
+      \   },
+      \
       \   "spec/javascripts/*_spec.js.coffee": {
       \     "command": "jspec",
       \     "alternate": "app/assets/javascripts/%s.js.coffee"
       \   },
       \
       \   "app/assets/javascripts/templates/*.hbs": {
-      \     "command": "template",
+      \     "command": "jtemplate",
+      \     "alternate": "app/assets/javascripts/views/%s.js.coffee"
+      \   },
+      \
+      \   "app/assets/javascripts/templates/*.handlebars": {
+      \     "command": "jtemplate",
       \     "alternate": "app/assets/javascripts/views/%s.js.coffee"
       \   }
       \ }}
