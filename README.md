@@ -27,11 +27,8 @@ Install Xcode and the Xcode Command Line Tools.
 
 Install [homebrew](http://mxcl.github.com/homebrew/).
 
-    brew install git vim zsh the_silver_searcher fasd
-    brew install tmux reattach-to-user-namespace
-    brew install rbenv ruby-build
+Run `brew bundle` to install all packages in the `Brewfile`
 
-Install
 [tmux-vim-select-pane](https://github.com/derekprior/tmux-vim-select-pane)
 
 Remap `Caps Lock` to `Control`. Thank me later.
