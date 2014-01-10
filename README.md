@@ -8,11 +8,6 @@ Set zsh as your login shell.
 
     chsh -s /bin/zsh
 
-Install [rcm](https://github.com/mike-burns/rcm).
-
-    brew tap mike-burns/rcm
-    brew install rcm
-
 Install
 -------
 
@@ -22,6 +17,10 @@ Clone onto your laptop:
 
 (Or, [fork and keep your fork
 updated](http://robots.thoughtbot.com/keeping-a-github-fork-updated)).
+
+Install [rcm](https://github.com/mike-burns/rcm):
+
+    brew bundle
 
 Install:
 
