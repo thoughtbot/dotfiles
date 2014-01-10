@@ -18,7 +18,7 @@ Clone onto your laptop:
 (Or, [fork and keep your fork
 updated](http://robots.thoughtbot.com/keeping-a-github-fork-updated)).
 
-Install [rcm](https://github.com/mike-burns/rcm):
+Install [rcm](https://github.com/thoughtbot/rcm):
 
     brew bundle
 
