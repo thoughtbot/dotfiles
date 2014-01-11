@@ -1,2 +1,2 @@
-tap mike-burns/rcm
+tap thoughtbot/rcm
 install rcm
