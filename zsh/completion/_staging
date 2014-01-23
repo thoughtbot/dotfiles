@@ -1,0 +1,2 @@
+#compdef staging
+compdef staging=heroku
