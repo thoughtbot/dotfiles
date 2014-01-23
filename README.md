@@ -18,11 +18,11 @@ Clone onto your laptop:
 (Or, [fork and keep your fork
 updated](http://robots.thoughtbot.com/keeping-a-github-fork-updated)).
 
-Install [rcm](https://github.com/thoughtbot/rcm):
+In the Root Directory of Clone/Fork and Install [rcm](https://github.com/thoughtbot/rcm):
 
     brew bundle
 
-Install:
+Also Install:
 
     rcup -d dotfiles -x README.md -x LICENSE
 
