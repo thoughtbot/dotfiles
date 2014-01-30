@@ -57,9 +57,9 @@ nmap <leader>rh :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<cr>
 
 map <Leader>gs :Gstatus<CR>
 map <Leader>bi :!bundle install<cr>
-" copy entire file
-map <Leader>co ggVG"*y
-map <leader>rr :call ReloadAllSnippets()<cr>
 
 " run the current file in ruby
 map <Leader>r :w\|:!ruby %<cr>
+
+" delete comments
+nmap <leader>c :%s/^\s*#.*$//g<CR>:%s/\(\n\)\n\+/\1/g<CR>:nohl<CR>gg
