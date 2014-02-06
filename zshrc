@@ -56,7 +56,8 @@ export EDITOR=$VISUAL
 export EYRC=./.eyrc
 
 # load rbenv if available
-if [ -d $HOME/.rbenv ]; then
+export PATH="$HOME/.rbenv/bin:$PATH"
+if which rbenv &>/dev/null; then
   eval "$(rbenv init - --no-rehash)"
 fi
 
