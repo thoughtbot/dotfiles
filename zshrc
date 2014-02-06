@@ -1,3 +1,10 @@
+# load oh-my-zsh
+if [ -d $HOME/.oh-my-zsh ]; then
+  ZSH=$HOME/.oh-my-zsh
+  ZSH_THEME="robbyrussell"
+  source $ZSH/oh-my-zsh.sh
+fi
+
 # load our own completion functions
 fpath=(~/.zsh/completion $fpath)
 

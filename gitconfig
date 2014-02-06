@@ -23,3 +23,6 @@
   path = .gitconfig.local
 [commit]
   template = ~/.gitmessage
+[user]
+	email = jessegrantherrick@gmail.com
+	name = Jesse Herrick
