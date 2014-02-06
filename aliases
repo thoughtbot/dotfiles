@@ -12,6 +12,7 @@ alias -g L='| wc -l'
 alias -g ONE="| awk '{ print \$1}'"
 alias e="$EDITOR"
 alias v="$VISUAL"
+alias cl="clear"
 
 # git
 alias gci="git pull --rebase && rake && git push"
