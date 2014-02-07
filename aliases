@@ -20,6 +20,9 @@ alias gc="git commit"
 alias gst="git status"
 alias gp="git push"
 alias ga="git add"
+alias gb="git branch"
+alias gco="git checkout"
+alias gcob="git checkout -b"
 
 # Bundler
 alias b="bundle"
