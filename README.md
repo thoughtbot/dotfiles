@@ -4,9 +4,9 @@ thoughtbot dotfiles
 Requirements
 ------------
 
-Set zsh as your login shell.
+Set zsh as your login shell:
 
-    chsh -s /bin/zsh
+    chsh -s $(which zsh)
 
 Install
 -------
