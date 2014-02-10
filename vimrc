@@ -116,6 +116,16 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
+" No really get off my lawn
+inoremap <Left> ←
+inoremap <Right> →
+inoremap <Up> ↑
+inoremap <Down> ↓
+inoremap <S-Left> ⇐
+inoremap <S-Right> ⇒
+inoremap <S-Up> ⇑
+inoremap <S-Down> ⇓
+
 " vim-rspec mappings
 nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>s :call RunNearestSpec()<CR>
