@@ -1,0 +1,14 @@
+" tmux
+Bundle 'christoomey/vim-tmux-navigator'
+
+" For javascript
+Bundle 'Shutnik/jshint2.vim'
+
+" For haskell development
+Bundle 'dag/vim2hs'
+Bundle 'scrooloose/syntastic'
+Bundle 'eagletmt/neco-ghc'
+Bundle 'pbrisbin/html-template-syntax'
+Bundle 'kana/vim-textobj-user'
+Bundle 'kana/vim-textobj-indent'
+Bundle 'SirVer/ultisnips'

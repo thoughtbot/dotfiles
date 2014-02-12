@@ -1,0 +1,14 @@
+build
+.DS_Store
+*.swp
+*~.nib
+*.pbxuser
+*.perspective
+*.perspectivev3
+*.mode1
+*.mode1v3
+*.mode2
+*.mode2v3
+*.xcodeproj/*.xcworkspace
+xcuserdata
+.LSOverride

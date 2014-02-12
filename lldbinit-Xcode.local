@@ -1,0 +1,11 @@
+breakpoint set --name malloc_error_break
+breakpoint set --name objc_exception_throw
+
+command regex rd 's/^[[:space:]]*$/po [[[UIApplication sharedApplication] keyWindow] recursiveDescription]/' 's/^(.+)$/po [%1 recursiveDescription]/'
+
+# This file goes in your home directory and is run every time LLDB starts.
+# Importing the script below will make the 'ql' and 'qlf' available to you in LLDB.
+# IMPORTANT: Update the path to the script depending on where you decide place it.
+
+command script import ~/.lldb/lldb_quick_look.py
+command alias ql quicklook
