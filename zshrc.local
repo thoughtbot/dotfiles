@@ -88,6 +88,3 @@ export POSTGRES_DATA_PATH="$HOME/Library/Application Support/Postgres/var"
 
 export PATH=$POSTGRES_BIN_PATH:$PATH
 
-export rbx_root=$home/.rbenv/versions/rbx-2.0.0-dev
-export path=$rbx_root/gems/1.9/bin:$path
-

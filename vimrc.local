@@ -7,13 +7,6 @@ inoremap jj <ESC>
 "set hlsearch
 "nmap <leader>hl :let @/ = ""<CR>
 
-" gui settings
-if (&t_Co == 256 || has('gui_running'))
-  colorscheme desert
-endif
-
-highlight ErrorMsg ctermbg=White ctermfg=Red
-
 let g:JSHintHighlightErrorLine = 0
 
 " Disambiguate ,a & ,t from the Align plugin, making them fast again.
