@@ -1,12 +1,37 @@
+ZSH=~/.zsh
+
 # load our own completion functions
-fpath=(~/.zsh/completion $fpath)
+fpath=($ZSH/completion $fpath)
+
+# all of our zsh files
+typeset -U config_files
+config_files=($ZSH/**/*.zsh)
+
+# load the path files
+for file in ${(M)config_files:#*/path.zsh}
+do
+  source $file
+done
+
+# load everything but the path and completion files
+for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
+do
+  source $file
+done
 
 # completion
 autoload -U compinit
 compinit
 
-for function in ~/.zsh/functions/*; do
+for function in $ZSH/functions/*
+do
   source $function
+done
+
+# Load every completion after autocomplete loads
+for file in ${(M)config_files:#*/completion.zsh}
+do
+  source $file
 done
 
 # history settings
