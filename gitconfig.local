@@ -3,7 +3,7 @@
   email = jesse@jessearmand.com
 [core]
   autocrlf = input
-  editor = vim
+  editor = /usr/bin/vim
   excludesfile = /Users/jessearmand/.gitignore
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
   trustctime = false
@@ -28,7 +28,6 @@
   summary = true
 
 [github]
-  token = f5409cedde3182b3c68445137ddacee2
   user = jessearmand
 [alias]
   dc = diff --cached

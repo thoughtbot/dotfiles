@@ -26,9 +26,6 @@ export PATH
 MANPATH=/usr/local/share/man:/usr/share/man
 export MANPATH
 
-EDITOR="vim"
-export EDITOR
-
 TM_SVN=/usr/bin/svn
 export TM_SVN
 
