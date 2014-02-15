@@ -46,6 +46,7 @@ Put your customizations in dotfiles appended with `.local`:
 * `~/.tmux.conf.local`
 * `~/.vimrc.local`
 * `~/.vimrc.bundles.local`
+* `~/.zlogin.local`
 * `~/.zshrc.local`
 
 For example, your `~/.aliases.local` might look like this:
