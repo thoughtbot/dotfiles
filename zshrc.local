@@ -1,87 +1,9 @@
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
 
-XCODE_SELECT="xcode-select"
-DEVELOPER_PATH=`$XCODE_SELECT --print-path`
-export DEVELOPER_PATH
-
-DEVELOPER_DIR=$DEVELOPER_PATH
-export DEVELOPER_DIR
-
-IPHONEOS_DEVELOPER_PATH=$DEVELOPER_PATH/Platforms/iPhoneOS.platform/Developer
-export IPHONEOS_DEVELOPER_PATH
-
-PATH=$DEVELOPER_PATH/usr/bin:$IPHONEOS_DEVELOPER_PATH/usr/bin:$PATH
-export PATH
-
-export PATH=/usr/local/bin:/usr/local/sbin:~/.bin:$PATH
-
-# node modules
-export NODE_PATH=/usr/local/lib/node_modules
-
-# Setting PATH for node package manager
-PATH="/usr/local/share/npm/bin:$PATH"
-export PATH
-
-MANPATH=/usr/local/share/man:/usr/share/man
-export MANPATH
-
-TM_SVN=/usr/bin/svn
-export TM_SVN
-
-TM_GIT=/usr/local/bin/git
-export TM_GIT
-
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-export BREW_GIT_PATH=`brew --prefix git`
-
-export PATH="$BREW_GIT_PATH/libexec-git-core:$PATH"
-
-function git(){hub "$@"}
-
-export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-function desym()
-{
-  $IPHONEOS_DEVELOPER_PATH/Library/PrivateFrameworks/DTDeviceKit.framework/Versions/A/Resources/symbolicatecrash $1 | more
-}
-
-function itms_transporter()
-{
-  $DEVELOPER_PATH/../Applications/Application\ Loader.app/Contents/MacOS/itms/bin/iTMSTransporter
-}
-
 # Turn off autocorrect
 unsetopt correct_all
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
-export PIP_VIRTUALENV_BASE=$WORKON_HOME
-export PIP_RESPECT_VIRTUALENV=true
-
-source "/usr/local/bin/virtualenvwrapper.sh"
-
-[[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
-
-export CC=clang
-export GOPATH="$HOME/go"
-export PATH="$PATH:$GOPATH/bin"
-
-export CABALPATH=$HOME/.cabal/bin
-export PATH=$CABALPATH:$PATH
-
-# Postgres app
-
-export POSTGRES_BIN_PATH=/Applications/Postgres93.app/Contents/MacOS/bin
-export POSTGRES_INCLUDE_PATH=/Applications/Postgres93.app/Contents/MacOS/include
-export POSTGRES_LIB_PATH=/Applications/Postgres93.app/Contents/MacOS/lib
-export POSTGRES_SHARED_LIB_PATH=/Applications/Postgres.app/Contents/MacOS/share
-export POSTGRES_DATA_PATH="$HOME/Library/Application Support/Postgres/var"
-
-export PATH=$POSTGRES_BIN_PATH:$PATH
 

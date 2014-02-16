@@ -1,11 +1,12 @@
-ZSH=~/.zsh
+DOTFILES=~/.dotfiles
+ZSH=$DOTFILES/zsh
 
 # load our own completion functions
 fpath=($ZSH/completion $fpath)
 
 # all of our zsh files
 typeset -U config_files
-config_files=($ZSH/**/*.zsh)
+config_files=($DOTFILES/**/*.zsh)
 
 # load the path files
 for file in ${(M)config_files:#*/path.zsh}
@@ -19,7 +20,7 @@ do
   source $file
 done
 
-# completion
+# initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
 compinit
 
@@ -33,6 +34,8 @@ for file in ${(M)config_files:#*/completion.zsh}
 do
   source $file
 done
+
+unset config_files
 
 # history settings
 setopt histignoredups
