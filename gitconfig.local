@@ -3,7 +3,7 @@
   email = jesse@jessearmand.com
 [core]
   autocrlf = input
-  editor = /usr/bin/vim
+  editor = /usr/local/bin/vim
   excludesfile = /Users/jessearmand/.gitignore
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
   trustctime = false
