@@ -14,9 +14,6 @@
   autosetupmerge = true
   autosetuprebase = always
 
-[branch "master"]
-  mergeoptions = --no-ff
-
 # Push the current branch as the default behaviour
 #
 [push]
