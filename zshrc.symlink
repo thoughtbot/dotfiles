@@ -1,3 +1,21 @@
+# export dotfiles dir
+export DOTFILES=$HOME/.dotfiles
+
+# link dotfiles
+dotfiles=($DOTFILES/**/*.symlink)
+
+for file in $dotfiles; do
+  filewext=${file##*/} # => foo.symlink
+  filename=${filewext%.*} # => foo
+
+  # Symlink dotfiles
+  ln -sf $file ~/.$filename
+done
+
+unset file
+unset filepath
+unset filename
+
 # load oh-my-zsh
 if [ -d $HOME/.oh-my-zsh ]; then
   ZSH=$HOME/.oh-my-zsh
@@ -6,13 +24,13 @@ if [ -d $HOME/.oh-my-zsh ]; then
 fi
 
 # load our own completion functions
-fpath=(~/.zsh/completion $fpath)
+fpath=($DOTFILES/zsh/completion $fpath)
 
 # completion
 autoload -U compinit
 compinit
 
-for function in ~/.zsh/functions/*; do
+for function in $DOTFILES/zsh/functions/*; do
   source $function
 done
 
@@ -52,6 +70,12 @@ bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
 export VISUAL=vim
 export EDITOR=$VISUAL
 
+# set some browser defaults
+## set chrome as default browser
+if which google-chrome &>/dev/null; then
+  export BROWSER=google-chrome
+fi
+
 # look for ey config in project dirs
 export EYRC=./.eyrc
 
@@ -64,8 +88,11 @@ fi
 # mkdir .git/safe in the root of repositories you trust
 export PATH=".git/safe/../../bin:$PATH"
 
-# aliases
-[[ -f ~/.aliases ]] && source ~/.aliases
+# load up the env
+if [ -f $DOTFILES/*.(env|zsh) ]; then
+  env_files=($DOTFILES/*.(env|zsh))
+  for env in $env_files; do
+    source $env
+  done
+fi
 
-# Local config
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

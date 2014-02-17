@@ -44,3 +44,22 @@ alias z="zeus"
 
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
+
+# Browser: alias 'open' to 'launchy'
+if [ `uname -s` = "Linux" ]; then
+  if which launchy &>/dev/null; then
+    alias open='launchy'
+  fi
+fi
+
+# Pipe my public key to clipboard
+case `uname -s` in
+  Darwin )
+    alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'" ;;
+  Linux )
+    if which xclip &>/dev/null; then
+      alias pubkey="xclip -sel clip < ~/.ssh/id_rsa.pub && echo '=> Public key copied to pasteboard.'"
+    else
+      echo "xclip is not installed. Please install it and try again."
+    fi ;;
+esac
