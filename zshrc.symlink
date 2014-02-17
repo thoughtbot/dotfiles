@@ -67,8 +67,8 @@ bindkey "^N" insert-last-word
 bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
 
 # use vim as the visual editor
-export VISUAL=vim
-export EDITOR=$VISUAL
+export VISUAL='subl -w'
+export EDITOR='vim'
 
 # set some browser defaults
 ## set chrome as default browser
