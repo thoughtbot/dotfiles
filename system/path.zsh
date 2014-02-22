@@ -3,3 +3,5 @@ export PATH=/usr/local/bin:/usr/local/sbin:~/.bin:$DEVELOPER_PATH/usr/bin:$IPHON
 MANPATH=/usr/local/share/man:/usr/share/man
 export MANPATH
 
+CODE=~/Development
+export CODE
