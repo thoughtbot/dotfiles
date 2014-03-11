@@ -35,6 +35,10 @@ You can safely run `rcup` multiple times to update:
 
     rcup
 
+Scala-specific configurations can be installed using the `scala` tag:
+
+    rcup -t scala
+
 Make your own customizations
 ----------------------------
 

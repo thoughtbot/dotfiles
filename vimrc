@@ -116,16 +116,6 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
-" No really get off my lawn
-inoremap <Left> ←
-inoremap <Right> →
-inoremap <Up> ↑
-inoremap <Down> ↓
-inoremap <S-Left> ⇐
-inoremap <S-Right> ⇒
-inoremap <S-Up> ⇑
-inoremap <S-Down> ⇓
-
 " vim-rspec mappings
 nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>s :call RunNearestSpec()<CR>
@@ -146,6 +136,12 @@ nnoremap <C-l> <C-w>l
 
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
+
+" Additional configuration
+let configs = split(glob("~/.vim/configs/*"), "\n")
+for filename in configs
+  execute 'source ' filename
+endfor
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
