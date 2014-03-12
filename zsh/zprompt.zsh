@@ -47,12 +47,6 @@ _color() {
   fi
 }
 
-_user_name() {
-  if [ $USER != "jsteiner" ]; then
-    echo "$USER "
-  fi
-}
-
 _separate()               { if [ -n "$1" ]; then echo " $1"; fi }
 _grey()                   { echo "$(_color "$1" grey)" }
 _yellow()                 { echo "$(_color "$1" yellow)" }
@@ -61,7 +55,7 @@ _red()                    { echo "$(_color "$1" red)" }
 _cyan()                   { echo "$(_color "$1" cyan)" }
 _blue()                   { echo "$(_color "$1" blue)" }
 
-_basic()                  { echo "$(_user_name)$(_colored_path)" }
+_basic()                  { echo "$(_colored_path)" }
 _colored_path()           { echo "$(_blue "%~")" }
 _colored_git_branch()     { echo "$(_git_prompt_color "$(_git_prompt_info)")" }
 
