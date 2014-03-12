@@ -5,3 +5,5 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   set background=dark
   colorscheme solarized
 endif
+
+call togglebg#map("<F5>")
