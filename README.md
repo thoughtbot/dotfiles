@@ -25,6 +25,13 @@ Run the installer.
 It creates symlinks for all dotfiles in your home directory. You can safely run
 this file multiple times to update.
 
+Rename `/etc/zshenv` to `/etc/zprofile`.
+
+    $ sudo mv /etc/zshenv /etc/zprofile
+
+By default, OS X's zsh config resets `PATH` for every zsh instance, which can
+cause problems with Vim. More info [here].
+
 ## Dependencies
 
 Install Xcode and the Xcode Command Line Tools.
@@ -93,3 +100,5 @@ Then, each time you want to update my changes.
     git pull
     git checkout master
     git rebase upstream
+
+[here]: https://github.com/b4winckler/macvim/wiki/Troubleshooting#wiki-rename-the-etczshenv-file-to-etczprofile
