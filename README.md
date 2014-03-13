@@ -2,6 +2,10 @@
 
 ## Install
 
+Set `zsh` as your login shell:
+
+chsh -s $(which zsh)
+
 [Fork this repo](https://github.com/jsteiner/dotfiles/fork_select) on Github.
 
 Clone your fork (replace `your-github-name` with your Github name).
@@ -48,7 +52,7 @@ iTerm2](https://github.com/altercation/solarized/tree/master/iterm2-colors-solar
 Set up vundle: `git clone https://github.com/gmarik/vundle.git
 ~/.vim/bundle/vundle`
 
-Then just run `:BundleInstall` from within vim.
+Then run `:BundleInstall` from within vim.
 
 ## Git Safe
 
