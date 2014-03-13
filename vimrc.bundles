@@ -20,7 +20,7 @@ Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-surround'
-Bundle 'tsaleh/vim-matchit'
+Bundle 'vim-scripts/matchit.zip'
 Bundle 'vim-scripts/ctags.vim'
 Bundle 'vim-scripts/tComment'
 
