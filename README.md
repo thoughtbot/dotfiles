@@ -24,12 +24,12 @@ Install [rcm](https://github.com/thoughtbot/rcm):
 
 Install:
 
-    rcup -d dotfiles -x README.md -x LICENSE
+    rcup -d dotfiles -x README.md -x LICENSE -x Brewfile
 
-This will create symlinks for config files in your home directory. The
-`-x` options, which exclude the `README.md` and `LICENSE` files, are
-needed during installation but can be skipped once the `.rcrc`
-configuration file is symlinked in.
+This will create symlinks for config files in your home directory. The `-x`
+options, which exclude the `README.md`, `LICENSE`, and `Brewfile` files, are
+needed during installation but can be skipped once the `.rcrc` configuration
+file is symlinked in.
 
 You can safely run `rcup` multiple times to update:
 
