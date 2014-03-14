@@ -52,4 +52,4 @@
   insteadOf = wgh:
 [include]
   # Add your user credentials in this file
-  path = ~/.secrets/gitconfig
+  path = .gitconfig.local

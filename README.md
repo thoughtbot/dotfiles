@@ -61,6 +61,42 @@ Set up vundle: `git clone https://github.com/gmarik/vundle.git
 
 Then run `:BundleInstall` from within vim.
 
+## Make your own customizations
+
+Put your customizations in dotfiles appended with `.local`:
+
+* `~/.aliases.local`
+* `~/.gitconfig.local`
+* `~/.tmux.conf.local`
+* `~/.vimrc.local`
+* `~/.vimrc.bundles.local`
+* `~/.zshrc.local`
+
+For example, your `~/.aliases.local` might look like this:
+
+    # Productivity
+    alias todo='$EDITOR ~/.todo'
+
+Your `~/.gitconfig.local` might look like this:
+
+    [alias]
+      l = log --pretty=colored
+    [pretty]
+      colored = format:%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset
+    [user]
+      name = Dan Croak
+      email = dan@thoughtbot.com
+
+Your `~/.zshrc.local` might look like this:
+
+    # recommended by brew doctor
+    export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
+Your `~/.vimrc.bundles.local` might look like this:
+
+    Bundle 'Lokaltog/vim-powerline'
+    Bundle 'stephenmckinney/vim-solarized-powerline'
+
 ## Git Safe
 
 `.git/safe/../../bin` has been added to the path.
