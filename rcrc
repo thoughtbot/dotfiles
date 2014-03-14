@@ -1,0 +1,2 @@
+EXCLUDES="README.md Brewfile"
+DOTFILES_DIRS="$HOME/dotfiles"

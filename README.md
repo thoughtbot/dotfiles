@@ -4,13 +4,13 @@
 
 Set `zsh` as your login shell:
 
-chsh -s $(which zsh)
+    chsh -s $(which zsh)
 
-[Fork this repo](https://github.com/jsteiner/dotfiles/fork_select) on Github.
+[Fork this repo](https://github.com/jsteiner/dotfiles/fork) on Github.
 
-Clone your fork (replace `your-github-name` with your Github name).
+Change to your home directory and clone your fork (replace `your-github-name` with your Github name).
 
-    git clone git@github.com:your-github-name/dotfiles.git
+    cd && git clone git@github.com:your-github-name/dotfiles.git
     cd dotfiles
 
 Download submodules
@@ -18,27 +18,33 @@ Download submodules
     git submodule init
     git submodule update
 
-Run the installer.
+Install [homebrew](http://mxcl.github.com/homebrew/).
 
-    ./install.sh
+Install [rcm](https://github.com/thoughtbot/rcm):
 
-It creates symlinks for all dotfiles in your home directory. You can safely run
-this file multiple times to update.
+Run `brew bundle` to install all packages in the `Brewfile`
+
+    brew bundle
+
+Install:
+
+    rcup -d ~/dotfiles -x README.md -x Brewfile
+
+This will create symlinks for config files in your home directory. The
+`-x` options, which exclude the `README.md` and `Brewfile` files, are
+needed during installation but can be skipped once the `.rcrc`
+configuration file is symlinked in.
+
+You can safely run `rcup` multiple times to update:
+
+    rcup
 
 Rename `/etc/zshenv` to `/etc/zprofile`.
 
-    $ sudo mv /etc/zshenv /etc/zprofile
+    sudo mv /etc/zshenv /etc/zprofile
 
 By default, OS X's zsh config resets `PATH` for every zsh instance, which can
 cause problems with Vim. More info [here].
-
-## Dependencies
-
-Install Xcode and the Xcode Command Line Tools.
-
-Install [homebrew](http://mxcl.github.com/homebrew/).
-
-Run `brew bundle` to install all packages in the `Brewfile`
 
 [tmux-vim-select-pane](https://github.com/derekprior/tmux-vim-select-pane)
 
@@ -46,8 +52,7 @@ Remap `Caps Lock` to `Control`. Thank me later.
 
 Configure iTerm:
 
-* Install [Solarized for
-iTerm2](https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized)
+* Install [Solarized for iTerm2]
 * Under Profiles > Terminal
   * Set `Scrollback Lines` to 0 if you are using tmux.
   * Set `Report Terminal Type` to xterm-256color
@@ -56,8 +61,9 @@ iTerm2](https://github.com/altercation/solarized/tree/master/iterm2-colors-solar
 
 ## Vundle
 
-Set up vundle: `git clone https://github.com/gmarik/vundle.git
-~/.vim/bundle/vundle`
+Set up vundle: 
+
+    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
 Then run `:BundleInstall` from within vim.
 
@@ -138,3 +144,4 @@ Then, each time you want to update my changes.
     git rebase upstream
 
 [here]: https://github.com/b4winckler/macvim/wiki/Troubleshooting#wiki-rename-the-etczshenv-file-to-etczprofile
+[Solarized for iTerm2]: https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized
