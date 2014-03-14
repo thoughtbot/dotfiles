@@ -1,6 +1,5 @@
 .netrwhist
 fasd
 var
-secrets
 vim/bundle/**
 vim/undo
