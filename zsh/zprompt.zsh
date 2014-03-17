@@ -80,7 +80,9 @@ function precmd {
 }
 
 _current_ruby() {
-  if [[ -n $(rbenv version) ]]; then
+  if [[ -e /usr/local/share/chruby ]]; then
+    ruby --version | cut -d' ' -f 1-2
+  elif [[ -n $(rbenv version) ]]; then
     rbenv version-name
   fi
 }
