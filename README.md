@@ -46,8 +46,6 @@ Rename `/etc/zshenv` to `/etc/zprofile`.
 By default, OS X's zsh config resets `PATH` for every zsh instance, which can
 cause problems with Vim. More info [here].
 
-[tmux-vim-select-pane](https://github.com/derekprior/tmux-vim-select-pane)
-
 Remap `Caps Lock` to `Control`. Thank me later.
 
 Configure iTerm:
