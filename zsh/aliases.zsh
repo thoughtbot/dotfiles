@@ -4,6 +4,7 @@ alias ar='source ~/.zsh/aliases.zsh'  #alias reload
 alias zr='source ~/.zshrc' #reload zsh
 
 # Unix
+alias la='ls -la'
 alias ln='ln -v'
 alias mkdir='mkdir -p'
 alias ...='../..'
