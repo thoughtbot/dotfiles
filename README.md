@@ -2,15 +2,15 @@
 
 ## Install
 
+Download and use [iTerm2].
+
 Set `zsh` as your login shell:
 
     chsh -s $(which zsh)
 
-[Fork this repo](https://github.com/jsteiner/dotfiles/fork) on Github.
+Change to your home directory and clone this repo, then change to the new dotfiles directory.
 
-Change to your home directory and clone your fork (replace `your-github-name` with your Github name).
-
-    cd && git clone git@github.com:your-github-name/dotfiles.git
+    cd && git clone https://github.com/jsteiner/dotfiles.git
     cd dotfiles
 
 Download submodules
@@ -19,8 +19,6 @@ Download submodules
     git submodule update
 
 Install [homebrew](http://mxcl.github.com/homebrew/).
-
-Install [rcm](https://github.com/thoughtbot/rcm):
 
 Run `brew bundle` to install all packages in the `Brewfile`
 
@@ -47,6 +45,8 @@ By default, OS X's zsh config resets `PATH` for every zsh instance, which can
 cause problems with Vim. More info [here].
 
 Remap `Caps Lock` to `Control`. Thank me later.
+
+    System Preferences -> Keyboard -> Keyboard Tab -> Modifier Keys
 
 Configure iTerm:
 
@@ -107,39 +107,36 @@ Your `~/.vimrc.bundles.local` might look like this:
 Do `mkdir .git/safe` in the root of repositories that you trust, for binstubs
 in those repos to be added to your path.
 
-## Why fork?
+## What's in it?
 
-Your master branch is meant for your customizations. Use the `upstream` branch
-to get updates.
+[vim](http://www.vim.org/) configuration:
 
-## Set up upstream
+* [Ctrl-P](https://github.com/kien/ctrlp.vim) for fuzzy file/buffer/tag finding.
+* [Rails.vim](https://github.com/tpope/vim-rails) for enhanced navigation of
+  Rails file structure.
+* Run [RSpec](https://www.relishapp.com/rspec) specs from vim in tmux.
+* Set `<leader>` to `,` (comma).
+* Use [Ag](https://github.com/ggreer/the_silver_searcher) instead of Grep when
+  available.
+* Use Solarize color scheme, use `F5` to toggle between light and dark.
+* Use [Vundle](https://github.com/gmarik/vundle) to manage plugins.
 
-Do this once:
+[tmux](http://robots.thoughtbot.com/a-tmux-crash-course)
+configuration:
 
-    git remote add upstream git@github.com:jsteiner/dotfiles.git
-    git fetch upstream
-    git checkout -b upstream upstream/master
+* Improve color resolution.
+* Set prefix to `Ctrl+a` (like GNU screen).
 
-## Update upstream
+[git](http://git-scm.com/) configuration:
 
-Make changes in files that are not in my dotfiles.
 
-For example, to customize your `zsh` config, make your changes in `~/.zshenv`:
+[Ruby](https://www.ruby-lang.org/en/) configuration:
 
-    # RVM
-    [[ -s '/Users/croaky/.rvm/scripts/rvm' ]] && source '/Users/croaky/.rvm/scripts/rvm'
 
-    # recommended by brew doctor
-    export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+Shell aliases and scripts:
 
-Commit those kinds of things in your master branch.
 
-Then, each time you want to update my changes.
-
-    git checkout upstream
-    git pull
-    git checkout master
-    git rebase upstream
 
 [here]: https://github.com/b4winckler/macvim/wiki/Troubleshooting#wiki-rename-the-etczshenv-file-to-etczprofile
 [Solarized for iTerm2]: https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized
+[iTerm2]: http://www.iterm2.com
