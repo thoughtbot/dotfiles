@@ -4,6 +4,3 @@ ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# Turn off autocorrect
-unsetopt correct_all
-
