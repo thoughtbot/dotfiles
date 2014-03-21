@@ -11,8 +11,9 @@ done
 
 # history settings
 setopt histignoredups
-SAVEHIST=4096
+HISTFILE=~/.zsh_history
 HISTSIZE=4096
+SAVEHIST=4096
 
 # awesome cd movements from zshkit
 setopt autocd autopushd pushdminus pushdsilent pushdtohome cdablevars
