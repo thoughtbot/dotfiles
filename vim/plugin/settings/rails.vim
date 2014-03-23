@@ -50,6 +50,13 @@ let g:rails_gem_projections = {
       \     "template": "App.%SController = Ember.ObjectController.extend"
       \   },
       \
+      \   "app/assets/javascripts/components/*_component.js.coffee": {
+      \     "command": "jcomponent",
+      \     "alternate": "spec/javascripts/components/%s_spec.js.coffee",
+      \     "related": "app/assets/javascripts/templates/components/%s.js.coffee",
+      \     "template": "App.%SComponent = Ember.Component.extend"
+      \   },
+      \
       \   "app/assets/javascripts/views/*_view.js.coffee": {
       \     "command": "jview",
       \     "alternate": "spec/javascripts/views/%s_spec.js.coffee",
