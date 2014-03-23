@@ -9,6 +9,13 @@ inoremap jj <ESC>
 
 let g:JSHintHighlightErrorLine = 0
 
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsListSnippets="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+inoremap <c-x><c-k> <c-x><c-k>
+
 " Disambiguate ,a & ,t from the Align plugin, making them fast again.
 "
 " This section is here to prevent AlignMaps from adding a bunch of mappings

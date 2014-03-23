@@ -11,4 +11,8 @@ Bundle 'eagletmt/neco-ghc'
 Bundle 'pbrisbin/html-template-syntax'
 Bundle 'kana/vim-textobj-user'
 Bundle 'kana/vim-textobj-indent'
+
+" autocomplete
 Bundle 'SirVer/ultisnips'
+Bundle 'Valloric/YouCompleteMe'
+
