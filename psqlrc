@@ -1,0 +1,22 @@
+-- vim: ft=sql
+
+-- Official docs: http://www.postgresql.org/docs/9.3/static/app-psql.html
+-- http://craigkerstiens.com/2013/02/13/How-I-Work-With-Postgres/
+-- https://github.com/hgmnz/dotfiles/blob/master/psqlrc
+
+\set QUIET 1
+\pset null '[NULL]'
+
+-- http://www.postgresql.org/docs/9.3/static/app-psql.html#APP-PSQL-PROMPTING
+\set PROMPT1 '%n@%/%R%[%033[0m%]%# '
+\set PROMPT2 ''
+
+-- Use best available output format
+\x auto
+
+\set VERBOSITY verbose
+\set HISTFILE ~/.psql_history- :DBNAME
+\set HISTCONTROL ignoredups
+\set COMP_KEYWORD_CASE upper
+\timing
+\unset QUIET
