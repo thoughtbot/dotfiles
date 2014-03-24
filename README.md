@@ -133,6 +133,15 @@ configuration:
 * Set prefix to `Ctrl+a` (like GNU screen).
 * Seamlessly move between vim and tmux panes with `Ctrl+h,j,k,l`
 
+Shell aliases and scripts:
+
+* `j` for quickly navigating around the filesystem. See [fasd]
+* `b` for `bundle`
+* `g` for `git`
+* `c` for `rails console`
+* `tat` for `tmux attach -t`
+* `tns` for `tmux new -s`
+
 [git](http://git-scm.com/) configuration:
 
 * Use concise formatting of git status with `gs`
@@ -140,9 +149,11 @@ configuration:
 
 [Ruby](https://www.ruby-lang.org/en/) configuration:
 
+* Add trusted binstubs to the PATH.
 * Support for `rbenv` and `chruby`
 
 [here]: https://github.com/b4winckler/macvim/wiki/Troubleshooting#wiki-rename-the-etczshenv-file-to-etczprofile
 [Solarized for iTerm2]: https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized
 [iTerm2]: http://www.iterm2.com
 [rcm]: http://thoughtbot.github.io/rcm/rcm.7.html
+[fasd]: https://github.com/clvv/fasd
