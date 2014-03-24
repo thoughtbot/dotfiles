@@ -2,7 +2,7 @@
 
 ## Install
 
-Download and use [iTerm2].
+Install and use [iTerm2].
 
 Set `zsh` as your login shell:
 
@@ -30,12 +30,7 @@ Install:
 
 This will create symlinks for config files in your home directory. The
 `-x` options, which exclude the `README.md` and `Brewfile` files, are
-needed during installation but can be skipped once the `.rcrc`
-configuration file is symlinked in.
-
-You can safely run `rcup` multiple times to update:
-
-    rcup
+needed during installation but can be skipped after the first time.
 
 Rename `/etc/zshenv` to `/etc/zprofile`.
 
@@ -43,6 +38,14 @@ Rename `/etc/zshenv` to `/etc/zprofile`.
 
 By default, OS X's zsh config resets `PATH` for every zsh instance, which can
 cause problems with Vim. More info [here].
+
+Set up vundle: 
+
+    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
+Then install all packages from within vim.
+
+    :BundleInstall
 
 Remap `Caps Lock` to `Control`. Thank me later.
 
@@ -57,13 +60,15 @@ Configure iTerm:
 * Under Profiles > Text
   * Disable `Draw bold text in bright colors`
 
-## Vundle
+## Updating
 
-Set up vundle: 
+Pull down changes:
 
-    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    git pull origin master
 
-Then run `:BundleInstall` from within vim.
+Use [rcm] to symlink new dotfiles:
+
+    rcup
 
 ## Make your own customizations
 
@@ -103,11 +108,11 @@ Your `~/.vimrc.bundles.local` might look like this:
 
 ## Git Safe
 
-`.git/safe/../../bin` has been added to the path.
-Do `mkdir .git/safe` in the root of repositories that you trust, for binstubs
-in those repos to be added to your path.
+`.git/safe/../../bin` has been added to the path. Run `mkdir .git/safe` in the
+root of repositories that you trust, for binstubs in those repos to be added to
+your path.
 
-## What's in it?
+## What's included?
 
 [vim](http://www.vim.org/) configuration:
 
@@ -126,17 +131,18 @@ configuration:
 
 * Improve color resolution.
 * Set prefix to `Ctrl+a` (like GNU screen).
+* Seamlessly move between vim and tmux panes with `Ctrl+h,j,k,l`
 
 [git](http://git-scm.com/) configuration:
 
+* Use concise formatting of git status with `gs`
+* Use consise formatting of git log with `gl`
 
 [Ruby](https://www.ruby-lang.org/en/) configuration:
 
-
-Shell aliases and scripts:
-
-
+* Support for `rbenv` and `chruby`
 
 [here]: https://github.com/b4winckler/macvim/wiki/Troubleshooting#wiki-rename-the-etczshenv-file-to-etczprofile
 [Solarized for iTerm2]: https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized
 [iTerm2]: http://www.iterm2.com
+[rcm]: http://thoughtbot.github.io/rcm/rcm.7.html
