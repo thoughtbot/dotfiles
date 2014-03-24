@@ -13,6 +13,7 @@ Bundle 'kana/vim-textobj-user'
 Bundle 'kana/vim-textobj-indent'
 
 " autocomplete
-Bundle 'SirVer/ultisnips'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
 
