@@ -1,4 +1,4 @@
-path=($HOME/.dotfiles/bin /usr/local/bin /usr/local/share/npm/bin $path)
+path=($HOME/.bin /usr/local/bin /usr/local/share/npm/bin $path)
 
 if [[ -e /usr/local/share/chruby ]]; then
   source /usr/local/share/chruby/chruby.sh
