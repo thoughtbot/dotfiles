@@ -1,6 +1,15 @@
 DOTFILES=~/.dotfiles
 ZSH=$DOTFILES/zsh
 
+# system path and environment variables need to be loaded before everything else
+export PATH=/usr/local/bin:/usr/local/sbin:~/.bin:$DEVELOPER_PATH/usr/bin:$IPHONEOS_DEVELOPER_PATH/usr/bin:$PATH
+
+MANPATH=/usr/local/share/man:/usr/share/man
+export MANPATH
+
+CODE=~/Development
+export CODE
+
 # load our own completion functions
 fpath=($ZSH/completion $fpath)
 
