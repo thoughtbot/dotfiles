@@ -70,8 +70,8 @@ Your `~/.zshrc.local` might look like this:
 
 Your `~/.vimrc.bundles.local` might look like this:
 
-    Bundle 'Lokaltog/vim-powerline'
-    Bundle 'stephenmckinney/vim-solarized-powerline'
+    Plugin 'Lokaltog/vim-powerline'
+    Plugin 'stephenmckinney/vim-solarized-powerline'
 
 What's in it?
 -------------
