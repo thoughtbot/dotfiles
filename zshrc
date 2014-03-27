@@ -65,8 +65,8 @@ HISTSIZE=4096
 setopt autocd autopushd pushdminus pushdsilent pushdtohome cdablevars
 DIRSTACKSIZE=5
 
-# Try to correct command line spelling
-setopt correct correctall
+# Turn off auto correct command line spelling
+unsetopt correct correctall
 
 # Enable extended globbing
 setopt extendedglob
