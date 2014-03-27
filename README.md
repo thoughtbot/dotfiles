@@ -70,8 +70,8 @@ Your `~/.zshrc.local` might look like this:
 
 Your `~/.vimrc.bundles.local` might look like this:
 
-    Bundle 'Lokaltog/vim-powerline'
-    Bundle 'stephenmckinney/vim-solarized-powerline'
+    Plugin 'Lokaltog/vim-powerline'
+    Plugin 'stephenmckinney/vim-solarized-powerline'
 
 What's in it?
 -------------
@@ -91,7 +91,7 @@ What's in it?
   available.
 * Use [Exuberant Ctags](http://ctags.sourceforge.net/) for tab completion.
 * Use [GitHub color scheme](https://github.com/croaky/vim-colors-github).
-* Use [Vundle](https://github.com/gmarik/vundle) to manage plugins.
+* Use [Vundle](https://github.com/gmarik/Vundle.vim) to manage plugins.
 
 [tmux](http://robots.thoughtbot.com/a-tmux-crash-course)
 configuration:
