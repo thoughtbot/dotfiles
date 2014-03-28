@@ -86,9 +86,6 @@ highlight Folded  guibg=#0A0A0A guifg=#9090D0
 set number
 set numberwidth=5
 
-" Snippets are activated by Shift+Tab
-let g:snippetsEmu_key = "<S-Tab>"
-
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning
