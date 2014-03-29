@@ -26,7 +26,7 @@ Run `brew bundle` to install all packages in the `Brewfile`
 
 Install:
 
-    rcup -d ~/dotfiles -x README.md -x Brewfile
+    rcup -d ~/dotfiles -x README.md -x Brewfile -x osx-settings
 
 This will create symlinks for config files in your home directory. The
 `-x` options, which exclude the `README.md` and `Brewfile` files, are
@@ -56,6 +56,8 @@ Configure iTerm:
   * Set `Report Terminal Type` to xterm-256color
 * Under Profiles > Text
   * Disable `Draw bold text in bright colors`
+
+If you like what you see in osx-settings, run `./osx-settings`.
 
 ## Updating
 
