@@ -1,0 +1,8 @@
+# Use vim bindings for IRB, script/console, mysql
+bind -v
+
+# Tab complete
+bind \\t rl_complete
+
+# Incremental search
+bind ^r em-inc-search-prev
