@@ -79,19 +79,4 @@ function precmd {
   $(git status 2> /dev/null >! "/tmp/git-status-$$")
 }
 
-_current_ruby() {
-  if [[ -e /usr/local/share/chruby ]]; then
-    ruby --version | cut -d' ' -f 1-2
-  elif [[ -n $(rbenv version) ]]; then
-    rbenv version-name
-  fi
-}
-
-_rprompt() {
-  if [ $COLUMNS -gt 80 ]; then
-    echo "%{$fg[blue]%}$(_current_ruby)%{$reset_color%}"
-  fi
-}
-
 PROMPT='$(_basic)$(_separate $(_colored_git_branch)) $(_display_current_vim_mode) '
-RPROMPT='$(_rprompt)'
