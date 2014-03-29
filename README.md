@@ -39,13 +39,10 @@ Rename `/etc/zshenv` to `/etc/zprofile`.
 By default, OS X's zsh config resets `PATH` for every zsh instance, which can
 cause problems with Vim. More info [here].
 
-Set up vundle: 
+Set up vundle:
 
     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-
-Then install all packages from within vim.
-
-    :BundleInstall
+    vim +BundleInstall +qa
 
 Remap `Caps Lock` to `Control`. Thank me later.
 
