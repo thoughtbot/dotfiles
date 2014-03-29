@@ -1,5 +1,8 @@
 # https://github.com/mxcl/homebrew/blob/f949b212b3a66fc728104d5a111107911dff5b0f/Library/Contributions/cmd/brew-bundle.rb
 
+# Update Homebrew first
+update
+
 install git
 install vim
 install zsh
