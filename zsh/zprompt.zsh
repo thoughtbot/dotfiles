@@ -55,8 +55,8 @@ _red()                    { echo "$(_color "$1" red)" }
 _cyan()                   { echo "$(_color "$1" cyan)" }
 _blue()                   { echo "$(_color "$1" blue)" }
 
-_basic()                  { echo "$(_colored_path)" }
-_colored_path()           { echo "$(_blue "%~")" }
+_full_path()              { echo "$(_blue "%~")" }
+_working_directory()      { echo "$(_blue "%c")" }
 _colored_git_branch()     { echo "$(_git_prompt_color "$(_git_prompt_info)")" }
 
 _display_current_vim_mode() {
@@ -79,4 +79,4 @@ function precmd {
   $(git status 2> /dev/null >! "/tmp/git-status-$$")
 }
 
-PROMPT='$(_basic)$(_separate $(_colored_git_branch)) $(_display_current_vim_mode) '
+PROMPT='$(_working_directory)$(_separate $(_colored_git_branch)) $(_display_current_vim_mode) '
