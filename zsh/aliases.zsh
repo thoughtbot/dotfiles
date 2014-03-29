@@ -15,6 +15,7 @@ alias psag="ps aux | ag "
 
 # git
 alias g="git"
+alias g="git add"
 alias gs='git status -s'
 alias gall='git add -A'
 alias gb='git branch'
