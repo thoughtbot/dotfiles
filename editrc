@@ -1,4 +1,4 @@
-# Use vim bindings for IRB, script/console, mysql
+# Use vim bindings for IRB
 bind -v
 
 # Tab complete
