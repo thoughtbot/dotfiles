@@ -1,2 +1,2 @@
 EXCLUDES="README.md LICENSE Brewfile"
-DOTFILES_DIRS="$HOME/dotfiles"
+DOTFILES_DIRS="$HOME/dotfiles $HOME/dotfiles-local"
