@@ -12,6 +12,9 @@ Bundle 'pbrisbin/html-template-syntax'
 Bundle 'kana/vim-textobj-user'
 Bundle 'kana/vim-textobj-indent'
 
+" For go
+Bundle 'jnwhiteh/vim-golang'
+
 " autocomplete
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'SirVer/ultisnips'
