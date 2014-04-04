@@ -28,8 +28,8 @@ colors
 export CLICOLOR=1
 
 # history settings
-setopt histignoredups
-HISTFILE=~/.zsh_history
+setopt hist_ignore_all_dups inc_append_history
+HISTFILE=~/.zhistory
 HISTSIZE=4096
 SAVEHIST=4096
 
