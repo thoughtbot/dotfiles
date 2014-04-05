@@ -23,10 +23,6 @@ alias b="bundle"
 alias t="ruby -I test"
 alias cuc="bundle exec cucumber"
 
-# Rubygems
-alias gi="gem install"
-alias giv="gem install -v"
-
 # Rails
 alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
 alias m="migrate"
