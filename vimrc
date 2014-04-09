@@ -81,8 +81,11 @@ highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
 " Set the text width and highlight any characters that are over the limit
 set textwidth=80
-call matchadd('ColorColumn', '\%' . (&textwidth + 1). 'v.\+', 100)
 highlight ColorColumn ctermbg=LightRed
+augroup colorColumn
+  autocmd!
+  autocmd VimEnter,WinEnter * call matchadd('ColorColumn', '\%' . (&textwidth + 1) . 'v.\+', 100)
+augroup END
 
 " Numbers
 set number
