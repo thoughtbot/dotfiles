@@ -15,3 +15,4 @@ zeus.json
 .env
 config/projections.json
 .agignore
+git_template/
