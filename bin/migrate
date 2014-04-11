@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+# Migrate up, down, up, and then up for test dataase.
+# In bin/ so it can be called from Vim.
+#
+
+rake db:migrate db:rollback && rake db:migrate db:test:prepare
