@@ -121,11 +121,8 @@ Shell aliases and scripts:
 * `git-churn` to show churn for the files changed in the branch.
 * `m` for `rake db:migrate && rake db:rollback && rake db:migrate && rake db:test:prepare`.
 * `mcd` to make a directory and change into it.
-* `rake` is `zeus rake` if using [Zeus](https://github.com/burke/zeus) on the
-  project in current directory.
 * `replace foo bar **/*.rb` to find and replace within a given list of files.
 * `rk` for `rake`.
-* `rspec` is `zeus rspec` if using Zeus on the project in current directory.
 * `tat` to attach to tmux session named the same as the current directory.
 * `v` for `$VISUAL`.
 
