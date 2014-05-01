@@ -15,6 +15,9 @@ fpath=(~/.zsh/completion $fpath)
 autoload -U compinit
 compinit
 
+# disable XON/XOFF flow control
+stty -ixon
+
 # load custom executable functions
 for function in ~/.zsh/functions/*; do
   source $function
@@ -52,6 +55,7 @@ bindkey jj vi-cmd-mode
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey "^R" history-incremental-search-backward
+bindkey "^S" history-incremental-search-forward
 bindkey "^P" history-search-backward
 bindkey "^Y" accept-and-hold
 bindkey "^N" insert-last-word
