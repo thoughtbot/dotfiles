@@ -83,7 +83,6 @@ highlight Folded  guibg=#0A0A0A guifg=#9090D0
 set textwidth=80
 set colorcolumn=+1
 
-
 " Numbers
 set number
 set numberwidth=5
