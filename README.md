@@ -1,5 +1,9 @@
-thoughtbot dotfiles
+Nebulab dotfiles (thoughtbot style)
 ===================
+
+It includes all stuff needed by the nebulab team. It allows easy customization
+by using a personal dotfiles repository as described [in this
+thoughtbot post](http://robots.thoughtbot.com/manage-team-and-personal-dotfiles-together-with-rcm).
 
 Requirements
 ------------
@@ -13,7 +17,7 @@ Install
 
 Clone onto your laptop:
 
-    git clone git://github.com/thoughtbot/dotfiles.git
+    git clone git://github.com/nebualb/dotfiles.git
 
 (Or, [fork and keep your fork
 updated](http://robots.thoughtbot.com/keeping-a-github-fork-updated)).
@@ -38,40 +42,8 @@ You can safely run `rcup` multiple times to update:
 Make your own customizations
 ----------------------------
 
-Put your customizations in dotfiles appended with `.local`:
+Read [this thoughtbot post](http://robots.thoughtbot.com/manage-team-and-personal-dotfiles-together-with-rcm).
 
-* `~/.aliases.local`
-* `~/.gitconfig.local`
-* `~/.gvimrc.local`
-* `~/.tmux.conf.local`
-* `~/.vimrc.local`
-* `~/.vimrc.bundles.local`
-* `~/.zshrc.local`
-
-For example, your `~/.aliases.local` might look like this:
-
-    # Productivity
-    alias todo='$EDITOR ~/.todo'
-
-Your `~/.gitconfig.local` might look like this:
-
-    [alias]
-      l = log --pretty=colored
-    [pretty]
-      colored = format:%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset
-    [user]
-      name = Dan Croak
-      email = dan@thoughtbot.com
-
-Your `~/.zshrc.local` might look like this:
-
-    # recommended by brew doctor
-    export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-
-Your `~/.vimrc.bundles.local` might look like this:
-
-    Bundle 'Lokaltog/vim-powerline'
-    Bundle 'stephenmckinney/vim-solarized-powerline'
 
 What's in it?
 -------------
@@ -125,6 +97,11 @@ Shell aliases and scripts:
 * `rk` for `rake`.
 * `tat` to attach to tmux session named the same as the current directory.
 * `v` for `$VISUAL`.
+
+[Pulsar](http://pulsar.nebulab.it/) configuration:
+
+Just add the file needed from pulsar to know the path of the repository
+containing our deploy configuration.
 
 Credits
 -------
