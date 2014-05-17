@@ -4,9 +4,10 @@ set nocursorline " don't highlight current line
 inoremap jj <ESC>
 
 " highlight search
-"set hlsearch
-"nmap <leader>hl :let @/ = ""<CR>
+set hlsearch
+nmap <leader>hl :let @/ = ""<CR>
 
+" JSHint highlight error line
 let g:JSHintHighlightErrorLine = 0
 
 function! g:UltiSnips_Complete()
@@ -53,6 +54,7 @@ syntax on
 filetype plugin on
 filetype indent on
 
+" For golang
 autocmd FileType go compiler go
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
