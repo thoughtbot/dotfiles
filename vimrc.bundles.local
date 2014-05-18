@@ -11,6 +11,8 @@ Bundle 'eagletmt/neco-ghc'
 Bundle 'pbrisbin/html-template-syntax'
 Bundle 'kana/vim-textobj-user'
 Bundle 'kana/vim-textobj-indent'
+Bundle 'majutsushi/tagbar'
+Bundle 'jpalardy/vim-slime'
 
 " For go
 Bundle 'jnwhiteh/vim-golang'

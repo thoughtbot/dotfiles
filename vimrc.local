@@ -58,3 +58,29 @@ filetype indent on
 autocmd FileType go compiler go
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
+" tagbar mappings
+nmap <Leader>= :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
+
+" one way communication between vim and tmux
+let g:slime_target = "tmux"
+let g:slime_paste_file = tempname()
+
+" To toggle between active or passive type checking
+map <silent> <Leader>e :Errors<CR>
+map <Leader>s :SyntasticToggleMode<CR>
+
+" To always show the errors list when editing 
+let g:syntastic_auto_loc_list=1
+
+" ghcmod with syntastic
+" Reload
+map <silent> tu :call GHC_BrowseAll()<CR>
+" Type Lookup
+map <silent> tw :call GHC_ShowType(1)<CR>
+
+" hdevtools with syntastic
+au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
+au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
+
