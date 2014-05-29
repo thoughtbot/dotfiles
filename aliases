@@ -24,7 +24,7 @@ alias t="ruby -I test"
 alias cuc="bundle exec cucumber"
 
 # Rails
-alias migrate="rake db:migrate db:rollback && rake db:migrate"
+alias migrate="rake db:migrate && rake db:migrate:redo"
 alias m="migrate"
 alias rk="rake"
 alias s="rspec"
