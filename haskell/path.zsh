@@ -1,3 +1,4 @@
 export CABALPATH=$HOME/.cabal/bin
-export PATH=$CABALPATH:$PATH
+export HASKELLPATH=$HOME/Library/Haskell/bin
+export PATH=$HASKELLPATH:$CABALPATH:$PATH
 
