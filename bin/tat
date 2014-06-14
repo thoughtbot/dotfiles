@@ -1,6 +1,7 @@
 #!/bin/sh
 #
-# Attach to tmux session named the same as current directory.
+# Attach or create tmux session named the same as current directory.
 #
+SESSION_NAME=`basename $PWD`
 
-tmux attach -t `basename $PWD`
+tmux attach -t $SESSION_NAME || tmux new -s $SESSION_NAME
