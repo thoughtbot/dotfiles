@@ -23,7 +23,7 @@ alias b="bundle"
 alias t="ruby -I test"
 
 # Rails
-alias migrate="rake db:migrate db:rollback && rake db:migrate"
+alias migrate="rake db:migrate && rake db:migrate:redo"
 alias m="migrate"
 alias rk="rake"
 alias s="rspec"
