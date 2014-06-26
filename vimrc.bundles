@@ -24,8 +24,9 @@ Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-surround'
-Bundle 'vim-scripts/matchit.zip'
+Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/ctags.vim'
+Bundle 'vim-scripts/matchit.zip'
 Bundle 'vim-scripts/tComment'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
