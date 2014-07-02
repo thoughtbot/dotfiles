@@ -72,6 +72,9 @@ export PATH="$HOME/.bin:$PATH"
 # mkdir .git/safe in the root of repositories you trust
 export PATH=".git/safe/../../bin:$PATH"
 
+# disable spring, it breaks everything
+export DISABLE_SPRING=1
+
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
