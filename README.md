@@ -159,6 +159,8 @@ configuration:
 * Adds a `merge-branch` alias to merge feature branches into master.
 * Adds an `up` alias to fetch and rebase `origin/master` into the feature
   branch. Use `git up -i` for interactive rebases.
+* Adds `post-{checkout,commit,merge}` hooks to re-index your ctags.
+  To extend your `git` hooks, create executable scripts in `~/.git_template.local/hooks/post-{commit,checkout,merge}`
 
 [Ruby](https://www.ruby-lang.org/en/) configuration:
 

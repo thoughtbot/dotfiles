@@ -1,0 +1,6 @@
+#!/bin/sh
+
+LOCAL_HOOK=$HOME/.git_template.local/hooks/post-merge
+[[ -f $LOCAL_HOOK ]] && source $LOCAL_HOOK
+
+.git/hooks/ctags >/dev/null 2>&1 &
