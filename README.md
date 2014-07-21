@@ -126,6 +126,18 @@ Shell aliases and scripts:
 * `tat` to attach to tmux session named the same as the current directory.
 * `v` for `$VISUAL`.
 
+Experiments
+-----------
+
+You can track our experiments by following the `experimental` tag:
+
+    echo 'TAGS="$TAGS experimental"' >> ~/.rcrc
+
+This is where our new ideas go that we want feedback on. If you follow
+this tag, things may break. You are expected to carefuly read the
+commits before pulling, and you are expected to give feedback on the
+experiments.
+
 Credits
 -------
 
