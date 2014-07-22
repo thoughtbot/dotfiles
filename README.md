@@ -91,7 +91,7 @@ What's in it?
   available.
 * Use [Exuberant Ctags](http://ctags.sourceforge.net/) for tab completion.
 * Use [GitHub color scheme](https://github.com/croaky/vim-colors-github).
-* Use [Vundle](https://github.com/gmarik/vundle) to manage plugins.
+* Use [Vundle](https://github.com/gmarik/Vundle.vim) to manage plugins.
 
 [tmux](http://robots.thoughtbot.com/a-tmux-crash-course)
 configuration:
