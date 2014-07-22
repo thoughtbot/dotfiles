@@ -53,6 +53,7 @@ Put your customizations in dotfiles appended with `.local`:
 * `~/.vimrc.local`
 * `~/.vimrc.bundles.local`
 * `~/.zshrc.local`
+* `~/.zsh/configs/*`
 
 For example, your `~/.aliases.local` might look like this:
 
@@ -78,6 +79,50 @@ Your `~/.vimrc.bundles.local` might look like this:
 
     Plugin 'Lokaltog/vim-powerline'
     Plugin 'stephenmckinney/vim-solarized-powerline'
+
+zsh Configurations
+------------------
+
+Additional zsh configuration can go under the `~/.zsh/configs` directory. This
+has two special subdirectories: `pre` for files that must be loaded first, and
+`post` for files that must be loaded last.
+
+For example, `~/.zsh/configs/pre/virtualenv` makes use of various shell
+features which may be affected by your settings, so load it first:
+
+    # Load the virtualenv wrapper
+    . /usr/local/bin/virtualenvwrapper.sh
+
+Setting a key binding can happen in `~/.zsh/configs/keys`:
+
+    # Grep anywhere with ^G
+    bindkey -s '^G' ' | grep '
+
+Some changes, like `chpwd`, must happen in `~/.zsh/configs/post/chpwd`:
+
+    # Show the entries in a directory whenever you cd in
+    function chpwd {
+      ls
+    }
+
+This directory is handy for combining dotfiles from multiple teams; one team
+can add the `virtualenv` file, another `keys`, and a third `chpwd`.
+
+The `~/.zshrc.local` is loaded after `~/.zsh/configs`.
+
+vim Configurations
+------------------
+
+Similarly to the zsh configuration directory as described above, vim
+automatically loads all files in the `~/.vim/plugin` directory. This does not
+have the same `pre` or `post` subdirectory support that our `zshrc` has.
+
+This is an example `~/.vim/plugin/c.vim`. It is loaded every time vim starts,
+regardless of the file name:
+
+    # Indent C programs according to BSD style(9)
+    set cinoptions=:0,t0,+4,(4
+    autocmd BufNewFile,BufRead *.[ch] setlocal sw=0 ts=8 noet
 
 What's in it?
 -------------
