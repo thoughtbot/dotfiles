@@ -46,6 +46,7 @@ Put your customizations in dotfiles appended with `.local`:
 * `~/.tmux.conf.local`
 * `~/.vimrc.local`
 * `~/.vimrc.bundles.local`
+* `~/.zshenv.local`
 * `~/.zshrc.local`
 
 For example, your `~/.aliases.local` might look like this:
@@ -62,6 +63,13 @@ Your `~/.gitconfig.local` might look like this:
     [user]
       name = Dan Croak
       email = dan@thoughtbot.com
+
+Your `~/.zshenv.local` might look like this:
+
+    # load pyenv if available
+    if which pyenv &>/dev/null ; then
+      eval "$(pyenv init -)"
+    fi
 
 Your `~/.zshrc.local` might look like this:
 
