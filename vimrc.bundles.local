@@ -1,2 +1,2 @@
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'greplace'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'greplace'
