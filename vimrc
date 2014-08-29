@@ -150,6 +150,9 @@ let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 " Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
 set spellfile=$HOME/.vim-spell-en.utf-8.add
 
+" Always use vertical diffs
+set diffopt+=vertical
+
 " Local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
