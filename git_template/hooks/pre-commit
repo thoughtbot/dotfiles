@@ -1,0 +1,4 @@
+#!/bin/sh
+
+local_hook="$HOME"/.git_template.local/hooks/pre-commit
+[ -f "$local_hook" ] && . "$local_hook"
