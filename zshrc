@@ -96,5 +96,12 @@ _load_settings() {
 }
 _load_settings "$HOME/.zsh/configs"
 
+# load rbenv if available
+export PATH="$HOME/.rbenv/bin:$PATH"
+
+if which rbenv &>/dev/null ; then
+  eval "$(rbenv init - --no-rehash)"
+fi
+
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
