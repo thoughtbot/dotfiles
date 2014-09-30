@@ -15,7 +15,7 @@
   ctags = "!sh -c '[ -f .git/hooks/ctags ] || git init; .git/hooks/ctags' git-ctags"
   delete-branch = !sh -c 'git push origin :refs/heads/$1 && git branch -D $1' -
   merge-branch = !git checkout master && git merge @{-1}
-  pr = !hub pull-request
+  pr = !gh pull-request
   st = status
   up = !git fetch origin && git rebase origin/master
 [core]
