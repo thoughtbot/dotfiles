@@ -1,1 +1,1 @@
-function gio() { curl http://www.gitignore.io/api/$@ ;}
+function gio() { curl -L -s https://www.gitignore.io/api/$@ ;}

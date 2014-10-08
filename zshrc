@@ -103,3 +103,6 @@ export PATH=".git/safe/../../bin:$PATH"
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# added by travis gem
+[ -f /Users/jessearmand/.travis/travis.sh ] && source /Users/jessearmand/.travis/travis.sh
