@@ -30,7 +30,7 @@ let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsListSnippets="<c-h>"
 
-function! g:jInYCM()
+function! g:JInYCM()
     if pumvisible()
         return "\<C-n>"
     else
@@ -38,7 +38,7 @@ function! g:jInYCM()
     endif
 endfunction
 
-function! g:kInYCM()
+function! g:KInYCM()
     if pumvisible()
         return "\<C-p>"
     else
@@ -46,8 +46,8 @@ function! g:kInYCM()
     endif
 endfunction
 
-inoremap <c-j> <c-r>=g:jInYCM()<cr>
-au BufEnter,BufRead * exec "inoremap <silent> " . g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:kInYCM()<cr>"
+inoremap <c-j> <c-r>=g:JInYCM()<cr>
+au BufEnter,BufRead * exec "inoremap <silent> " . g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:KInYCM()<cr>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 
 syntax on
