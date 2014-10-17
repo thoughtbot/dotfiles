@@ -6,7 +6,6 @@ Bundle 'Shutnik/jshint2.vim'
 
 " For haskell development
 Bundle 'dag/vim2hs'
-Bundle 'scrooloose/syntastic'
 Bundle 'eagletmt/neco-ghc'
 Bundle 'pbrisbin/html-template-syntax'
 Bundle 'kana/vim-textobj-user'
@@ -18,7 +17,7 @@ Bundle 'jpalardy/vim-slime'
 Bundle 'jnwhiteh/vim-golang'
 
 " For swift
-Bundle 'toyamarinyon/vim-swift'
+Bundle 'kballard/vim-swift'
 
 " autocomplete
 Bundle 'Valloric/YouCompleteMe'
