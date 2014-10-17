@@ -17,6 +17,9 @@ Bundle 'jpalardy/vim-slime'
 " For go
 Bundle 'jnwhiteh/vim-golang'
 
+" For swift
+Bundle 'toyamarinyon/vim-swift'
+
 " autocomplete
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'SirVer/ultisnips'
