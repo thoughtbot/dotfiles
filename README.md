@@ -20,7 +20,8 @@ updated](http://robots.thoughtbot.com/keeping-a-github-fork-updated)).
 
 Install [rcm](https://github.com/thoughtbot/rcm):
 
-    brew bundle dotfiles/Brewfile
+    brew tap thoughtbot/formulae
+    brew install rcm
 
 Install the dotfiles:
 
