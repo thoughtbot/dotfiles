@@ -23,9 +23,9 @@
   autocrlf = input
 [merge]
   ff = only
-[include]
-  path = .gitconfig.local
 [commit]
   template = ~/.gitmessage
 [fetch]
   prune = true
+[include]
+  path = ~/.gitconfig.local
