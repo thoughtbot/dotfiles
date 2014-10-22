@@ -53,6 +53,9 @@ augroup vimrcEx
   " Automatically wrap at 80 characters for Markdown
   autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 
+  " Automatically wrap at 72 characters for git commit messages
+  autocmd FileType gitcommit setlocal textwidth=72
+
   " Allow stylesheets to autocomplete hyphenated words
   autocmd FileType css,scss,sass setlocal iskeyword+=-
 augroup END
