@@ -3,7 +3,7 @@ export VISUAL=vim
 export EDITOR=$VISUAL
 
 # ensure dotfiles bin directory is loaded first
-export PATH="$HOME/.bin:/usr/local/bin:$PATH"
+export PATH="$HOME/.bin:/usr/local/bin:/usr/local/sbin:$PATH"
 
 # load rbenv if available
 if which rbenv &>/dev/null ; then
