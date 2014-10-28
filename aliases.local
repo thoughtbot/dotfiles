@@ -1,0 +1,2 @@
+# git
+alias gca="git commit --amend"
