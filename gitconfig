@@ -29,10 +29,3 @@
   prune = true
 [include]
   path = ~/.gitconfig.local
-[filter "media"]
-	clean = git media clean %f
-	smudge = git media smudge %f
-	required = true
-[user]
-	name = Ian Zabel
-	email = contact@ezabel.com
