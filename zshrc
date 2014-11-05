@@ -1,24 +1,12 @@
-DOTFILES=~/.dotfiles
-ZSH=$DOTFILES/zsh
-
-# Xcode specific paths need to be declared first
-DEVELOPER_PATH=`xcode-select --print-path`
-export DEVELOPER_PATH
-
-DEVELOPER_DIR=$DEVELOPER_PATH
-export DEVELOPER_DIR
-
-IPHONEOS_DEVELOPER_PATH=$DEVELOPER_PATH/Platforms/iPhoneOS.platform/Developer
-export IPHONEOS_DEVELOPER_PATH
-
-# system path and environment variables need to be loaded before everything else
-export PATH=/usr/local/bin:/usr/local/sbin:$DEVELOPER_PATH/usr/bin:$IPHONEOS_DEVELOPER_PATH/usr/bin:$PATH
-
-MANPATH=/usr/local/share/man:/usr/share/man
-export MANPATH
-
-CODE=~/Development
-export CODE
+# modify the prompt to contain git branch name if applicable
+git_prompt_info() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null)
+  if [[ -n $ref ]]; then
+    echo " %{$fg_bold[green]%}${ref#refs/heads/}%{$reset_color%}"
+  fi
+}
+setopt promptsubst
+export PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info) %# '
 
 # load our own completion functions
 fpath=($ZSH/completion $fpath)
@@ -56,17 +44,25 @@ done
 
 unset config_files
 
+# oh-my-zsh config
+[[ -f ~/.ohmyzshrc ]] && source ~/.ohmyzshrc
+
+# makes color constants available
+autoload -U colors
+colors
+
+# enable colored output from ls, etc
+export CLICOLOR=1
+
 # history settings
-setopt histignoredups
-SAVEHIST=4096
+setopt hist_ignore_all_dups inc_append_history
+HISTFILE=~/.zhistory
 HISTSIZE=4096
+SAVEHIST=4096
 
 # awesome cd movements from zshkit
 setopt autocd autopushd pushdminus pushdsilent pushdtohome cdablevars
 DIRSTACKSIZE=5
-
-# Turn off auto correct command line spelling
-unsetopt correct correctall
 
 # Enable extended globbing
 setopt extendedglob
@@ -88,18 +84,44 @@ bindkey "^Y" accept-and-hold
 bindkey "^N" insert-last-word
 bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
 
-# use vim as the visual editor
-export VISUAL=vim
-export EDITOR=$VISUAL
-
-# look for ey config in project dirs
-export EYRC=./.eyrc
-
-# mkdir .git/safe in the root of repositories you trust
-export PATH=".git/safe/../../bin:$PATH"
-
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
+
+# extra files in ~/.zsh/configs/pre , ~/.zsh/configs , and ~/.zsh/configs/post
+# these are loaded first, second, and third, respectively.
+_load_settings() {
+  _dir="$1"
+  if [ -d "$_dir" ]; then
+    if [ -d "$_dir/pre" ]; then
+      for config in "$_dir"/pre/**/*(N-.); do
+        . $config
+      done
+    fi
+
+    for config in "$_dir"/**/*(N-.); do
+      case "$config" in
+        "$_dir"/pre/*)
+          :
+          ;;
+        "$_dir"/post/*)
+          :
+          ;;
+        *)
+          if [ -f $config ]; then
+            . $config
+          fi
+          ;;
+      esac
+    done
+
+    if [ -d "$_dir/post" ]; then
+      for config in "$_dir"/post/**/*(N-.); do
+        . $config
+      done
+    fi
+  fi
+}
+_load_settings "$HOME/.zsh/configs"
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

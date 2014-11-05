@@ -6,9 +6,10 @@ db/*.sqlite3
 log/*.log
 rerun.txt
 tags
+!tags/
 tmp/**/*
 !tmp/cache/.keep
-zeus.json
+
 # Created by http://www.gitignore.io
 
 ### Xcode ###
@@ -28,5 +29,4 @@ profile
 DerivedData
 *.hmap
 *.ipa
-
 
