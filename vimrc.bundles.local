@@ -3,6 +3,8 @@ Bundle 'christoomey/vim-tmux-navigator'
 
 " For javascript
 Bundle 'Shutnik/jshint2.vim'
+Bundle 'einars/js-beautify'
+Bundle 'maksimr/vim-jsbeautify'
 
 " For haskell development
 Bundle 'dag/vim2hs'
