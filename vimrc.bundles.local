@@ -1,28 +1,32 @@
 " tmux
-Bundle 'christoomey/vim-tmux-navigator'
+Plugin 'christoomey/vim-tmux-navigator'
+
+" statusline
+Plugin 'bling/vim-airline'
 
 " For javascript
-Bundle 'Shutnik/jshint2.vim'
-Bundle 'einars/js-beautify'
-Bundle 'maksimr/vim-jsbeautify'
+Plugin 'Shutnik/jshint2.vim'
+Plugin 'einars/js-beautify'
+Plugin 'maksimr/vim-jsbeautify'
 
 " For haskell development
-Bundle 'dag/vim2hs'
-Bundle 'eagletmt/neco-ghc'
-Bundle 'pbrisbin/html-template-syntax'
-Bundle 'kana/vim-textobj-user'
-Bundle 'kana/vim-textobj-indent'
-Bundle 'majutsushi/tagbar'
-Bundle 'jpalardy/vim-slime'
+Plugin 'dag/vim2hs'
+Plugin 'eagletmt/neco-ghc'
+Plugin 'pbrisbin/html-template-syntax'
+Plugin 'kana/vim-textobj-user'
+Plugin 'kana/vim-textobj-indent'
+Plugin 'majutsushi/tagbar'
+Plugin 'jpalardy/vim-slime'
+Plugin 'nbouscal/vim-stylish-haskell'
 
 " For go
-Bundle 'jnwhiteh/vim-golang'
+Plugin 'jnwhiteh/vim-golang'
 
 " For swift
-Bundle 'kballard/vim-swift'
+Plugin 'kballard/vim-swift'
 
 " autocomplete
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
