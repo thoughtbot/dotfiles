@@ -48,12 +48,8 @@ Put your customizations in dotfiles appended with `.local`:
 * `~/.aliases.local`
 * `~/.git_template.local/*`
 * `~/.gitconfig.local`
-* `~/.gvimrc.local`
 * `~/.psqlrc.local` (we supply a blank `.psqlrc.local` to prevent `psql` from
   throwing an error, but you should overwrite the file with your own copy)
-* `~/.tmux.conf.local`
-* `~/.vimrc.local`
-* `~/.vimrc.bundles.local`
 * `~/.zshenv.local`
 * `~/.zshrc.local`
 * `~/.zsh/configs/*`
@@ -88,11 +84,6 @@ Your `~/.zshrc.local` might look like this:
     # recommended by brew doctor
     export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
-Your `~/.vimrc.bundles.local` might look like this:
-
-    Plugin 'Lokaltog/vim-powerline'
-    Plugin 'stephenmckinney/vim-solarized-powerline'
-
 zsh Configurations
 ------------------
 
@@ -123,49 +114,8 @@ can add the `virtualenv` file, another `keys`, and a third `chpwd`.
 
 The `~/.zshrc.local` is loaded after `~/.zsh/configs`.
 
-vim Configurations
-------------------
-
-Similarly to the zsh configuration directory as described above, vim
-automatically loads all files in the `~/.vim/plugin` directory. This does not
-have the same `pre` or `post` subdirectory support that our `zshrc` has.
-
-This is an example `~/.vim/plugin/c.vim`. It is loaded every time vim starts,
-regardless of the file name:
-
-    # Indent C programs according to BSD style(9)
-    set cinoptions=:0,t0,+4,(4
-    autocmd BufNewFile,BufRead *.[ch] setlocal sw=0 ts=8 noet
-
 What's in it?
 -------------
-
-[vim](http://www.vim.org/) configuration:
-
-* [Ctrl-P](https://github.com/kien/ctrlp.vim) for fuzzy file/buffer/tag finding.
-* [Rails.vim](https://github.com/tpope/vim-rails) for enhanced navigation of
-  Rails file structure via `gf` and `:A` (alternate), `:Rextract` partials,
-  `:Rinvert` migrations, etc.
-* Run [RSpec](https://www.relishapp.com/rspec) specs from vim.
-* Set `<leader>` to a single space.
-* Switch between the last two files with space-space.
-* Syntax highlighting for CoffeeScript, Textile, Cucumber, Haml, Markdown, and
-  HTML.
-* Use [Ag](https://github.com/ggreer/the_silver_searcher) instead of Grep when
-  available.
-* Use [Exuberant Ctags](http://ctags.sourceforge.net/) for tab completion.
-* Use [GitHub color scheme](https://github.com/croaky/vim-colors-github).
-* Use [vim-mkdir](https://github.com/pbrisbin/vim-mkdir) for automatically
-  creating non-existing directories before writing the buffer.
-* Use [Vundle](https://github.com/gmarik/Vundle.vim) to manage plugins.
-
-[tmux](http://robots.thoughtbot.com/a-tmux-crash-course)
-configuration:
-
-* Improve color resolution.
-* Remove administrative debris (session name, hostname, time) in status bar.
-* Set prefix to `Ctrl+a` (like GNU screen).
-* Soften status bar color from harsh green to light gray.
 
 [git](http://git-scm.com/) configuration:
 
@@ -188,11 +138,13 @@ Shell aliases and scripts:
 * `b` for `bundle`.
 * `g` with no arguments is `git status` and with arguments acts like `git`.
 * `git-churn` to show churn for the files changed in the branch.
+* `h` for `history`.
+* `ll` to list directory contents.
 * `m` for `rake db:migrate && rake db:rollback && rake db:migrate && rake db:test:prepare`.
 * `mcd` to make a directory and change into it.
 * `replace foo bar **/*.rb` to find and replace within a given list of files.
 * `rk` for `rake`.
-* `tat` to attach to tmux session named the same as the current directory.
+* `up` to move up one directory.
 * `v` for `$VISUAL`.
 
 Credits
