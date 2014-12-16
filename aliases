@@ -1,7 +1,5 @@
 # Unix
 alias tlf="tail -f"
-alias ln='ln -v'
-alias mkdir='mkdir -p'
 alias ...='../..'
 alias l='ls'
 alias ll='ls -al'
@@ -12,6 +10,17 @@ alias -g L='| wc -l'
 alias -g ONE="| awk '{ print \$1}'"
 alias e="$EDITOR"
 alias v="$VISUAL"
+alias h="history"
+alias up="cd .."
+
+# redefine commands to add options
+alias cp="cp -i"
+alias df="df -h"
+alias du="du -h"
+alias ln='ln -v'
+alias mkdir='mkdir -p'
+alias mv="mv -i"
+alias rm="rm -i"
 
 # git
 alias gci="git pull --rebase && rake && git push"
