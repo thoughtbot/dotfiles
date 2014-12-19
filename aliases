@@ -28,5 +28,8 @@ alias m="migrate"
 alias rk="rake"
 alias s="rspec"
 
+# Pretty print the path
+alias path="echo $PATH | tr -s ':' '\n'"
+
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
