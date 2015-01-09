@@ -25,6 +25,9 @@ Plugin 'jnwhiteh/vim-golang'
 " For swift
 Plugin 'kballard/vim-swift'
 
+" For rust
+Plugin 'wting/rust.vim'
+
 " autocomplete
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
