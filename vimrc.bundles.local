@@ -20,7 +20,7 @@ Plugin 'jpalardy/vim-slime'
 Plugin 'nbouscal/vim-stylish-haskell'
 
 " For go
-Plugin 'jnwhiteh/vim-golang'
+Plugin 'fatih/vim-go'
 
 " For swift
 Plugin 'kballard/vim-swift'
