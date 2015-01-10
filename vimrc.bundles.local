@@ -5,6 +5,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'bling/vim-airline'
 
 " For javascript
+Plugin 'pangloss/vim-javascript'
 Plugin 'Shutnik/jshint2.vim'
 Plugin 'einars/js-beautify'
 Plugin 'maksimr/vim-jsbeautify'
