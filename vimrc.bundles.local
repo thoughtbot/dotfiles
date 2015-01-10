@@ -13,8 +13,6 @@ Plugin 'maksimr/vim-jsbeautify'
 Plugin 'dag/vim2hs'
 Plugin 'eagletmt/neco-ghc'
 Plugin 'pbrisbin/html-template-syntax'
-Plugin 'kana/vim-textobj-user'
-Plugin 'kana/vim-textobj-indent'
 Plugin 'majutsushi/tagbar'
 Plugin 'jpalardy/vim-slime'
 Plugin 'nbouscal/vim-stylish-haskell'
@@ -32,4 +30,9 @@ Plugin 'wting/rust.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'ervandew/supertab'
+
+" text objects
+Plugin 'kana/vim-textobj-user'
+Plugin 'kana/vim-textobj-indent'
 
