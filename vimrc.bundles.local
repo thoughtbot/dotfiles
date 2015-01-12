@@ -4,6 +4,9 @@ Plugin 'christoomey/vim-tmux-navigator'
 " statusline
 Plugin 'bling/vim-airline'
 
+" json
+Plugin 'elzr/vim-json'
+
 " For javascript
 Plugin 'pangloss/vim-javascript'
 Plugin 'Shutnik/jshint2.vim'
