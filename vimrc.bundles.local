@@ -1,3 +1,6 @@
+" complementary pairs of mappings.
+Plugin 'tpope/vim-unimpaired'
+
 " tmux
 Plugin 'christoomey/vim-tmux-navigator'
 
