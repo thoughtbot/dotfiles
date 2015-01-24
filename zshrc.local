@@ -1,8 +1,1 @@
-hitch() {
-  command hitch "$@"
-  if [[ -s "$HOME/.hitch_export_authors" ]] ; then source "$HOME/.hitch_export_authors" ; fi
-}
-alias unhitch='hitch -u'
-
-# Uncomment to persist pair info between terminal instances
-# hitch
+export PATH=".git/safe/../../bin:/Users/jessieayoung/.rbenv/shims:/usr/local/bin:/usr/bin:/usr/local/heroku/bin"
