@@ -1,6 +1,19 @@
 " complementary pairs of mappings.
 Plugin 'tpope/vim-unimpaired'
 
+" autocomplete
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'ervandew/supertab'
+
+" text objects
+Plugin 'kana/vim-textobj-user'
+Plugin 'kana/vim-textobj-indent'
+
+" Indenting / aligment
+Plugin 'godlygeek/tabular'
+
 " tmux
 Plugin 'christoomey/vim-tmux-navigator'
 
@@ -11,6 +24,7 @@ Plugin 'bling/vim-airline'
 Plugin 'elzr/vim-json'
 
 " For javascript
+Plugin 'moll/vim-node'
 Plugin 'pangloss/vim-javascript'
 Plugin 'Shutnik/jshint2.vim'
 Plugin 'einars/js-beautify'
@@ -32,14 +46,4 @@ Plugin 'kballard/vim-swift'
 
 " For rust
 Plugin 'wting/rust.vim'
-
-" autocomplete
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'ervandew/supertab'
-
-" text objects
-Plugin 'kana/vim-textobj-user'
-Plugin 'kana/vim-textobj-indent'
 

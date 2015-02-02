@@ -5,7 +5,7 @@ inoremap jj <ESC>
 
 " highlight search
 set hlsearch
-nmap <leader>hl :let @/ = ""<CR>
+nmap <Leader>hl :let @/ = ""<CR>
 
 " JSHint highlight error line
 let g:JSHintHighlightErrorLine = 0
