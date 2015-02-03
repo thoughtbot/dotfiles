@@ -10,8 +10,8 @@ alias -g G='| grep'
 alias -g M='| less'
 alias -g L='| wc -l'
 alias -g ONE="| awk '{ print \$1}'"
-alias e="$EDITOR"
-alias v="$VISUAL"
+alias e='$EDITOR'
+alias v='$VISUAL'
 
 # git
 alias gci="git pull --rebase && rake && git push"
@@ -29,7 +29,7 @@ alias rk="rake"
 alias s="rspec"
 
 # Pretty print the path
-alias path="echo $PATH | tr -s ':' '\n'"
+alias path='echo $PATH | tr -s ":" "\n"'
 
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
