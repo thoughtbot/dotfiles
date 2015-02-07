@@ -25,6 +25,8 @@ Plugin 'elzr/vim-json'
 
 " For javascript
 Plugin 'moll/vim-node'
+Plugin 'guileen/vim-node-dict'
+Plugin 'jamescarr/snipmate-nodejs'
 Plugin 'pangloss/vim-javascript'
 Plugin 'Shutnik/jshint2.vim'
 Plugin 'einars/js-beautify'
