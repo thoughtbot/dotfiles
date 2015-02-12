@@ -7,9 +7,6 @@ inoremap jj <ESC>
 set hlsearch
 nmap <Leader>hl :let @/ = ""<CR>
 
-" JSHint highlight error line
-let g:JSHintHighlightErrorLine = 0
-
 " From http://stackoverflow.com/a/22253548
 " Make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-j>', '<C-n>', '<Down>']
@@ -22,8 +19,15 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 syntax on
-filetype plugin on
-filetype indent on
+
+" JSHint highlight error line
+let g:JSHintHighlightErrorLine = 0
+
+" visual mode
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
 
 " For golang
 au FileType go nmap <Leader>s <Plug>(go-implements)
@@ -53,7 +57,7 @@ let g:slime_paste_file = tempname()
 map <silent> <Leader>e :Errors<CR>
 map <Leader>s :SyntasticToggleMode<CR>
 
-" To always show the errors list when editing 
+" To always show the errors list when editing
 let g:syntastic_auto_loc_list=1
 
 " ghcmod with syntastic
