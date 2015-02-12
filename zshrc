@@ -2,7 +2,7 @@
 git_prompt_info() {
   current_branch=$(git current-branch 2> /dev/null)
   if [[ -n $current_branch ]]; then
-    echo " %{$fg_bold[green]%}%{$current_branch%}%{$reset_color%}"
+    echo " %{$fg_bold[green]%}$current_branch%{$reset_color%}"
   fi
 }
 setopt promptsubst
