@@ -1,5 +1,13 @@
 set nocursorline " don't highlight current line
 
+" tmuxline
+let g:tmuxline_separators = {
+      \ 'left' : '',
+      \ 'left_alt': '>',
+      \ 'right' : '',
+      \ 'right_alt' : '<',
+      \ 'space' : ' '}
+
 " keyboard shortcuts
 inoremap jj <ESC>
 

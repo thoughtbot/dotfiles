@@ -19,6 +19,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 
 " statusline
 Plugin 'bling/vim-airline'
+Plugin 'edkolev/tmuxline.vim'
 
 " json
 Plugin 'elzr/vim-json'
