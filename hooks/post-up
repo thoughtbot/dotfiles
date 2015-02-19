@@ -2,7 +2,8 @@
 
 touch $HOME/.psqlrc.local
 
-if [ ! -e $HOME/.vim/bundle/Vundle.vim ]; then
-  git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+if [ ! -e $HOME/.vim/autoload/plug.vim ]; then
+  curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
-vim -u $HOME/.vimrc.bundles +PluginInstall +PluginClean! +qa
+vim -u $HOME/.vimrc.bundles +PlugInstall +PlugClean! +qa
