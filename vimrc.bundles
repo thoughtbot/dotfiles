@@ -28,6 +28,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'vim-scripts/ctags.vim'
 Plugin 'vim-scripts/matchit.zip'
+Plugin 'vim-scripts/regreplop.vim'
 Plugin 'vim-scripts/tComment'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
