@@ -32,6 +32,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'Shutnik/jshint2.vim'
 Plugin 'einars/js-beautify'
 Plugin 'maksimr/vim-jsbeautify'
+Plugin 'briancollins/vim-jst'
 
 " For haskell development
 Plugin 'dag/vim2hs'
