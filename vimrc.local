@@ -1,6 +1,5 @@
 set nocursorline " don't highlight current line
 
-" tmuxline
 let g:tmuxline_separators = {
       \ 'left' : '',
       \ 'left_alt': '>',
@@ -15,6 +14,8 @@ inoremap jj <ESC>
 set hlsearch
 nmap <Leader>hl :let @/ = ""<CR>
 
+let g:ycm_global_ycm_extra_conf = '$HOME/.ycm_extra_conf.py'
+
 " From http://stackoverflow.com/a/22253548
 " Make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-j>', '<C-n>', '<Down>']
@@ -25,8 +26,6 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-
-syntax on
 
 " JSHint highlight error line
 let g:JSHintHighlightErrorLine = 0
