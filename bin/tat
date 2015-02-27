@@ -2,7 +2,8 @@
 #
 # Attach or create tmux session named the same as current directory.
 
-session_name="$(basename "$PWD" | tr . -)"
+path_name="$(basename "$PWD" | tr . -)"
+session_name=${1-$path_name}
 
 not_in_tmux() {
   [ -z "$TMUX" ]
