@@ -8,12 +8,13 @@ git_prompt_info() {
 setopt promptsubst
 export PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info) %# '
 
-# load our own completion functions
-fpath=(~/.zsh/completion $fpath)
-
 # completion
 autoload -U compinit
 compinit
+
+# load our own completion functions
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz ~/.zsh/completion/*(:t)
 
 # load custom executable functions
 for function in ~/.zsh/functions/*; do
