@@ -195,18 +195,33 @@ Shell aliases and scripts:
 * `tat` to attach to tmux session named the same as the current directory.
 * `v` for `$VISUAL`.
 
-Credits
--------
+Thanks
+------
 
 Thank you, [contributors](https://github.com/thoughtbot/dotfiles/contributors)!
 Also, thank you to Corey Haines, Gary Bernhardt, and others for sharing your
 dotfiles and other shell scripts from which we derived inspiration for items
 in this project.
 
-![thoughtbot](http://thoughtbot.com/images/tm/logo.png)
+License
+-------
 
-Dotfiles is maintained by [thoughtbot, inc](http://thoughtbot.com/community)
+dotfiles is copyright © 2009-2015 thoughtbot. It is free software, and may be
+redistributed under the terms specified in the [`LICENSE`] file.
+
+[`LICENSE`]: /LICENSE
+
+About thoughtbot
+----------------
+
+![thoughtbot](https://thoughtbot.com/logo.png)
+
+dotfiles is maintained and funded by thoughtbot, inc.
 The names and logos for thoughtbot are trademarks of thoughtbot, inc.
 
-Dotfiles is © 2009-2014 thoughtbot, inc. It is free software and may be
-redistributed under the terms specified in the [LICENSE](LICENSE) file.
+We love open source software!
+See [our other projects][community].
+We are [available for hire][hire].
+
+[community]: https://thoughtbot.com/community?utm_source=github
+[hire]: https://thoughtbot.com/hire-us?utm_source=github
