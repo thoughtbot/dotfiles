@@ -74,11 +74,6 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-" Color scheme
-colorscheme github
-highlight NonText guibg=#060606
-highlight Folded  guibg=#0A0A0A guifg=#9090D0
-
 " Make it obvious where 80 characters is
 set textwidth=80
 set colorcolumn=+1

@@ -73,6 +73,13 @@ Your `~/.gitconfig.local` might look like this:
       name = Dan Croak
       email = dan@thoughtbot.com
 
+Your `~/.vimrc.local` might look like this:
+
+    " Color scheme
+    colorscheme github
+    highlight NonText guibg=#060606
+    highlight Folded  guibg=#0A0A0A guifg=#9090D0
+
 Your `~/.zshenv.local` might look like this:
 
     # load pyenv if available
@@ -154,7 +161,6 @@ What's in it?
 * Use [Ag](https://github.com/ggreer/the_silver_searcher) instead of Grep when
   available.
 * Use [Exuberant Ctags](http://ctags.sourceforge.net/) for tab completion.
-* Use [GitHub color scheme](https://github.com/croaky/vim-colors-github).
 * Use [vim-mkdir](https://github.com/pbrisbin/vim-mkdir) for automatically
   creating non-existing directories before writing the buffer.
 * Use [Vundle](https://github.com/gmarik/Vundle.vim) to manage plugins.
