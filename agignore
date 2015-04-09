@@ -1,4 +1,5 @@
 log
 tags
 tmp
+vendor
 .git/
