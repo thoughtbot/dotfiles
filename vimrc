@@ -121,6 +121,17 @@ nnoremap <Down> :echoe "Use j"<CR>
 nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>s :call RunNearestSpec()<CR>
 nnoremap <Leader>l :call RunLastSpec()<CR>
+nnoremap <Leader>a :call RunAllSpecs()<CR>
+nnoremap <Leader>p :call Send_to_Tmux('git_pr_for <CTRL-R>=expand("cword")')<CR>
+
+let g:rspec_runner = "os_x_iterm"
+" let g:rspec_command = "bin/rspec {spec}"
+
+" commented below because spring daemon closes with dispatch unless you open
+" it elsewhere
+" let g:rspec_command = 'Dispatch spring status && time rspec {spec}'
+"
+let g:rspec_command = 'call Send_to_Tmux("spring status && rspec {spec}\n")'
 
 " Run commands that require an interactive shell
 nnoremap <Leader>r :RunInInteractiveShell<space>
@@ -158,3 +169,6 @@ set diffopt+=vertical
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
+
+" Write when focus lost
+au FocusLost * :wa
