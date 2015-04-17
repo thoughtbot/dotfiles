@@ -12,6 +12,9 @@
   co = checkout
   pf = push --force-with-lease
   st = status
+  up = !git fetch origin && git rebase origin/master
+  lg = log --color --graph --pretty=format:'%C(auto)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+  pr-for = !sh -c 'git-pr-for $1' -
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
@@ -25,3 +28,18 @@
   autosquash = true
 [include]
   path = ~/.gitconfig.local
+[user]
+  name = Lee Pender
+  email = lpender@gmail.com
+[filter "media"]
+  required = true
+  clean = git media clean %f
+  smudge = git media smudge %f
+[filter "hawser"]
+  clean = git hawser clean %f
+  smudge = git hawser smudge %f
+  required = true
+[filter "lfs"]
+  clean = git lfs clean %f
+  smudge = git lfs smudge %f
+  required = true
