@@ -44,9 +44,6 @@ done
 
 unset config_files
 
-# oh-my-zsh config
-[[ -f ~/.ohmyzshrc ]] && source ~/.ohmyzshrc
-
 # makes color constants available
 autoload -U colors
 colors
@@ -69,11 +66,6 @@ setopt extendedglob
 
 # Allow [ or ] whereever you want
 unsetopt nomatch
-
-# vi mode
-bindkey -v
-bindkey "^F" vi-cmd-mode
-bindkey jj vi-cmd-mode
 
 # handy keybindings
 bindkey "^A" beginning-of-line
@@ -123,8 +115,12 @@ _load_settings() {
 }
 _load_settings "$HOME/.zsh/configs"
 
+# oh-my-zsh config
+[[ -f ~/.ohmyzshrc ]] && source ~/.ohmyzshrc
+
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 # added by travis gem
 [ -f /Users/jessearmand/.travis/travis.sh ] && source /Users/jessearmand/.travis/travis.sh
+
