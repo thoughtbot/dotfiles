@@ -42,7 +42,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/ctags.vim'
-Plug 'vim-scripts/matchit.zip'
 Plug 'vim-scripts/tComment'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
