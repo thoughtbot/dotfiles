@@ -97,8 +97,8 @@ Your `~/.zshrc.local` might look like this:
 
 Your `~/.vimrc.bundles.local` might look like this:
 
-    Plugin 'Lokaltog/vim-powerline'
-    Plugin 'stephenmckinney/vim-solarized-powerline'
+    Plug 'Lokaltog/vim-powerline'
+    Plug 'stephenmckinney/vim-solarized-powerline'
 
 zsh Configurations
 ------------------
