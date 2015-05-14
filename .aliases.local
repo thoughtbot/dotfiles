@@ -1,0 +1,3 @@
+# rails
+alias rc="rails c"
+alias rs="rails s -p $1"
