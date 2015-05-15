@@ -1,0 +1,47 @@
+[user]
+  name = Guillermo Guerini
+  email = guillermo@gguerini.com
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = true
+  pager = true
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow
+  frag = magenta
+  old = red
+  new = green
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[alias]
+  tree = log --graph --pretty=oneline
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  l = log --pretty=colored
+  s = status
+  d = diff
+  aa = add -A
+  co = checkout
+  cob = checkout -b
+  del = branch -d
+  delete = branch -D
+  reb = !git fetch && git rebase -i origin/master
+  ren =  "!f() { git branch -m ${2} ${1}; }; f"
+  up = !git fetch origin && git pull --rebase --prune
+  cm = !git add -A && git commit
+  save = !git add -A && git commit -m "SAVEPOINT"
+  wip = !git add -u && git commit -m "WIP"
+  undo = reset HEAD~1 --mixed
+  amend = commit -a --amend
+  wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+  bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
+  bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
+[pretty]
+  colored = format:%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset
