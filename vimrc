@@ -118,8 +118,8 @@ nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
 " vim-rspec mappings
-nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
-nnoremap <Leader>s :call RunNearestSpec()<CR>
+nnoremap <Leader>t :w<CR>:call RunCurrentSpecFile()<CR>
+nnoremap <Leader>s :w<CR>:call RunNearestSpec()<CR>
 nnoremap <Leader>l :call RunLastSpec()<CR>
 
 " Run commands that require an interactive shell
