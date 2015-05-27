@@ -1,0 +1,37 @@
+# zsh
+alias zshconfig="subl ~/.zshrc.local"
+alias aliases="subl ~/.aliases.local"
+alias ohmyzsh="subl ~/.oh-my-zsh"
+alias reload!=". ~/.zshrc"
+
+# update hosts
+alias update_hosts="sudo hosts-updater --update -v"
+
+# rails
+alias tlog="tail -f log/test.log"
+alias dlog="tail -f log/development.log"
+alias rc="rails c"
+alias rs="rails s -p $1"
+
+# myh
+alias sky="cd ~/Projects/skylight/"
+alias wbid="cd ~/Projects/wellbeingid/"
+alias dc="cd ~/Projects/dailychallenge/"
+alias dcm="cd ~/Projects/dailychallenge-mobile/"
+alias dcc="cd ~/Projects/dailychallenge-client/"
+alias hello="cd ~/Projects/bamboo-ios/"
+alias hellos="cd ~/Projects/bamboo-server/"
+alias rmj="rm features/screens/**/current.png features/screens/**/diff.png spec/screens/**/current.png spec/screens/**/diff.png"
+alias rmspec="rake spec device_name='spec'"
+
+# mysql
+alias myst="mysql.server start"
+alias mysp="mysql.server stop"
+
+# IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en0"
+
+# Flush Directory Service cache
+alias flush="sudo discoveryutil mdnsflushcache;sudo discoveryutil udnsflushcaches;"
+
