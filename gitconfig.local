@@ -39,9 +39,10 @@
   save = !git add -A && git commit -m "SAVEPOINT"
   wip = !git add -u && git commit -m "WIP"
   undo = reset HEAD~1 --mixed
-  amend = commit -a --amend
+  amend = commit -a --amend --reuse-message=HEAD
   wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
   bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
   bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
+  contributors = "shortlog --summary --numbered"
 [pretty]
   colored = format:%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset
