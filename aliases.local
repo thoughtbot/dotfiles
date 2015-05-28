@@ -22,7 +22,7 @@ alias dcc="cd ~/Projects/dailychallenge-client/"
 alias hello="cd ~/Projects/bamboo-ios/"
 alias hellos="cd ~/Projects/bamboo-server/"
 alias rmj="rm features/screens/**/current.png features/screens/**/diff.png spec/screens/**/current.png spec/screens/**/diff.png"
-alias rmspec="rake spec device_name='spec'"
+alias rmspec="rake spec device_name='iPhone 5s' target=7.1"
 
 # mysql
 alias myst="mysql.server start"
