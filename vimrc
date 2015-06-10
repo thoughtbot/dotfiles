@@ -81,7 +81,7 @@ endif
 
 " Make it obvious where 80 characters is
 set textwidth=80
-set colorcolumn=+1
+call matchadd('ColorColumn', '\%81v', 100)
 
 " Numbers
 set number
