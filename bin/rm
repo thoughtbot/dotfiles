@@ -1,0 +1,13 @@
+#!/usr/bin/ruby
+
+if ARGV.join(' ').match(/^-rf \/$/)
+  print "Are you sure you want to delete your drive?? [y/N]: "
+  if $stdin.gets.chomp == "y"
+    puts "You are an idiot. Waiting 10 seconds..."
+    sleep 10
+  else
+    exit
+  end
+end
+
+exec "/bin/rm #{ARGV.join(' ')}"
