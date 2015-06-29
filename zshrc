@@ -9,7 +9,7 @@ setopt promptsubst
 export PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info) %# '
 
 # load our own completion functions
-fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions $fpath)
+fpath=($ZSH/completion /usr/local/share/zsh/site-functions $fpath)
 
 # all of our zsh files
 typeset -U config_files
@@ -31,7 +31,7 @@ done
 autoload -U compinit
 compinit
 
-for function in ~/.zsh/functions/*
+for function in $ZSH/functions/*
 do
   source $function
 done
