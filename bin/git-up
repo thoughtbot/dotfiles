@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -e
+
+git fetch origin
+git rebase origin/master "$@"

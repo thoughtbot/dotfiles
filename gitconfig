@@ -7,17 +7,11 @@
 [alias]
   aa = add --all
   ap = add --patch
-  ca = commit --amend
+  branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
+  ca = commit --amend -v
   ci = commit -v
   co = checkout
-  co-pr = !sh -c 'git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1' -
-  create-branch = !sh -c 'git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
-  ctags = "!sh -c '[ -f .git/hooks/ctags ] || git init; .git/hooks/ctags' git-ctags"
-  delete-branch = !sh -c 'git push origin :refs/heads/$1 && git branch -D $1' -
-  merge-branch = !git checkout master && git merge @{-1}
-  pr = !gh pull-request
   st = status
-  up = !git fetch origin && git rebase origin/master
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
@@ -27,6 +21,8 @@
   template = ~/.gitmessage
 [fetch]
   prune = true
+[rebase]
+  autosquash = true
 [include]
   path = ~/.gitconfig.local
 

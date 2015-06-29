@@ -1,56 +1,56 @@
 " complementary pairs of mappings.
-Plugin 'tpope/vim-unimpaired'
+Plug 'tpope/vim-unimpaired'
 
 " autocomplete
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'ervandew/supertab'
+Plug 'Valloric/YouCompleteMe'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'ervandew/supertab'
 
 " text objects
-Plugin 'kana/vim-textobj-user'
-Plugin 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-indent'
 
 " Indenting / aligment
-Plugin 'godlygeek/tabular'
+Plug 'godlygeek/tabular'
 
 " tmux
-Plugin 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 
 " statusline
-Plugin 'bling/vim-airline'
-Plugin 'edkolev/tmuxline.vim'
+Plug 'bling/vim-airline'
+Plug 'edkolev/tmuxline.vim'
 
 " json
-Plugin 'elzr/vim-json'
+Plug 'elzr/vim-json'
 
 " For javascript
-Plugin 'moll/vim-node'
-Plugin 'guileen/vim-node-dict'
-Plugin 'jamescarr/snipmate-nodejs'
-Plugin 'pangloss/vim-javascript'
-Plugin 'Shutnik/jshint2.vim'
-Plugin 'einars/js-beautify'
-Plugin 'maksimr/vim-jsbeautify'
-Plugin 'briancollins/vim-jst'
+Plug 'moll/vim-node'
+Plug 'guileen/vim-node-dict'
+Plug 'jamescarr/snipmate-nodejs'
+Plug 'pangloss/vim-javascript'
+Plug 'Shutnik/jshint2.vim'
+Plug 'einars/js-beautify'
+Plug 'maksimr/vim-jsbeautify'
+Plug 'briancollins/vim-jst'
 
 " For haskell development
-Plugin 'dag/vim2hs'
-Plugin 'eagletmt/neco-ghc'
-Plugin 'pbrisbin/html-template-syntax'
-Plugin 'majutsushi/tagbar'
-Plugin 'jpalardy/vim-slime'
-Plugin 'nbouscal/vim-stylish-haskell'
+Plug 'dag/vim2hs'
+Plug 'eagletmt/neco-ghc'
+Plug 'pbrisbin/html-template-syntax'
+Plug 'majutsushi/tagbar'
+Plug 'jpalardy/vim-slime'
+Plug 'nbouscal/vim-stylish-haskell'
 
 " For go
-Plugin 'fatih/vim-go'
+Plug 'fatih/vim-go'
 
 " For swift
-Plugin 'kballard/vim-swift'
+Plug 'kballard/vim-swift'
 
 " For rust
-Plugin 'wting/rust.vim'
+Plug 'wting/rust.vim'
 
 " For elixir
-Plugin 'elixir-lang/vim-elixir'
+Plug 'elixir-lang/vim-elixir'
 
