@@ -51,3 +51,6 @@ Plugin 'kballard/vim-swift'
 " For rust
 Plugin 'wting/rust.vim'
 
+" For elixir
+Plugin 'elixir-lang/vim-elixir'
+
