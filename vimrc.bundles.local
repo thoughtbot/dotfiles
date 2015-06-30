@@ -1,3 +1,6 @@
+" color schemes
+Plug 'flazz/vim-colorschemes'
+
 " complementary pairs of mappings.
 Plug 'tpope/vim-unimpaired'
 
