@@ -1,4 +1,4 @@
-thoughtbot dotfiles
+thoughtbot dotfiles (lpender flavor)
 ===================
 
 ![prompt](http://images.thoughtbot.com/thoughtbot-dotfiles-prompt.png)
