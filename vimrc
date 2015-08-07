@@ -172,3 +172,12 @@ endif
 
 " Write when focus lost
 au FocusLost * :wa
+
+" Colorscheme
+colorscheme tomorrow-night-eighties
+
+" NerdTree
+map \ :NERDTreeToggle<CR>
+
+" Mouse
+set mouse=a
