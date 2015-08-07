@@ -39,7 +39,7 @@ Plug 'othree/html5.vim'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'peeja/vim-cdo'
 Plug 'rking/ag.vim'
-Plug 'scrooloose/nerdtree.git'
+Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'slim-template/vim-slim'
 Plug 'thoughtbot/vim-rspec'
@@ -61,8 +61,8 @@ Plug 'vim-scripts/matchit.zip'
 Plug 'vim-scripts/tComment'
 
 " Colors
-Plugin 'croaky/vim-colors-github'
-Plugin 'flazz/vim-colorschemes'
+Plug 'croaky/vim-colors-github'
+Plug 'flazz/vim-colorschemes'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
