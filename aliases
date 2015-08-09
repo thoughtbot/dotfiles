@@ -8,6 +8,9 @@ alias v="$VISUAL"
 # Bundler
 alias b="bundle"
 
+# Cocoapods
+alias p="pod install"
+
 # Rails
 alias migrate="rake db:migrate db:rollback && rake db:migrate"
 alias s="rspec"
