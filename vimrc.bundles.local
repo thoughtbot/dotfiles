@@ -16,6 +16,7 @@ Plug 'kana/vim-textobj-indent'
 
 " Indenting / aligment
 Plug 'godlygeek/tabular'
+Plug 'editorconfig/editorconfig-vim'
 
 " tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -36,6 +37,7 @@ Plug 'Shutnik/jshint2.vim'
 Plug 'einars/js-beautify'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'briancollins/vim-jst'
+Plug 'mxw/vim-jsx'
 
 " For haskell development
 Plug 'dag/vim2hs'
