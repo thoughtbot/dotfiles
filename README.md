@@ -40,6 +40,9 @@ You can safely run `rcup` multiple times to update:
 
     rcup
 
+You should run `rcup` after pulling a new version of the repository to symlink
+any new files in the repository.
+
 Make your own customizations
 ----------------------------
 
@@ -194,10 +197,9 @@ Shell aliases and scripts:
 * `b` for `bundle`.
 * `g` with no arguments is `git status` and with arguments acts like `git`.
 * `git-churn` to show churn for the files changed in the branch.
-* `m` for `rake db:migrate && rake db:rollback && rake db:migrate && rake db:test:prepare`.
+* `migrate` for `rake db:migrate && rake db:rollback && rake db:migrate`.
 * `mcd` to make a directory and change into it.
 * `replace foo bar **/*.rb` to find and replace within a given list of files.
-* `rk` for `rake`.
 * `tat` to attach to tmux session named the same as the current directory.
 * `v` for `$VISUAL`.
 
