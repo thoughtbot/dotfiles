@@ -83,3 +83,10 @@ au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
 
 let g:python_host_prog = '/usr/bin/python'
 
+let g:gist_open_browser_after_post = 1
+let g:gist_detect_filetype = 1
+let g:gist_clip_command = 'pbcopy'
+
+
+
+
