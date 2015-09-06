@@ -45,7 +45,6 @@ Plug 'eagletmt/neco-ghc'
 Plug 'pbrisbin/html-template-syntax'
 Plug 'majutsushi/tagbar'
 Plug 'jpalardy/vim-slime'
-Plug 'nbouscal/vim-stylish-haskell'
 
 " For go
 Plug 'fatih/vim-go'
