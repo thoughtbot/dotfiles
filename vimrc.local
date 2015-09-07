@@ -31,6 +31,8 @@ let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
+let g:syntastic_javascript_checkers = ['eslint', 'jshint']
+
 " JSHint highlight error line
 let g:JSHintHighlightErrorLine = 0
 
