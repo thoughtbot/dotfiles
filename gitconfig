@@ -15,12 +15,14 @@
   excludesfile = ~/.gitignore
   autocrlf = input
 [merge]
-  ff = only
+  ff = false
 [commit]
   template = ~/.gitmessage
 [fetch]
   prune = true
 [rebase]
   autosquash = true
+[branch]
+  autosetuprebase = always
 [include]
   path = ~/.gitconfig.local
