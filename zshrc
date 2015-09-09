@@ -14,6 +14,8 @@ fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions $fpath)
 # completion
 autoload -U compinit
 compinit
+# Case insensitive and fuzzy tab complete
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
 
 # load custom executable functions
 for function in ~/.zsh/functions/*; do
