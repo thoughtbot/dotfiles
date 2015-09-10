@@ -28,6 +28,7 @@ call plug#begin('~/.vim/bundle')
 
 " Define bundles via Github repos
 Plug 'christoomey/vim-run-interactive'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'kchmck/vim-coffee-script'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'pbrisbin/vim-mkdir'
@@ -41,8 +42,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'tpope/unimpaired'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/tComment'
+Plug 'scrooloose/nerdtree'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

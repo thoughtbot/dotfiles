@@ -11,6 +11,7 @@ set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
+set clipboard=unnamed " Use system clipboard for every yank
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -132,12 +133,6 @@ let g:html_indent_tags = 'li\|p'
 set splitbelow
 set splitright
 
-" Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
@@ -153,6 +148,9 @@ set complete+=kspell
 
 " Always use vertical diffs
 set diffopt+=vertical
+
+" NERDtree
+map <C-n> :NERDTreeToggle<CR>
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
