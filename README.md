@@ -177,7 +177,7 @@ What's in it?
   HTML.
 * Use [Ag](https://github.com/ggreer/the_silver_searcher) instead of Grep when
   available.
-* Use [Exuberant Ctags](http://ctags.sourceforge.net/) for tab completion.
+* Map `<leader>ct` to re-index [Exuberant Ctags](http://ctags.sourceforge.net/).
 * Use [vim-mkdir](https://github.com/pbrisbin/vim-mkdir) for automatically
   creating non-existing directories before writing the buffer.
 * Use [vim-plug](https://github.com/junegunn/vim-plug) to manage plugins.
