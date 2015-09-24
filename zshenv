@@ -11,7 +11,7 @@ if which rbenv &>/dev/null ; then
 fi
 
 # mkdir .git/safe in the root of repositories you trust
-export PATH=".git/safe/../../bin:$PATH"
+export PATH=".git/safe/../../local_bin:.git/safe/../../bin:$PATH"
 
 # Local config
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
