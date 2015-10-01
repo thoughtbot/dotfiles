@@ -17,3 +17,45 @@ alias path='echo $PATH | tr -s ":" "\n"'
 
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
+
+# GIT
+alias ga="git add ."
+alias git_tags="git tag -l -n1"
+alias gc="git commit -m"
+alias gs="git status"
+alias gpoh="git push origin head"
+alias gl="git log --oneline --all --graph --decorate -30"
+alias gl+="git log --oneline --all --graph --decorate"
+
+# Open github on current branch
+function gopen() {
+  giturl=$(git config --get remote.origin.url)
+    if [ "$giturl" == "" ]
+      then
+        echo "Not a git repository or no remote.origin.url set"
+        exit 1;
+  fi
+    giturl=${giturl/git\@github\.com\:/https://github.com/}
+  giturl=${giturl/\.git/\/tree/}
+  branch="$(git symbolic-ref HEAD 2>/dev/null)" ||
+    branch="(unnamed branch)"     # detached HEAD
+    branch=${branch##refs/heads/}
+  giturl=$giturl$branch
+    open $giturl
+}
+
+# Moving around
+alias epion="cd ~/dev/epion/patient-check-in"
+alias dev="cd ~/dev"
+alias desk="cd ~/Desktop"
+alias ..="cd ../"
+alias ...="cd ../../"
+alias ....='cd ../../../'
+alias .....='cd ../../../../'
+
+# Miscellaneous
+alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
+
+# Database
+alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"

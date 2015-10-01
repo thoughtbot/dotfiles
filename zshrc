@@ -1,12 +1,17 @@
 # modify the prompt to contain git branch name if applicable
 git_prompt_info() {
-  current_branch=$(git current-branch 2> /dev/null)
-  if [[ -n $current_branch ]]; then
-    echo " %{$fg_bold[green]%}$current_branch%{$reset_color%}"
+  ref=$(git symbolic-ref HEAD 2> /dev/null)
+  if [[ -n $ref ]]; then
+    echo " on %{$fg[blue]%}${ref#refs/heads/}%{$reset_color%}$(parse_git_dirty)"
   fi
 }
+
+parse_git_dirty () {
+   [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "%{$fg[yellow]%}*%{$reset_color%}"
+}
+
 setopt promptsubst
-export PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info) %# '
+export PS1='${SSH_CONNECTION+"%{$fg[green]%}%n@%m:"}%{$fg[green]%}%c%{$reset_color%}$(git_prompt_info) $ '
 
 # load our own completion functions
 fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions $fpath)

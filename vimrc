@@ -1,5 +1,5 @@
 " Leader
-let mapleader = " "
+let mapleader = ","
 
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
@@ -154,7 +154,59 @@ set complete+=kspell
 " Always use vertical diffs
 set diffopt+=vertical
 
+nnoremap <leader>w <C-w>v<C-w>l
+
+nmap <Leader>nt :tabnew<CR>
+map <leader><tab> :tabn <CR>
+map <leader>p<tab> :tabp <CR>
+
+map <Leader>i mmgg=G`m<CR>
+
+syntax on
+set t_Co=256
+set background=dark
+colorscheme solarized
+
+nnoremap <leader>c<space> :NERDComToggleComment
+
+set colorcolumn=80
+
+set nowrap
+
+set hlsearch
+nnoremap <CR> :nohlsearch<CR><CR>
+
+" Use <Leader>t to run the current spec file.
+map <Leader>t <Plug>RunCurrentSpecFile
+"
+" " Use <Leader>u to run the current line in a spec.
+map <Leader>s <Plug>RunFocusedSpec
+"
+" " Use <Leader>v to explicitly run the most recent spec.
+map <Leader>l <Plug>RunMostRecentSpec
+
+let g:Tlist_Ctags_Cmd="/usr/local/bin/ctags"
+let g:spec_runner_dispatcher = 'call Send_to_Tmux("clear\n{command}\n")'
+
+let g:indentobject_meaningful_indentation = ['haml', 'sass', 'yaml', 'markdown']
+let g:indentLine_fileType = ['yaml']
+
+let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+
+let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+
+nnoremap <leader><space> :noh<cr>
+
+
+vmap <Leader>z :call I18nTranslateString()<CR>
+vmap <Leader>dt :call I18nDisplayTranslation()<CR>
+
+map <Leader>n <Plug>:NERDTreeToggle
+
 " Local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
+
+
