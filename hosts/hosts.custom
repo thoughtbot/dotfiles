@@ -1,0 +1,17 @@
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1	localhost
+255.255.255.255	broadcasthost
+::1             localhost
+
+# MeYou Health additions
+127.0.0.1 myhdev.com www.myhdev.com challenge.myhdev.com y.myhdev.com api.myhdev.com dcm.myhdev.com skylight.myhdev.com hippo.myhdev.com walkadoo.myhdev.com
+127.0.0.1 account.myhdev.com quitnet.myhdev.com hi5.myhdev.com
+127.0.0.1 hello200.myhdev.com hello200-web.myhdev.com
+
+# Personal stuff
+127.0.0.1 jobbox-dev.com jobbox-dev
