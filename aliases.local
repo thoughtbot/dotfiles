@@ -21,6 +21,7 @@ alias dcm="cd ~/Projects/dailychallenge-mobile/"
 alias dcc="cd ~/Projects/dailychallenge-client/"
 alias hello="cd ~/Projects/bamboo-ios/"
 alias hellos="cd ~/Projects/bamboo-server/"
+alias hellow="cd ~/Projects/bamboo-web/"
 alias rmj="rm features/screens/**/current.png features/screens/**/diff.png spec/screens/**/current.png spec/screens/**/diff.png"
 alias rmspec="rake spec device_name='iPhone 5s' target=7.1"
 

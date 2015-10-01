@@ -25,3 +25,7 @@
   autosquash = true
 [include]
   path = ~/.gitconfig.local
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
