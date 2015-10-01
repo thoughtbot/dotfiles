@@ -18,6 +18,10 @@ plugins=(git)
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=/Users/guillermoguerini/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
+
 source $ZSH/oh-my-zsh.sh
 
 # Compilation flags
@@ -25,3 +29,6 @@ source $ZSH/oh-my-zsh.sh
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+# rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
