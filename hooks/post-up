@@ -9,7 +9,7 @@ fi
 
 vim -u $HOME/.vimrc.bundles +PlugInstall +PlugClean! +qa
 
-if grep --quiet --no-messages 'path_helper' /etc/zprofile; then
+if grep --quiet --no-messages path_helper /etc/zprofile; then
   cat <<eom
 
 Your system is sourcing the OS X 'path_helper' from /etc/zprofile.
