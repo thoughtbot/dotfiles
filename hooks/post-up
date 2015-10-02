@@ -6,4 +6,15 @@ if [ ! -e $HOME/.vim/autoload/plug.vim ]; then
   curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
+
 vim -u $HOME/.vimrc.bundles +PlugInstall +PlugClean! +qa
+
+if grep --quiet --silent 'path_helper' /etc/zprofile; then
+  cat <<eom
+
+Your system is sourcing the OS X `path_helper` from /etc/zprofile.
+This will interfere with path ordering. For more information, see:
+https://github.com/thoughtbot/dotfiles#note-for-os-x-el-capitan-users
+
+eom
+fi
