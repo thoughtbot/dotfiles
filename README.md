@@ -13,7 +13,7 @@ Set zsh as your login shell:
 Install
 -------
 
-Clone onto your laptop:
+Clone onto your laptop (in your $HOME directory):
 
     git clone git://github.com/thoughtbot/dotfiles.git
 
