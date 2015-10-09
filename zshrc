@@ -45,12 +45,13 @@ unsetopt nomatch
 
 # vi mode
 bindkey -v
-bindkey "^F" vi-cmd-mode
-bindkey jj vi-cmd-mode
+bindkey "^J" vi-cmd-mode
 
 # handy keybindings
 bindkey "^A" beginning-of-line
+bindkey "^B" backward-char
 bindkey "^E" end-of-line
+bindkey "^F" forward-char
 bindkey "^K" kill-line
 bindkey "^R" history-incremental-search-backward
 bindkey "^P" history-search-backward
