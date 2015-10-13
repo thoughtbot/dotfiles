@@ -100,7 +100,7 @@ Your `~/.vimrc.local` might look like this:
 Your `~/.zshenv.local` might look like this:
 
     # load pyenv if available
-    if which pyenv &>/dev/null ; then
+    if command -v pyenv &>/dev/null ; then
       eval "$(pyenv init -)"
     fi
 
