@@ -6,7 +6,7 @@ export EDITOR=$VISUAL
 export PATH="$HOME/.bin:/usr/local/sbin:$PATH"
 
 # load rbenv if available
-if which rbenv &>/dev/null ; then
+if command -v rbenv &>/dev/null ; then
   eval "$(rbenv init - --no-rehash)"
 fi
 
