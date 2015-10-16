@@ -10,6 +10,7 @@
   branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
   ci = commit -v
   co = checkout
+  pf = push --force-with-lease
   st = status
 [core]
   excludesfile = ~/.gitignore
