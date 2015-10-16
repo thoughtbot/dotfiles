@@ -111,18 +111,5 @@ _load_settings() {
 }
 _load_settings "$HOME/.zsh/configs"
 
-# detect old OS X broken /etc/zshenv and suggest rename
-if grep -qw path_helper /etc/zshenv 2>/dev/null; then
-  cat <<MSG >&2
-${fg[red]}Warning:${reset_color} \`/etc/zshenv' configuration file on your system may cause unexpected
-PATH changes on subsequent invocations of the zsh shell. The solution is to
-rename the file to \`zprofile':
-  ${fg_bold[white]}sudo mv /etc/{zshenv,zprofile}${reset_color}
-
-(called from ${(%):-%N:%i})
-
-MSG
-fi
-
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
