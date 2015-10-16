@@ -10,9 +10,15 @@ vim -u $HOME/.vimrc.bundles +PlugInstall +PlugClean! +qa
 
 # detect old OS X broken /etc/zshenv and suggest rename
 if grep -qw path_helper /etc/zshenv 2>/dev/null; then
-  fg_red=$'\e[31m'
-  fg_bold_white=$'\e[1;37m'
-  reset_color=$'\e[m'
+  if [ -t 2 ]; then
+    fg_red=$'\e[31m'
+    fg_bold_white=$'\e[1;37m'
+    reset_color=$'\e[m'
+  else
+    fg_red=""
+    fg_bold_white=""
+    reset_color=""
+  fi
 
   # resolve BASH_SOURCE to absolute path
   bash_source="$BASH_SOURCE"
