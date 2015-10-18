@@ -83,6 +83,9 @@ au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
 
+" R programming
+au FileType r setlocal tabstop=8 softtabstop=4 shiftwidth=4 expandtab
+
 let g:python_host_prog = '/usr/bin/python'
 
 let g:gist_open_browser_after_post = 1
