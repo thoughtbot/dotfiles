@@ -3,7 +3,7 @@
 # Search your bundle for the provided pattern
 #   Requires bundler 1.8+ for execution as a bundler subcommand.
 #   Examples:
-#     bundle search Kernal.warn
+#     bundle search Kernel.warn
 #     bundle search current_user clearance
 #     bundle search "Change your password" clearance
 #
