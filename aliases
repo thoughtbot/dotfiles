@@ -17,3 +17,26 @@ alias path='echo $PATH | tr -s ":" "\n"'
 
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
+
+# Start/stop
+alias pg.start='echo "Starting postgresql";launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist'
+alias pg.stop='echo "Stopping postgresql";launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist'
+
+alias mysql.start='echo "Starting mysql";launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist'
+alias mysql.stop='echo "Stopping mysql";launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist'
+
+alias redis.start="echo Starting redis...;launchctl load ~/Library/LaunchAgents/homebrew.mxcl.redis.plist"
+alias redis.stop="echo Stopping redis...;launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.redis.plist"
+
+alias elasticsearch.start="echo 'Starting Elastic Search';launchctl load ~/Library/LaunchAgents/homebrew.mxcl.elasticsearch.plist"
+alias elasticsearch.stop="echo 'Stopping Elastic Search';launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.elasticsearch.plist"
+
+# Ctags
+alias ctags="`brew --prefix`/bin/ctags"
+
+# Override rm
+alias rm="rmtrash"
+
+# .devlog
+alias note="echo `date` $1 >> ~/.devlog"
+alias notes="cat ~/.devlog"
