@@ -158,3 +158,9 @@ set diffopt+=vertical
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
+
+" Safely allow project-specific vimrc (check for `.git/safe`)
+if isdirectory(getcwd() . ".git/safe")
+  set secure
+  set exrc
+endif
