@@ -29,6 +29,9 @@ Install the dotfiles:
 
     env RCRC=$HOME/dotfiles/rcrc rcup
 
+You can use just `rcup` if you specify your dotfiles directory in `~/.rcrc`.
+[See example]/(https://github.com/thoughtbot/dotfiles/blob/master/rcrc).
+
 This command will create symlinks for config files in your home directory.
 Setting the `RCRC` environment variable tells `rcup` to use standard
 configuration options:
