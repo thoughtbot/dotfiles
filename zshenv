@@ -28,20 +28,4 @@ fi
 
 unset _old_path
 
-# load proprietary scripts into path
-if [ -d "$HOME/.proprietary" ]; then
-  # add all sudirectories containing a directory named 'bin' to PATH
-  # EXAMPLE: '~/.proprietary/derp/bin' and '~/.proprietary/bin' would be added,
-  #          but '~/.proprietary/foo/bar/bin' would not.
-  PATH="$(find -L $HOME/.proprietary -maxdepth 2 -mindepth 1 -name 'bin' -type d | tr '\n' ':')$PATH"
-fi
-
-# load rbenv if available
-if command -v rbenv &>/dev/null ; then
-  eval "$(rbenv init - --no-rehash)"
-fi
-
-# mkdir .git/safe in the root of repositories you trust
-PATH=".git/safe/../../bin:$PATH"
-
 export PATH
