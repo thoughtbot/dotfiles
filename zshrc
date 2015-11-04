@@ -1,9 +1,9 @@
 # use vim as the visual editor
-export VISUAL=vim
-export EDITOR=$VISUAL
+VISUAL=vim
+EDITOR=$VISUAL
 
 # ensure dotfiles bin directory is loaded first
-export PATH="$HOME/.bin:/usr/local/sbin:$PATH"
+PATH="$HOME/.bin:/usr/local/sbin:$PATH"
 
 # load rbenv if available
 if command -v rbenv >/dev/null; then
@@ -11,7 +11,7 @@ if command -v rbenv >/dev/null; then
 fi
 
 # mkdir .git/safe in the root of repositories you trust
-export PATH=".git/safe/../../bin:$PATH"
+PATH=".git/safe/../../bin:$PATH"
 
 # modify the prompt to contain git branch name if applicable
 git_prompt_info() {
@@ -21,7 +21,7 @@ git_prompt_info() {
   fi
 }
 setopt promptsubst
-export PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info) %# '
+PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info) %# '
 
 # load our own completion functions
 fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions $fpath)
@@ -40,7 +40,7 @@ autoload -U colors
 colors
 
 # enable colored output from ls, etc
-export CLICOLOR=1
+CLICOLOR=1
 
 # history settings
 setopt hist_ignore_all_dups inc_append_history
@@ -113,3 +113,7 @@ _load_settings "$HOME/.zsh/configs"
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+
+# Make these variables available globally
+export VISUAL EDITOR PATH PS1 CLICOLOR
