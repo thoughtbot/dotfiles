@@ -3,7 +3,7 @@ export VISUAL=vim
 export EDITOR=$VISUAL
 
 # ensure dotfiles bin directory is loaded first
-export PATH="$HOME/.bin:/usr/local/sbin:$PATH"
+path=($HOME/.bin /usr/local/sbin $path)
 
 # load rbenv if available
 if command -v rbenv >/dev/null; then
@@ -113,3 +113,16 @@ _load_settings "$HOME/.zsh/configs"
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# mkdir .git/safe in the root of repositories you trust
+path=(.git/safe/../../bin $path)
+
+# readjust order of PATH entries
+move_to_front_of_path "$HOME/.bin"
+move_to_front_of_path ".git/safe/../../bin"
+
+# Remove dupes from PATH
+typeset -U path
+
+# Solidify PATH changes for the rest of the shell sessions
+export PATH
