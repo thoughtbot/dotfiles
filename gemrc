@@ -1,1 +1,1 @@
-gem: --no-document
+gem: --no-document --bindir /usr/local/bin
