@@ -44,3 +44,9 @@ _load_settings "$HOME/.zsh/configs"
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions $fpath)
+
+# completion
+autoload -U compinit
+compinit
