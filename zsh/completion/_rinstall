@@ -1,0 +1,5 @@
+#compdef rinstall
+
+if command -v rbenv >/dev/null; then
+  compadd $(rbenv completions install)
+fi

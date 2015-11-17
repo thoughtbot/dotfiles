@@ -1,5 +1,0 @@
-function rinstall () {
-  ruby-install --install-dir "$HOME/.rbenv/versions/$1" ruby "$1"
-  gem install bundler --conservative
-  bundle
-}
