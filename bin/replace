@@ -9,4 +9,8 @@ shift
 replace_with="$1"
 shift
 
-ag -l --nocolor "$find_this" "$@" | xargs sed -i '' "s/$find_this/$replace_with/g"
+items=$(ag -l --nocolor "$find_this" "$@")
+temp="${TMPDIR:-/tmp}/replace_temp_file.$$"
+for item in $items; do
+  sed "s/$find_this/$replace_with/g" "$item" > "$temp" && mv "$temp" "$item"
+done
