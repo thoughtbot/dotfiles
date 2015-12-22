@@ -1,0 +1,59 @@
+#!/bin/sh
+
+brew_install_or_upgrade asciinema
+brew_install_or_upgrade ctags
+brew_install_or_upgrade dockermachine
+brew_install_or_upgrade git
+brew_install_or_upgrade gitsh
+brew_install_or_upgrade go
+brew_install_or_upgrade graphviz
+brew_install_or_upgrade heroku-toolbelt
+brew_install_or_upgrade hub
+brew_install_or_upgrade jsonpp
+brew_install_or_upgrade leiningen
+brew_install_or_upgrade mongodb
+brew_install_or_upgrade mysql
+brew_install_or_upgrade node
+brew_install_or_upgrade openssl
+brew_install_or_upgrade phantomjs
+brew_install_or_upgrade pow
+brew_install_or_upgrade reattach-to-user-namespace # https://robots.thoughtbot.com/tmux-copy-paste-on-os-x-a-better-future
+brew_install_or_upgrade rbenv
+brew_install_or_upgrade redis
+brew_install_or_upgrade rmtrash
+brew_install_or_upgrade ruby-build
+brew_install_or_upgrade ruby-install
+brew_install_or_upgrade sonos
+brew_install_or_upgrade sonarr
+brew_install_or_upgrade sqlite
+brew_install_or_upgrade tig
+brew_install_or_upgrade tmux
+brew_install_or_upgrade tree
+brew_install_or_upgrade wget
+brew_install_or_upgrade youtube-dl
+brew_install_or_upgrade z
+
+brew tap nviennot/tmate
+brew_install_or_upgrade tmate
+
+brew cask install 1password
+brew cask install alfred
+brew cask install arq
+brew cask install dash
+brew cask install duet
+brew cask install google-chrome
+brew cask install iterm2
+brew cask install karabiner
+brew cask install rowanj-gitx
+# brew cask install dash # licensed via App Store
+brew cask install dropbox
+brew cask install evernote
+brew cask install flux
+brew cask install google-chrome
+brew cask install launchrocket
+brew cask install iterm2
+brew cask install kindlegen
+brew cask install omnifocus
+brew cask install rowanj-gitx
+brew cask install spotify
+brew cask install spectacle
