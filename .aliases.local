@@ -1,0 +1,40 @@
+# shell
+alias htop="sudo htop"
+alias top="htop"
+alias tailf="tail -f"
+alias j=z
+alias x='exit'
+
+# git
+function g {
+  if [[ $# > 0 ]]; then
+    git $@
+  else
+    git status
+  fi
+}
+
+# ruby / rails
+alias be="bundle exec"
+alias bi="bundle install"
+alias bu="bundle update"
+alias c="cucumber"
+alias latest-ruby="brew update && brew upgrade rbenv ruby-build"
+alias push="rake && git push"
+alias r="rails"
+alias rdbm="rake db:migrate"
+alias rk="rake"
+alias ttr="touch tmp/restart.txt"
+
+# git
+alias pull="git pull"
+alias ga='git add '
+alias gaa='git add .'
+alias gb='git branch '
+alias gc='git commit'
+alias gd='git diff'
+alias gco='git checkout '
+alias gcom='git checkout master '
+alias gx='gitx'
+alias gl='git log --oneline --graph --all --decorate'
+alias grom='git rebase origin/master'
