@@ -15,6 +15,9 @@
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
+  whitespace = trailing-space,space-before-tab
+[apply]
+  whitespace = fix
 [merge]
   ff = only
 [commit]
