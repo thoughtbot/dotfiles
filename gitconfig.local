@@ -1,0 +1,5 @@
+[credential]
+  helper = osxkeychain
+[user]
+  name = Andy Waite
+  email = andyw8@users.noreply.github.com
