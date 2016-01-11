@@ -31,9 +31,11 @@ brew cask install google-chrome
 brew cask install istat-menus
 brew cask install launchrocket
 brew cask install iterm2
+brew cask install keyboard-cleaner
 brew cask install kindlegen
 brew cask install omnifocus
 brew cask install rowanj-gitx
+brew cask install skype
 brew cask install sonos
 brew cask install spotify
 brew cask install spectacle # NOTE: requires manual configuration
