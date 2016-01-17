@@ -18,6 +18,7 @@ brew_install_or_upgrade z
 
 brew cask install alfred
 brew cask install arq
+brew cask install coconutbattery
 brew cask install duet
 brew cask install docker-machine
 brew cask install google-chrome
@@ -26,14 +27,18 @@ brew cask install karabiner
 brew cask install rowanj-gitx
 brew cask install dropbox
 brew cask install evernote
+brew cask install fluid
 brew cask install flux
 brew cask install google-chrome
 brew cask install istat-menus
+brew cask install kindle
 brew cask install launchrocket
 brew cask install iterm2
 brew cask install keyboard-cleaner
 brew cask install kindlegen
-brew cask install omnifocus
+brew cask install omnifocus # add license after installing
+brew cask install selfcontrol
+brew cask install omnidisksweeper
 brew cask install rowanj-gitx
 brew cask install skype
 brew cask install sonos
