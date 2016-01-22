@@ -19,10 +19,13 @@ brew_install_or_upgrade z
 
 brew cask install alfred
 brew cask install arq
+brew cask install atom
 brew cask install coconutbattery
+brew cask install doxie
 brew cask install duet
 brew cask install docker-machine
 brew cask install google-chrome
+brew cask install google-drive
 brew cask install iterm2
 brew cask install karabiner
 brew cask install rowanj-gitx
@@ -39,13 +42,17 @@ brew cask install keyboard-cleaner
 brew cask install kindlegen
 brew cask install omnifocus # add license after installing
 brew cask install selfcontrol
+brew cask install sublime-text
 brew cask install omnidisksweeper
+brew cask install rescuetime
 brew cask install rowanj-gitx
 brew cask install skype
 brew cask install sonos
 brew cask install spotify
 brew cask install spectacle # NOTE: requires manual configuration
+brew cask install time-out
 brew cask install transmission
+brew cask install tvshows
 brew cask install vlc
 brew cask install virtualbox
 
