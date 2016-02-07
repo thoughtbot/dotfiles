@@ -5,10 +5,9 @@ alias mkdir="mkdir -p"
 alias e="$EDITOR"
 alias v="$VISUAL"
 
-# Bundler
+# Ruby
 alias b="bundle"
-
-# Rails
+alias install-missing-ruby="brew update && brew upgrade ruby-build && rbenv install"
 alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
 alias s="rspec"
 
