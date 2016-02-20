@@ -7,7 +7,7 @@ brew_install_or_upgrade jsonpp
 brew_install_or_upgrade leiningen
 brew_install_or_upgrade mongodb
 brew_install_or_upgrade mysql
-brew_install_or_upgrade pow
+brew_install_or_upgrade pow # note: needs manual steps
 brew_install_or_upgrade rmtrash
 brew_install_or_upgrade ruby-install
 brew_install_or_upgrade sqlite
