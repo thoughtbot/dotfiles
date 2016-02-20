@@ -25,6 +25,7 @@ alias r="rails"
 alias rdbm="rake db:migrate"
 alias rk="rake"
 alias ttr="touch tmp/restart.txt"
+alias refill="rails g refills:import "
 
 # git
 alias pull="git pull --rebase"
