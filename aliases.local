@@ -40,3 +40,6 @@ alias d='git checkout develop '
 alias gx='gitx'
 alias gl='git log --oneline --graph --all --decorate'
 alias grom='git rebase origin/master'
+
+alias tm=tmuxinator
+alias tms=tmuxinator start
