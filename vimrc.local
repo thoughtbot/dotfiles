@@ -1,0 +1,262 @@
+if v:version < 704
+  echo "Warning - old Vim version"
+endif
+
+" https://github.com/nelstrom/homebrew-vim
+if !has("patch-7.4.865")
+  echo "Warning - cdo command may not be available"
+end
+
+if !has('clipboard')
+  echo "Warning - clipboard not enabled"
+endif
+
+" Better navigation within wrapped lines
+nmap k gk
+nmap j gj
+
+" easier existing of insert mode
+imap jk <esc>
+imap kj <esc>
+
+set relativenumber
+
+" Don't add the comment prefix when I hit enter or o/O on a comment line.
+set formatoptions-=or
+
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+
+" strip whitespace on saving Ruby files
+autocmd BufWritePre *.rb :%s/\s\+$//e
+
+" cucumber check runs extremely slowly for some reason
+let g:syntastic_cucumber_checkers = []
+
+" not sure why these aren't running by default?
+" let g:syntastic_ruby_checkers = ['rubymri', 'rubylint']
+
+" let g:syntastic_haml_checkers = ['haml_lint']
+
+" Run tests
+autocmd FileType cucumber nmap <leader>s :call RunCucumberCommand(line('.'))<CR>
+autocmd FileType cucumber nmap <leader>t :call RunCucumberCommand()<CR>
+function! RunCucumberCommand(...)
+  let @t = ':!cucumber ' . expand('%') . (a:0 == 1 ? ':'.line('.') : '')
+  execute @t
+endfunction
+
+nnoremap <leader>o :CtrlP<CR>
+
+" use the quotestar register for all yank, delete, change, and put operations that have no register explicitly specified
+set clipboard=unnamed
+
+" disable gitgutter by default
+let g:gitgutter_enabled = 0
+
+" let g:hardtime_default_on = 1
+
+""" Sick functions and macros """""""""""""""""""""""""""""""""""""""""""""""""
+
+" Open and reload vimrc
+map <leader>vrc :tabe $MYVIMRC<cr>
+map <leader>vrc :tabe $MYVIMRC.local<cr>
+map <leader>vsrc :source $MYVIMRC<cr>:echo "VIMRC reloaded"<cr>
+
+" Run test, support all common Ruby test libs
+map <leader>t :call RunTest(expand('%'))<cr>
+
+" As above but only test on current line
+map <leader>s :call RunTestAtLine(expand('%'), line(".") + 1)<cr>
+"
+" Repeats one of the above, for when you've navigated away from the test file
+map <leader>l :call RepeatLastTest()<cr>
+
+function! RepeatLastTest()
+  if exists("g:last_test")
+    exec "Dispatch " . g:last_test
+  else
+    echo "No last test to run"
+  end
+endfunction
+
+" Run a test file at line (currently supports Ruby only)
+function! RunTestAtLine(filename, line_number)
+  let test_command = InferRubyTestCommand(a:filename)
+
+  if strlen(test_command)
+    let test_command_with_line = test_command . ":" . a:line_number
+    let g:last_test = test_command_with_line
+    exec "Dispatch " . test_command_with_line
+  else
+    echo "Not a recognized test '" . a:filename . "'"
+  end
+endfunction!
+
+" Run a test file (currently supports Ruby only)
+function! RunTest(filename)
+  let test_command = InferRubyTestCommand(a:filename)
+
+  if strlen(test_command)
+    let g:last_test = test_command
+    exec "Dispatch " . test_command
+  else
+    echo "Not a recognized test '" . a:filename . "'"
+  end
+endfunction
+
+" Infer and return corresponding command to run a Ruby test file
+function! InferRubyTestCommand(filename)
+    if a:filename =~ "\.feature$"
+      let command  = "cucumber --strict"
+    elseif a:filename =~ "_spec\.rb$"
+      let command = InferRspecCommand()
+    elseif a:filename =~ "_test\.rb$"
+      let command = "ruby -I test"
+    else
+      return ""
+    end
+
+    return command . " " . a:filename
+endfunction
+
+
+function! InferRspecCommand()
+  " allow overriding in a project .vimrc
+  if exists('g:rspec_command')
+    return g:rspec_command
+  end
+
+  " override
+  return "rspec"
+  " return "DISABLE_SPRING=1 rspec"
+  let [rails_helper_line, rails_helper_col] = searchpos('require.*rails_helper')
+  " check column number in case line is commented out
+  " TODO use a regexp instead
+  if rails_helper_line > 0 && rails_helper_col == 1
+    let command = "rspec"
+  else
+    let command = "DISABLE_SPRING=1 rspec"
+  endif
+  return command
+endfunction
+
+autocmd BufRead,BufNewFile *.markdown set colorcolumn=0
+
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+inoremap <C-U> <C-G>u<C-U>
+
+" Convenient command to see the difference between the current buffer and the
+" file it was loaded from, thus the changes you made.
+" Only define it when not defined already.
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+		  \ | wincmd p | diffthis
+endif
+
+set ignorecase
+set smartcase
+
+nnoremap <leader><leader> <c-^>
+
+" For ack.vim https://github.com/mileszs/ack.vim#can-i-use-ag-the-silver-searcher-with-this
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+" Enable seeing-is-believing mappings only for Ruby
+augroup seeingIsBelievingSettings
+  autocmd!
+
+  autocmd FileType ruby nmap <buffer> <Enter> <Plug>(seeing-is-believing-mark-and-run)
+  autocmd FileType ruby xmap <buffer> <Enter> <Plug>(seeing-is-believing-mark-and-run)
+
+  autocmd FileType ruby nmap <buffer> <F4> <Plug>(seeing-is-believing-mark)
+  autocmd FileType ruby xmap <buffer> <F4> <Plug>(seeing-is-believing-mark)
+  autocmd FileType ruby imap <buffer> <F4> <Plug>(seeing-is-believing-mark)
+
+  autocmd FileType ruby nmap <buffer> <F5> <Plug>(seeing-is-believing-run)
+  autocmd FileType ruby imap <buffer> <F5> <Plug>(seeing-is-believing-run)
+augroup END
+
+set esckeys "https://www.johnhawthorn.com/2012/09/vi-escape-delays/
+hi ColorColumn ctermbg=darkgrey
+
+let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsEditSplit="vertical"
+" let g:UltiSnipsSnippetsDir="/Users/andy/dotfiles/UltiSnips"
+"
+"
+
+" http://smartic.us/2009/04/06/code-folding-in-vim/
+" set foldmethod=indent   "fold based on indent
+" set foldnestmax=10      "deepest fold is 10 levels
+" set nofoldenable        "dont fold by default
+" set foldlevel=1         "this is just what i use
+
+source ~/.vim/colors/grb256.vim
+
+"fold settings
+" ------------
+" toggle folding with za.
+" fold everything with zM
+" unfold everything with zR.
+" zm and zr can be used too
+set foldmethod=syntax   "fold based on syntax (except for haml below)
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable        "dont fold by default
+autocmd BufNewFile,BufRead *.haml setl foldmethod=indent nofoldenable
+autocmd! FileType nofile setl foldmethod=indent nofoldenable
+
+" Space to toggle folds.
+" nnoremap <Space> za
+" vnoremap <Space> za
+
+" Toggles folds being enabled for this vim session
+function! FoldToggle()
+  if(&foldenable == 1)
+    au WinEnter * set nofen
+    au WinLeave * set nofen
+    au BufEnter * set nofen
+    au BufLeave * set nofen
+    :set nofen
+  else
+    au WinEnter * set fen
+    au WinLeave * set fen
+    au BufEnter * set fen
+    au BufLeave * set fen
+    :set fen
+  endif
+endfunc
+
+nnoremap <Leader>nf :call FoldToggle()<CR>
+
+" https://til.hashrocket.com/posts/e8915e62c0-highlight-markdown-fenced-code-syntax-in-vim
+let g:markdown_fenced_languages = ['html', 'vim', 'ruby', 'python', 'bash=sh']
+
+" from @nelstrom's core-vim course
+xnoremap . :norm.<CR>
+
+noremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
+function! ExecuteMacroOverVisualRange()
+  echo "@".getcmdline()
+  execute ":'<,'>normal @".nr2char(getchar())
+endfunction
+
+" per-project vimrc: https://andrew.stwrt.ca/posts/project-specific-vimrc/
+set exrc
+set secure
+
+" based on http://superuser.com/a/653027
+nnoremap <leader>fh vi{c<CR><CR><Up><C-r>"<Esc>:s/,\s+/&\r/g<CR>:'[,']norm ==<CR>
+
+" https://github.com/nathanaelkane/vim-indent-guides/issues/31
+colorscheme default
+
+" override from .vimrc
+let g:syntastic_check_on_open=0
