@@ -3,5 +3,14 @@
 [user]
   name = Andy Waite
   email = andyw8@users.noreply.github.com
+[mergetool "Kaleidoscope"]
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustexitcode = true
+[difftool "Kaleidoscope"]
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool]
+  prompt = false
+[mergetool]
+  prompt = false
 [alias]
   trash = "!git add . && git commit -m 'trash' && git reset --hard HEAD^"
