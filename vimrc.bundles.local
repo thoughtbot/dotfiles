@@ -1,0 +1,29 @@
+Plug 'airblade/vim-gitgutter'
+" Plug 'christoomey/vim-tmux-navigator'
+" Plug 'christoomey/vim-tmux-runner'
+Plug 'christoomey/vim-rfactory'
+Plug 'danro/rename.vim'
+Plug 'ecomba/vim-ruby-refactoring'
+Plug 'ervandew/supertab' " so that tab be used for both snippets and automcomplete
+Plug 'jgdavey/vim-blockle'
+Plug 'kana/vim-textobj-user' " needed for vim-textobj-rubyblock
+Plug 'lucapette/vim-textobj-underscore'
+Plug 'mileszs/ack.vim'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'nelstrom/vim-markdown-folding'
+Plug 'ngmy/vim-rubocop'
+Plug 'rizzatti/dash.vim'
+Plug 'rorymckinley/vim-rubyhash'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'skwp/greplace.vim' " Global search and replace
+Plug 'takac/vim-hardtime'
+Plug 'tpope/vim-cucumber'
+Plug 'tpope/vim-dispatch' " asynchronous build and test dispatcher
+Plug 'tpope/vim-haml'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-rake'
+"Plug 'wincent/Command-T'        " Fast opening of files
+Plug 'guns/vim-clojure-static'
+Plug 'bruno-/vim-ruby-fold' " remove if https://github.com/vim-ruby/vim-ruby/pull/272 is merged ?
+Plug 'nathanaelkane/vim-indent-guides'
