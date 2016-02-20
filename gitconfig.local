@@ -12,5 +12,7 @@
   prompt = false
 [mergetool]
   prompt = false
+[rebase]
+  autostash = true
 [alias]
   trash = "!git add . && git commit -m 'trash' && git reset --hard HEAD^"
