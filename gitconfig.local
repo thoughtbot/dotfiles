@@ -3,3 +3,5 @@
 [user]
   name = Andy Waite
   email = andyw8@users.noreply.github.com
+[alias]
+  trash = "!git add . && git commit -m 'trash' && git reset --hard HEAD^"
