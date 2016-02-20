@@ -1,0 +1,2 @@
+export POW_TIMEOUT=86400 # 1 day
+export POW_WORKERS=3 # to prevent PDFKit hanging
