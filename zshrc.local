@@ -1,0 +1,6 @@
+setopt histignorespace
+
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
+
+# for working through Obie's Serverless book
+source /usr/local/share/zsh/site-functions/_aws
