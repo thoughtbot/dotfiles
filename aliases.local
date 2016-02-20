@@ -27,7 +27,7 @@ alias rk="rake"
 alias ttr="touch tmp/restart.txt"
 
 # git
-alias pull="git pull"
+alias pull="git pull --rebase"
 alias ga='git add '
 alias gaa='git add .'
 alias gb='git branch '
