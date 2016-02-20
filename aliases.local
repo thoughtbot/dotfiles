@@ -43,3 +43,5 @@ alias grom='git rebase origin/master'
 
 alias tm=tmuxinator
 alias tms=tmuxinator start
+
+[[ -f ~/.aliases.local.temporary ]] && source ~/.aliases.local.temporary
