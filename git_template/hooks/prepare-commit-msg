@@ -1,7 +1,0 @@
-#!/bin/sh
-
-local_hook="$HOME"/.git_template.local/hooks/prepare-commit-msg
-
-if [ -f "$local_hook" ]; then
-  . "$local_hook"
-fi

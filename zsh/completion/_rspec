@@ -1,3 +1,0 @@
-#compdef rspec
-
-compadd -P spec/ $(ls spec/**/*_spec.rb | sed -E "s/spec\///g")

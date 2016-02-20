@@ -1,6 +1,0 @@
-#!/bin/sh
-
-set -e
-
-git push origin :refs/heads/"$1"
-git branch --delete "$1"
