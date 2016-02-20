@@ -1,0 +1,34 @@
+#!/bin/sh -e
+
+# A simple script to keep a tidy ~/code directory organized by owner & then repo
+# When the script is done, just hit command-v to switch into the directory
+# (Github and Mac only. Sorry, openness!)
+#
+# Usage:
+#   gloan <org>/<repo>
+# Or:
+#   gloan <org> <repo>
+#
+# example: gloan testdouble/testdouble.js
+#
+# Once cloned, will copy a "cd" command to quickly change into repo directory
+
+IFS='/' read -ra ADDR <<< "$1"
+ORG="${ADDR[0]}"
+REPO="${ADDR[1]-$2}"
+ORG_DIR="$HOME/code/$ORG"
+REPO_DIR="$ORG_DIR/$REPO"
+
+# Make sure org directory exists
+mkdir -p "$ORG_DIR"
+
+# Make sure it's not already cloned, then clone
+if [ -d "$REPO_DIR" ]; then
+  echo "It looks like the repo was already cloned."
+else
+  git clone "git@github.com:$ORG/$REPO.git" "$REPO_DIR"
+fi
+
+echo "cd $HOME/code/$ORG/$REPO\n" | pbcopy
+echo "Hit Command-V to cd into the repo!"
+
