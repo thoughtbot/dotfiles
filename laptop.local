@@ -1,5 +1,6 @@
 brew_install_or_upgrade asciinema
 brew_install_or_upgrade awscli # manual step for auto-completion hook
+brew_install_or_upgrade exercism
 brew_install_or_upgrade gitsh
 brew_install_or_upgrade go
 brew_install_or_upgrade graphviz
@@ -45,6 +46,7 @@ brew cask install omnifocus # add license after installing
 brew cask install selfcontrol
 brew cask install sublime-text
 brew cask install omnidisksweeper
+brew cask install onyx
 brew cask install rescuetime
 brew cask install rowanj-gitx
 brew cask install skype
