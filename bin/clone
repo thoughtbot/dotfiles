@@ -1,15 +1,17 @@
 #!/bin/sh -e
 
+# https://gist.github.com/searls/62d5cb2f736a75c73ae2
+
 # A simple script to keep a tidy ~/code directory organized by owner & then repo
 # When the script is done, just hit command-v to switch into the directory
 # (Github and Mac only. Sorry, openness!)
 #
 # Usage:
-#   gloan <org>/<repo>
+#   clone <org>/<repo>
 # Or:
-#   gloan <org> <repo>
+#   clone <org> <repo>
 #
-# example: gloan testdouble/testdouble.js
+# example: clone testdouble/testdouble.js
 #
 # Once cloned, will copy a "cd" command to quickly change into repo directory
 
