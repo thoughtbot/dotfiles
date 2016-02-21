@@ -260,3 +260,6 @@ colorscheme default
 
 " override from .vimrc
 let g:syntastic_check_on_open=0
+
+" vim-codeclimate plugin
+nmap <Leader>af :CodeClimateAnalyzeCurrentFile<CR>

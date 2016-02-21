@@ -27,3 +27,4 @@ Plug 'tpope/vim-rake'
 Plug 'guns/vim-clojure-static'
 Plug 'bruno-/vim-ruby-fold' " remove if https://github.com/vim-ruby/vim-ruby/pull/272 is merged ?
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'wfleming/vim-codeclimate'
