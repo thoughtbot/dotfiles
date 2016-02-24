@@ -4,12 +4,14 @@ brew_install_or_upgrade exercism
 brew_install_or_upgrade gitsh
 brew_install_or_upgrade go
 brew_install_or_upgrade graphviz
+brew_install_or_upgrade htop # needs sudo
 brew_install_or_upgrade jsonpp
 brew_install_or_upgrade leiningen
 brew_install_or_upgrade mongodb
 brew_install_or_upgrade mysql
 brew_install_or_upgrade phantomjs
 brew_install_or_upgrade pow # note: needs manual steps
+brew_install_or_upgrade qlmarkdown
 brew_install_or_upgrade rmtrash
 brew_install_or_upgrade ruby-install
 brew_install_or_upgrade sqlite
@@ -56,6 +58,7 @@ brew cask install spectacle # NOTE: requires manual configuration
 brew cask install time-out
 brew cask install transmission
 brew cask install tvshows
+brew cask install vagrant
 brew cask install vlc
 brew cask install virtualbox
 
