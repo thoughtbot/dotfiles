@@ -38,14 +38,6 @@ let g:syntastic_cucumber_checkers = []
 
 " let g:syntastic_haml_checkers = ['haml_lint']
 
-" Run tests
-autocmd FileType cucumber nmap <leader>s :call RunCucumberCommand(line('.'))<CR>
-autocmd FileType cucumber nmap <leader>t :call RunCucumberCommand()<CR>
-function! RunCucumberCommand(...)
-  let @t = ':!cucumber ' . expand('%') . (a:0 == 1 ? ':'.line('.') : '')
-  execute @t
-endfunction
-
 nnoremap <leader>o :CtrlP<CR>
 
 " use the quotestar register for all yank, delete, change, and put operations that have no register explicitly specified
@@ -62,84 +54,6 @@ let g:gitgutter_enabled = 0
 map <leader>vrc :tabe $MYVIMRC<cr>
 map <leader>vrc :tabe $MYVIMRC.local<cr>
 map <leader>vsrc :source $MYVIMRC<cr>:echo "VIMRC reloaded"<cr>
-
-" Run test, support all common Ruby test libs
-map <leader>t :call RunTest(expand('%'))<cr>
-
-" As above but only test on current line
-map <leader>s :call RunTestAtLine(expand('%'), line(".") + 1)<cr>
-"
-" Repeats one of the above, for when you've navigated away from the test file
-map <leader>l :call RepeatLastTest()<cr>
-
-function! RepeatLastTest()
-  if exists("g:last_test")
-    exec "Dispatch " . g:last_test
-  else
-    echo "No last test to run"
-  end
-endfunction
-
-" Run a test file at line (currently supports Ruby only)
-function! RunTestAtLine(filename, line_number)
-  let test_command = InferRubyTestCommand(a:filename)
-
-  if strlen(test_command)
-    let test_command_with_line = test_command . ":" . a:line_number
-    let g:last_test = test_command_with_line
-    exec "Dispatch " . test_command_with_line
-  else
-    echo "Not a recognized test '" . a:filename . "'"
-  end
-endfunction!
-
-" Run a test file (currently supports Ruby only)
-function! RunTest(filename)
-  let test_command = InferRubyTestCommand(a:filename)
-
-  if strlen(test_command)
-    let g:last_test = test_command
-    exec "Dispatch " . test_command
-  else
-    echo "Not a recognized test '" . a:filename . "'"
-  end
-endfunction
-
-" Infer and return corresponding command to run a Ruby test file
-function! InferRubyTestCommand(filename)
-    if a:filename =~ "\.feature$"
-      let command  = "cucumber --strict"
-    elseif a:filename =~ "_spec\.rb$"
-      let command = InferRspecCommand()
-    elseif a:filename =~ "_test\.rb$"
-      let command = "ruby -I test"
-    else
-      return ""
-    end
-
-    return command . " " . a:filename
-endfunction
-
-
-function! InferRspecCommand()
-  " allow overriding in a project .vimrc
-  if exists('g:rspec_command')
-    return g:rspec_command
-  end
-
-  " override
-  return "rspec"
-  " return "DISABLE_SPRING=1 rspec"
-  let [rails_helper_line, rails_helper_col] = searchpos('require.*rails_helper')
-  " check column number in case line is commented out
-  " TODO use a regexp instead
-  if rails_helper_line > 0 && rails_helper_col == 1
-    let command = "rspec"
-  else
-    let command = "DISABLE_SPRING=1 rspec"
-  endif
-  return command
-endfunction
 
 autocmd BufRead,BufNewFile *.markdown set colorcolumn=0
 
@@ -253,5 +167,8 @@ colorscheme default
 " override from .vimrc
 let g:syntastic_check_on_open=0
 
-" vim-codeclimate plugin
-nmap <Leader>af :CodeClimateAnalyzeCurrentFile<CR>
+map <Leader>t <Plug>RunCurrentSpecFile
+map <Leader>s <Plug>RunFocusedSpec
+map <Leader>l <Plug>RunMostRecentSpec
+
+let g:spec_runner_dispatcher = 'call VtrSendCommand("{command}")'
