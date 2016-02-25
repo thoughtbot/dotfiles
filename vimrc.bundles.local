@@ -1,5 +1,5 @@
 Plug 'airblade/vim-gitgutter'
-" Plug 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
 Plug 'christoomey/vim-rfactory'
 Plug 'danro/rename.vim'
