@@ -17,7 +17,7 @@ nmap j gj
 
 " easier existing of insert mode
 imap jk <esc>
-imap kj <esc>
+" imap kj <esc>
 
 set relativenumber
 
