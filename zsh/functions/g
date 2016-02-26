@@ -1,9 +1,18 @@
 # No arguments: `git status`
 # With arguments: acts like `git`
+# Uses `hub` if available
 g() {
-  if [[ $# -gt 0 ]]; then
-    git "$@"
+  local _git
+
+  if command -v hub >/dev/null; then
+    _git=hub
   else
-    git status
+    _git=git
+  fi
+
+  if [[ $# -gt 0 ]]; then
+    $_git "$@"
+  else
+    $_git status
   fi
 }
