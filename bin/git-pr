@@ -2,4 +2,12 @@
 
 set -e
 
-hub pull-request
+if command -v hub >/dev/null; then
+  hub pull-request
+else
+  cat <<MSG >&2
+This command depends upon 'hub', which was not found.
+Visit https://hub.github.com for installation instructions.
+
+MSG
+fi
