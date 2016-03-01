@@ -1,5 +1,6 @@
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'gabebw/vim-spec-runner'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
 Plug 'christoomey/vim-rfactory'
