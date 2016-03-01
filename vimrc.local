@@ -173,6 +173,13 @@ map <Leader>l <Plug>RunMostRecentSpec
 
 let g:spec_runner_dispatcher = 'call VtrSendCommand("{command}")'
 
+" https://github.com/jackfranklin/dotfiles/blob/master/vim/vimrc
+nnoremap <leader>fr :VtrFocusRunner<cr> " <ctrl> \ to go back
+nnoremap <leader>kr :VtrKillRunner<cr>
+nnoremap <leader>rr :VtrSendLinesToRunner<cr>
+nnoremap <leader>dr :VtrSendCtrlD<cr>
+nnoremap <leader>ar :VtrAttachToPane<cr>
+
 nmap <leader>f gg=G<CR>
 nmap <Leader>ra :RuboCop -a<CR>
 nmap <Leader>rc :RuboCop -a<CR>
