@@ -172,3 +172,7 @@ map <Leader>s <Plug>RunFocusedSpec
 map <Leader>l <Plug>RunMostRecentSpec
 
 let g:spec_runner_dispatcher = 'call VtrSendCommand("{command}")'
+
+nmap <leader>f gg=G<CR>
+nmap <Leader>ra :RuboCop -a<CR>
+nmap <Leader>rc :RuboCop -a<CR>
