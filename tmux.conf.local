@@ -13,10 +13,6 @@ bind-key -n C-j select-pane -D
 bind-key -n C-k select-pane -U
 bind-key -n C-l select-pane -R
 
-# note: pane_current_path doesn't work in tmate since it's based on tmux 1.8
-bind-key - split-window -v  -c '#{pane_current_path}'
-bind-key \ split-window -h  -c '#{pane_current_path}'
-
 bind-key b break-pane -d
 bind-key C-j choose-tree
 
