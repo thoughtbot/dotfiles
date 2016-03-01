@@ -3,7 +3,6 @@ alias htop="sudo htop"
 alias top="htop"
 alias tailf="tail -f"
 alias j=z
-alias x='exit'
 
 # git
 function g {
@@ -14,26 +13,15 @@ function g {
   fi
 }
 
-# ruby / rails
-alias be="bundle exec"
-alias bi="bundle install"
-alias bu="bundle update"
-alias c="cucumber"
-alias latest-ruby="brew update && brew upgrade rbenv ruby-build"
-alias push="rake && git push"
-alias r="rails"
-alias rdbm="rake db:migrate"
-alias rk="rake"
-alias ttr="touch tmp/restart.txt"
-alias refill="rails g refills:import "
-
 # git
 alias pull="git pull --rebase"
 alias ga='git add '
 alias gaa='git add .'
+alias gap='git add -p'
 alias gb='git branch '
 alias gc='git commit'
 alias gd='git diff'
+alias gds='git diff --staged'
 alias gco='git checkout '
 alias m='git checkout master '
 alias d='git checkout develop '
@@ -41,6 +29,21 @@ alias gx='gitx'
 alias gl='git log --oneline --graph --all --decorate'
 alias grom='git rebase origin/master'
 
+# ruby
+alias be="bundle exec"
+alias bi="bundle install"
+alias bu="bundle update"
+alias latest-ruby="brew update && brew upgrade rbenv ruby-build && gem install bundler && gem install gem-ctags && gem ctags"
+alias push="rake && git push"
+alias r="rails"
+alias rdbm="rake db:migrate"
+alias rk="rake"
+
+# rails
+alias ttr="touch tmp/restart.txt"
+alias refill="rails g refills:import "
+
+# tmuxinator
 alias tm=tmuxinator
 alias tms=tmuxinator start
 
