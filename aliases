@@ -15,5 +15,15 @@ alias s="rspec"
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
+# zip
+alias -s gz='tar -xzvf'
+alias -s tgz='tar -xzvf'
+alias -s zip='unzip'
+alias -s bz2='tar -xjvf'
+
+# grep
+alias grep="grep --color=auto"
+
+
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
