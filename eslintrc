@@ -1,0 +1,18 @@
+{
+  "extends": "eslint:recommended",
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "seajs": true,
+    "require": true,
+    "module": true,
+    "Hawe": true
+  },
+  "rules": {
+    "no-extra-boolean-cast": 1,
+    "no-unused-vars": 1,
+    "global-require": 1,
+    "no-console": 1
+  }
+}

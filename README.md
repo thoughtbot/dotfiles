@@ -1,7 +1,8 @@
-thoughtbot dotfiles
+echopi's dotfiles
 ===================
 
-![prompt](http://images.thoughtbot.com/thoughtbot-dotfiles-prompt.png)
+fork from thoughtbot/dotfiles
+
 
 Requirements
 ------------
