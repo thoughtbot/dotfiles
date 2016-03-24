@@ -13,6 +13,7 @@
     "no-extra-boolean-cast": 1,
     "no-unused-vars": 1,
     "global-require": 1,
-    "no-console": 1
+    "no-console": 1,
+    "no-empty":1
   }
 }
