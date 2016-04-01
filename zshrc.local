@@ -41,8 +41,6 @@ if [ -d "$GHC_DOT_APP" ]; then
   export PATH="${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
 fi
 
-export HOMEBREW_GITHUB_API_TOKEN="ed8c372cc91e78124ae3f44dcf8f8c2a042ec879"
-
 # ensure dotfiles bin directory is loaded first
 export PATH="$HOME/.bin:$PATH"
 
