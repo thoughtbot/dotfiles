@@ -13,7 +13,7 @@ warnings_as_errors: true
 enable_static_analyzer: true
 indentation_level: 4
 use_tabs: false
-use_cocoapods: false
+dependency_managers: cocoapods
 enable_settings: true
 strict_prompts: false
 deployment_target: 8.0
@@ -64,24 +64,15 @@ project_template: swift
 app_target_templates:
   objc:
     - <%= project_name %>:
-      - Common:
-        - Categories:
-        - Protocols:
-        - Headers:
-        - Data:
-          - Entities:
-          - ViewModels:
+      - Categories:
+      - Protocols:
+      - Headers:
+      - Models:
+      - ViewModels:
+      - Controllers:
         - <%= prefix %>AppDelegate.h
         - <%= prefix %>AppDelegate.m
-      - Modules:
-        - Application:
-          - Interactor:
-        - UserInterface:
-          - Presenter:
-          - View:
-            - Views:
-            - ViewControllers:
-          - Wireframe:
+      - Views:
       - Resources:
         - Images.xcassets
         - Storyboards:
@@ -94,22 +85,13 @@ app_target_templates:
           - main.m
   swift:
     - <%= project_name %>:
-      - Common:
-        - Extensions:
-        - Protocols:
-        - Data:
-          - Entities:
-          - ViewModels:
+      - Extensions:
+      - Protocols:
+      - Models:
+      - ViewModels:
+      - Controllers:
         - AppDelegate.swift
-      - Modules:
-        - Application:
-          - Interactor:
-        - UserInterface:
-          - Presenter:
-          - View:
-            - Views:
-            - ViewControllers:
-          - Wireframe:
+      - Views:
       - Resources:
         - Images.xcassets
         - Storyboards:
