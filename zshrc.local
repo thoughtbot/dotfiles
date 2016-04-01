@@ -44,3 +44,9 @@ fi
 # ensure dotfiles bin directory is loaded first
 export PATH="$HOME/.bin:$PATH"
 
+source $ZSH/antigen.zsh
+
+antigen theme simple
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle git
+antigen apply
