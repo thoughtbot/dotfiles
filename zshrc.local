@@ -4,3 +4,45 @@ ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+export ZSH=$HOME/dotfiles/zsh
+
+# Xcode specific paths need to be declared first
+DEVELOPER_PATH=`xcode-select --print-path`
+export DEVELOPER_PATH
+
+DEVELOPER_DIR=$DEVELOPER_PATH
+export DEVELOPER_DIR
+
+IPHONEOS_DEVELOPER_PATH=$DEVELOPER_PATH/Platforms/iPhoneOS.platform/Developer
+export IPHONEOS_DEVELOPER_PATH
+
+# system path and environment variables need to be loaded before everything else
+export PATH=/usr/local/bin:/usr/local/sbin:"${DEVELOPER_PATH}"/usr/bin:"${IPHONEOS_DEVELOPER_PATH}"/usr/bin:"${PATH}"
+
+MANPATH=/usr/local/share/man:/usr/share/man
+export MANPATH
+
+CODE=~/Development
+export CODE
+
+# mkdir .git/safe in the root of repositories you trust
+export PATH=".git/safe/../../bin:${PATH}"
+
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+
+if which swiftenv > /dev/null; then
+  eval "$(swiftenv init -)";
+fi
+
+# Add GHC to the PATH, via http://ghcformacosx.github.io/
+export GHC_DOT_APP="/Applications/GHC.app"
+if [ -d "$GHC_DOT_APP" ]; then
+  export PATH="${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
+fi
+
+export HOMEBREW_GITHUB_API_TOKEN="ed8c372cc91e78124ae3f44dcf8f8c2a042ec879"
+
+# ensure dotfiles bin directory is loaded first
+export PATH="$HOME/.bin:$PATH"
+

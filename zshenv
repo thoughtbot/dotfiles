@@ -1,52 +1,32 @@
-# use vim as the visual editor
-export VISUAL=vim
-export EDITOR=$VISUAL
+local _old_path="$PATH"
 
-DOTFILES=~/.dotfiles
-ZSH=$DOTFILES/zsh
-
-# Xcode specific paths need to be declared first
-DEVELOPER_PATH=`xcode-select --print-path`
-export DEVELOPER_PATH
-
-DEVELOPER_DIR=$DEVELOPER_PATH
-export DEVELOPER_DIR
-
-IPHONEOS_DEVELOPER_PATH=$DEVELOPER_PATH/Platforms/iPhoneOS.platform/Developer
-export IPHONEOS_DEVELOPER_PATH
-
-# system path and environment variables need to be loaded before everything else
-export PATH=/usr/local/bin:/usr/local/sbin:"${DEVELOPER_PATH}"/usr/bin:"${IPHONEOS_DEVELOPER_PATH}"/usr/bin:"${PATH}"
-
-MANPATH=/usr/local/share/man:/usr/share/man
-export MANPATH
-
-CODE=~/Development
-export CODE
-
-# mkdir .git/safe in the root of repositories you trust
-export PATH=".git/safe/../../bin:${PATH}"
-
-# load rbenv if available
-if which rbenv &>/dev/null ; then
-  eval "$(rbenv init - --no-rehash)"
-fi
-
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
-
-if which swiftenv > /dev/null; then
-  eval "$(swiftenv init -)";
-fi
-
-# Add GHC to the PATH, via http://ghcformacosx.github.io/
-export GHC_DOT_APP="/Applications/GHC.app"
-if [ -d "$GHC_DOT_APP" ]; then
-  export PATH="${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
-fi
-
-# ensure dotfiles bin directory is loaded first
-export PATH="$HOME/.bin:$PATH"
+export DOTFILES=~/dotfiles
+export ZSH=$DOTFILES/zsh
 
 # Local config
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
+
+if [[ $PATH != $_old_path ]]; then
+  # `colors` isn't initialized yet, so define a few manually
+  typeset -AHg fg fg_bold
+  if [ -t 2 ]; then
+    fg[red]=$'\e[31m'
+    fg_bold[white]=$'\e[1;37m'
+    reset_color=$'\e[m'
+  else
+    fg[red]=""
+    fg_bold[white]=""
+    reset_color=""
+  fi
+
+  cat <<MSG >&2
+${fg[red]}Warning:${reset_color} your \`~/.zshenv.local' configuration seems to edit PATH entries.
+Please move that configuration to \`.zshrc.local' like so:
+  ${fg_bold[white]}cat ~/.zshenv.local >> ~/.zshrc.local && rm ~/.zshenv.local${reset_color}
+
+(called from ${(%):-%N:%i})
+
+MSG
+fi
+
+unset _old_path

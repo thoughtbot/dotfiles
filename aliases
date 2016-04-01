@@ -9,7 +9,7 @@ alias v="$VISUAL"
 alias b="bundle"
 
 # Rails
-alias migrate="rake db:migrate db:rollback && rake db:migrate"
+alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
 alias s="rspec"
 
 # Pretty print the path

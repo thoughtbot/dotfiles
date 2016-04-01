@@ -20,16 +20,20 @@ case $state in
       "show[Show the source location of a particular gem in the bundle]" \
       "console[Start an IRB session in the context of the current bundle]" \
       "open[Open an installed gem in the editor]" \
+      "lock[Generate a lockfile for your dependencies]" \
       "viz[Generate a visual representation of your dependencies]" \
       "init[Generate a simple Gemfile, placed in the current directory]" \
       "gem[Create a simple gem, suitable for development with bundler]" \
-      "help[Describe available tasks or one specific task]"
+      "help[Describe available tasks or one specific task]" \
+      "platform[Displays platform compatibility information]" \
+      "outdated[Show all of the outdated gems in the current bundle]" \
+      "clean[Cleans up unused gems in your bundler directory]"
     ret=0
     ;;
   args)
     case $line[1] in
       help)
-        _values 'commands' 'install update package exec config check list show console open viz init gem help' && ret=0
+        _values 'commands' 'install' 'update' 'package' 'exec' 'config' 'check' 'list' 'show' 'console' 'open' 'lock' 'viz' 'init' 'gem' 'help' 'platform' 'outdated' 'clean' && ret=0
         ;;
       install)
         _arguments \
@@ -66,4 +70,3 @@ case $state in
 esac
 
 return ret
-

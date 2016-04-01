@@ -6,7 +6,9 @@ git_prompt_info() {
   fi
 }
 setopt promptsubst
-export PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info) %# '
+export
+PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info)
+%# '
 
 # load our own completion functions
 fpath=($ZSH/completion /usr/local/share/zsh/site-functions $fpath)
@@ -80,6 +82,11 @@ bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
+# load custom executable functions
+for function in ~/.zsh/functions/*; do
+  source $function
+done
+
 # extra files in ~/.zsh/configs/pre , ~/.zsh/configs , and ~/.zsh/configs/post
 # these are loaded first, second, and third, respectively.
 _load_settings() {
@@ -116,14 +123,7 @@ _load_settings() {
 }
 _load_settings "$HOME/.zsh/configs"
 
-# oh-my-zsh config
-[[ -f ~/.ohmyzshrc ]] && source ~/.ohmyzshrc
-
-# Local config
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
-
-# added by travis gem
-[ -f /Users/jessearmand/.travis/travis.sh ] && source /Users/jessearmand/.travis/travis.sh
-
+# aliases
+[[ -f ~/.aliases ]] && source ~/.aliases
 
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh

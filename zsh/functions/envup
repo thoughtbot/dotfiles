@@ -2,7 +2,7 @@
 
 function envup() {
   if [ -f .env ]; then
-    export `cat .env`
+    export $(cat .env)
   else
     echo 'No .env file found' 1>&2
     return 1

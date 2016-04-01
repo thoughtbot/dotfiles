@@ -30,3 +30,4 @@ DerivedData
 *.hmap
 *.ipa
 
+*.pyc

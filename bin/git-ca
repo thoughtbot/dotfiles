@@ -1,0 +1,3 @@
+#!/bin/sh
+
+git commit --amend -v --date="$(date +%Y-%m-%dT%H:%M:%S)"
