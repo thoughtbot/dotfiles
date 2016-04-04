@@ -28,8 +28,8 @@ export CODE
 # mkdir .git/safe in the root of repositories you trust
 export PATH=".git/safe/../../bin:${PATH}"
 
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+export NVM_DIR="$HOME/.nvm"
+. "$(brew --prefix nvm)/nvm.sh"
 
 if which swiftenv > /dev/null; then
   eval "$(swiftenv init -)";
@@ -50,3 +50,5 @@ antigen theme simple
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle git
 antigen apply
+
+test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
