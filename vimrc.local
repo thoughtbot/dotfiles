@@ -65,12 +65,6 @@ map <Leader>s :SyntasticToggleMode<CR>
 " To always show the errors list when editing
 let g:syntastic_auto_loc_list=1
 
-" ghcmod with syntastic
-" Reload
-map <silent> tu :call GHC_BrowseAll()<CR>
-" Type Lookup
-map <silent> tw :call GHC_ShowType(1)<CR>
-
 " hdevtools with syntastic
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
