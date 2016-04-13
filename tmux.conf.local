@@ -19,4 +19,5 @@ bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
 # Enable interaction between tmux shell and the OS (e.g. open)
 set -g default-command "reattach-to-user-namespace -l /bin/bash"
 set -g default-command "reattach-to-user-namespace -l /bin/zsh"
+set -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh"
 
