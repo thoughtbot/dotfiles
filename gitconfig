@@ -1,34 +1,35 @@
 [init]
-  templatedir = ~/.git_template
+	templatedir = ~/.git_template
 [push]
-  default = current
+	default = current
 [color]
-  ui = auto
+	ui = auto
 [alias]
-  aa = add --all
-  ap = add --patch
-  branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
-  ci = commit -v
-  co = checkout
-  pf = push --force-with-lease
-  st = status
+	aa = add --all
+	ap = add --patch
+	branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
+	ci = commit -v
+	co = checkout
+	pf = push --force-with-lease
+	st = status
 [core]
-  excludesfile = ~/.gitignore
-  autocrlf = input
-  whitespace = trailing-space,space-before-tab
+	excludesfile = ~/.gitignore
+	autocrlf = input
+	whitespace = trailing-space,space-before-tab
 [apply]
-  whitespace = fix
+	whitespace = fix
 [merge]
-  ff = only
+	ff = only
 [commit]
-  template = ~/.gitmessage
+	template = ~/.gitmessage
+	gpgsign = true
 [fetch]
-  prune = true
+	prune = true
 [rebase]
-  autosquash = true
+	autosquash = true
 [include]
-  path = ~/.gitconfig.local
+	path = ~/.gitconfig.local
 [filter "lfs"]
-  clean = git-lfs clean %f
-  smudge = git-lfs smudge %f
-  required = true
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
