@@ -1,6 +1,7 @@
 .DS_Store
 *.sw[nop]
 .bundle
+.byebug_history
 .env
 db/*.sqlite3
 log/*.log
