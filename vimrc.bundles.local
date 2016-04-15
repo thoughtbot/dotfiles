@@ -22,7 +22,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'christoomey/vim-tmux-navigator'
 
 " statusline
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 
 " json

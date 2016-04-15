@@ -4,13 +4,6 @@ highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
 set nocursorline " don't highlight current line
 
-let g:tmuxline_separators = {
-      \ 'left' : '',
-      \ 'left_alt': '>',
-      \ 'right' : '',
-      \ 'right_alt' : '<',
-      \ 'space' : ' '}
-
 " keyboard shortcuts
 inoremap jj <ESC>
 
@@ -92,6 +85,5 @@ let g:gist_open_browser_after_post = 1
 let g:gist_detect_filetype = 1
 let g:gist_clip_command = 'pbcopy'
 
-
-
+let g:airline_powerline_fonts = 1
 
