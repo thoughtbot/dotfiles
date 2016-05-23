@@ -13,3 +13,11 @@
 --regex-Elixir=/^[ \t]*defprotocol[ \t]+([A-Z][a-zA-Z0-9_]*\.)*([A-Z][a-zA-Z0-9_?!]*)/\2/p,protocols,protocols (defprotocol...)/
 --regex-Elixir=/^[ \t]*Record\.defrecord[ \t]+:([a-zA-Z0-9_]+)/\1/r,records,records (defrecord...)/
 --regex-Elixir=/^[ \t]*test[ \t]+\"([a-z_][a-zA-Z0-9_?! ]*)\"*/\1/t,tests,tests (test ...)/
+--exclude=bower_components
+--exclude=node_modules
+--exclude=vendor
+--languages=-javascript
+--langdef=js
+--langmap=js:.js
+--langmap=js:+.jsx
+--regex-js=/[ \t.]([A-Z][A-Z0-9._$]+)[ \t]*[=:][ \t]*([0-9"'\[\{]|null)/\1/n,constant/
