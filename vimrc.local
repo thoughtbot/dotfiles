@@ -36,7 +36,7 @@ let g:syntastic_cucumber_checkers = []
 " not sure why these aren't running by default?
 " let g:syntastic_ruby_checkers = ['rubymri', 'rubylint']
 
-" let g:syntastic_haml_checkers = ['haml_lint']
+let g:syntastic_haml_checkers = ['haml_lint']
 
 nnoremap <leader>o :CtrlP<CR>
 
