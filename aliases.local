@@ -1,8 +1,12 @@
 # shell
+alias c=cucumber
 alias htop="sudo htop"
 alias top="htop"
 alias tailf="tail -f"
 alias j=z
+alias tree="tree -C"
+alias o="open"
+alias f="find . -name "
 
 # git
 function g {
@@ -28,6 +32,8 @@ alias d='git checkout develop '
 alias gx='gitx'
 alias gl='git log --oneline --graph --all --decorate'
 alias grom='git rebase origin/master'
+alias gs='git stash --include-untracked'
+alias mup='git checkout master && git pull && git checkout -'
 
 # ruby
 alias be="bundle exec"
@@ -35,16 +41,26 @@ alias bi="bundle install"
 alias bu="bundle update"
 alias latest-ruby="brew update && brew upgrade rbenv ruby-build && gem install bundler && gem install gem-ctags && gem ctags"
 alias push="rake && git push"
-alias r="rails"
-alias rdbm="rake db:migrate"
 alias rk="rake"
+alias rdbm="rake db:migrate"
+alias rdbr="rake db:rollback"
+alias snf="rspec --next-failure"
 
 # rails
 alias ttr="touch tmp/restart.txt"
 alias refill="rails g refills:import "
 
+# tmux
+alias takeover="tmux detach -a" # http://stackoverflow.com/a/19280187
+
 # tmuxinator
 alias tm=tmuxinator
 alias tms=tmuxinator start
+
+# vagrant
+alias vs="vagrant ssh"
+
+# elixir (for command history)
+alias iex="rlwrap -a -A iex"
 
 [[ -f ~/.aliases.local.temporary ]] && source ~/.aliases.local.temporary
