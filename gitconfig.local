@@ -15,4 +15,9 @@
 [rebase]
   autostash = true
 [alias]
-  trash = "!git add . && git commit -m 'trash' && git reset --hard HEAD^"
+  trash = "!git add . && git commit -m 'Trash' && git reset --hard HEAD^"
+  empty = "!git commit --allow-empty -m 'Empty commit'"
+  amend = "!git commit --amend --no-edit"
+  unstage = "!git reset"
+  uncommit = "!git reset --soft HEAD^"
+  sla = "!git log --oneline --graph --all --decorate"
