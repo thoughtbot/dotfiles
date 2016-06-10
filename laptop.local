@@ -5,32 +5,38 @@ brew_install_or_upgrade gitsh
 brew_install_or_upgrade go
 brew_install_or_upgrade graphviz
 brew_install_or_upgrade htop # needs sudo
+brew_install_or_upgrade intellij-idea
 brew_install_or_upgrade jsonpp
 brew_install_or_upgrade leiningen
 brew_install_or_upgrade macvim
 brew_install_or_upgrade mongodb
 brew_install_or_upgrade mysql
 brew_install_or_upgrade phantomjs
-brew_install_or_upgrade pow # note: needs manual steps
+brew_install_or_upgrade pow # manual steps
 brew_install_or_upgrade qlmarkdown
 brew_install_or_upgrade rmtrash
 brew_install_or_upgrade ruby-install
+brew_install_or_upgrade sloccount
 brew_install_or_upgrade sqlite
+brew_install_or_upgrade the-unarchiver
+# brew_install_or_upgrade timeout # licensed via App Store
 brew_install_or_upgrade tig
 brew_install_or_upgrade tree
 brew_install_or_upgrade wget
 brew_install_or_upgrade youtube-dl
 brew_install_or_upgrade z
 
+# brew cask install 1password # licensed via App Store
 brew cask install alfred
 brew cask install arq
 brew cask install atom
 brew cask install coconutbattery
+# brew cask install dash # licensed via App Store
 brew cask install doxie
 brew cask install duet
 brew cask install docker-machine
-brew cask install google-chrome
 brew cask install google-drive
+brew cask install handbrake
 brew cask install iterm2
 brew cask install karabiner
 brew cask install rowanj-gitx
@@ -38,7 +44,7 @@ brew cask install dropbox
 brew cask install evernote
 brew cask install fluid
 brew cask install flux
-brew cask install google-chrome
+# brew cask install google-chrome # problems with 1password
 brew cask install istat-menus
 brew cask install kindle
 brew cask install launchrocket
@@ -52,10 +58,11 @@ brew cask install omnidisksweeper
 brew cask install onyx
 brew cask install rescuetime
 brew cask install rowanj-gitx
+brew cask install screenhero
 brew cask install skype
 brew cask install sonos
 brew cask install spotify
-brew cask install spectacle # NOTE: requires manual configuration
+brew cask install spectacle # requires manual configuration
 brew cask install time-out
 brew cask install transmission
 brew cask install tvshows
@@ -66,6 +73,7 @@ brew cask install virtualbox
 brew tap nviennot/tmate
 brew_install_or_upgrade tmate
 
-# Purchased via the Mac App Store
-# brew cask install dash # licensed via App Store
-# brew cask install 1password
+gem install gem-ctags # https://upcase.com/videos/intelligent-navigation-with-ctags
+mkdir -p ~/.rbenv/plugins
+git clone git://github.com/tpope/rbenv-ctags.git ~/.rbenv/plugins/rbenv-ctags
+rbenv ctags
