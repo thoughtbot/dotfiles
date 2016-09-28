@@ -1,0 +1,7 @@
+#!/bin/sh
+
+local_hook="$HOME"/.git_template.local/hooks/pre-push
+
+if [ -f "$local_hook" ]; then
+  . "$local_hook"
+fi
