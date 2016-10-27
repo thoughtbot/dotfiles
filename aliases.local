@@ -62,5 +62,12 @@ alias vs="vagrant ssh"
 
 # elixir (for command history)
 alias iex="rlwrap -a -A iex"
+alias im="iex -S mix"
 
 [[ -f ~/.aliases.local.temporary ]] && source ~/.aliases.local.temporary
+
+# scheme https://thesabbir.com/setting-up-mit-scheme-on-os-x-yosemite-with-homebrew/
+alias scheme="rlwrap -r -c -f ~/dotfiles-local/mit_scheme_bindings.txt scheme"
+
+# sourcetree
+alias st=stree
