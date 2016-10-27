@@ -1,3 +1,5 @@
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$' " Highlight git conflict markers
+
 if v:version < 704
   echo "Warning - old Vim version"
 endif
