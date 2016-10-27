@@ -56,11 +56,13 @@ brew cask install selfcontrol
 brew cask install sublime-text
 brew cask install omnidisksweeper
 brew cask install onyx
+brew cask install quitter
 brew cask install rescuetime
 brew cask install rowanj-gitx
 brew cask install screenhero
 brew cask install skype
 brew cask install sonos
+brew cask install sourcetree
 brew cask install spotify
 brew cask install spectacle # requires manual configuration
 brew cask install time-out
