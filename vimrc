@@ -150,6 +150,9 @@ set complete+=kspell
 " Always use vertical diffs
 set diffopt+=vertical
 
+" Disable editconfig for fugitive
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
 " Local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
