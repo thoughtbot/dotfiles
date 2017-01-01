@@ -1,0 +1,3 @@
+alias aliases="vim ~/dotfiles/aliases.local"
+alias gitconfig="vim ~/dotfiles/gitconfig.local"
+alias gs="git status"
