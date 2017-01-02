@@ -1,8 +1,8 @@
 
 # New machine configuration
 
-sudo apt-get install vim docker docker-compose
-- install git chrome, dropbox, emacs, sublime
+- sudo apt-get install vim docker docker-compose calibre
+- install git chrome, dropbox, emacs 23, sublime
 - generate a ssh key to add to github (https://help.github.com/articles/generating-an-ssh-key)
 - install oh-my-zsh https://github.com/robbyrussell/oh-my-zsh
 - use this repo to config other dotfiles. 
