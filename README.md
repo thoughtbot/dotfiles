@@ -1,10 +1,10 @@
 
 # New machine configuration
 
+- install oh-my-zsh https://github.com/robbyrussell/oh-my-zsh 
+- install chrome, dropbox, emacs 24.4+, sublime, rvm
 - sudo apt-get install vim docker docker-compose calibre
-- install chrome, dropbox, emacs 24.4+, sublime
 - generate a ssh key to add to github (https://help.github.com/articles/generating-an-ssh-key)
-- install oh-my-zsh https://github.com/robbyrussell/oh-my-zsh
 - use this repo to config other dotfiles. 
   - take care renaming the project directory: git clone git://github.com/regishideki/dotfiles-1.git ~/dotfiles 
   - take care when installing vim-plug. ~/.vim/autoload/plug.vim file must be readable without `sudo`
