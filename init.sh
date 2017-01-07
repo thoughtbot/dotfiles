@@ -42,4 +42,4 @@ clone_from_projects $personal_workspace $personal_github $personal_projects
 clone_from_projects $bankfacil_workspace $bankfacil_github $bankfacil_projects
 clone_from_projects ~/ $personal_github $config_projects
 
-cd personal_workspace/dotfiles-1i
+cd personal_workspace/dotfiles-1
