@@ -6,7 +6,7 @@ if [ ! -e "$HOME"/.vim/autoload/plug.vim ]; then
   curl -fLo "$HOME"/.vim/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
-vim -u "$HOME"/.vimrc.bundles +PlugInstall +PlugClean! +qa -
+vim -u "$HOME"/.vimrc.bundles +PlugInstall +PlugClean! +qa
 
 # detect old OS X broken /etc/zshenv and suggest rename
 if grep -qw path_helper /etc/zshenv 2>/dev/null; then
