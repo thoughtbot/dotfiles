@@ -48,7 +48,7 @@ source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/chruby/share/chruby/auto.sh
 
 # python
-eval "$(pyenv init -)"
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 # ensure dotfiles bin directory is loaded first
 export PATH="$HOME/.bin:$PATH"

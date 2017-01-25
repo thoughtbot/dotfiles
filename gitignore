@@ -9,6 +9,8 @@ tags
 !tags/
 tmp/**/*
 !tmp/cache/.keep
+node_modules
+*eslintrc*
 
 # Created by http://www.gitignore.io
 
