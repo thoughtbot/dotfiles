@@ -44,7 +44,6 @@ configuration options:
   `~/dotfiles-local`
 * Please configure the `rcrc` file if you'd like to make personal
   overrides in a different directory
-  
 
 You can safely run `rcup` multiple times to update:
 
