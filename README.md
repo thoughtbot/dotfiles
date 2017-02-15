@@ -42,6 +42,9 @@ configuration options:
   the `dotfiles` repository but do not need to be symlinked in.
 * Give precedence to personal overrides which by default are placed in
   `~/dotfiles-local`
+* Please configure the `rcrc` file if you'd like to make personal
+  overrides in a different directory
+  
 
 You can safely run `rcup` multiple times to update:
 
