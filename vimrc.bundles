@@ -29,6 +29,7 @@ call plug#begin('~/.vim/bundle')
 " Define bundles via Github repos
 Plug 'christoomey/vim-run-interactive'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'elixir-lang/vim-elixir'
 Plug 'fatih/vim-go'
 Plug 'janko-m/vim-test'
 Plug 'kchmck/vim-coffee-script'
