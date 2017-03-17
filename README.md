@@ -53,7 +53,7 @@ any new files in the repository.
 Make your own customizations
 ----------------------------
 
-Put your customizations in dotfiles appended with `.local`:
+Put your customizations in `~/dotfiles-local` appended with `.local`:
 
 * `~/.aliases.local`
 * `~/.git_template.local/*`
