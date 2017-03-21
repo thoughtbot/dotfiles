@@ -15,3 +15,10 @@ alias doccore="docker exec -it core"
 alias docspec="doccore rspec"
 alias preparetest="docker exec -it -e HANAMI_ENV=test core hanami db prepare"
 alias preparedev="doccore hanami db prepare"
+
+gitmerge() {
+  git checkout $1
+  git pull origin $1
+  git checkout -
+  git merge $1
+}
