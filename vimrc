@@ -87,10 +87,12 @@ set colorcolumn=+1
 set number
 set numberwidth=5
 
+" Control tab completion of filenames
+set wildmenu wildmode=longest:full,full
+
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning
-set wildmode=list:longest,list:full
 function! InsertTabWrapper()
     let col = col('.') - 1
     if !col || getline('.')[col - 1] !~ '\k'
