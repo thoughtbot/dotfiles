@@ -64,7 +64,6 @@ Put your customizations in `~/dotfiles-local` appended with `.local`:
 * `~/dotfiles-local/aliases.local`
 * `~/dotfiles-local/git_template.local/*`
 * `~/dotfiles-local/gitconfig.local`
-* `~/dotfiles-local/gvimrc.local`
 * `~/dotfiles-local/psqlrc.local` (we supply a blank `.psqlrc.local` to prevent `psql` from
   throwing an error, but you should overwrite the file with your own copy)
 * `~/dotfiles-local/tmux.conf.local`
