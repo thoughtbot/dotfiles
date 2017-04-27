@@ -2,7 +2,12 @@ colorscheme github
 highlight NonText guibg=#060606
 highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
-set nocursorline " don't highlight current line
+" Highlight current line
+set cursorline
+highlight CursorLine cterm=NONE
+
+" Turn on relative line number
+set relativenumber
 
 " keyboard shortcuts
 inoremap jj <ESC>
