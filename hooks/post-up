@@ -8,6 +8,8 @@ if [ ! -e "$HOME"/.vim/autoload/plug.vim ]; then
 fi
 vim -u "$HOME"/.vimrc.bundles +PlugInstall +PlugClean! +qa
 
+reset -Q
+
 # detect old OS X broken /etc/zshenv and suggest rename
 if grep -qw path_helper /etc/zshenv 2>/dev/null; then
   if [ -t 2 ]; then
