@@ -1,0 +1,3 @@
+tbot () {
+  open "https://tbot.io/$1"
+}
