@@ -42,5 +42,8 @@ _load_settings "$HOME/.zsh/configs"
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
+# disable spring, it breaks everything
+export DISABLE_SPRING=1
+
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
