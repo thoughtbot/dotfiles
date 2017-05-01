@@ -1,0 +1,15 @@
+# List domains that should be ignored here.
+# One domain per line, lines starting with # will be ignored.
+
+ads.as4x.tmcs.ticketmaster.ca
+ads.as4x.tmcs.ticketmaster.com
+ads.livenation.com
+livenation.122.2o7.net
+livenation.sp1.convertro.com
+metrics.ticketmaster.com
+wt.ticketmaster.com
+google-analytics.com
+www.google-analytics.com
+cdn.siftscience.com
+b.siftscience.com
+www.googletagservices.com
