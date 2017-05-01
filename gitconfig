@@ -3,7 +3,12 @@
 [push]
   default = current
 [color]
+  diff = auto
+  status = true
+  branch = auto
+  interactive = auto
   ui = auto
+  log = true
 [alias]
   aa = add --all
   ap = add --patch
@@ -12,16 +17,46 @@
   co = checkout
   pf = push --force-with-lease
   st = status
+  pl = pull
+  ps = push
+  dt = difftool
+  l = log --stat
+  cp = cherry-pick
+  ca = commit -a
+  b = branch
+  last = log -l HEAD
+  lol = log --pretty=oneline --abbrev-commit --graph --decorate
+[diff]
+  renames = copy
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
 [merge]
-  ff = only
+  summary = true
+  tool = vimdiff
+[diff]
+  renames = copy
+[status]
+  submodulesummary = -1
+[mergetool "vimdiff"]
+  cmd = "vim --noplugin \"$PWD/$MERGED\" \
+        +\":split $PWD/$REMOTE\" +\":set buftype=nowrite\" \
+        +\":vertical diffsplit $PWD/$LOCAL\" +\":set buftype=nowrite\" \
+        +\":vertical diffsplit $PWD/$BASE\" +\":set buftype=nowrite\" \
+        +\":wincmd l\""
+[format]
+  numbered = auto
+[filter "lfs"]
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
 [commit]
   template = ~/.gitmessage
 [fetch]
   prune = true
 [rebase]
   autosquash = true
+
+
 [include]
   path = ~/.gitconfig.local
