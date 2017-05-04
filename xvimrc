@@ -1,2 +1,4 @@
 set relativenumber
 set number
+
+nmap wt :%s/[ \t]+$//<cr>
