@@ -1,3 +1,6 @@
+export VISUAL=vim
+export EDITOR=$VISUAL
+
 local _old_path="$PATH"
 
 # Local config
