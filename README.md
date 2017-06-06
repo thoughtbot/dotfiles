@@ -225,6 +225,13 @@ Shell aliases and scripts:
 * `tat` to attach to tmux session named the same as the current directory.
 * `v` for `$VISUAL`.
 
+Mac OS X
+------
+
+If you are having trouble with copying from / to the Mac OS X system clipboard,
+the [following post][vimcopy] may be able to help.
+
+
 Thanks
 ------
 
@@ -255,3 +262,4 @@ We are [available for hire][hire].
 
 [community]: https://thoughtbot.com/community?utm_source=github
 [hire]: https://thoughtbot.com/hire-us?utm_source=github
+[vimcopy]: https://evertpot.com/osx-tmux-vim-copy-paste-clipboard/
