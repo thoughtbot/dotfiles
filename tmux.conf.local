@@ -5,19 +5,26 @@ bind -n C-k run "(tmux display-message -p '#{pane_current_command}' | grep -iq v
 bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-l) || tmux select-pane -R"
 bind -n C-\ run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys 'C-\\') || tmux select-pane -l"
 
-# Use vim keybindings in copy mode
-setw -g mode-keys vi
+unbind-key -T edit-mode-vi Up ; bind-key -T edit-mode-vi Up send-keys -X history-up
+unbind-key -T edit-mode-vi Down ; bind-key -T edit-mode-vi Down send-keys -X history-down
 
 # Setup 'v' to begin selection as in Vim
-bind-key -t vi-copy v begin-selection
-bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
+unbind-key -T copy-mode-vi Space ; bind-key -T copy-mode-vi v send-keys -X begin-selection
 
-# Update default binding of `Enter` to also use copy-pipe
-unbind -t vi-copy Enter
-bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
+unbind-key -T copy-mode-vi v
+
+# Update default binding of `Enter` to also use copy-selection
+unbind-key -T copy-mode-vi Enter ; bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel "reattach-to-user-namespace pbcopy"
+unbind-key -T copy-mode-vi C-v ; bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
+unbind-key -T copy-mode-vi [ ; bind-key -T copy-mode-vi [ send-keys -X begin-selection
+unbind-key -T copy-mode-vi ] ; bind-key -T copy-mode-vi ] send-keys -X copy-selection
+
+unbind-key -T prefix p
+unbind-key -T copy-mode-vi p ; bind-key -T copy-mode-vi p send-keys -X paste-buffer
 
 # Enable interaction between tmux shell and the OS (e.g. open)
 set -g default-command "reattach-to-user-namespace -l /bin/bash"
 set -g default-command "reattach-to-user-namespace -l /bin/zsh"
 set -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh"
 
+set -g escape-time 10
