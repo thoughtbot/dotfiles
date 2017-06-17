@@ -1,3 +1,10 @@
 alias aliases="vim ~/dotfiles/aliases.local"
 alias gitconfig="vim ~/dotfiles/gitconfig.local"
+
 alias gs="git status"
+
+alias pl="cd ~/workspace/regis/programming-languages"
+
+alias prelude_install="rm -rf ~/.emacs.d && export PRELUDE_URL=https://github.com/regishideki/prelude.git && curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh"
+
+alias irb="source /home/regis/.rvm/scripts/rvm && irb"
