@@ -2,6 +2,7 @@
 let mapleader = " "
 
 set backspace=2   " Backspace deletes like most programs in insert mode
+set backspace=indent,eol,start
 set nobackup
 set nowritebackup
 set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
