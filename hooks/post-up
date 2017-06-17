@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 touch "$HOME"/.psqlrc.local
 
@@ -8,33 +8,19 @@ if [ ! -e "$HOME"/.vim/autoload/plug.vim ]; then
 fi
 vim -u "$HOME"/.vimrc.bundles +PlugInstall +PlugClean! +qa
 
+reset -Q
+
 # detect old OS X broken /etc/zshenv and suggest rename
 if grep -qw path_helper /etc/zshenv 2>/dev/null; then
-  if [ -t 2 ]; then
-    fg_red=$'\e[31m'
-    fg_bold_white=$'\e[1;37m'
-    reset_color=$'\e[m'
-  else
-    fg_red=""
-    fg_bold_white=""
-    reset_color=""
-  fi
-
-  # resolve BASH_SOURCE to absolute path
-  bash_source="$BASH_SOURCE"
-  if [[ $bash_source == */* ]]; then
-    pushd "${bash_source%/*}" >/dev/null
-    bash_source="${PWD}/${bash_source##*/}"
-    popd >/dev/null
-  fi
+  dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd -P)
 
   cat <<MSG >&2
-${fg_red}Warning:${reset_color} \`/etc/zshenv' configuration file on your system may cause unexpected
+Warning: \`/etc/zshenv' configuration file on your system may cause unexpected
 PATH changes on subsequent invocations of the zsh shell. The solution is to
 rename the file to \`zprofile':
-  ${fg_bold_white}sudo mv /etc/{zshenv,zprofile}${reset_color}
+  sudo mv /etc/{zshenv,zprofile}
 
-(called from ${bash_source}:${LINENO})
+(called from ${dir}/post-up:${LINENO})
 
 MSG
 fi
