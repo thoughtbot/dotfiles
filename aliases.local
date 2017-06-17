@@ -8,3 +8,24 @@ alias pl="cd ~/workspace/regis/programming-languages"
 alias prelude_install="rm -rf ~/.emacs.d && export PRELUDE_URL=https://github.com/regishideki/prelude.git && curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh"
 
 alias irb="source /home/regis/.rvm/scripts/rvm && irb"
+alias work="cd ~/workspace"
+alias bkf="work; cd bankfacil"
+alias core="bkf; cd core"
+alias dockerdev="bkf; cd docker-dev"
+alias mdo="bkf; middle-office"
+
+alias netbkf="docker network create bankfacil"
+alias uppg="dockerdev; docker-compose up -d postgres; cd -"
+alias upcore="core; docker-compose up -d core"
+alias doccore="docker exec -it core"
+alias docspec="doccore rspec"
+alias preparetest="docker exec -it -e HANAMI_ENV=test core hanami db prepare"
+alias preparedev="doccore hanami db prepare"
+
+gitmerge() {
+  git checkout $1
+  git pull origin $1
+  git checkout -
+  git merge $1
+}
+
