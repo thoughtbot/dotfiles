@@ -103,7 +103,7 @@ inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <S-Tab> <c-n>
 
 " Switch between the last two files
-nnoremap <leader><leader> <c-^>
+nnoremap <Leader><Leader> <c-^>
 
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
@@ -116,7 +116,7 @@ nnoremap <silent> <Leader>t :TestFile<CR>
 nnoremap <silent> <Leader>s :TestNearest<CR>
 nnoremap <silent> <Leader>l :TestLast<CR>
 nnoremap <silent> <Leader>a :TestSuite<CR>
-nnoremap <silent> <leader>gt :TestVisit<CR>
+nnoremap <silent> <Leader>gt :TestVisit<CR>
 
 " Run commands that require an interactive shell
 nnoremap <Leader>r :RunInInteractiveShell<space>
