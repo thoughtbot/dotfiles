@@ -153,6 +153,9 @@ set complete+=kspell
 " Always use vertical diffs
 set diffopt+=vertical
 
+map <Leader>i mmgg=G`m<CR>
+map <Leader>x :exec getline(".")<cr>
+
 " Local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
