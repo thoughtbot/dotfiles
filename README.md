@@ -55,7 +55,7 @@ any new files in the repository.
 Make your own customizations
 ----------------------------
 
-Create a directory for your personal customizations: 
+Create a directory for your personal customizations:
 
     mkdir ~/dotfiles-local
 
@@ -209,6 +209,7 @@ configuration:
 * Adds `post-{checkout,commit,merge}` hooks to re-index your ctags.
 * Adds `pre-commit` and `prepare-commit-msg` stubs that delegate to your local
   config.
+* Adds `trust-bin` alias to append a project's `bin/` directory to `$PATH`.
 
 [Ruby](https://www.ruby-lang.org/en/) configuration:
 
