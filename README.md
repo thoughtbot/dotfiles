@@ -219,7 +219,7 @@ configuration:
 [Ruby](https://www.ruby-lang.org/en/) configuration:
 
 * Add trusted binstubs to the `PATH`.
-* Load rbenv into the shell, adding shims onto our `PATH`.
+* Load the ASDF version manager, falling back to rbenv if not installed.
 
 Shell aliases and scripts:
 
