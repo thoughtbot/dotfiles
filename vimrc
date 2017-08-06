@@ -25,6 +25,12 @@ if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
+" permits navigates in requires as hyperlinks
+augroup rubypath
+  autocmd FileType ruby setlocal suffixesadd+=.rb
+  autocmd FileType ruby setlocal path+=~/workspace/bankfacil/core/**
+augroup END
+
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
   runtime! macros/matchit.vim
