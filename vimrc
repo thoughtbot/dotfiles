@@ -18,10 +18,6 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
-if v:version < 800
-  echoerr "The thoughtbot dotfiles require NeoVim or Vim 8"
-endif
-
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
@@ -57,6 +53,8 @@ augroup vimrcEx
     autocmd CursorHoldI * call ale#Lint()
     autocmd InsertEnter * call ale#Lint()
     autocmd InsertLeave * call ale#Lint()
+  else
+    echoerr "The thoughtbot dotfiles require NeoVim or Vim 8"
   end
 augroup END
 
