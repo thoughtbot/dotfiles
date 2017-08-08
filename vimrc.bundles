@@ -56,7 +56,10 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/tComment'
-Plug 'w0rp/ale'
+
+if g:has_async
+  Plug 'w0rp/ale'
+endif
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

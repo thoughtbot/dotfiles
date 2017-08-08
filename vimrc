@@ -12,6 +12,8 @@ set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 
+let g:has_async = v:version >= 800 || has('nvim')
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
@@ -46,12 +48,16 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
 
   " ALE linting events
-  set updatetime=1000
-  let g:ale_lint_on_text_changed = 0
-  autocmd CursorHold * call ale#Lint()
-  autocmd CursorHoldI * call ale#Lint()
-  autocmd InsertEnter * call ale#Lint()
-  autocmd InsertLeave * call ale#Lint()
+  if g:has_async
+    set updatetime=1000
+    let g:ale_lint_on_text_changed = 0
+    autocmd CursorHold * call ale#Lint()
+    autocmd CursorHoldI * call ale#Lint()
+    autocmd InsertEnter * call ale#Lint()
+    autocmd InsertLeave * call ale#Lint()
+  else
+    echoerr "The thoughtbot dotfiles require NeoVim or Vim 8"
+  endif
 augroup END
 
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
