@@ -57,6 +57,8 @@ Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/tComment'
 
+let g:has_async = v:version >= 800 || has('nvim')
+
 if g:has_async
   Plug 'w0rp/ale'
 endif
