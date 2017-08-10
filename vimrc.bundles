@@ -32,6 +32,8 @@ endfunction
 com! -nargs=+  -bar Plugin call VundleToPlug("Plugin", <args>)
 com! -nargs=+  -bar Bundle call VundleToPlug("Bundle", <args>)
 
+let g:has_async = v:version >= 800 || has('nvim')
+
 call plug#begin('~/.vim/bundle')
 
 " Define bundles via Github repos
