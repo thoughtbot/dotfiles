@@ -1,7 +1,7 @@
 local _old_path="$PATH"
 
 # Local config
-[[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
+[[ -f ~/dotfiles-local/.zshenv.local ]] && source ~/dotfiles-local/.zshenv.local
 
 if [[ $PATH != $_old_path ]]; then
   # `colors` isn't initialized yet, so define a few manually
@@ -17,9 +17,9 @@ if [[ $PATH != $_old_path ]]; then
   fi
 
   cat <<MSG >&2
-${fg[red]}Warning:${reset_color} your \`~/.zshenv.local' configuration seems to edit PATH entries.
-Please move that configuration to \`.zshrc.local' like so:
-  ${fg_bold[white]}cat ~/.zshenv.local >> ~/.zshrc.local && rm ~/.zshenv.local${reset_color}
+${fg[red]}Warning:${reset_color} your \`~/dotfiles-local/zshenv.local' configuration seems to edit PATH entries.
+Please move that configuration to \`~/dotfiles-local/zshrc.local' like so:
+  ${fg_bold[white]}cat ~/dotfiles-local/zshenv.local >> ~/dotfiles-local/zshrc.local && rm ~/dotfiles-local/zshenv.local${reset_color}
 
 (called from ${(%):-%N:%i})
 

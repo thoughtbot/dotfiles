@@ -40,7 +40,7 @@ _load_settings() {
 _load_settings "$HOME/.zsh/configs"
 
 # Local config
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+[[ -f ~/dotfiles-local/zshrc.local ]] && source ~/dotfiles-local/zshrc.local
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
