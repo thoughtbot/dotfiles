@@ -1,6 +1,11 @@
 " Leader
 let mapleader = " "
 
+nnoremap <Leader>w :w!<CR>
+nnoremap <Leader>q :q!<CR>
+nnoremap <Leader>wq :wq!<CR>
+imap jj <Esc>
+
 set backspace=2   " Backspace deletes like most programs in insert mode
 set backspace=indent,eol,start
 set nobackup
