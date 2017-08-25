@@ -1,6 +1,7 @@
 alias aliases="vim ~/dotfiles/aliases.local"
 alias gitconfig="vim ~/dotfiles/gitconfig.local"
 alias vimrc="vim ~/dotfiles/vimrc"
+alias tmuxrc="vim ~/dotfiles/tmux.conf"
 
 alias gs="git status"
 
