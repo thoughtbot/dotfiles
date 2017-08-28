@@ -1,7 +1,13 @@
 " Leader
 let mapleader = " "
 
+nnoremap <Leader>w :w!<CR>
+nnoremap <Leader>q :q!<CR>
+nnoremap <Leader>wq :wq!<CR>
+imap jj <Esc>
+
 set backspace=2   " Backspace deletes like most programs in insert mode
+set backspace=indent,eol,start
 set nobackup
 set nowritebackup
 set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
@@ -9,8 +15,13 @@ set history=50
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
+set hlsearch
+map <Leader>h :noh<cr>
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
+
+" remove files from crlp
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/bower_components/*,*/node_modules/*,*/dist/*,*/vendor/*
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -21,6 +32,12 @@ endif
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
+
+" permits navigates in requires as hyperlinks
+augroup rubypath
+  autocmd FileType ruby setlocal suffixesadd+=.rb
+  autocmd FileType ruby setlocal path+=~/workspace/bankfacil/core/**
+augroup END
 
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
@@ -91,8 +108,7 @@ if executable('ag')
   endif
 endif
 
-" Make it obvious where 80 characters is
-set textwidth=80
+set textwidth=120
 set colorcolumn=+1
 
 " Numbers
@@ -160,7 +176,11 @@ set complete+=kspell
 " Always use vertical diffs
 set diffopt+=vertical
 
+map <Leader>i mmgg=G`m<CR>
+map <Leader>x :exec getline(".")<cr>
+
 " Local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
+autocmd VimEnter * redraw!

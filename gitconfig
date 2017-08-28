@@ -15,8 +15,6 @@
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
-[merge]
-  ff = only
 [commit]
   template = ~/.gitmessage
 [fetch]
@@ -24,4 +22,8 @@
 [rebase]
   autosquash = true
 [include]
+  path = ~/dotfiles/gitconfig.local
   path = ~/.gitconfig.local
+[user]
+	name = Regis Hideki Hattori
+	email = regis_hattori@yahoo.com.br
