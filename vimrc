@@ -20,6 +20,9 @@ map <Leader>h :noh<cr>
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 
+" remove files from crlp
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/bower_components/*,*/node_modules/*,*/dist/*,*/vendor/*
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
