@@ -3,6 +3,10 @@ thoughtbot dotfiles
 
 ![prompt](http://images.thoughtbot.com/thoughtbot-dotfiles-prompt.png)
 
+Translations
+------------
+* [Spanish](https://github.com/CodigoSemilla/dotfiles/blob/master/README.md)
+
 Requirements
 ------------
 
