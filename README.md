@@ -101,7 +101,7 @@ Your `~/dotfiles-local/vimrc.local` might look like this:
 
 If you don't wish to install a vim plugin from the default set of vim plugins in
 `.vimrc.bundles`, you can ignore the plugin by calling it out with `UnPlug` in
-your `~/.vimrc.bundles.local`.
+your `~/dotfiles-local/vimrc.bundles.local`.
 
     " Don't install vim-scripts/tComment
     UnPlug 'tComment'

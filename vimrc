@@ -161,6 +161,6 @@ set complete+=kspell
 set diffopt+=vertical
 
 " Local config
-if filereadable($HOME . "/.vimrc.local")
-  source ~/.vimrc.local
+if filereadable($HOME . "/dotfiles-local/vimrc.local")
+  source ~/dotfiles-local/vimrc.local
 endif
