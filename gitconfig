@@ -24,4 +24,4 @@
 [rebase]
   autosquash = true
 [include]
-  path = ~/.gitconfig.local
+  path = ~/dotfiles-local/gitconfig.local
