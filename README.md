@@ -181,7 +181,7 @@ What's in it?
 
 [vim](http://www.vim.org/) configuration:
 
-* [Ctrl-P](https://github.com/kien/ctrlp.vim) for fuzzy file/buffer/tag finding.
+* [Ctrl-P](https://github.com/ctrlpvim/ctrlp.vim) for fuzzy file/buffer/tag finding.
 * [Rails.vim](https://github.com/tpope/vim-rails) for enhanced navigation of
   Rails file structure via `gf` and `:A` (alternate), `:Rextract` partials,
   `:Rinvert` migrations, etc.
