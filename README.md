@@ -99,9 +99,7 @@ Your `~/dotfiles-local/vimrc.local` might look like this:
     highlight NonText guibg=#060606
     highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
-If you want to use your own `.vimrc` or `.vimrc.bundles` file. You can create your own `vimrc` or `vimrc.bundles` in 
-your `~/dotfiles-local` folder and run `rcup`. Since `rcup` gives precedence to personal overrides, it will overwrite
-the files being symlinked to the ones you have in your `~/dotfiles-local`.
+if you want your customizations to overwrite rather than add to the files in this repository, you can give them the name of the original file, and rcm will use your file in dotfiles-local over the version here.
 
 If you don't wish to install a vim plugin from the default set of vim plugins in
 `.vimrc.bundles`, you can ignore the plugin by calling it out with `UnPlug` in
