@@ -169,9 +169,9 @@ colorscheme default
 " override from .vimrc
 let g:syntastic_check_on_open=0
 
-map <Leader>t <Plug>RunCurrentSpecFile
-map <Leader>s <Plug>RunFocusedSpec
-map <Leader>l <Plug>RunMostRecentSpec
+map <Leader>t :wall<CR><Plug>RunCurrentSpecFile
+map <Leader>s :wall<CR><Plug>RunFocusedSpec
+map <Leader>l :wall<CR><Plug>RunMostRecentSpec
 
 let g:spec_runner_dispatcher = 'call VtrSendCommand("{command}")'
 
