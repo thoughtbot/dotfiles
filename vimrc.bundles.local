@@ -1,6 +1,7 @@
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'gabebw/vim-spec-runner'
+Plug 'airblade/vim-localorie'
+Plug 'bogado/file-line'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
 Plug 'danro/rename.vim'
