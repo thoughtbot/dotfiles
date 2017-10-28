@@ -18,7 +18,6 @@ function g {
 }
 
 # git
-alias pull="git pull --rebase"
 alias ga='git add '
 alias gaa='git add .'
 alias gap='git add -p'
@@ -30,7 +29,13 @@ alias gco='git checkout '
 alias m='git checkout master '
 alias gx='gitx'
 alias gl='git log --oneline --graph --all --decorate'
+alias pull="git pull"
+alias push="git push"
+alias pullr="git pull --rebase"
+alias pushf="git push --force"
+alias grc="git rebase --continue"
 alias grom='git rebase origin/master'
+alias grmi='git rebase master --interactive'
 alias gs='git stash --include-untracked'
 alias mup='git checkout master && git pull && git checkout -'
 
