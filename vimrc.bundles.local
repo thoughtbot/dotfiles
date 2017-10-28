@@ -26,7 +26,10 @@ Plug 'tpope/vim-dispatch' " asynchronous build and test dispatcher
 Plug 'tpope/vim-haml'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-rake'
-"Plug 'wincent/Command-T'        " Fast opening of files
-Plug 'bruno-/vim-ruby-fold' " remove if https://github.com/vim-ruby/vim-ruby/pull/272 is merged ?
+Plug 'w0rp/ale'
+" Plug 'sbruhns/rails-i18n-vim' # works
+""""Plug 'wincent/Command-T'        " Fast opening of files
+" SLOOOOW
+" Plug 'bruno-/vim-ruby-fold' " remove if https://github.com/vim-ruby/vim-ruby/pull/272 is merged ?
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'wfleming/vim-codeclimate'

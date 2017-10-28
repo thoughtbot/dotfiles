@@ -74,3 +74,7 @@ alias scheme="rlwrap -r -c -f ~/dotfiles-local/mit_scheme_bindings.txt scheme"
 
 # sourcetree
 alias st=stree
+
+# to sort
+alias pathfix='export PATH=".git/safe/../../bin:$PATH"'
+alias em="vim $(echo db/migrate/`ls db/migrate | tail -n 1 | cut -f 1`)"

@@ -30,7 +30,7 @@ set formatoptions-=or
 autocmd VimResized * :wincmd =
 
 " strip whitespace on saving Ruby files
-autocmd BufWritePre *.rb :%s/\s\+$//e
+" autocmd BufWritePre *.rb :%s/\s\+$//e
 
 " cucumber check runs extremely slowly for some reason
 let g:syntastic_cucumber_checkers = []
@@ -38,7 +38,7 @@ let g:syntastic_cucumber_checkers = []
 " not sure why these aren't running by default?
 " let g:syntastic_ruby_checkers = ['rubymri', 'rubylint']
 
-let g:syntastic_haml_checkers = ['haml_lint']
+" let g:syntastic_haml_checkers = ['haml_lint']
 
 nnoremap <leader>o :CtrlP<CR>
 
@@ -46,7 +46,7 @@ nnoremap <leader>o :CtrlP<CR>
 set clipboard=unnamed
 
 " disable gitgutter by default
-let g:gitgutter_enabled = 0
+" let g:gitgutter_enabled = 0
 
 " let g:hardtime_default_on = 1
 
@@ -69,9 +69,9 @@ set smartcase
 nnoremap <leader><leader> <c-^>
 
 " For ack.vim https://github.com/mileszs/ack.vim#can-i-use-ag-the-silver-searcher-with-this
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
+" if executable('ag')
+"   let g:ackprg = 'ag --vimgrep'
+" endif
 
 " Enable seeing-is-believing mappings only for Ruby
 augroup seeingIsBelievingSettings
@@ -115,34 +115,36 @@ source ~/.vim/colors/grb256.vim
 " fold everything with zM
 " unfold everything with zR.
 " zm and zr can be used too
-set foldmethod=syntax   "fold based on syntax (except for haml below)
-set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
-autocmd BufNewFile,BufRead *.haml setl foldmethod=indent nofoldenable
-autocmd! FileType nofile setl foldmethod=indent nofoldenable
+" set g:ruby_fold_lines_limit = 500
+
+" set foldmethod=syntax   "fold based on syntax (except for haml below)
+" set foldnestmax=10      "deepest fold is 10 levels
+" autocmd BufNewFile,BufRead *.haml setl foldmethod=indent nofoldenable
+" autocmd! FileType nofile setl foldmethod=indent nofoldenable
 
 " Space to toggle folds.
 " nnoremap <Space> za
 " vnoremap <Space> za
 
 " Toggles folds being enabled for this vim session
-function! FoldToggle()
-  if(&foldenable == 1)
-    au WinEnter * set nofen
-    au WinLeave * set nofen
-    au BufEnter * set nofen
-    au BufLeave * set nofen
-    :set nofen
-  else
-    au WinEnter * set fen
-    au WinLeave * set fen
-    au BufEnter * set fen
-    au BufLeave * set fen
-    :set fen
-  endif
-endfunc
-
-nnoremap <Leader>nf :call FoldToggle()<CR>
+" function! FoldToggle()
+"   if(&foldenable == 1)
+"     au WinEnter * set nofen
+"     au WinLeave * set nofen
+"     au BufEnter * set nofen
+"     au BufLeave * set nofen
+"     :set nofen
+"   else
+"     au WinEnter * set fen
+"     au WinLeave * set fen
+"     au BufEnter * set fen
+"     au BufLeave * set fen
+"     :set fen
+"   endif
+" endfunc
+"
+" nnoremap <Leader>nf :call FoldToggle()<CR>
 
 " https://til.hashrocket.com/posts/e8915e62c0-highlight-markdown-fenced-code-syntax-in-vim
 let g:markdown_fenced_languages = ['html', 'vim', 'ruby', 'python', 'bash=sh']
@@ -173,7 +175,8 @@ map <Leader>t :wall<CR><Plug>RunCurrentSpecFile
 map <Leader>s :wall<CR><Plug>RunFocusedSpec
 map <Leader>l :wall<CR><Plug>RunMostRecentSpec
 
-let g:spec_runner_dispatcher = 'call VtrSendCommand("{command}")'
+" let g:spec_runner_dispatcher = 'call VtrSendCommand("{command}")'
+let g:spec_runner_dispatcher = 'VtrSendCommand! {command}'
 
 " https://github.com/jackfranklin/dotfiles/blob/master/vim/vimrc
 nnoremap <leader>fr :VtrFocusRunner<cr> " <ctrl> \ to go back
@@ -207,3 +210,34 @@ augroup seeingIsBelievingSettings
   autocmd FileType ruby imap <buffer> <F5> <Plug>(seeing-is-believing-run)
 augroup END
 
+" TODO: write all on save?
+
+
+" https://github.com/janko-m/vim-test
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
+let test#strategy = "vtr"
+
+" https://github.com/vim-utils/vim-ruby-fold/issues/4
+" set foldlevelstart=99
+" folding is slow on large files
+" let g:ruby_fold_lines_limit = 200
+
+" http://vim.wikia.com/wiki/Search_across_multiple_lines
+" Search for the ... arguments separated with whitespace (if no '!'),
+" or with non-word characters (if '!' added to command).
+function! SearchMultiLine(bang, ...)
+  if a:0 > 0
+    let sep = (a:bang) ? '\_W\+' : '\_s\+'
+    let @/ = join(a:000, sep)
+  endif
+endfunction
+command! -bang -nargs=* -complete=tag S call SearchMultiLine(<bang>0, <f-args>)|normal! /<C-R>/<CR>
+
+let g:ale_linters = {
+\   'ruby': ['rubocop'],
+\}
+nmap <Leader>dt :call localorie#translate()<CR>
