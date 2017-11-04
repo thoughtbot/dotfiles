@@ -45,17 +45,22 @@ configuration options:
 * Please configure the `rcrc` file if you'd like to make personal
   overrides in a different directory
 
-You can safely run `rcup` multiple times to update:
+
+Update
+------
+
+From time to time you should pull down any updates to these dotfiles, and run
 
     rcup
 
-You should run `rcup` after pulling a new version of the repository to symlink
-any new files in the repository.
+to link any new files and install new vim plugins. **Note** You _must_ run
+`rcup` after pulling to ensure that all files in plugins are properly installed,
+but you can safely run `rcup` multiple times so update early and update often!
 
 Make your own customizations
 ----------------------------
 
-Create a directory for your personal customizations: 
+Create a directory for your personal customizations:
 
     mkdir ~/dotfiles-local
 
@@ -176,7 +181,7 @@ What's in it?
 
 [vim](http://www.vim.org/) configuration:
 
-* [Ctrl-P](https://github.com/kien/ctrlp.vim) for fuzzy file/buffer/tag finding.
+* [Ctrl-P](https://github.com/ctrlpvim/ctrlp.vim) for fuzzy file/buffer/tag finding.
 * [Rails.vim](https://github.com/tpope/vim-rails) for enhanced navigation of
   Rails file structure via `gf` and `:A` (alternate), `:Rextract` partials,
   `:Rinvert` migrations, etc.
@@ -209,11 +214,12 @@ configuration:
 * Adds `post-{checkout,commit,merge}` hooks to re-index your ctags.
 * Adds `pre-commit` and `prepare-commit-msg` stubs that delegate to your local
   config.
+* Adds `trust-bin` alias to append a project's `bin/` directory to `$PATH`.
 
 [Ruby](https://www.ruby-lang.org/en/) configuration:
 
 * Add trusted binstubs to the `PATH`.
-* Load rbenv into the shell, adding shims onto our `PATH`.
+* Load the ASDF version manager.
 
 Shell aliases and scripts:
 

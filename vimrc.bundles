@@ -10,27 +10,7 @@ function! s:UnPlug(plug_name)
 endfunction
 command!  -nargs=1 UnPlug call s:UnPlug(<args>)
 
-" Shim command and function to allow migration from Vundle to vim-plug.
-function! VundleToPlug(vundle_command, arg, ...)
-  echom "You are using Vundle's `".a:vundle_command."` command to declare plugins. Dotfiles now uses vim-plug for plugin management. Please rename uses of `".a:vundle_command."` to `Plug`. Plugin was '".a:arg."'."
-  let vim_plug_options = {}
-
-  if a:0 > 0
-    if has_key(a:1, 'name')
-      let name = a:1.name
-      let vim_plug_options.dir = "$HOME/.vim/bundle/".a:1.name
-    endif
-
-    if has_key(a:1, 'rtp')
-      let vim_plug_options.rtp = a:1.rtp
-    endif
-  endif
-
-  Plug a:arg, vim_plug_options
-endfunction
-
-com! -nargs=+  -bar Plugin call VundleToPlug("Plugin", <args>)
-com! -nargs=+  -bar Bundle call VundleToPlug("Bundle", <args>)
+let g:has_async = v:version >= 800 || has('nvim')
 
 call plug#begin('~/.vim/bundle')
 
@@ -43,7 +23,6 @@ Plug 'janko-m/vim-test'
 Plug 'kchmck/vim-coffee-script'
 Plug 'pangloss/vim-javascript'
 Plug 'pbrisbin/vim-mkdir'
-Plug 'scrooloose/syntastic'
 Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-endwise'
@@ -57,6 +36,10 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/tComment'
+
+if g:has_async
+  Plug 'w0rp/ale'
+endif
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
