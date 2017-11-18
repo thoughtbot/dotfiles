@@ -77,6 +77,9 @@ Put your customizations in `~/dotfiles-local` appended with `.local`:
 * `~/dotfiles-local/zshrc.local`
 * `~/dotfiles-local/zsh/configs/*`
 
+To use the `~/dotfiles-local` customizations added to this fork, symlink the
+locals folder in this repo to `~/dotfiles-local`.
+
 For example, your `~/dotfiles-local/aliases.local` might look like this:
 
     # Productivity
