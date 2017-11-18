@@ -1,0 +1,13 @@
+autoload -U promptinit; promptinit
+prompt pure
+
+PATH="$PATH:`yarn global bin`"
+PATH=".git/safe/../../bin:$PATH"
+PATH="$HOME/.rbenv/bin:$PATH"
+PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+export PATH
+
+. /usr/local/Cellar/z/1.9/etc/profile.d/z.sh
+
+bindkey -v
+autoload -U compinit && compinit

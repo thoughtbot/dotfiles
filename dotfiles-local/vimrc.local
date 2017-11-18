@@ -1,0 +1,41 @@
+set t_Co=256
+
+"Configure CtrlP to show more results
+let g:ctrl_p_match_window = 'bottom,match:15'
+
+set relativenumber
+
+"Vim test mappings
+nnoremap <Leader>tf :TestFile<CR>
+nnoremap <Leader>t :TestNearest<CR>
+nnoremap <silent> <Leader>l :TestLast<CR>
+nnoremap <silent> <Leader>ts :TestSuite<CR>
+nnoremap <silent> <Leader>gs :TestVisit<CR>
+
+
+colorscheme solarized
+set bg=light
+
+"" Incremental search with highlighted results
+set incsearch
+set hlsearch
+set smartcase
+set ignorecase
+
+" Enable clipboard
+set clipboard=unnamed
+
+" Open vimrc in a split
+nnoremap <Leader>.ve :sp $MYVIMRC<CR>
+" Reload/re-source vimrc in current buffer
+nnoremap <Leader>.vr :source $MYVIMRC<CR>
+" Open zshrc in a split
+nnoremap <Leader>.ze :sp $MYZSHRC<CR>
+" Reload/re-source zshrc
+nnoremap <Leader>.zr :!source $MYZSHRC<CR>
+" Open tmux-conf in a split
+nnoremap <Leader>.te :sp $MYTMUXCONF<CR>
+" Reload/re-source tmux-conf
+nnoremap <Leader>.tr :!source $MYTMUXCONF<CR>
+" Remove highlight from searching
+nnoremap <Leader>h :nohl<CR>
