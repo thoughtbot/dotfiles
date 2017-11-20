@@ -25,3 +25,6 @@
   autosquash = true
 [include]
   path = ~/.gitconfig.local
+[user]
+	name = Tim Sexton
+	email = tim.sexton@ibotta.com
