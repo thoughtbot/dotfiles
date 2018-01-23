@@ -9,6 +9,10 @@ Requirements
 Set zsh as your login shell:
 
     chsh -s $(which zsh)
+    
+Install on-my-zsh
+    
+   `sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
 
 Install
 -------
@@ -21,12 +25,15 @@ Clone onto your laptop:
 updated](http://robots.thoughtbot.com/keeping-a-github-fork-updated)).
 
 Install [rcm](https://github.com/thoughtbot/rcm):
+
 ##Mac
+
 ```
     brew tap thoughtbot/formulae
     brew install rcm
  ```
 ## Ubuntu
+
 ```
 
 sudo add-apt-repository ppa:martin-frost/thoughtbot-rcm
