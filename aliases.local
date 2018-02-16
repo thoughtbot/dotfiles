@@ -26,3 +26,18 @@ alias teamwork="cd ~/dev/thoughtbot/clients/teamwork-online"
 alias thoughtbot="cd ~/dev/thoughtbot"
 alias upcase="cd ~/dev/thoughtbot/internal/upcase"
 alias upcase_mobile="cd ~/dev/thoughtbot/react-native/upcase-mobile"
+
+# GIT
+
+alias ga="git add -p"
+alias git_tags="git tag -l -n1"
+alias gc="git commit -m"
+alias gs="git status"
+alias gl="git log --oneline --all --graph --decorate -30"
+alias gl+="git log --oneline --all --graph --decorate"
+alias glog="git log --no-merges master.."
+alias branchage='for k in `git branch|perl -pe s/^..//`;do echo -e `git show --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k|head -n 1`\\t$k;done|sort -r'
+alias grecent='git for-each-ref --sort=-committerdate refs/heads/ --format="%(refname:short)"'
+alias gamend="git commit --amend -CHEAD"
+alias rebase_master="git checkout master; git pull origin master; git checkout -; git rebase -i origin/master"
+alias delete_all_branches="git branch | grep -v 'master' | xargs git branch -D"
