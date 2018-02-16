@@ -1,3 +1,5 @@
+nnoremap <leader>f :NERDTreeFind<CR>
+
 " Color
 
 set background=dark
