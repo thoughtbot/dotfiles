@@ -41,3 +41,29 @@ alias grecent='git for-each-ref --sort=-committerdate refs/heads/ --format="%(re
 alias gamend="git commit --amend -CHEAD"
 alias rebase_master="git checkout master; git pull origin master; git checkout -; git rebase -i origin/master"
 alias delete_all_branches="git branch | grep -v 'master' | xargs git branch -D"
+
+
+# Common Commands
+
+alias c="clear"
+alias brake="bundle exec rake"
+alias heroku_server="heroku local -e .env.local"
+alias rake_db_migrate="rake db:migrate db:rollback db:migrate"
+alias server="python -m SimpleHTTPServer 8000"
+
+# open github on current branch
+function gopen() {
+  giturl=$(git config --get remote.origin.url)
+    if [ "$giturl" == "" ]
+      then
+        echo "Not a git repository or no remote.origin.url set"
+        exit 1;
+  fi
+    giturl=${giturl/git\@github\.com\:/https://github.com/}
+  giturl=${giturl/\.git/\/tree/}
+  branch="$(git symbolic-ref HEAD 2>/dev/null)" ||
+    branch="(unnamed branch)"     # detached HEAD
+    branch=${branch##refs/heads/}
+  giturl=$giturl$branch
+    open $giturl
+}
