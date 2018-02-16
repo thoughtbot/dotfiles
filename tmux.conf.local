@@ -1,0 +1,17 @@
+# Opening New Panes
+
+unbind ^T
+bind ^T split-window -h -p 25
+bind '-' split-window -c "#{pane_current_path}"
+bind '|' split-window -h -c "#{pane_current_path}"
+
+# Moving Panes
+
+unbind Right
+bind Right resize-pane -R 8
+unbind Left
+bind Left resize-pane -L 8
+unbind Up
+bind Up resize-pane -U 4
+unbind Down
+bind Down resize-pane -D 4

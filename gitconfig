@@ -19,6 +19,7 @@
   ff = only
 [commit]
   template = ~/.gitmessage
+	verbose = true
 [fetch]
   prune = true
 [rebase]
@@ -27,3 +28,6 @@
   path = ~/.gitconfig.local
 [diff]
   colorMoved = zebra
+[user]
+	name = Mike Wenger
+	email = michaelwenger27@gmail.com

@@ -1,0 +1,75 @@
+# Navigating Around
+
+alias .....='cd ../../../../'
+alias ....='cd ../../../'
+alias ...="cd ../../"
+alias ..="cd ../"
+alias clinical="cd ~/dev/miscellaneous/clinical-trial-connect/application"
+alias clinical_customers="cd ~/dev/miscellaneous/clinical-trial-connect/customer-cms-configurations"
+alias clinical_marketing="cd ~/dev/miscellaneous/clinical-trial-connect/marketing-site"
+alias codekit="cd ~/dev/thoughtbot/clients/littlebits/codekit"
+alias codekite="cd ~/dev/thoughtbot/clients/littlebits/codekit-electron"
+alias desk="cd ~/Desktop"
+alias dev="cd ~/dev"
+alias dotfiles="cd ~/dotfiles"
+alias epion="cd ~/dev/epion/patient-check-in"
+alias exercises="cd ~/dev/learning/exercism"
+alias fanbooks="cd ~/dev/thoughtbot/react-native/fanbooks-mobile"
+alias guides="cd ~/dev/thoughtbot/guides"
+alias handbook="cd ~/dev/thoughtbot/handbook"
+alias harrys="cd ~/dev/thoughtbot/clients/harrys/harrys"
+alias machine_learning="cd ~/dev/machine-learning"
+alias quimbee="cd ~/dev/thoughtbot/react-native/quimbee-app"
+alias react_native="cd ~/dev/thoughtbot/react-native"
+alias tb_hub="cd ~/dev/thoughtbot/internal/hub"
+alias teamwork="cd ~/dev/thoughtbot/clients/teamwork-online"
+alias thoughtbot="cd ~/dev/thoughtbot"
+alias upcase="cd ~/dev/thoughtbot/internal/upcase"
+alias upcase_mobile="cd ~/dev/thoughtbot/react-native/upcase-mobile"
+
+# GIT
+
+alias ga="git add -p"
+alias git_tags="git tag -l -n1"
+alias gc="git commit -m"
+alias gs="git status"
+alias gl="git log --oneline --all --graph --decorate -30"
+alias gl+="git log --oneline --all --graph --decorate"
+alias glog="git log --no-merges master.."
+alias branchage='for k in `git branch|perl -pe s/^..//`;do echo -e `git show --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k|head -n 1`\\t$k;done|sort -r'
+alias grecent='git for-each-ref --sort=-committerdate refs/heads/ --format="%(refname:short)"'
+alias gamend="git commit --amend -CHEAD"
+alias rebase_master="git checkout master; git pull origin master; git checkout -; git rebase -i origin/master"
+alias delete_all_branches="git branch | grep -v 'master' | xargs git branch -D"
+
+
+# Common Commands
+
+alias c="clear"
+alias brake="bundle exec rake"
+alias heroku_server="heroku local -e .env.local"
+alias rake_db_migrate="rake db:migrate db:rollback db:migrate"
+alias server="python -m SimpleHTTPServer 8000"
+
+# open github on current branch
+function gopen() {
+  giturl=$(git config --get remote.origin.url)
+    if [ "$giturl" == "" ]
+      then
+        echo "Not a git repository or no remote.origin.url set"
+        exit 1;
+  fi
+    giturl=${giturl/git\@github\.com\:/https://github.com/}
+  giturl=${giturl/\.git/\/tree/}
+  branch="$(git symbolic-ref HEAD 2>/dev/null)" ||
+    branch="(unnamed branch)"     # detached HEAD
+    branch=${branch##refs/heads/}
+  giturl=$giturl$branch
+    open $giturl
+}
+
+
+# Mobile Development
+
+alias ios_simulator="open -n /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
+alias android_simulator="~/Library/Android/sdk/tools/emulator -avd Pixel_XL_API_27 -netdelay none -netspeed full"
