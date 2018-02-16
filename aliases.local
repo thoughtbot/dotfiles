@@ -67,3 +67,9 @@ function gopen() {
   giturl=$giturl$branch
     open $giturl
 }
+
+
+# Mobile Development
+
+alias ios_simulator="open -n /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
+alias android_simulator="~/Library/Android/sdk/tools/emulator -avd Pixel_XL_API_27 -netdelay none -netspeed full"
