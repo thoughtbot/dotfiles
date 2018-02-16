@@ -1,0 +1,12 @@
+git_prompt_info() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null)
+  if [[ -n $ref ]]; then
+    echo " on %{$fg[blue]%}${ref#refs/heads/}%{$reset_color%}$(parse_git_dirty)"
+  fi
+}
+
+parse_git_dirty () {
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]] && echo "%{$fg[yellow]%}*%{$reset_color%}"
+}
+
+export PS1='${SSH_CONNECTION+"%{$fg[green]%}%n@%m:"}%{$fg[green]%}%c%{$reset_color%}$(git_prompt_info) $ '
