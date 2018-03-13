@@ -2,5 +2,13 @@
 
 set -e
 
+git fetch origin
+line_count=$(git diff origin/master..master | wc -l)
+
+if [ $line_count -gt 0 ]; then
+  printf "failed: master is not up to date with origin/master\n"
+  exit 1
+fi
+
 git checkout master
 git merge "@{-1}"

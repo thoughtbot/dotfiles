@@ -1,9 +1,9 @@
 # ensure dotfiles bin directory is loaded first
 PATH="$HOME/.bin:/usr/local/sbin:$PATH"
 
-# load rbenv if available
-if command -v rbenv >/dev/null; then
-  eval "$(rbenv init - --no-rehash)"
+# load ASDF, falling back to rbenv if not available
+if [ -d "$HOME/.asdf" ]; then
+  . $HOME/.asdf/asdf.sh
 fi
 
 # mkdir .git/safe in the root of repositories you trust

@@ -33,8 +33,8 @@ done
 autoload -U compinit
 compinit
 
-for function in $ZSH/functions/*
-do
+# load custom executable functions
+for function in $ZSH/functions/*; do
   source $function
 done
 
@@ -82,11 +82,6 @@ bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
-# load custom executable functions
-for function in ~/.zsh/functions/*; do
-  source $function
-done
-
 # extra files in ~/.zsh/configs/pre , ~/.zsh/configs , and ~/.zsh/configs/post
 # these are loaded first, second, and third, respectively.
 _load_settings() {
@@ -94,6 +89,7 @@ _load_settings() {
   if [ -d "$_dir" ]; then
     if [ -d "$_dir/pre" ]; then
       for config in "$_dir"/pre/**/*(N-.); do
+        if [ ${config:e} = "zwc" ] ; then continue ; fi
         . $config
       done
     fi
@@ -107,7 +103,7 @@ _load_settings() {
           :
           ;;
         *)
-          if [ -f $config ]; then
+          if [[ -f $config && ${config:e} != "zwc" ]]; then
             . $config
           fi
           ;;
@@ -116,6 +112,7 @@ _load_settings() {
 
     if [ -d "$_dir/post" ]; then
       for config in "$_dir"/post/**/*(N-.); do
+        if [ ${config:e} = "zwc" ] ; then continue ; fi
         . $config
       done
     fi
@@ -128,3 +125,6 @@ _load_settings "$HOME/.zsh/configs"
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# aliases
+[[ -f ~/.aliases ]] && source ~/.aliases
