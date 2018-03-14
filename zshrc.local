@@ -43,6 +43,9 @@ if [ -d "$GHC_DOT_APP" ]; then
   export PATH="${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
 fi
 
+# For rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # For ruby environment versions
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/chruby/share/chruby/auto.sh

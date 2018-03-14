@@ -1,6 +1,6 @@
 [user]
-  name = Jesse Armand
-  email = jesse@jessearmand.com
+	name = Jesse Armand
+	email = jesse@jessearmand.com
 [core]
 	autocrlf = input
 	editor = /usr/local/bin/vim
