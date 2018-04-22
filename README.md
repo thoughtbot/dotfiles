@@ -1,4 +1,4 @@
-thoughtbot dotfiles
+#Dotfiles from Thoughtbot
 ===================
 
 ![prompt](http://images.thoughtbot.com/thoughtbot-dotfiles-prompt.png)
@@ -9,21 +9,37 @@ Requirements
 Set zsh as your login shell:
 
     chsh -s $(which zsh)
+    
+Install on-my-zsh
+    
+   `sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
 
 Install
 -------
 
 Clone onto your laptop:
 
-    git clone git://github.com/thoughtbot/dotfiles.git ~/dotfiles
+    git clone git://github.com/cndaniel/dotfiles.git ~/dotfiles
 
 (Or, [fork and keep your fork
 updated](http://robots.thoughtbot.com/keeping-a-github-fork-updated)).
 
 Install [rcm](https://github.com/thoughtbot/rcm):
 
+##Mac
+
+```
     brew tap thoughtbot/formulae
     brew install rcm
+ ```
+## Ubuntu
+
+```
+
+sudo add-apt-repository ppa:martin-frost/thoughtbot-rcm
+sudo apt-get update
+sudo apt-get install rcm
+```
 
 Install the dotfiles:
 
