@@ -10,9 +10,6 @@ export
 PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info)
 %# '
 
-# load our own completion functions
-fpath=($ZSH/completion /usr/local/share/zsh/site-functions $fpath)
-
 # all of our zsh files
 typeset -U config_files
 config_files=($DOTFILES/**/*.zsh)
@@ -28,10 +25,6 @@ for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
 do
   source $file
 done
-
-# initialize autocomplete here, otherwise functions won't be loaded
-autoload -U compinit
-compinit
 
 # load custom executable functions
 for function in $ZSH/functions/*; do
