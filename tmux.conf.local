@@ -16,8 +16,8 @@ bind-key -T edit-mode-vi Down send-keys X history-down
 # Update default binding of `Enter` to also use copy-selection
 unbind-key -T copy-mode-vi Enter
 bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
-bind-key -T MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "pbcopy"
-bind-key -T Enter send-keys -X copy-pipe-and-cancel "pbcopy"
+bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "pbcopy"
+bind-key -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "pbcopy"
 bind-key -T copy-mode-vi ] send-keys -X copy-selection
 
 # Enable interaction between tmux shell and the OS (e.g. open)
