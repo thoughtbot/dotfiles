@@ -73,3 +73,8 @@
 	trustExitCode = true
 [heroku]
 	account = personal
+[sendemail]
+	smtpEncryption = tls
+	smtpServer = smtp.gmail.com
+	smtpUser = jesse.armand@gotouche.com
+	smtpServerPort = 587
