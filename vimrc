@@ -43,6 +43,10 @@ augroup vimrcEx
   " Set syntax highlighting for specific file types
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
+  autocmd BufRead,BufNewFile tmux.conf.local set filetype=tmux
+  autocmd BufRead,BufNewFile vimrc.local set filetype=vim
+  autocmd BufRead,BufNewFile gitconfig.local set filetype=gitconfig
+  autocmd BufRead,BufNewFile aliases.local,zshrc.local,*/zsh/configs/* set filetype=sh
 
   " ALE linting events
   if g:has_async
