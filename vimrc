@@ -43,8 +43,12 @@ augroup vimrcEx
   " Set syntax highlighting for specific file types
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
+augroup END
 
-  " ALE linting events
+" ALE linting events
+augroup ale
+  autocmd!
+
   if g:has_async
     set updatetime=1000
     let g:ale_lint_on_text_changed = 0
