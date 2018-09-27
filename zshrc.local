@@ -37,12 +37,6 @@ if which swiftenv > /dev/null; then
   eval "$(swiftenv init -)";
 fi
 
-# Add GHC to the PATH, via http://ghcformacosx.github.io/
-export GHC_DOT_APP="/Applications/GHC.app"
-if [ -d "$GHC_DOT_APP" ]; then
-  export PATH="${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
-fi
-
 # For rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
@@ -75,3 +69,6 @@ fi
 export GPG_TTY=$(tty)
 
 vscode () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
+
+# OPAM configuration
+. /Users/jessearmand/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
