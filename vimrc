@@ -47,8 +47,11 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile vimrc.local set filetype=vim
   autocmd BufRead,BufNewFile gitconfig.local set filetype=gitconfig
   autocmd BufRead,BufNewFile aliases.local,zshrc.local,*/zsh/configs/* set filetype=sh
+augroup END
 
-  " ALE linting events
+" ALE linting events
+augroup ale
+  autocmd!
   if g:has_async
     set updatetime=1000
     let g:ale_lint_on_text_changed = 0
