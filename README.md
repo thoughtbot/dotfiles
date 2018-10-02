@@ -231,6 +231,30 @@ Shell aliases and scripts:
 * `tat` to attach to tmux session named the same as the current directory.
 * `v` for `$VISUAL`.
 
+Troubleshooting and advanced configuration
+-----------------------------------------
+
+### Disable ALE linting
+
+If you do not wish to use ALE for linting/fixing, you can remove it by adding
+`UnPlug 'ale'` to `vimrc.bundles.local`. Then, disable the custom ALE
+configuration by adding the following to `vimrc.local`:
+
+```
+augroup ale
+  autocmd!
+augroup END
+```
+
+### Multiple Cursors is slow
+
+It [has been
+reported](https://github.com/thoughtbot/dotfiles/issues/609#issuecomment-426115801)
+that the ALE configuration used in these dotfiles causes the [Multiple
+Cursors](https://github.com/terryma/vim-multiple-cursors) plugin to be laggy. To
+fix this, you can disable the ALE configuration by following [the steps
+above](#disable-ale-linting).
+
 Thanks
 ------
 
