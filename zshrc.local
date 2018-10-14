@@ -58,14 +58,6 @@ antigen apply
 
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
 
-# if [[ $(uname) == Darwin ]]; then
-#   if [ -f "${HOME}/.gpg-agent-info" ]; then
-#     . "${HOME}/.gpg-agent-info"
-#     export GPG_AGENT_INFO
-#     export SSH_AUTH_SOCK
-#   fi
-# fi
-
 export GPG_TTY=$(tty)
 
 vscode () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
