@@ -5,9 +5,21 @@ Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-unimpaired'
 
 " autocomplete
-Plug 'Valloric/YouCompleteMe'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+let g:python_host_prog = "/usr/local/bin/python2"
+let g:python3_host_prog = "/usr/local/bin/python3"
+
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'mitsuse/autocomplete-swift'
+Plug 'sebastianmarkow/deoplete-rust'
 Plug 'ervandew/supertab'
 
 " text objects
@@ -28,17 +40,6 @@ Plug 'edkolev/tmuxline.vim'
 
 " json
 Plug 'elzr/vim-json'
-
-" For javascript
-Plug 'moll/vim-node'
-Plug 'guileen/vim-node-dict'
-Plug 'jamescarr/snipmate-nodejs'
-Plug 'pangloss/vim-javascript'
-Plug 'Shutnik/jshint2.vim'
-Plug 'einars/js-beautify'
-Plug 'maksimr/vim-jsbeautify'
-Plug 'briancollins/vim-jst'
-Plug 'mxw/vim-jsx'
 
 " For haskell development
 Plug 'dag/vim2hs'

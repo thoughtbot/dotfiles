@@ -23,31 +23,7 @@ endfunction
 
 nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
 
-let g:ycm_global_ycm_extra_conf = '$HOME/.ycm_extra_conf.py'
-let g:ycm_path_to_python_interpreter = '/usr/local/bin/python'
-let g:ycm_server_python_interpreter = '/usr/local/bin/python'
-let g:ycm_python_binary_path = '/usr/local/bin/python'
-
-" From http://stackoverflow.com/a/22253548
-" Make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-j>', '<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
-
-" Better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-
-let g:syntastic_javascript_checkers = ['eslint', 'jshint']
-
-" JSHint highlight error line
-let g:JSHintHighlightErrorLine = 0
-
-" visual mode
-autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
-autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
-autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
 
 " For golang
 au FileType go nmap <Leader>s <Plug>(go-implements)
@@ -73,22 +49,8 @@ let g:tagbar_autofocus = 1
 let g:slime_target = "tmux"
 let g:slime_paste_file = tempname()
 
-" To toggle between active or passive type checking
-map <silent> <Leader>e :Errors<CR>
-map <Leader>s :SyntasticToggleMode<CR>
-
-" To always show the errors list when editing
-let g:syntastic_auto_loc_list=1
-
-" hdevtools with syntastic
-au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
-au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
-au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
-
 " R programming
 au FileType r setlocal tabstop=8 softtabstop=4 shiftwidth=4 expandtab
-
-let g:python_host_prog = '/usr/local/bin/python'
 
 let g:gist_open_browser_after_post = 1
 let g:gist_detect_filetype = 1
