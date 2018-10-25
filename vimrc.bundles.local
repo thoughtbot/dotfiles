@@ -48,18 +48,6 @@ Plug 'pbrisbin/html-template-syntax'
 Plug 'majutsushi/tagbar'
 Plug 'jpalardy/vim-slime'
 
-" For go
-Plug 'fatih/vim-go'
-
-" For swift
-Plug 'kballard/vim-swift'
-
-" For rust
-Plug 'wting/rust.vim'
-
-" For elixir
-Plug 'elixir-lang/vim-elixir'
-
 " gister
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
