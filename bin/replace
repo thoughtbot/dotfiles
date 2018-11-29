@@ -9,7 +9,12 @@ shift
 replace_with="$1"
 shift
 
-items=$(ag -l --nocolor "$find_this" "$@")
+if which rg &>/dev/null ; then
+  items=$(rg -l --color never "$find_this" "$@")
+else
+  items=$(ag -l --nocolor "$find_this" "$@")
+fi
+
 temp="${TMPDIR:-/tmp}/replace_temp_file.$$"
 IFS=$'\n'
 for item in $items; do
