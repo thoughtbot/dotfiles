@@ -9,7 +9,7 @@ shift
 replace_with="$1"
 shift
 
-if which rg &>/dev/null ; then
+if command -v rg &>/dev/null ; then
   items=$(rg -l --color never "$find_this" "$@")
 else
   items=$(ag -l --nocolor "$find_this" "$@")
