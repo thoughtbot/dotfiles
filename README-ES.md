@@ -124,7 +124,7 @@ Para extender tus `git` hooks, crea scripts ejecutables en
 Tu `~/dotfiles-local/zshrc.local` tal vez se vea así:
 
     # load pyenv if available
-    if which pyenv &>/dev/null ; then
+    if command -v pyenv &>/dev/null ; then
       eval "$(pyenv init -)"
     fi
 
