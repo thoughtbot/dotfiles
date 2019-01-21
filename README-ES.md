@@ -177,7 +177,7 @@ sin importar de nombre del archivo:
     set cinoptions=:0,t0,+4,(4
     autocmd BufNewFile,BufRead *.[ch] setlocal sw=0 ts=8 noet
 
-Qué tiene dentro?
+¿Qué viene incluido?
 -----------------
 
 Configuración [vim](http://www.vim.org/):
