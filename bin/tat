@@ -10,7 +10,7 @@ not_in_tmux() {
 }
 
 session_exists() {
-  tmux list-sessions | sed -E 's/:.*$//' | grep -q "^$session_name$"
+  tmux has-session -t "$session_name"
 }
 
 create_detached_session() {
