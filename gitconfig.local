@@ -76,5 +76,5 @@
 [sendemail]
 	smtpEncryption = tls
 	smtpServer = smtp.gmail.com
-	smtpUser = jesse.armand@gotouche.com
+	smtpUser = jesse@jessearmand.com
 	smtpServerPort = 587
