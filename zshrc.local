@@ -65,6 +65,3 @@ vscode () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
 # OPAM configuration
 . /Users/jessearmand/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
-# kubectl config
-export KUBECONFIG=~/.kube/config
-for f in ~/env-*/kube-config ; do KUBECONFIG+=":$f"; done
