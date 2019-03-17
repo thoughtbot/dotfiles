@@ -49,9 +49,16 @@ Plug 'elzr/vim-json'
 " For haskell development
 Plug 'dag/vim2hs'
 Plug 'eagletmt/neco-ghc'
-Plug 'pbrisbin/html-template-syntax'
+Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'majutsushi/tagbar'
 Plug 'jpalardy/vim-slime'
+
+if has('nvim')
+  Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': './install.sh'
+    \ }
+endif
 
 " gister
 Plug 'mattn/gist-vim'
