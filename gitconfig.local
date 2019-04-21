@@ -2,10 +2,8 @@
 	name = Jesse Armand
 	email = jesse@jessearmand.com
 [core]
-	autocrlf = input
-	editor = /usr/local/bin/vim
-	excludesfile = /Users/jessearmand/.gitignore
-	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	editor = nvim
+	whitespace = fix,trailing-space,space-before-tab,cr-at-eol
 	trustctime = false
 
 # Automatically track branches with the same name
@@ -42,35 +40,10 @@
 	branch = auto
 	interactive = auto
 	status = auto
-[diff]
-	renameLimit = 15648
-	tool = Kaleidoscope
-[difftool]
-	prompt = false
-[difftool "twdiff"]
-	cmd = twdiff --wait '$LOCAL' '$REMOTE'
-[merge]
-	tool = Kaleidoscope
-[mergetool]
-	prompt = false
-	keepBackup = true
-[mergetool "twdiff"]
-	cmd = twdiff --wait '$LOCAL' '$REMOTE'
 [fetch]
 	recurseSubmodules = false
 [credential]
 	helper = osxkeychain
-[difftool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
-	path =
-[mergetool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
 [heroku]
 	account = personal
 [sendemail]
