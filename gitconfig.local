@@ -17,10 +17,25 @@
 [push]
 	default = current
 
+[fetch]
+	recurseSubmodules = false
+
 # Include a summary of changes in merge commit messages.
 #
 [merge]
 	summary = true
+	tool = nvimdiff4
+[mergetool "nvimdiff4"]
+	trustExitCode = true
+	cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[mergetool "nfugitive"]
+	cmd = nvim -f -c "Gdiff" "$MERGED"
+
+[diff]
+	tool = nvimdiff2
+[difftool "nvimdiff2"]
+	trustExitCode = true
+	cmd = nvim -d $LOCAL $REMOTE
 
 [github]
 	user = jessearmand
@@ -40,8 +55,6 @@
 	branch = auto
 	interactive = auto
 	status = auto
-[fetch]
-	recurseSubmodules = false
 [credential]
 	helper = osxkeychain
 [heroku]
