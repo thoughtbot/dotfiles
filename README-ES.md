@@ -38,8 +38,6 @@ directorio principal.
 Establecer la variable de entorno le dice a `rcup` que use las opciones de
 configuración preestablecidas:
 
-* Excluye los archivos `README.md`, `README-ES.md` y `LICENSE`, que son parte
-  del repositorio `dotfiles`, pero no necesitan enlazarse simbólicamente.
 * Le da precedencia a las modificaciones personales que por defecto están en
   `~/dotfiles-local`
 * Por favor configura el archivo `rcrc` en caso de que quieras hacer
