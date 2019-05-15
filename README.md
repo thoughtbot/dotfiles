@@ -38,8 +38,6 @@ This command will create symlinks for config files in your home directory.
 Setting the `RCRC` environment variable tells `rcup` to use standard
 configuration options:
 
-* Exclude the `README.md`, `README-ES.md` and `LICENSE` files, which are part of
-  the `dotfiles` repository but do not need to be symlinked in.
 * Give precedence to personal overrides which by default are placed in
   `~/dotfiles-local`
 * Please configure the `rcrc` file if you'd like to make personal
