@@ -44,9 +44,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/chruby/share/chruby/auto.sh
 
-# python
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-
 # ensure dotfiles bin directory is loaded first
 export PATH="$HOME/.bin:$PATH"
 

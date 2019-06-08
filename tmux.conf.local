@@ -23,6 +23,5 @@ bind-key -T copy-mode-vi ] send-keys -X copy-selection
 # Enable interaction between tmux shell and the OS (e.g. open)
 set -g default-command "reattach-to-user-namespace -l /bin/bash"
 set -g default-command "reattach-to-user-namespace -l /bin/zsh"
-set -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh"
 
 set -g escape-time 10
