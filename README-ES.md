@@ -182,7 +182,7 @@ sin importar de nombre del archivo:
 
 Configuración [vim](http://www.vim.org/):
 
-* [Ctrl-P](https://github.com/ctrlpvim/ctrlp.vim) para hallazgo difuso de archivos/buffer/tags.
+* [fzf](https://github.com/junegunn/fzf.vim) para hallazgo difuso de archivos/buffer/tags.
 * [Rails.vim](https://github.com/tpope/vim-rails) para una mejor navegación de la estructura
 de archivos de Rails via `gf` y `:A` (alterno), `:Rextract` parciales,`:Rinvert` migraciones, etc.
 * Ejecuta muchos tipos de pruebas [desde vim]([https://github.com/janko-m/vim-test)
