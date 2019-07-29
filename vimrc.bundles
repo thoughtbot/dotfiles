@@ -37,7 +37,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/tComment'
 
 if g:has_async
-  Plug 'w0rp/ale'
+  Plug 'dense-analysis/ale'
 endif
 
 if filereadable(expand("~/.vimrc.bundles.local"))
