@@ -72,9 +72,6 @@ bindkey "^Y" accept-and-hold
 bindkey "^N" insert-last-word
 bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
 
-# aliases
-[[ -f ~/.aliases ]] && source ~/.aliases
-
 # extra files in ~/.zsh/configs/pre , ~/.zsh/configs , and ~/.zsh/configs/post
 # these are loaded first, second, and third, respectively.
 _load_settings() {
@@ -105,9 +102,6 @@ _load_settings() {
   fi
 }
 _load_settings "$HOME/.zsh/configs"
-
-# aliases
-[[ -f ~/.aliases ]] && source ~/.aliases
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
