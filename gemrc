@@ -1,1 +1,7 @@
-gem: --no-document
+---
+:backtrace: false
+:bulk_threshold: 1000
+:sources:
+- https://rubygems.org/
+:verbose: true
+:concurrent_downloads: 8
