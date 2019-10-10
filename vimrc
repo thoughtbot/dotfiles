@@ -228,3 +228,5 @@ nmap <F8> :TagbarToggle<CR>
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
+
+hi pythonSelf  ctermfg=68  guifg=#5f87d7 cterm=bold gui=bold
