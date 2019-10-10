@@ -105,7 +105,7 @@ if executable('ag')
 endif
 
 " Make it obvious where 80 characters is
-set textwidth=80
+" set textwidth=120
 set colorcolumn=+1
 
 " Numbers
@@ -188,6 +188,10 @@ set diffopt+=vertical
 "autocmd vimenter * NERDTree
 map <silent> <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
+
+" Open NERDTree if nothing specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " appearance
 syntax enable
