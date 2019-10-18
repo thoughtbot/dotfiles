@@ -3,6 +3,9 @@ for function in ~/.zsh/functions/*; do
   source $function
 done
 
+# Enable extended globbing for use in _load_settings()
+setopt extendedglob
+
 # extra files in ~/.zsh/configs/pre , ~/.zsh/configs , and ~/.zsh/configs/post
 # these are loaded first, second, and third, respectively.
 _load_settings() {
