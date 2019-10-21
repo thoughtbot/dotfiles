@@ -88,6 +88,7 @@ export EDITOR=vim
 
 alias ll="ls -alh"
 alias l="ls -h"
+alias flush_dns="sudo killall -HUP mDNSResponder"
 
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
