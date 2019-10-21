@@ -169,6 +169,10 @@ let g:ale_sign_error = '⨉'
 let g:ale_sign_warning = '!'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+let g:ale_linters = {'cs': ['OmniSharp']}
+
+
+
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
@@ -239,3 +243,5 @@ endif
 set mouse=a
 
 hi pythonSelf  ctermfg=68  guifg=#5f87d7 cterm=bold gui=bold
+
+let g:OmniSharp_selector_ui = 'fzf'    " Use fzf.vim
