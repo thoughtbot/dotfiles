@@ -95,4 +95,48 @@ alias l="ls -h"
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 
+# Functions
+
+docker_clean() {
+   docker system prune -f
+}
+
+gcom() {
+   git checkout master
+   git pull origin master
+}
+
+tunnel() {
+   while true; do
+      ssh -t -o BatchMode=yes -L 3128:localhost:3128 home
+      sleep 2
+   done
+}
+
+tunnel53() {
+   while true; do
+      ssh -t -o BatchMode=yes -L 3128:localhost:3128 53
+      sleep 2
+   done
+}
+
+_sp() {
+   source ~/.profile
+   echo 'Dot profile sourced'
+}
+
+_sz() {
+   source ~/.zshrc
+   echo 'Dot zshrc sourced'
+}
+
+weather() {
+   if [ $# -eq 0 ]; then
+      curl http://wttr.in/Parker,CO
+   else
+      curl http://wttr.in/$1
+   fi
+}
+
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
