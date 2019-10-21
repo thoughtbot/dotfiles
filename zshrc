@@ -120,11 +120,6 @@ tunnel53() {
    done
 }
 
-_sp() {
-   source ~/.profile
-   echo 'Dot profile sourced'
-}
-
 _sz() {
    source ~/.zshrc
    echo 'Dot zshrc sourced'
