@@ -134,6 +134,11 @@ Your `~/dotfiles-local/vimrc.bundles.local` might look like this:
 zsh Configurations
 ------------------
 
+Install this for the powerline status bar with the agnoster zsh theme:
+
+https://github.com/powerline/fonts
+
+
 Additional zsh configuration can go under the `~/dotfiles-local/zsh/configs` directory. This
 has two special subdirectories: `pre` for files that must be loaded first, and
 `post` for files that must be loaded last.
