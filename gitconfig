@@ -28,9 +28,6 @@
   path = ~/.gitconfig.local
 [diff]
   colorMoved = zebra
-[user]
-	name = Mark Long
-	email = markclong@gmail.com
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
