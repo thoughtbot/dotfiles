@@ -247,3 +247,8 @@ hi pythonSelf  ctermfg=68  guifg=#5f87d7 cterm=bold gui=bold
 let g:OmniSharp_selector_ui = 'fzf'    " Use fzf.vim
 :set tags^=./.git/tags;
 
+" More resizey
+noremap <C-w>+ :resize +5<CR>
+noremap <C-w>- :resize -5<CR>
+noremap <C-w>< :vertical:resize -5<CR>
+noremap <C-w>> :vertical:resize +5<CR>
