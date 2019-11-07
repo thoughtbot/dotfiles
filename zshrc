@@ -87,53 +87,50 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR=vim
 
-alias ll="ls -alh"
-alias l="ls -h"
-alias flush_dns="sudo killall -HUP mDNSResponder"
-
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 
-# Functions
+# load custom executable functions
+for function in ~/.zsh/functions/*; do
+  source $function
+done
 
-docker_clean() {
-   docker system prune -f
+# extra files in ~/.zsh/configs/pre , ~/.zsh/configs , and ~/.zsh/configs/post
+# these are loaded first, second, and third, respectively.
+_load_settings() {
+  _dir="$1"
+  if [ -d "$_dir" ]; then
+    if [ -d "$_dir/pre" ]; then
+      for config in "$_dir"/pre/**/*~*.zwc(N-.); do
+        . $config
+      done
+    fi
+
+    for config in "$_dir"/**/*(N-.); do
+      case "$config" in
+        "$_dir"/(pre|post)/*|*.zwc)
+          :
+          ;;
+        *)
+          . $config
+          ;;
+      esac
+    done
+
+    if [ -d "$_dir/post" ]; then
+      for config in "$_dir"/post/**/*~*.zwc(N-.); do
+        . $config
+      done
+    fi
+  fi
 }
 
-gcom() {
-   git checkout master
-   git pull origin master
-}
-
-tunnel() {
-   while true; do
-      ssh -t -o BatchMode=yes -L 3128:localhost:3128 home
-      sleep 2
-   done
-}
-
-tunnel53() {
-   while true; do
-      ssh -t -o BatchMode=yes -L 3128:localhost:3128 53
-      sleep 2
-   done
-}
-
-_sz() {
-   source ~/.zshrc
-   echo 'Dot zshrc sourced'
-}
-
-weather() {
-   if [ $# -eq 0 ]; then
-      curl http://wttr.in/Parker,CO
-   else
-      curl http://wttr.in/$1
-   fi
-}
-
+_load_settings "$HOME/.zsh/configs"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# aliases
+[[ -f ~/.aliases ]] && source ~/.aliases

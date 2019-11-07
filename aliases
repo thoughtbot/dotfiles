@@ -15,6 +15,47 @@ alias s="rspec"
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
+alias ll="ls -alh"
+alias l="ls -h"
+alias flush_dns="sudo killall -HUP mDNSResponder"
+
+docker_clean() {
+   docker system prune -f
+}
+
+gcom() {
+   git checkout master
+   git pull origin master
+}
+
+tunnel() {
+   while true; do
+      ssh -t -o BatchMode=yes -L 3128:localhost:3128 home
+      sleep 2
+   done
+}
+
+tunnel53() {
+   while true; do
+      ssh -t -o BatchMode=yes -L 3128:localhost:3128 53
+      sleep 2
+   done
+}
+
+_sz() {
+   source ~/.zshrc
+   echo 'Dot zshrc sourced'
+}
+
+weather() {
+   if [ $# -eq 0 ]; then
+      curl http://wttr.in/Parker,CO
+   else
+      curl http://wttr.in/$1
+   fi
+ }
+
+
 # Include custom aliases
 if [[ -f ~/.aliases.local ]]; then
   source ~/.aliases.local
