@@ -106,7 +106,7 @@ endif
 
 " Make it obvious where 80 characters is
 " set textwidth=120
-set colorcolumn=+1
+"set colorcolumn=+1
 
 " Numbers
 set number
