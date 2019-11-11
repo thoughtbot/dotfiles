@@ -77,6 +77,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'leafgarland/typescript-vim'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
