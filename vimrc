@@ -242,8 +242,24 @@ endif
 " Enable mouse support
 set mouse=a
 
+" Some Python stuff
 hi pythonSelf  ctermfg=68  guifg=#5f87d7 cterm=bold gui=bold
 
+au BufNewFile,BufRead *.py
+\ set tabstop=4
+\ | set softtabstop=4
+\ | set shiftwidth=4
+\ | set textwidth=79
+\ | set expandtab
+\ | set autoindent
+\ | set fileformat=unix
+
+
+let python_highlight_all=1
+syntax on
+
+
+" Some C# stuff
 let g:OmniSharp_selector_ui = 'fzf'    " Use fzf.vim
 :set tags^=./.git/tags;
 
@@ -252,3 +268,12 @@ noremap <C-w>+ :resize +5<CR>
 noremap <C-w>- :resize -5<CR>
 noremap <C-w>< :vertical:resize -5<CR>
 noremap <C-w>> :vertical:resize +5<CR>
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+
+" Enable folding with the spacebar
+nnoremap <space> za
+
+
