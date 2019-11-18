@@ -197,6 +197,8 @@ let NERDTreeShowHidden=1
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
+nmap ,n :NERDTreeFind<CR>
+
 " appearance
 syntax enable
 set background=dark
@@ -276,4 +278,5 @@ set foldlevel=99
 " Enable folding with the spacebar
 nnoremap <space> za
 
-
+nmap <C-o> O<Esc>
+nmap <CR> o<Esc>
