@@ -14,7 +14,7 @@ alias s="rspec"
 alias path='echo $PATH | tr -s ":" "\n"'
 
 alias ll="ls -alh"
-alias l="ls -h"
+alias l="ls -al"
 alias flush_dns="sudo killall -HUP mDNSResponder"
 
 docker_clean() {
