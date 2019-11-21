@@ -278,5 +278,3 @@ set foldlevel=99
 " Enable folding with the spacebar
 nnoremap <space> za
 
-nmap <C-o> O<Esc>
-nmap <CR> o<Esc>
