@@ -74,5 +74,6 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
+
 export FZF_DEFAULT_OPTS='--height 30% --border'
 
