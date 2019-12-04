@@ -233,7 +233,7 @@ let g:syntastic_ruby_checkers = ['rubocop']
 " keybinds
 map <silent> <F3> :Gblame<CR>
 nmap <F8> :TagbarToggle<CR>
-map <F7> :e<CR>
+map <F7> :e<CR> " Reload
 
 
 " Local config
@@ -278,3 +278,10 @@ set foldlevel=99
 " Enable folding with the spacebar
 nnoremap <space> za
 
+nnoremap <F5> :buffers<CR>:buffer<Space>
+AT&T is acquiring AppNexus to help it sell even more ads
+
+Hooray
+AT&T is acquiring AppNexus to help it sell even more ads
+
+Hooray
