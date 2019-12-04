@@ -279,9 +279,3 @@ set foldlevel=99
 nnoremap <space> za
 
 nnoremap <F5> :buffers<CR>:buffer<Space>
-AT&T is acquiring AppNexus to help it sell even more ads
-
-Hooray
-AT&T is acquiring AppNexus to help it sell even more ads
-
-Hooray
