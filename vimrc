@@ -280,3 +280,9 @@ nnoremap <space> za
 
 " Fix for put multiple times
 xnoremap p pgvy
+
+" // to find the highlighted text
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+" ctrl-r to find and replace highlighted text  with confirmation
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
