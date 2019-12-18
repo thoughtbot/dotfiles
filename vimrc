@@ -263,7 +263,7 @@ syntax on
 
 " Some C# stuff
 let g:OmniSharp_selector_ui = 'fzf'    " Use fzf.vim
-:set tags^=./.git/tags;
+" :set tags^=./.git/tags;
 
 " More resizey
 noremap <C-w>+ :resize +5<CR>
