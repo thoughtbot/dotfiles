@@ -26,6 +26,12 @@ gcom() {
    git pull origin master
 }
 
+gmm() {
+  git pull --rebase origin master
+  git fetch
+  git push --force-with-lease
+}
+
 tunnel() {
    while true; do
       ssh -t -o BatchMode=yes -L 3128:localhost:3128 home
