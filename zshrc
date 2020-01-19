@@ -77,3 +77,7 @@ _fzf_compgen_dir() {
 
 export FZF_DEFAULT_OPTS='--height 30% --border'
 
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/marklong/.sdkman"
+[[ -s "/Users/marklong/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/marklong/.sdkman/bin/sdkman-init.sh"

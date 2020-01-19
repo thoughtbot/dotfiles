@@ -286,3 +286,6 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 " ctrl-r to find and replace highlighted text  with confirmation
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
+" Kotlin
+autocmd BufNewFile,BufRead *.kt setfiletype kotlin
+autocmd BufNewFile,BufRead *.kts setfiletype kotlin
