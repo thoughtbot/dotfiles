@@ -1,0 +1,4 @@
+#!/bin/sh
+
+rebasing_file="$PWD"/.git/rebase_in_progress
+echo $(git rev-parse HEAD) > $rebasing_file
