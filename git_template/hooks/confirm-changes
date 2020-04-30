@@ -10,28 +10,20 @@ if [ -f $rebasing_file ]; then
     git diff $sha_pre_rebase
 
     while true; do
-      echo  "Do you want to keep the changes? [Y/n] "
+      printf  "Do you want to keep the changes? [Y/n] "
       read -r answer < /dev/tty
-      echo ""
 
       case $answer in
-        [Yy])
-          echo "Cool! All changes kept"
-          break
-          ;;
-        [Nn])
+        [Nn]*)
           echo "Discarding changes..."
-          echo ""
           git reset --hard $sha_pre_rebase
           break
           ;;
         *)
-          echo "Answer with Y|y|N|n and press return"
+          break
           ;;
       esac
     done
-  else
-    echo "Your rebase caused no code changes, good for you"
   fi
 
   rm $rebasing_file
