@@ -21,7 +21,6 @@ Clona en tu laptop:
 
 Instala [rcm](https://github.com/thoughtbot/rcm):
 
-    brew tap thoughtbot/formulae
     brew install rcm
 
 Instala los dotfiles:
