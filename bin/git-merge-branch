@@ -1,14 +1,20 @@
 #!/bin/sh
 
+main_branch="master"
+
+if [ $# -gt 0 ]; then
+  main_branch=$1
+fi
+
 set -e
 
 git fetch origin
-line_count=$(git diff origin/master..master | wc -l)
+line_count=$(git diff origin/$main_branch..$main_branch | wc -l)
 
 if [ $line_count -gt 0 ]; then
-  printf "failed: master is not up to date with origin/master\n"
+  printf "failed: $main_branch is not up to date with origin/$main_branch\n"
   exit 1
 fi
 
-git checkout master
+git checkout $main_branch
 git merge "@{-1}"
