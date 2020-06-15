@@ -11,7 +11,7 @@ else
 
   to set the reference and then try merging again."
 
-  exit
+  exit 1
 fi
 
 git fetch origin
