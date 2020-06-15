@@ -1,12 +1,18 @@
 #!/bin/sh
 
-main_branch="master"
-
-if [ $# -gt 0 ]; then
-  main_branch=$1
-fi
-
 set -e
+
+if git symbolic-ref --short refs/remotes/origin/HEAD >/dev/null; then
+  main_branch="$(git symbolic-ref --short refs/remotes/origin/HEAD | sed 's@^origin/@@')" "$@"
+else
+  echo "You don't have a primary branch reference set for your origin remote.
+  Use:
+  git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/{name_of_your_primary_branch}
+
+  to set the reference and then try merging again."
+
+  exit
+fi
 
 git fetch origin
 line_count=$(git diff origin/$main_branch..$main_branch | wc -l)
