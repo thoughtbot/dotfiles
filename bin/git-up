@@ -3,7 +3,8 @@
 set -e
 
 if git symbolic-ref --short refs/remotes/origin/HEAD >/dev/null; then
-  git rebase "$(git symbolic-ref --short refs/remotes/origin/HEAD | sed 's@^origin/@@')" "$@"
+  git fetch origin
+  git rebase "$(git symbolic-ref --short refs/remotes/origin/HEAD)" "$@"
 else
   echo "You don't have a primary branch reference set for your origin remote.
 Use:
