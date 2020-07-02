@@ -50,6 +50,7 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile aliases.local,zshrc.local,*/zsh/configs/* set filetype=sh
   autocmd BufRead,BufNewFile gitconfig.local set filetype=gitconfig
   autocmd BufRead,BufNewFile tmux.conf.local set filetype=tmux
+  autocmd BufRead,BufNewFile *.tsx set filetype=typescript
   autocmd BufRead,BufNewFile vimrc.local set filetype=vim
 augroup END
 
