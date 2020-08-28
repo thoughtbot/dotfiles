@@ -14,3 +14,4 @@ db/*.sqlite3
 log/*.log
 rerun.txt
 tmp/**/*
+/tags
