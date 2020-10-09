@@ -12,6 +12,7 @@
 /tmp
 /vendor
 db/*.sqlite3
+*.log
 log/*.log
 rerun.txt
 tags
