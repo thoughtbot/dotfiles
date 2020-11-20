@@ -14,8 +14,9 @@ alias s="rspec"
 alias path='echo $PATH | tr -s ":" "\n"'
 
 alias ll="ls -alh"
+alias la="ls -lh"
 alias l="ls -lh"
-alias flush_dns="sudo killall -HUP mDNSResponder"
+alias flush_dns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 
 docker_clean() {
    docker system prune -f
