@@ -60,6 +60,14 @@ weather() {
    fi
  }
 
+tether() {
+  sudo sysctl -w net.inet.ip.ttl=65
+}
+
+untether() {
+  sudo sysctl -w net.inet.ip.ttl=64
+}
+
 
 # Include custom aliases
 if [[ -f ~/.aliases.local ]]; then
