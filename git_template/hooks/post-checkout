@@ -1,6 +1,9 @@
 #!/bin/sh
 
 local_hook="$HOME"/.git_template.local/hooks/post-checkout
-[ -f "$local_hook" ] && . "$local_hook"
+
+if [ -f "$local_hook" ]; then
+  . "$local_hook";
+fi
 
 .git/hooks/ctags >/dev/null 2>&1 &
