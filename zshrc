@@ -54,7 +54,7 @@ _load_settings "$HOME/.zsh/configs"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-export PATH="/usr/local/opt/openssl/bin:$PATH"
+# export PATH="/usr/local/opt/openssl/bin:$PATH"
 
 # Use ~~ as the trigger sequence instead of the default **
 export FZF_COMPLETION_TRIGGER='~~'
@@ -81,3 +81,4 @@ export FZF_DEFAULT_OPTS='--height 30% --border'
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/marklong/.sdkman"
 [[ -s "/Users/marklong/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/marklong/.sdkman/bin/sdkman-init.sh"
+[[ -f ~/.zshrc.private ]] && source ~/.zshrc.private
