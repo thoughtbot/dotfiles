@@ -8,7 +8,7 @@ Requirements
 
 Set zsh as your login shell:
 
-    chsh -s $(which zsh)
+    chsh --shell "$(which zsh)"
 
 Install
 -------
@@ -38,9 +38,9 @@ This command will create symlinks for config files in your home directory.
 Setting the `RCRC` environment variable tells `rcup` to use standard
 configuration options:
 
-* Exclude the `README.md`, `README-ES.md` and `LICENSE` files, which are part of
+* Exclude the `README.md`, `README-ES.md`, and `LICENSE` files which are part of
   the `dotfiles` repository but do not need to be symlinked in.
-* Give precedence to personal overrides which by default are placed in
+* Give precedence to personal overrides, which by default are placed in
   `~/dotfiles-local`
 * Please configure the `rcrc` file if you'd like to make personal
   overrides in a different directory
@@ -49,13 +49,13 @@ configuration options:
 Update
 ------
 
-From time to time you should pull down any updates to these dotfiles, and run
+From time to time, you should pull down any updates to these dotfiles and run
 
     rcup
 
 to link any new files and install new vim plugins. **Note** You _must_ run
 `rcup` after pulling to ensure that all files in plugins are properly installed,
-but you can safely run `rcup` multiple times so update early and update often!
+but you can safely run `rcup` multiple times, so update early and update often!
 
 Make your own customizations
 ----------------------------
@@ -165,7 +165,7 @@ The `~/dotfiles-local/zshrc.local` is loaded after `~/dotfiles-local/zsh/configs
 vim Configurations
 ------------------
 
-Similarly to the zsh configuration directory as described above, vim
+Like the zsh configuration directory described above, vim
 automatically loads all files in the `~/dotfiles-local/vim/plugin` directory. This does not
 have the same `pre` or `post` subdirectory support that our `zshrc` has.
 
@@ -200,7 +200,7 @@ What's in it?
 configuration:
 
 * Improve color resolution.
-* Remove administrative debris (session name, hostname, time) in status bar.
+* Remove administrative debris (session name, hostname, time) in the status bar.
 * Set prefix to `Ctrl+s`
 * Soften status bar color from harsh green to light gray.
 
@@ -242,7 +242,7 @@ in this project.
 License
 -------
 
-dotfiles is copyright © 2009-2018 thoughtbot. It is free software, and may be
+dotfiles is copyright © 2009-2018 thoughtbot. It is free software and may be
 redistributed under the terms specified in the [`LICENSE`] file.
 
 [`LICENSE`]: /LICENSE
@@ -255,7 +255,7 @@ About thoughtbot
 dotfiles is maintained and funded by thoughtbot, inc.
 The names and logos for thoughtbot are trademarks of thoughtbot, inc.
 
-We love open source software!
+We love open-source software!
 See [our other projects][community].
 We are [available for hire][hire].
 
