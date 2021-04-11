@@ -3,4 +3,14 @@
 set -e
 
 git fetch origin
-git rebase origin/master "$@"
+
+if git symbolic-ref --short refs/remotes/origin/HEAD >/dev/null; then
+  git fetch origin
+  git rebase "$(git symbolic-ref --short refs/remotes/origin/HEAD)" "$@"
+else
+  echo "You don't have a primary branch reference set for your origin remote.
+Use:
+git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/{name_of_your_primary_branch}
+
+to set the reference and then try rebasing again."
+fi

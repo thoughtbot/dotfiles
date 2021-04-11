@@ -2,13 +2,25 @@
 
 set -e
 
-git fetch origin
-line_count=$(git diff origin/master..master | wc -l)
+if git symbolic-ref --short refs/remotes/origin/HEAD >/dev/null; then
+  main_branch="$(git symbolic-ref --short refs/remotes/origin/HEAD | sed 's@^origin/@@')" "$@"
+else
+  echo "You don't have a primary branch reference set for your origin remote.
+  Use:
+  git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/{name_of_your_primary_branch}
 
-if [ $line_count -gt 0 ]; then
-  printf "failed: master is not up to date with origin/master\n"
+  to set the reference and then try merging again."
+
   exit 1
 fi
 
-git checkout master
+git fetch origin
+line_count=$(git diff origin/$main_branch..$main_branch | wc -l)
+
+if [ $line_count -gt 0 ]; then
+  printf "failed: $main_branch is not up to date with origin/$main_branch\n"
+  exit 1
+fi
+
+git checkout $main_branch
 git merge "@{-1}"
