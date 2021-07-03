@@ -46,6 +46,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/tComment'
 
 if g:has_async
+  let g:ale_lint_on_text_changed = 0
   Plug 'dense-analysis/ale'
 endif
 
