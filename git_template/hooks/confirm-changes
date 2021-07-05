@@ -1,0 +1,30 @@
+#!/bin/sh
+
+rebasing_file="$PWD"/.git/rebase_in_progress
+
+if [ -f $rebasing_file ]; then
+  sha_pre_rebase=$(cat $rebasing_file)
+
+  if [ "$(git diff $sha_pre_rebase)" ]; then
+    echo "Your rebase resulted in code changes"
+    git diff $sha_pre_rebase
+
+    while true; do
+      printf  "Do you want to keep the changes? [Y/n] "
+      read -r answer < /dev/tty
+
+      case $answer in
+        [Nn]*)
+          echo "Discarding changes..."
+          git reset --hard $sha_pre_rebase
+          break
+          ;;
+        *)
+          break
+          ;;
+      esac
+    done
+  fi
+
+  rm $rebasing_file
+fi
