@@ -1,4 +1,3 @@
-zstyle ':completion:*:*:git:*' script /usr/local/etc/bash_completion.d/git-completion.bash
 fpath=(/usr/local/share/zsh-completions $fpath)
 autoload -U compinit && compinit
 zmodload -i zsh/complist
@@ -82,3 +81,8 @@ export FZF_DEFAULT_OPTS='--height 30% --border'
 export SDKMAN_DIR="/Users/marklong/.sdkman"
 [[ -s "/Users/marklong/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/marklong/.sdkman/bin/sdkman-init.sh"
 [[ -f ~/.zshrc.private ]] && source ~/.zshrc.private
+
+# auto-completion
+if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
+  . /opt/local/etc/profile.d/bash_completion.sh
+fi
