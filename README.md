@@ -1,4 +1,4 @@
-# thoughtbot dotfiles
+# Forked from thoughtbot dotfiles
 
 ![prompt](http://images.thoughtbot.com/thoughtbot-dotfiles-prompt.png)
 
@@ -252,7 +252,7 @@ in this project.
 dotfiles is copyright © 2009 thoughtbot. It is free software, and may be
 redistributed under the terms specified in the [`LICENSE`] file.
 
-[`LICENSE`]: /LICENSE
+[`license`]: /LICENSE
 
 <!-- START /templates/footer.md -->
 ## About thoughtbot
