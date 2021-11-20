@@ -46,6 +46,9 @@ _load_settings "$HOME/.zsh/configs"
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
 
+## z
+source ~/.zsh/zsh-z/zsh-z.plugin.zsh
+
 ## zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
