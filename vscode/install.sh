@@ -42,3 +42,6 @@ pkglist=(
 for i in ${pkglist[@]}; do
   code --install-extension $i
 done
+
+touch ~/Library/Application\ Support/Code/User/settings.json
+cp -f ../vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json

@@ -12,6 +12,9 @@ alias b="bundle"
 alias migrate="bin/rails db:migrate db:rollback && bin/rails db:migrate db:test:prepare"
 alias s="rspec"
 
+# Git
+alias fixup="git reset --soft HEAD^"
+
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
