@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-brew bundle
-bash ./setup.sh
+brew bundle --file ./macos/Brewfile
+bash ./macos/setup.sh
