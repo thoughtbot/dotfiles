@@ -1,8 +1,9 @@
 #!/bin/bash
 
+ln -s $PWD ~/.dotfiles
+
 brew install rcm
 env RCRC=$PWD/rcrc rcup
-rcup
 
 brew bundle --file ./macos/Brewfile
 bash ./macos/install.sh
