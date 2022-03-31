@@ -28,3 +28,6 @@
   path = ~/.gitconfig.local
 [diff]
   colorMoved = zebra
+[user]
+	name = Kamil Nicieja
+	email = kamil@nicieja.co
