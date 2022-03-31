@@ -6,6 +6,7 @@ brew install rcm
 env RCRC=$PWD/rcrc rcup
 
 brew bundle --file ./macos/Brewfile
+bash ./asdf/install.sh
 bash ./macos/install.sh
 
 bash ./vscode/install.sh
