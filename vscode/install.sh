@@ -37,6 +37,7 @@ pkglist=(
     tomoki1207.pdf
     wingrunr21.vscode-ruby
     yzhang.markdown-all-in-one
+    ruby-signature
 )
 
 for i in ${pkglist[@]}; do
