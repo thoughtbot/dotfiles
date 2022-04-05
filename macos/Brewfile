@@ -166,6 +166,7 @@ cask "font-consolas-for-powerline"
 cask "docker"
 brew "docker-compose"
 cask "pgadmin4"
+cask "airbuddy"
 mas "1Blocker", id: 1365531024
 mas "AdGuard for Safari", id: 1440147259
 mas "iMovie", id: 408981434
