@@ -11,6 +11,6 @@
 if [ -n "$1" ]; then
   lsof -ni4TCP:"$1"
 else
-  echo >&2 Usage: whats_in_port port-number
+  echo >&2 Usage: whats-in-port port-number
   exit 1
 fi
