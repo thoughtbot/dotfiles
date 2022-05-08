@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Search your bundle for the provided pattern
 #   Requires bundler 1.8+ for execution as a bundler subcommand.

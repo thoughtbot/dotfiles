@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Kills the process running on the provided port
 #

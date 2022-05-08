@@ -1,3 +1,3 @@
-#!/bin/sh
+#!/bin/bash
 
 mkdir -p .git/safe
