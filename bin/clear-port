@@ -10,6 +10,6 @@ if [ -n "$1" ]; then
     kill "$port_num"
   fi
 else
-  echo >&2 Usage: clear_port port-number
+  echo >&2 Usage: clear-port port-number
   exit 1
 fi
