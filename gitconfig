@@ -20,6 +20,7 @@
   ff = only
 [commit]
   template = ~/.gitmessage
+	gpgsign = true
 [fetch]
   prune = true
 [rebase]
@@ -29,5 +30,8 @@
 [diff]
   colorMoved = zebra
 [user]
-  email = kamil@nicieja.co
   name = Kamil Nicieja
+  email = kamil@nicieja.co
+  signingkey = DB9C5995
+[gpg]
+  program = /opt/homebrew/bin/gpg
