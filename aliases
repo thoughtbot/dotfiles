@@ -17,14 +17,15 @@ alias ll="ls -alh"
 alias la="ls -lh"
 alias l="ls -lh"
 alias flush_dns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
+alias ctags="`brew --prefix`/bin/ctags"
 
 docker_clean() {
    docker system prune -f
 }
 
 gcom() {
-   git checkout master
-   git pull origin master
+   git checkout main 
+   git pull origin main
 }
 
 gmm() {

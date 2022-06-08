@@ -201,8 +201,8 @@ nmap ,n :NERDTreeFind<CR>
 
 " appearance
 syntax enable
-set background=dark
-colorscheme jellybeans
+colorscheme molokai
+
 let g:NERDTreeStatusline="%{getcwd()}"
 
 if has("unix")
@@ -289,3 +289,67 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 " Kotlin
 autocmd BufNewFile,BufRead *.kt setfiletype kotlin
 autocmd BufNewFile,BufRead *.kts setfiletype kotlin
+
+set tags=tags
+
+" Elixir stuff
+" Enable syntax highlighting
+syntax on
+
+" Enables filetype detection, loads ftplugin, and loads indent
+" (Not necessary on nvim and may not be necessary on vim 8.2+)
+filetype plugin indent on
+
+let g:ale_fixers = { 'elixir': ['mix_format'] }
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> <leader>co  :<C-u>CocList outline<CR>
+
+
+
+let s:user_dir = expand('~/.vim')
+
+let g:ale_elixir_elixir_ls_release = s:user_dir . '/plugins/vim-elixirls/elixir-ls/release'
+
+" https://github.com/JakeBecker/elixir-ls/issues/54
+let g:ale_elixir_elixir_ls_config = { 'elixirLS': { 'dialyzerEnabled': v:false } }
+
+let g:ale_linters = {}
+let g:ale_linters.elixir = [ 'credo', 'elixir-ls' ]
+
+" autocmd FileType elixir,eelixir nnoremap <C-]> :ALEGoToDefinition<CR>
+" autocmd FileType elixir,eelixir nnoremap <C-\> :ALEFindReferences<CR>
+
+let g:ale_fixers = {}
+let g:ale_fixers.elixir = [ 'mix_format' ]
+
+autocmd FileType elixir,eelixir nnoremap <Leader>f :ALEFix<CR>
+
+let g:tagbar_type_elixir = {
+    \ 'ctagstype' : 'elixir',
+    \ 'kinds' : [
+        \ 'p:protocols',
+        \ 'm:modules',
+        \ 'e:exceptions',
+        \ 'y:types',
+        \ 'd:delegates',
+        \ 'f:functions',
+        \ 'c:callbacks',
+        \ 'a:macros',
+        \ 't:tests',
+        \ 'i:implementations',
+        \ 'o:operators',
+        \ 'r:records'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 'p' : 'protocol',
+        \ 'm' : 'module'
+    \ },
+    \ 'scope2kind' : {
+        \ 'protocol' : 'p',
+        \ 'module' : 'm'
+    \ },
+    \ 'sort' : 0
+\ }
