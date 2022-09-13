@@ -26,6 +26,11 @@ updated](http://robots.thoughtbot.com/keeping-a-github-fork-updated)).
 This repo is forked from [thoughtbot's dotfiles](https://github.com/thoughtbot/dotfiles) which utilizes a `*.local` structure for personal prefrences. So use the [dotfiles-local repo](https://github.com/rtaibah/dotfiles-local) to work along with `~/dotfiles`. The `rcup` (see below) commands will take care of symlinking everything. Clone `dotfiles-local`:
 
     git clone git@github.com:rtaibah/dotfiles-local ~/dotfiles-local
+    
+Add tmux plugin manager & source the tmux.conf file:
+
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    tmux source ~/.tmux.conf
 
 Install [rcm](https://github.com/thoughtbot/rcm):
 
