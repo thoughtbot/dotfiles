@@ -192,23 +192,25 @@ What's in it?
   Rails file structure via `gf` and `:A` (alternate), `:Rextract` partials,
   `:Rinvert` migrations, etc.
 * Run many kinds of tests [from vim]([https://github.com/janko-m/vim-test)
-* Set `<leader>` to a single space.
+* Set `<leader>` to a comma.
 * Switch between the last two files with space-space.
-* Syntax highlighting for Markdown, HTML, JavaScript, Ruby, Go, Elixir, more.
+* Syntax highlighting for Markdown, HTML, JavaScript, Ruby, CSS, and more.
 * Use [Ag](https://github.com/ggreer/the_silver_searcher) instead of Grep when
   available.
 * Map `<leader>ct` to re-index ctags.
 * Use [vim-mkdir](https://github.com/pbrisbin/vim-mkdir) for automatically
   creating non-existing directories before writing the buffer.
 * Use [vim-plug](https://github.com/junegunn/vim-plug) to manage plugins.
+* Uses [Dracula theme](https://draculatheme.com/).
 
 [tmux](http://robots.thoughtbot.com/a-tmux-crash-course)
 configuration:
 
 * Improve color resolution.
-* Remove administrative debris (session name, hostname, time) in status bar.
 * Set prefix to `Ctrl+s`
-* Soften status bar color from harsh green to light gray.
+* Uses [Dracula theme](https://draculatheme.com/).
+* Adds different window and session management plugins.
+* Use [tpm](https://github.com/tmux-plugins/tpm) to manage plugins.
 
 [git](http://git-scm.com/) configuration:
 
@@ -248,22 +250,7 @@ in this project.
 License
 -------
 
-dotfiles is copyright © 2009-2018 thoughtbot. It is free software, and may be
+dotfiles is copyright © 2009-2022 thoughtbot. It is free software, and may be
 redistributed under the terms specified in the [`LICENSE`] file.
 
 [`LICENSE`]: /LICENSE
-
-About thoughtbot
-----------------
-
-![thoughtbot](http://presskit.thoughtbot.com/images/thoughtbot-logo-for-readmes.svg)
-
-dotfiles is maintained and funded by thoughtbot, inc.
-The names and logos for thoughtbot are trademarks of thoughtbot, inc.
-
-We love open source software!
-See [our other projects][community].
-We are [available for hire][hire].
-
-[community]: https://thoughtbot.com/community?utm_source=github
-[hire]: https://thoughtbot.com/hire-us?utm_source=github
