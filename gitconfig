@@ -28,6 +28,3 @@
   path = ~/.gitconfig.local
 [diff]
   colorMoved = zebra
-[user]
-	email = rami@taibah.co
-	name = Rami Taibah
