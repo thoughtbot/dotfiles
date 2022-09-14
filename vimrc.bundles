@@ -29,7 +29,7 @@ Plug 'junegunn/fzf.vim'
 UnPlug 'elixir-lang/vim-elixir'
 UnPlug 'fatih/vim-go'
 UnPlug 'janko-m/vim-test'
-Plug 'pangloss/vim-javascript'
+UnPlug 'pangloss/vim-javascript'
 Plug 'pbrisbin/vim-mkdir'
 UnPlug 'slim-template/vim-slim'
 UnPlug 'tpope/vim-bundler'
@@ -60,6 +60,7 @@ Plug 'posva/vim-vue'
 Plug 'ap/vim-css-color'
 Plug 'mileszs/ack.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 if g:has_async
   Plug 'dense-analysis/ale'
