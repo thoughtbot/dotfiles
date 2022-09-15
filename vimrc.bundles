@@ -51,7 +51,7 @@ Plug 'Raimondi/delimitMate' "find something better
 Plug 'kshenoy/vim-signature'
 Plug 'easymotion/vim-easymotion'
 Plug 'mattn/emmet-vim'
-Plug 'prettier/vim-prettier'
+UnPlug 'prettier/vim-prettier'
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
 Plug 'leshill/vim-json'
