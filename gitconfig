@@ -32,6 +32,6 @@
 [user]
 	name = Kamil Nicieja
 	email = kamil@nicieja.co
-	signingkey = 31EF1B49
+	signingkey = 441C725E
 [gpg]
 	program = /opt/homebrew/bin/gpg
