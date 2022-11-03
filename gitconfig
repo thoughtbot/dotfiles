@@ -16,6 +16,7 @@
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
+  ignorecase = false
 [merge]
   ff = only
 [commit]
