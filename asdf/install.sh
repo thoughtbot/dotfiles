@@ -21,3 +21,9 @@ asdf global elixir $(asdf latest elixir)
 asdf global rabbitmq $(asdf latest rabbitmq)
 asdf global redis $(asdf latest redis)
 asdf global mongodb $(asdf latest mongodb)
+
+cp ./asdf/org.postgresql.postgres.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/org.postgresql.postgres.plist
+
+cp ./asdf/org.redis.redis.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/org.redis.redis.plist
