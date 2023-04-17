@@ -22,6 +22,13 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
+" Fix slow Typescript syntax highlighting
+" https://jameschambers.co.uk/vim-typescript-slow
+augroup typescript
+  autocmd!
+  autocmd BufRead,BufNewFile *ts set re=0
+augroup END
+
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
