@@ -22,8 +22,15 @@ asdf global rabbitmq $(asdf latest rabbitmq)
 asdf global redis $(asdf latest redis)
 asdf global mongodb $(asdf latest mongodb)
 
-cp ./asdf/org.postgresql.postgres.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/org.postgresql.postgres.plist
+sudo cp ./asdf/org.postgresql.postgres.plist /Library/LaunchDaemons/
+sudo cp ./asdf/org.redis.redis.plist /Library/LaunchDaemons/
 
-cp ./asdf/org.redis.redis.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/org.redis.redis.plist
+sudo chown root:wheel /Library/LaunchDaemons/org.redis.redis.plist
+sudo chmod 644 /Library/LaunchDaemons/org.redis.redis.plist
+
+sudo chown root:wheel /Library/LaunchDaemons/org.postgresql.postgres.plist
+sudo chmod 644 /Library/LaunchDaemons/org.postgresql.postgres.plist
+
+sudo launchctl load /Library/LaunchDaemons/org.postgresql.postgres.plist
+sudo launchctl load /Library/LaunchDaemons/org.redis.redis.plist
+
