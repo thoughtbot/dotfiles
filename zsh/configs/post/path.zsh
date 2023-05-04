@@ -14,3 +14,7 @@ fi
 PATH=".git/safe/../../bin:$PATH"
 
 export -U PATH
+
+export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
