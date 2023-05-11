@@ -12,15 +12,10 @@ jobs:
         with:
           ruby-version: '3.0'
           bundler-cache: true
-      - run: git log origin/${{ github.base_ref }}..origin/${{ github.head_ref }} --pretty=format:%ae | head -1
-      - run: echo "${{ github.event.pull_request.user }}" 
-      - run: echo "${{ github.actor }}" 
+      - name: Grab the PR author's email
+        id: get_email
+        run: |
+          echo "pull_request_author_email=`git log origin/${{ github.base_ref }}..origin/${{ github.head_ref }} --pretty=format:%ae | head -1`" >> "$GITHUB_ENV"
+      - run: bash ./.github/main.sh ${{ env.pull_request_author_email }} ${{ github.event.pull_request.title }}
       - run: echo "${{ github.event.pull_request.title }}"
-      - run: bash ./.github/main.sh ${{ github.event.pull_request.title }}
-      - run: echo "${{ github.event.pull_request.title }}"
-      - name: get email
-        id: test
-        uses: evvanErb/get-github-email-by-username-action@v2.0
-        with:
-          github-username: 'mastooo'
     
