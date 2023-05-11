@@ -1,3 +1,4 @@
+name: slack-pr-notify
 on:
   pull_request:
     types: 
