@@ -11,7 +11,7 @@ jobs:
         with:
           ruby-version: '3.0'
           bundler-cache: true
-      - run: echo "pwd"
+      - run: pwd
       - run: ./.github/main.sh
         shell: bash
 #       - run: echo "${{ github.event.pull_request.title }}"
