@@ -6,4 +6,6 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event.pull_request.title }} event."
+    - name: Setup Ruby
+    - uses: ruby/setup-ruby@v1.148.0
+    - run: echo "🎉 The job was automatically triggered by a ${{ github.event.pull_request.title }} event."
