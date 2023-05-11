@@ -8,4 +8,7 @@ jobs:
     steps:
     - name: Setup Ruby
     - uses: ruby/setup-ruby@v1.148.0
-    - run: echo "🎉 The job was automatically triggered by a ${{ github.event.pull_request.title }} event."
+      with:
+        ruby-version: '3.0'
+        bundler-cache: true
+    - run: echo "${{ github.event.pull_request.title }}"
