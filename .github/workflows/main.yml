@@ -20,5 +20,10 @@ jobs:
           SLACK_GITHUB_BOT_TOKEN: ${{ secrets.SLACK_GITHUB_BOT_TOKEN }}
         run: |
           ./.github/main.sh "${{ github.event.pull_request.title }}"
+      - shell: bash
+        env:
+          SLACK_GITHUB_BOT_TOKEN: ${{ secrets.SLACK_GITHUB_BOT_TOKEN }}
+        run: |
+          ./.github/slack-pr-notification.rb "${{ github.event.pull_request.title }}"
       
     
