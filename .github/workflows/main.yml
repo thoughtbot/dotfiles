@@ -7,9 +7,7 @@ jobs:
   slack:
       runs-on: ubuntu-latest
       steps:
-      - name: Pull the repo
       - uses: actions/checkout@v1
-      - name: Install the ruby env
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.0'
