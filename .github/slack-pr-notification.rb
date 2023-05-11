@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-gem install slack-ruby-client
+# gem install slack-ruby-client
 
 require 'slack-ruby-client'
 
