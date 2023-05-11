@@ -12,7 +12,7 @@ jobs:
         with:
           ruby-version: '3.0'
           bundler-cache: true
-      - run: echo "$GITHUB_CONTEXT" 
+      - run: git cherry master -v | head -n 1
       - run: echo "${{ github.event.pull_request.user }}" 
       - run: echo "${{ github.actor }}" 
       - run: echo "${{ github.event.pull_request.title }}"
