@@ -12,8 +12,7 @@ jobs:
         with:
           ruby-version: '3.0'
           bundler-cache: true
-      - run: pwd
-      - run: ls -al
-      - run: bash ./.github/main.sh
-#         shell: bash
+      - run: echo "${{ github.event.pull_request.user.email }}" 
+      - run: bash ./.github/main.sh ${{ github.event.pull_request.title }}
+      
 #       - run: echo "${{ github.event.pull_request.title }}"
