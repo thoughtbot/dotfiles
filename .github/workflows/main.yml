@@ -13,6 +13,6 @@ jobs:
           bundler-cache: true
       - run: pwd
       - run: ls -al
-      - run: ./.github/main.sh
-        shell: bash
+      - run: bash ./.github/main.sh
+#         shell: bash
 #       - run: echo "${{ github.event.pull_request.title }}"
