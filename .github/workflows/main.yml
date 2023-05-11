@@ -12,7 +12,7 @@ jobs:
         with:
           ruby-version: '3.0'
           bundler-cache: true
-      - run: git log ${{ github.base_ref }}..${{ github.head_ref }} --pretty=format:%ae | head -1
+      - run: git log origin/${{ github.base_ref }}..${{ github.head_ref }} --pretty=format:%ae | head -1
       - run: echo "${{ github.event.pull_request.user }}" 
       - run: echo "${{ github.actor }}" 
       - run: echo "${{ github.event.pull_request.title }}"
