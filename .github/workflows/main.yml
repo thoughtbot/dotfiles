@@ -3,12 +3,21 @@ on:
     types: 
       - edited
 jobs:
-  Explore-GitHub-Actions:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Setup Ruby
-    - uses: ruby/setup-ruby@v1.148.0
-      with:
-        ruby-version: '3.0'
-        bundler-cache: true
-    - run: echo "${{ github.event.pull_request.title }}"
+  slack:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0' # Not needed with a .ruby-version file
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - run: bundle exec rake
+
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Setup Ruby
+#     - uses: ruby/setup-ruby@v1.148.0
+#       with:
+#         ruby-version: '3.0'
+#         bundler-cache: true
+#     - run: echo "${{ github.event.pull_request.title }}"
