@@ -7,6 +7,7 @@ jobs:
   slack:
       runs-on: ubuntu-latest
       steps:
+      - uses: evvanErb/get-github-email-by-username-action@v2.0
       - uses: actions/checkout@v1
       - uses: ruby/setup-ruby@v1
         with:
@@ -17,5 +18,3 @@ jobs:
       - run: echo "${{ github.actor }}" 
       - run: bash ./.github/main.sh ${{ github.event.pull_request.title }}
       - run: echo "${{ github.event.pull_request.title }}"
-      - name: Get GitHub Email from Username
-      - uses: evvanErb/get-github-email-by-username-action@v2.0
