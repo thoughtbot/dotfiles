@@ -13,15 +13,12 @@ jobs:
           ruby-version: '3.0'
           bundler-cache: true
       - name: Grab the PR author's email
-        env:
-          slack_token: ${{ secrets.SLACK_GITHUB_BOT_TOKEN }}
-        id: get_email
         run: |
           echo "pull_request_author_email=`git log origin/${{ github.base_ref }}..origin/${{ github.head_ref }} --pretty=format:%ae | head -1`" >> "$GITHUB_ENV"
       - shell: bash
         env:
           SLACK_GITHUB_BOT_TOKEN: ${{ secrets.SLACK_GITHUB_BOT_TOKEN }}
         run: |
-          ./.github/main.sh ${{ env.pull_request_author_email }} ${{ github.event.pull_request.title }}
+          ./.github/main.sh "${{ github.event.pull_request.title }}"
       
     
