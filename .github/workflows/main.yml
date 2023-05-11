@@ -11,12 +11,3 @@ jobs:
           ruby-version: '3.0'
           bundler-cache: true
       - run: echo "${{ github.event.pull_request.title }}"
-
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: Setup Ruby
-#     - uses: ruby/setup-ruby@v1.148.0
-#       with:
-#         ruby-version: '3.0'
-#         bundler-cache: true
-#     - run: 
