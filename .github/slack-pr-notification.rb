@@ -3,6 +3,11 @@
 # gem install slack-ruby-client
 
 require 'slack-ruby-client'
+require 'json'
+
+# load json object from file
+json = JSON.parse(File.read(ENV['GITHUB_EVENT_PATH']))
+puts json
 
 Slack.configure do |config|
   config.token = ENV['SLACK_GITHUB_BOT_TOKEN']
@@ -11,7 +16,6 @@ end
 pr_author_email = ENV['pull_request_author_email']
 
 client = Slack::Web::Client.new()
-
 resp = client.users_lookupByEmail(email: pr_author_email)
 
 if resp.ok?
