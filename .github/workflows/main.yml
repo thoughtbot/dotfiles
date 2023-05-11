@@ -11,4 +11,7 @@ jobs:
         with:
           ruby-version: '3.0'
           bundler-cache: true
-      - run: echo "${{ github.event.pull_request.title }}"
+      - name: Run Slack Script
+      - run: ./.github/scripts/main.sh
+        shell: bash
+#       - run: echo "${{ github.event.pull_request.title }}"
