@@ -53,8 +53,9 @@ def find_existing_pr_message(client, slack_user, pr_id)
     # try to find if there is already an existing message
     messages = client.conversations_history(channel: channel.id).messages
     message = messages.select do |m|
-      puts m
-      m.metadata && m.metadata['event_type']['pr_created'] && m.metadata['event_payload']['id'] == pr_id
+      # puts m
+      # m.metadata && m.metadata['event_type']['pr_created'] && m.metadata['event_payload']['id'] == pr_id
+      false
     end.first
     return message
   end
@@ -77,7 +78,7 @@ if action == 'edited' and event['changes']['title']
     client.chat_postMessage(channel: slack_user.id, blocks: create_pr_message(event['pull_request']), as_user: true, metadata: JSON.dump({
       "event_type": "pr_created",
       "event_payload": {
-        "id": pr_id,
+        "pr_id": pr_id,
       }}))
   end
   # else
