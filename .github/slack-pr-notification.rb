@@ -3,10 +3,23 @@
 require 'bundler/inline'
 
 gemfile do
+  source 'https://rubygems.org'
   gem 'slack-ruby-client'
 end
 
 require 'slack-ruby-client'
+
+def find_slack_user_from_email(email)
+  begin
+    resp = client.users_lookupByEmail(email: email)
+    if resp.ok?
+      resp.user
+    end
+  rescue => e
+    puts e
+  end
+  nil
+end
 
 # configure slack with the right
 Slack.configure do |config|
@@ -42,16 +55,4 @@ if action == 'edited' and action['changes']['title']
   else
     client.chat_postMessage(channel: user.id, text: event['pull_request']['title'], as_user: true)
   end
-end
-
-def find_slack_user_from_email(email)
-  begin
-    resp = client.users_lookupByEmail(email: email)
-    if resp.ok?
-      resp.user
-    end
-  rescue => e
-    puts e
-  end
-  nil
 end
