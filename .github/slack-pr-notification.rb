@@ -1,9 +1,12 @@
 #!/usr/bin/env ruby
 
-system("gem install slack-ruby-client")
-# gem 'slack-ruby-client'
-# require 'slack-ruby-client'
-require 'json'
+require 'bundler/inline'
+
+gemfile do
+  gem 'slack-ruby-client'
+end
+
+require 'slack-ruby-client'
 
 # configure slack with the right
 Slack.configure do |config|
