@@ -3,6 +3,7 @@ on:
   pull_request:
     types: 
       - edited
+      - opened
 jobs:
   slack:
       runs-on: ubuntu-latest
