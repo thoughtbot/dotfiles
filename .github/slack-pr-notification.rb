@@ -52,7 +52,10 @@ def find_existing_pr_message(client, slack_user, pr_id)
   if channel != nil
     # try to find if there is already an existing message
     messages = client.conversations_history(channel: channel.id).messages
-    message = messages.select { |m| m.metadata && m.metadata['event_type']['pr_created'] && m.metadata['event_payload']['id'] == pr_id }.first
+    message = messages.select do |m|
+      puts m
+      m.metadata && m.metadata['event_type']['pr_created'] && m.metadata['event_payload']['id'] == pr_id }
+    end.first
     return message
   end
   nil
