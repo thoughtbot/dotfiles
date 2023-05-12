@@ -4,6 +4,7 @@ on:
     types: 
       - edited
       - opened
+      - closed
 jobs:
   slack:
       runs-on: ubuntu-latest
