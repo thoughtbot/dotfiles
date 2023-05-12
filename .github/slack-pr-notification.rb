@@ -9,6 +9,12 @@ end
 
 require 'slack-ruby-client'
 
+# configure slack with the right
+Slack.configure do |config|
+  config.token = ENV['SLACK_GITHUB_BOT_TOKEN']
+end
+client = Slack::Web::Client.new()
+
 def find_slack_user_from_email(email)
   begin
     resp = client.users_lookupByEmail(email: email)
@@ -21,11 +27,6 @@ def find_slack_user_from_email(email)
   nil
 end
 
-# configure slack with the right
-Slack.configure do |config|
-  config.token = ENV['SLACK_GITHUB_BOT_TOKEN']
-end
-client = Slack::Web::Client.new()
 slack_user = find_slack_user_from_email(ENV['pull_request_author_email'])
 if !slack_user
   puts "No slack user found for #{ENV['pull_request_author_email']}"
