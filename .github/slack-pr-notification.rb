@@ -64,13 +64,13 @@ pull_request = event['pull_request']
 actor = event['sender']
 pr_id = pull_request['id']
 action = event['action']
-title_updated = false
 
 begin
-  if action == 'edited' || action == 'closed' || action == 'reopened'
-    title_updated = action == 'edited' && event['changes']['title']
+  if action == 'edited' || action == 'closed' || action == 'reopened' || action == 'created'
     channel, message = find_existing_pr_message(client, slack_user, pr_id)
   end
+
+  title_updated = action == 'edited' && event['changes']['title']
 
   if action == 'opened' || title_updated
     if message && channel
@@ -94,6 +94,12 @@ begin
   if action == 'reopened'
     client.chat_postMessage(channel: channel.id, thread_ts: message['ts'], text: "PR was reopened by *#{actor['login']}*", as_user: true)
     client.reactions_remove(channel: channel.id, timestamp: message['ts'], name: 'pr-closed')
+  end
+
+  if action == 'created'  # case of a review comment created
+    comment = event['comment']
+    puts comment
+    client.chat_postMessage(channel: channel.id, thread_ts: message['ts'], text: "A <#{comment['html_url']}|new comment> by *#{actor['login']}* was just added\n```\n#{comment['diff_hunk']}```\n> #{comment['body']}", as_user: true)
   end
 rescue => e
   puts e
