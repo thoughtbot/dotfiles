@@ -76,7 +76,7 @@ if action == 'edited' and event['changes']['title']
 
   message = find_existing_pr_message(client, slack_user, pr_id)
   if message
-    client.chat_update(channel: slack_user.id, blocks: create_pr_message(event['pull_request']), as_user: true, ts: message.ts)
+    client.chat_update(channel: message.channel_id, blocks: create_pr_message(event['pull_request']), as_user: true, ts: message.ts)
   else
     client.chat_postMessage(channel: slack_user.id, blocks: create_pr_message(event['pull_request']), as_user: true, metadata: JSON.dump({
       "event_type": "pr_created_#{pr_id}",
