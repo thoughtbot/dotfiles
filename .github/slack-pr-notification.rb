@@ -15,6 +15,12 @@ Slack.configure do |config|
 end
 client = Slack::Web::Client.new()
 
+slack_user = find_slack_user_from_email(client, ENV['pull_request_author_email'])
+if !slack_user
+  puts "No slack user found for #{ENV['pull_request_author_email']}"
+  exit 0
+end
+
 # find the slack user from the email
 def find_slack_user_from_email(client, email)
   begin
@@ -39,11 +45,16 @@ def create_pr_message(pull_request)
    }]
 end
 
-
-slack_user = find_slack_user_from_email(client, ENV['pull_request_author_email'])
-if !slack_user
-  puts "No slack user found for #{ENV['pull_request_author_email']}"
-  exit 0
+def find_existing_pr_message(client, slack_user, pr_id)
+  resp = client.users_conversations(types: 'im')
+  channel = resp.channels.select { |c| c.user == slack_user.id }.first
+  if channel != nil
+    # try to find if there is already an existing message
+    messages = client.conversations_history(channel: channel.id).messages
+    message = messages.select { |m| m.metadata['event_type'] && m.metadata['event_type']['pr_created'] && m.metadata['event_payload']['id'] == pr_id }.first
+    return message
+  end
+  nil
 end
 
 # load json object from file
@@ -53,24 +64,19 @@ event = JSON.parse(File.read(ENV['GITHUB_EVENT_PATH']))
 action = event['action']
 if action == 'edited' and event['changes']['title']
   old_title = event['changes']['title']['from']
+  pr_id = event['pull_request']['id']
 
-  # find the conversation with the bot
-  resp = client.users_conversations(types: 'im')
-  channel = resp.channels.select { |c| c.user == slack_user.id }.first
-  if channel != nil
-    # try to find if there is already an existing message
-    messages = client.conversations_history(channel: channel.id).messages
-    message = messages.select { |m| m.text == old_title }.first
-    if message
-      client.chat_postMessage(channel: slack_user.id, text: 'An update', as_user: true, thread_ts: message.ts)
-    else
-      client.chat_postMessage(channel: slack_user.id, blocks: create_pr_message(event['pull_request']), as_user: true, metadata: JSON.dump({
-        "event_type": "pr_created",
-        "event_payload": {
-          "id": event['pull_request']['id'],
-        }}))
-    end
+  message = find_existing_pr_message(client, slack_user, event['pull_request'])
+  if message
+    client.chat.update(channel: slack_user.id, blocks: create_pr_message(event['pull_request']), as_user: true, ts: message.ts)
   else
-    client.chat_postMessage(channel: slack_user.id, blocks: create_pr_message(event['pull_request']), as_user: true)
+    client.chat_postMessage(channel: slack_user.id, blocks: create_pr_message(event['pull_request']), as_user: true, metadata: JSON.dump({
+      "event_type": "pr_created",
+      "event_payload": {
+        "id": pr_id,
+      }}))
   end
+  # else
+  #   client.chat_postMessage(channel: slack_user.id, blocks: create_pr_message(event['pull_request']), as_user: true)
+  # end
 end
