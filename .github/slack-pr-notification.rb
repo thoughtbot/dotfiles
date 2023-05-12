@@ -85,8 +85,10 @@ begin
   end
 
   if action == 'closed'
-    client.chat_postMessage(channel: channel.id, thread_ts: message['ts'], text: ":pr-closed: PR was closed by *#{actor['login']}*", as_user: true)
-    client.reactions_add(channel: channel.id, timestamp: message['ts'], name: event['pull_request']['merged'] ? 'merged' : 'pr-closed')
+    emoji_name = event['pull_request']['merged'] ? 'merged' : 'pr-closed'
+    closed_action =  event['pull_request']['merged'] ? 'merged' : 'closed'
+    client.chat_postMessage(channel: channel.id, thread_ts: message['ts'], text: ":#{emoji_name}: PR was #{closed_action} by *#{actor['login']}*", as_user: true)
+    client.reactions_add(channel: channel.id, timestamp: message['ts'], name: emoji_name)
   end
 
   if action == 'reopened'
