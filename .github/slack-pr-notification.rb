@@ -60,20 +60,17 @@ end
 
 # load json object from file
 event = JSON.parse(File.read(ENV['GITHUB_EVENT_PATH']))
-# puts event
-
+pr_id = event['pull_request']['id']
 action = event['action']
-if action == 'edited' and event['changes']['title']
-  old_title = event['changes']['title']['from']
-  pr_id = event['pull_request']['id']
+title_updated = false
 
+if action == 'edited' && event['changes']['title']
+  title_updated = true
   channel, message = find_existing_pr_message(client, slack_user, pr_id)
-  puts channel
-  puts "***"
-  puts message
-  if message
-    puts "On met à jour le message"
-    puts message
+end
+
+if action == 'opened' || title_updated
+  if message && channel
     client.chat_update(channel: channel.id, ts: message['ts'], blocks: create_pr_message(event['pull_request']), as_user: true)
   else
     client.chat_postMessage(channel: slack_user.id, blocks: create_pr_message(event['pull_request']), as_user: true, metadata: JSON.dump({
@@ -82,7 +79,4 @@ if action == 'edited' and event['changes']['title']
         "pr_id": "#{pr_id}",
       }}))
   end
-  # else
-  #   client.chat_postMessage(channel: slack_user.id, blocks: create_pr_message(event['pull_request']), as_user: true)
-  # end
 end
