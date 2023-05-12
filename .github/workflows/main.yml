@@ -5,6 +5,7 @@ on:
       - edited
       - opened
       - closed
+      - reopened
 jobs:
   slack:
       runs-on: ubuntu-latest
