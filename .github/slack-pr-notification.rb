@@ -66,29 +66,32 @@ pr_id = pull_request['id']
 action = event['action']
 title_updated = false
 
-if action == 'edited' || action == 'closed' || action == 'reopened'
-  title_updated = action == 'edited' && event['changes']['title']
-  channel, message = find_existing_pr_message(client, slack_user, pr_id)
-end
-
-if action == 'opened' || title_updated
-  if message && channel
-    client.chat_update(channel: channel.id, ts: message['ts'], blocks: create_pr_message(pull_request), as_user: true)
-  else
-    client.chat_postMessage(channel: slack_user.id, blocks: create_pr_message(pull_request), as_user: true, metadata: JSON.dump({
-      "event_type": "pr_created_#{pr_id}",
-      "event_payload": {
-        "pr_id": "#{pr_id}",
-      }}))
+begin
+  if action == 'edited' || action == 'closed' || action == 'reopened'
+    title_updated = action == 'edited' && event['changes']['title']
+    channel, message = find_existing_pr_message(client, slack_user, pr_id)
   end
-end
 
-if action == 'closed'
-  puts actor
-  client.chat_postMessage(channel: channel.id, ts: message['ts'], text: ":pr-closed: PR was closed by #{actor['login']}", as_user: true)
-  client.reactions_add(channel: channel.id, timestamp: message['ts'], name: event['pull_request']['merged'] ? 'merged' : 'pr-closed')
-end
+  if action == 'opened' || title_updated
+    if message && channel
+      client.chat_update(channel: channel.id, ts: message['ts'], blocks: create_pr_message(pull_request), as_user: true)
+    else
+      client.chat_postMessage(channel: slack_user.id, blocks: create_pr_message(pull_request), as_user: true, metadata: JSON.dump({
+        "event_type": "pr_created_#{pr_id}",
+        "event_payload": {
+          "pr_id": "#{pr_id}",
+        }}))
+    end
+  end
 
-if action == 'reopened'
-  client.reactions_remove(channel: channel.id, timestamp: message['ts'], name: 'pr-closed')
+  if action == 'closed'
+    client.chat_postMessage(channel: channel.id, thread_ts: message['ts'], text: ":pr-closed: PR was closed by *#{actor['login']}*", as_user: true)
+    client.reactions_add(channel: channel.id, timestamp: message['ts'], name: event['pull_request']['merged'] ? 'merged' : 'pr-closed')
+  end
+
+  if action == 'reopened'
+    client.reactions_remove(channel: channel.id, timestamp: message['ts'], name: 'pr-closed')
+  end
+rescue => e
+  puts e
 end
