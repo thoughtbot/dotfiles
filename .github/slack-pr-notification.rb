@@ -90,6 +90,7 @@ begin
   end
 
   if action == 'reopened'
+    client.chat_postMessage(channel: channel.id, thread_ts: message['ts'], text: "PR was reopened by *#{actor['login']}*", as_user: true)
     client.reactions_remove(channel: channel.id, timestamp: message['ts'], name: 'pr-closed')
   end
 rescue => e
