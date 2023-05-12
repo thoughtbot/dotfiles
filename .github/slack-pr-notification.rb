@@ -15,6 +15,7 @@ Slack.configure do |config|
 end
 client = Slack::Web::Client.new()
 
+# find the slack user from the email
 def find_slack_user_from_email(client, email)
   begin
     resp = client.users_lookupByEmail(email: email)
@@ -26,6 +27,18 @@ def find_slack_user_from_email(client, email)
   end
   nil
 end
+
+# function that creates the slack message
+def create_pr_message(pull_request)
+  [{
+     "type": "section",
+     "text": {
+       "type": "mrkdwn",
+       "text": "Hey there 👋. You created the PR *#{pull_request['title']}*.\nYou can keep track of its status here and new comments will get added as thread messages"
+     }
+   }]
+end
+
 
 slack_user = find_slack_user_from_email(client, ENV['pull_request_author_email'])
 if !slack_user
@@ -51,9 +64,9 @@ if action == 'edited' and event['changes']['title']
     if message
       client.chat_postMessage(channel: slack_user.id, text: 'An update', as_user: true, thread_ts: message.ts)
     else
-      client.chat_postMessage(channel: slack_user.id, text: event['pull_request']['title'], as_user: true)
+      client.chat_postMessage(channel: slack_user.id, blocks: create_pr_message(event['pull_request']), as_user: true, metadata: {"event_type": "task_created", "event_payload": { "id": "11223", "title": "Redesign Homepage"}})
     end
   else
-    client.chat_postMessage(channel: slack_user.id, text: event['pull_request']['title'], as_user: true)
+    client.chat_postMessage(channel: slack_user.id, blocks: create_pr_message(event['pull_request']), as_user: true)
   end
 end
