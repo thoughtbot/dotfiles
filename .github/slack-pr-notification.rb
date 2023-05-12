@@ -15,11 +15,6 @@ Slack.configure do |config|
 end
 client = Slack::Web::Client.new()
 
-slack_user = find_slack_user_from_email(client, ENV['pull_request_author_email'])
-if !slack_user
-  puts "No slack user found for #{ENV['pull_request_author_email']}"
-  exit 0
-end
 
 # find the slack user from the email
 def find_slack_user_from_email(client, email)
@@ -32,6 +27,12 @@ def find_slack_user_from_email(client, email)
     puts e
   end
   nil
+end
+
+slack_user = find_slack_user_from_email(client, ENV['pull_request_author_email'])
+if !slack_user
+  puts "No slack user found for #{ENV['pull_request_author_email']}"
+  exit 0
 end
 
 # function that creates the slack message
