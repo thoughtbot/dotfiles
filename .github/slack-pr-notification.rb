@@ -60,23 +60,29 @@ end
 
 # load json object from file
 event = JSON.parse(File.read(ENV['GITHUB_EVENT_PATH']))
-pr_id = event['pull_request']['id']
+pull_request = event['pull_request']
+pr_id = pull_request['id']
 action = event['action']
 title_updated = false
 
-if action == 'edited' && event['changes']['title']
-  title_updated = true
+if action == 'edited' || action == 'closed'
+  title_updated = action == 'edited' && event['changes']['title']
   channel, message = find_existing_pr_message(client, slack_user, pr_id)
 end
 
 if action == 'opened' || title_updated
   if message && channel
-    client.chat_update(channel: channel.id, ts: message['ts'], blocks: create_pr_message(event['pull_request']), as_user: true)
+    client.chat_update(channel: channel.id, ts: message['ts'], blocks: create_pr_message(pull_request), as_user: true)
   else
-    client.chat_postMessage(channel: slack_user.id, blocks: create_pr_message(event['pull_request']), as_user: true, metadata: JSON.dump({
+    client.chat_postMessage(channel: slack_user.id, blocks: create_pr_message(pull_request), as_user: true, metadata: JSON.dump({
       "event_type": "pr_created_#{pr_id}",
       "event_payload": {
         "pr_id": "#{pr_id}",
       }}))
   end
+end
+
+if action == 'closed'
+  merged = event['pull_request']['merged']
+  client.reactions_add(channel: channel.id, timestamp: message['ts'], name: merged ? 'merged' : 'pr-closed')
 end
