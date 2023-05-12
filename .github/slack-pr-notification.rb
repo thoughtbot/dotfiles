@@ -64,15 +64,11 @@ if action == 'edited' and event['changes']['title']
     if message
       client.chat_postMessage(channel: slack_user.id, text: 'An update', as_user: true, thread_ts: message.ts)
     else
-      client.chat_postMessage(channel: slack_user.id, blocks: create_pr_message(event['pull_request']), as_user: true, metadata: {
+      client.chat_postMessage(channel: slack_user.id, blocks: create_pr_message(event['pull_request']), as_user: true, metadata: JSON.dump({
         "event_type": "task_created",
         "event_payload": {
           "id": "TK-2132",
-          "summary": "New issue with the display of mobile element",
-          "description": "An end user has found a problem with the new mobile container for data entry. It was reproduced in the current version of IOS.",
-          "priority": "HIGH",
-          "resource_type": "TASK"
-        }})
+        }}))
     end
   else
     client.chat_postMessage(channel: slack_user.id, blocks: create_pr_message(event['pull_request']), as_user: true)
