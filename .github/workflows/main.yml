@@ -19,7 +19,7 @@ jobs:
 #           echo "pull_request_author_email=`git log origin/${{ github.base_ref }}..origin/${{ github.head_ref }} --pretty=format:%ae | head -1`" >> "$GITHUB_ENV"
       - name: Grab the PR author's email
         run: |
-          echo "pull_request_author_email=`git log origin/${{ github.base_ref }}..$GITHUB_REF --pretty=format:%ae | head -1`" >> "$GITHUB_ENV"
+          echo "pull_request_author_email=`git log origin/${{ github.base_ref }}..${GITHUB_REF} --pretty=format:%ae | head -1`" >> "$GITHUB_ENV"
       - shell: bash
         env:
           SLACK_GITHUB_BOT_TOKEN: ${{ secrets.SLACK_GITHUB_BOT_TOKEN }}
