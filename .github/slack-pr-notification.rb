@@ -48,7 +48,7 @@ end
 
 # load json object from file
 event = JSON.parse(File.read(ENV['GITHUB_EVENT_PATH']))
-puts event
+# puts event
 
 action = event['action']
 if action == 'edited' and event['changes']['title']
@@ -64,7 +64,7 @@ if action == 'edited' and event['changes']['title']
     if message
       client.chat_postMessage(channel: slack_user.id, text: 'An update', as_user: true, thread_ts: message.ts)
     else
-      client.chat_postMessage(channel: slack_user.id, blocks: create_pr_message(event['pull_request']), as_user: true, metadata: {"event_type": "task_created", "event_payload": { "id": "11223", "title": "Redesign Homepage"}})
+      client.chat_postMessage(channel: slack_user.id, blocks: create_pr_message(event['pull_request']), as_user: true)
     end
   else
     client.chat_postMessage(channel: slack_user.id, blocks: create_pr_message(event['pull_request']), as_user: true)
