@@ -86,3 +86,7 @@ if action == 'closed'
   merged = event['pull_request']['merged']
   client.reactions_add(channel: channel.id, timestamp: message['ts'], name: merged ? 'merged' : 'pr-closed')
 end
+
+if action == 'reopened'
+  client.reactions_remove(channel: channel.id, timestamp: message['ts'], name: 'pr-closed')
+end
