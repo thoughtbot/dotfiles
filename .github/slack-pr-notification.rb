@@ -38,8 +38,8 @@ event = JSON.parse(File.read(ENV['GITHUB_EVENT_PATH']))
 puts event
 
 action = event['action']
-if action == 'edited' and action['changes']['title']
-  old_title = action['changes']['title'][]
+if action == 'edited' and event['changes']['title']
+  old_title = event['changes']['title']['from']
 
   # find the conversation with the bot
   resp = client.users_conversations(types: 'im')
