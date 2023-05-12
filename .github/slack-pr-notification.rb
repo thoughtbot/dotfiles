@@ -61,6 +61,7 @@ end
 # load json object from file
 event = JSON.parse(File.read(ENV['GITHUB_EVENT_PATH']))
 pull_request = event['pull_request']
+actor = event['sender']
 pr_id = pull_request['id']
 action = event['action']
 title_updated = false
@@ -83,8 +84,9 @@ if action == 'opened' || title_updated
 end
 
 if action == 'closed'
-  merged = event['pull_request']['merged']
-  client.reactions_add(channel: channel.id, timestamp: message['ts'], name: merged ? 'merged' : 'pr-closed')
+  puts actor
+  client.chat_update(channel: channel.id, ts: message['ts'], blocks: "PR was closed by #{actor}", as_user: true)
+  client.reactions_add(channel: channel.id, timestamp: message['ts'], name: event['pull_request']['merged'] ? 'merged' : 'pr-closed')
 end
 
 if action == 'reopened'
