@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 system("gem install slack-ruby-client")
-
+gem 'slack-ruby-client'
 require 'slack-ruby-client'
 require 'json'
 
