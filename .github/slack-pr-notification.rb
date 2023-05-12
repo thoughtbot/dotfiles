@@ -65,7 +65,7 @@ pr_id = pull_request['id']
 action = event['action']
 title_updated = false
 
-if action == 'edited' || action == 'closed'
+if action == 'edited' || action == 'closed' || action == 'reopened'
   title_updated = action == 'edited' && event['changes']['title']
   channel, message = find_existing_pr_message(client, slack_user, pr_id)
 end
