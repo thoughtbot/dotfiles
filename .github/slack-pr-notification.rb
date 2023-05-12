@@ -15,6 +15,9 @@ Slack.configure do |config|
 end
 client = Slack::Web::Client.new()
 
+repo_url = ENV['github.repositoryUrl']
+repo_name = ENV['github.repository']
+
 
 # find the slack user from the email
 def find_slack_user_from_email(client, email)
@@ -41,7 +44,7 @@ def create_pr_message(pull_request)
      "type": "section",
      "text": {
        "type": "mrkdwn",
-       "text": "Hey there 👋. You created the :github: <#{pull_request['html_url']}|PR ##{pull_request['number']}> *#{pull_request['title']}*.\nYou can keep track of its status here and new comments will get added as thread messages"
+       "text": "Hey there 👋. You created the :github: <#{pull_request['html_url']}|PR ##{pull_request['number']}> \"*#{pull_request['title']}*\" in <#{repo_url}|#{repo_name}>.\nYou can keep track of its status here and new comments will get added as thread messages"
      }
    }]
 end
