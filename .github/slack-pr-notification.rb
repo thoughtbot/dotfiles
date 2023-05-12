@@ -54,7 +54,7 @@ def find_existing_pr_message(client, slack_user, pr_id)
     messages = client.conversations_history(channel: channel.id).messages
     message = messages.select do |m|
       puts m
-      m.metadata && m.metadata['event_type']['pr_created'] && m.metadata['event_payload']['id'] == pr_id }
+      m.metadata && m.metadata['event_type']['pr_created'] && m.metadata['event_payload']['id'] == pr_id
     end.first
     return message
   end
