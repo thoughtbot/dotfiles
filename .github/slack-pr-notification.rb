@@ -34,7 +34,7 @@ def create_pr_message(pull_request)
      "type": "section",
      "text": {
        "type": "mrkdwn",
-       "text": "Hey there 👋. You created the PR *#{pull_request['title']}*.\nYou can keep track of its status here and new comments will get added as thread messages"
+       "text": "Hey there 👋. You created the :github: PR *#{pull_request['title']}*.\nYou can keep track of its status here and new comments will get added as thread messages"
      }
    }]
 end
@@ -64,7 +64,15 @@ if action == 'edited' and event['changes']['title']
     if message
       client.chat_postMessage(channel: slack_user.id, text: 'An update', as_user: true, thread_ts: message.ts)
     else
-      client.chat_postMessage(channel: slack_user.id, blocks: create_pr_message(event['pull_request']), as_user: true)
+      client.chat_postMessage(channel: slack_user.id, blocks: create_pr_message(event['pull_request']), as_user: true, metadata: {
+        "event_type": "task_created",
+        "event_payload": {
+          "id": "TK-2132",
+          "summary": "New issue with the display of mobile element",
+          "description": "An end user has found a problem with the new mobile container for data entry. It was reproduced in the current version of IOS.",
+          "priority": "HIGH",
+          "resource_type": "TASK"
+        }})
     end
   else
     client.chat_postMessage(channel: slack_user.id, blocks: create_pr_message(event['pull_request']), as_user: true)
