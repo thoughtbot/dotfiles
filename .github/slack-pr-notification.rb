@@ -85,7 +85,7 @@ end
 
 if action == 'closed'
   puts actor
-  client.chat_update(channel: channel.id, ts: message['ts'], blocks: "PR was closed by #{actor['login']}", as_user: true)
+  client.chat_postMessage(channel: channel.id, ts: message['ts'], text: ":pr-closed: PR was closed by #{actor['login']}", as_user: true)
   client.reactions_add(channel: channel.id, timestamp: message['ts'], name: event['pull_request']['merged'] ? 'merged' : 'pr-closed')
 end
 
