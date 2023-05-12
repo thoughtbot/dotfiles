@@ -43,17 +43,17 @@ if action == 'edited' and event['changes']['title']
 
   # find the conversation with the bot
   resp = client.users_conversations(types: 'im')
-  channel = resp.channels.select { |c| c.user == user.id }.first
+  channel = resp.channels.select { |c| c.user == slack_user.id }.first
   if channel != nil
     # try to find if there is already an existing message
     messages = client.conversations_history(channel: channel.id).messages
     message = messages.select { |m| m.text == old_title }.first
     if message
-      client.chat_postMessage(channel: user.id, text: 'An update', as_user: true, thread_ts: message.ts)
+      client.chat_postMessage(channel: slack_user.id, text: 'An update', as_user: true, thread_ts: message.ts)
     else
-      client.chat_postMessage(channel: user.id, text: event['pull_request']['title'], as_user: true)
+      client.chat_postMessage(channel: slack_user.id, text: event['pull_request']['title'], as_user: true)
     end
   else
-    client.chat_postMessage(channel: user.id, text: event['pull_request']['title'], as_user: true)
+    client.chat_postMessage(channel: slack_user.id, text: event['pull_request']['title'], as_user: true)
   end
 end
