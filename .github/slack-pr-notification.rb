@@ -15,7 +15,7 @@ Slack.configure do |config|
 end
 client = Slack::Web::Client.new()
 
-def find_slack_user_from_email(email)
+def find_slack_user_from_email(client, email)
   begin
     resp = client.users_lookupByEmail(email: email)
     if resp.ok?
@@ -27,7 +27,7 @@ def find_slack_user_from_email(email)
   nil
 end
 
-slack_user = find_slack_user_from_email(ENV['pull_request_author_email'])
+slack_user = find_slack_user_from_email(client, ENV['pull_request_author_email'])
 if !slack_user
   puts "No slack user found for #{ENV['pull_request_author_email']}"
   exit 0
