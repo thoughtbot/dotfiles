@@ -19,7 +19,7 @@ def find_slack_user_from_email(client, email)
   begin
     resp = client.users_lookupByEmail(email: email)
     if resp.ok?
-      resp.user
+      return resp.user
     end
   rescue => e
     puts e
