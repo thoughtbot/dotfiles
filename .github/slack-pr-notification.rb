@@ -34,7 +34,7 @@ def create_pr_message(pull_request)
      "type": "section",
      "text": {
        "type": "mrkdwn",
-       "text": "Hey there 👋. You created the :github: PR *#{pull_request['title']}*.\nYou can keep track of its status here and new comments will get added as thread messages"
+       "text": "Hey there 👋. You created the :github: <#{pull_request['html_url']}|PR ##{pull_request['number']}> *#{pull_request['title']}*.\nYou can keep track of its status here and new comments will get added as thread messages"
      }
    }]
 end
@@ -65,9 +65,9 @@ if action == 'edited' and event['changes']['title']
       client.chat_postMessage(channel: slack_user.id, text: 'An update', as_user: true, thread_ts: message.ts)
     else
       client.chat_postMessage(channel: slack_user.id, blocks: create_pr_message(event['pull_request']), as_user: true, metadata: JSON.dump({
-        "event_type": "task_created",
+        "event_type": "pr_created",
         "event_payload": {
-          "id": "TK-2132",
+          "id": event['pull_request']['id'],
         }}))
     end
   else
