@@ -1,12 +1,15 @@
-thoughtbot dotfiles
+rtaibah dotfiles
 ===================
 
-![prompt](http://images.thoughtbot.com/thoughtbot-dotfiles-prompt.png)
+![prompt](https://user-images.githubusercontent.com/707668/189952310-1cd5659d-409e-4bbd-a846-0cdd99cfec41.png)
+
 
 Requirements
+
 ------------
 
 Set zsh as your login shell:
+
 
     chsh -s $(which zsh)
 
@@ -15,10 +18,19 @@ Install
 
 Clone onto your laptop:
 
-    git clone git@github.com:thoughtbot/dotfiles.git ~/dotfiles
+    git clone git@github.com:rtaibah/dotfiles.git ~/dotfiles
 
 (Or, [fork and keep your fork
 updated](http://robots.thoughtbot.com/keeping-a-github-fork-updated)).
+
+This repo is forked from [thoughtbot's dotfiles](https://github.com/thoughtbot/dotfiles) which utilizes a `*.local` structure for personal prefrences. So use the [dotfiles-local repo](https://github.com/rtaibah/dotfiles-local) to work along with `~/dotfiles`. The `rcup` (see below) commands will take care of symlinking everything. Clone `dotfiles-local`:
+
+    git clone git@github.com:rtaibah/dotfiles-local ~/dotfiles-local
+    
+Add tmux plugin manager & source the tmux.conf file:
+
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    tmux source ~/.tmux.conf
 
 Install [rcm](https://github.com/thoughtbot/rcm):
 
@@ -185,23 +197,25 @@ What's in it?
   Rails file structure via `gf` and `:A` (alternate), `:Rextract` partials,
   `:Rinvert` migrations, etc.
 * Run many kinds of tests [from vim]([https://github.com/janko-m/vim-test)
-* Set `<leader>` to a single space.
+* Set `<leader>` to a comma.
 * Switch between the last two files with space-space.
-* Syntax highlighting for Markdown, HTML, JavaScript, Ruby, Go, Elixir, more.
+* Syntax highlighting for Markdown, HTML, JavaScript, Ruby, CSS, and more.
 * Use [Ag](https://github.com/ggreer/the_silver_searcher) instead of Grep when
   available.
 * Map `<leader>ct` to re-index ctags.
 * Use [vim-mkdir](https://github.com/pbrisbin/vim-mkdir) for automatically
   creating non-existing directories before writing the buffer.
 * Use [vim-plug](https://github.com/junegunn/vim-plug) to manage plugins.
+* Uses [Dracula theme](https://draculatheme.com/).
 
 [tmux](http://robots.thoughtbot.com/a-tmux-crash-course)
 configuration:
 
 * Improve color resolution.
-* Remove administrative debris (session name, hostname, time) in status bar.
 * Set prefix to `Ctrl+s`
-* Soften status bar color from harsh green to light gray.
+* Uses [Dracula theme](https://draculatheme.com/).
+* Adds different window and session management plugins.
+* Use [tpm](https://github.com/tmux-plugins/tpm) to manage plugins.
 
 [git](http://git-scm.com/) configuration:
 
@@ -241,13 +255,13 @@ in this project.
 License
 -------
 
-dotfiles is copyright © 2009-2018 thoughtbot. It is free software, and may be
+dotfiles is copyright © 2009-2022 thoughtbot. It is free software, and may be
 redistributed under the terms specified in the [`LICENSE`] file.
 
 [`LICENSE`]: /LICENSE
 
 About thoughtbot
-----------------
+
 
 ![thoughtbot](https://thoughtbot.com/brand_assets/93:44.svg)
 
@@ -260,3 +274,4 @@ We are [available for hire][hire].
 
 [community]: https://thoughtbot.com/community?utm_source=github
 [hire]: https://thoughtbot.com/hire-us?utm_source=github
+
