@@ -18,6 +18,7 @@
   autocrlf = input
 [merge]
   ff = only
+	tool = vimdiff
 [commit]
   template = ~/.gitmessage
 [fetch]
@@ -28,3 +29,7 @@
   path = ~/.gitconfig.local
 [diff]
   colorMoved = zebra
+	tool = vimdiff
+[user]
+	name = rtaibah
+	email = rami@thoughtbot.com\n
