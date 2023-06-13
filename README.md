@@ -96,7 +96,9 @@ If you don't wish to install a vim plugin from the default set of vim plugins in
 `.vimrc.bundles`, you can ignore the plugin by calling it out with `UnPlug` in
 your `~/.vimrc.bundles.local`.
 
-    " Don't install vim-scripts/tComment
+    " Don't install vim-scripts/tComment (notice the username of the plugin is
+    removed)
+
     UnPlug 'tComment'
 
 `UnPlug` can be used to install your own fork of a plugin or to install a shared
