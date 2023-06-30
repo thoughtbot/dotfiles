@@ -3,7 +3,7 @@
 # This script is used to allow the user to install plugins or themes from ohmyzsh
 
 # Variables
-ohmyzsh_dir=$HOME/desktop/ohmyzsh
+ohmyzsh_dir=$HOME/ohmyzsh
 
 if [ ! -d $ohmyzsh_dir ]; then
     echo "Oh-my-zsh repository is not downloaded in your $HOME directory. Please download it first."

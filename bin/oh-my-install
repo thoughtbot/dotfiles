@@ -2,7 +2,7 @@
 
 # This script is used to allow the user to install plugins or themes from oh-my-zsh
 
-ohmyzsh_dir=$HOME/desktop/ohmyzsh
+ohmyzsh_dir=$HOME/ohmyzsh
 zshconfig_dir=$HOME/.zsh/configs
 name=$1
 source_file=$ohmyzsh_dir/plugins/$name/$name.plugin.zsh
