@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# This script is used to allow the user to install plugins or themes from oh-my-zsh
+
+ohmyzsh_dir=$HOME/desktop/ohmyzsh
+zshconfig_dir=$HOME/.zsh/configs
+name=$1
+source_file=$ohmyzsh_dir/plugins/$name/$name.plugin.zsh
+
+# Check if oh-my-zsh repository is downloaded in the home directory
+if [ ! -d "$ohmyzsh_dir" ]; then
+    echo "Oh-my-zsh repository is not downloaded in your $HOME directory. Please download it first."
+    exit 1
+fi
+
+# Check if the plugin name is provided
+if [ -n "$1" ]; then
+# Check if the plugin file name exists in the oh-my-zsh plugins directory -> plugins/git/git.plugin.zsh
+  if [ -e $source_file ]; then
+      target_file=~/.zshrc
+      # check if the plugin is already installed
+      if ! grep -q "source $source_file" "$target_file"; then
+          ln -s $source_file $zshconfig_dir
+          echo >&2 Symlink created successfully.
+          echo "source $source_file" >> "$target_file"
+          echo >&2 Added source command to .zshrc
+      else
+          echo >&2 Plugin already installed
+      fi
+  else
+      echo >&2 Package "$name" does not exist in the oh-my-zsh plugins directory
+      exit 1
+  fi
+else
+  echo >&2 Usage: oh-my-install plugin-name
+  exit 1
+fi
