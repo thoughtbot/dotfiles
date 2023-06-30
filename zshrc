@@ -55,3 +55,22 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ## zsh-syntax-highlighting
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+## Set JAVA HOME
+source ~/.asdf/plugins/java/set-java-home.zsh
+
+## Android SDK paths
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+## Set Rust path
+source /Users/rakesharunachalam/.asdf/installs/rust/1.57.0/env
+
+export PATH=$PATH:~/.asdf/installs/rust/1.57.0/bin
+export RUSTUP_HOME=$PATH:~/.asdf/installs/rust/1.57.0/bin
