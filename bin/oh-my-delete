@@ -7,6 +7,11 @@ zshconfig_dir=$HOME/.zsh/configs
 name=$1
 source_file=$ohmyzsh_dir/plugins/$name/$name.plugin.zsh
 
+if [ ! -d "$ohmyzsh_dir" ]; then
+    echo "Oh-my-zsh repository is not downloaded in your $HOME directory. Please download it first."
+    exit 1
+fi
+
 # Check if the plugin name is provided
 if [ -n "$1" ]; then
     # Check if the plugin file exists in the oh-my-zsh plugins directory
