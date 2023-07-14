@@ -5,14 +5,13 @@
 # Variables
 ohmyzsh_dir=$HOME/ohmyzsh
 
-if [ ! -d $ohmyzsh_dir ]; then
+if [ ! -d "$ohmyzsh_dir" ]; then
     echo "Oh-my-zsh repository is not downloaded in your $HOME directory. Please download it first."
     exit 1
 fi
 
 # Move into the folder
-cd $ohmyzsh_dir
+cd "$ohmyzsh_dir" || exit
 echo "Updating latest changes from oh-my-zsh"
 git pull origin master
 echo "Updated successfully"
-

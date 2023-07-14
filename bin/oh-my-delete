@@ -10,12 +10,12 @@ source_file=$ohmyzsh_dir/plugins/$name/$name.plugin.zsh
 # Check if the plugin name is provided
 if [ -n "$1" ]; then
     # Check if the plugin file exists in the oh-my-zsh plugins directory
-    if [ -e $source_file ]; then
+    if [ -e "$source_file" ]; then
         target_file=~/.zshrc
         # Check if the plugin is installed
         if grep -q "source $source_file" "$target_file"; then
             # Deletes the symlink
-            unlink $zshconfig_dir/$name.plugin.zsh
+            unlink "$zshconfig_dir/$name.plugin.zsh"
             # Creates a temp file excluding the line containing the source command for the plugin
             grep -v "source $source_file" "$target_file" > "$target_file.tmp"
             # Replaces the original file with the temp file

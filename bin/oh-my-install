@@ -16,11 +16,11 @@ fi
 # Check if the plugin name is provided
 if [ -n "$1" ]; then
 # Check if the plugin file name exists in the oh-my-zsh plugins directory -> plugins/git/git.plugin.zsh
-  if [ -e $source_file ]; then
+  if [ -e "$source_file" ]; then
       target_file=~/.zshrc
       # check if the plugin is already installed
       if ! grep -q "source $source_file" "$target_file"; then
-          ln -s $source_file $zshconfig_dir
+          ln -s "$source_file" "$zshconfig_dir"
           echo >&2 Symlink created successfully.
           echo "source $source_file" >> "$target_file"
           echo >&2 Added source command to .zshrc
