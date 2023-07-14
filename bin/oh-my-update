@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# This script is used to allow the user to install plugins or themes from ohmyzsh
+# This script is used to update the oh-my-zsh repository
 
 # Variables
 ohmyzsh_dir=$HOME/ohmyzsh

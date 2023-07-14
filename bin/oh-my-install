@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# This script is used to allow the user to install plugins or themes from oh-my-zsh
+# This script is used to allow the user to install plugins
 
 ohmyzsh_dir=$HOME/ohmyzsh
 zshconfig_dir=$HOME/.zsh/configs
