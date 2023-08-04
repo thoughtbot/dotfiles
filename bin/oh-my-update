@@ -13,5 +13,5 @@ fi
 # Move into the folder
 cd "$ohmyzsh_dir" || exit
 echo "Updating latest changes from oh-my-zsh"
-git pull origin master
+git pull origin master &&
 echo "Updated successfully"

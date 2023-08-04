@@ -8,7 +8,7 @@ name=$1
 source_file=$ohmyzsh_dir/plugins/$name/$name.plugin.zsh
 
 if [ ! -d "$ohmyzsh_dir" ]; then
-    echo "Oh-my-zsh repository is not downloaded in your $HOME directory. Please download it first."
+    echo >&2 "Oh-my-zsh repository is not downloaded in your $HOME directory. Please download it first."
     exit 1
 fi
 
@@ -20,11 +20,11 @@ if [ -n "$1" ]; then
         # Check if the plugin is installed
         if grep -q "source $source_file" "$target_file"; then
             # Deletes the symlink
-            unlink "$zshconfig_dir/$name.plugin.zsh"
+            unlink "$zshconfig_dir/$name.plugin.zsh" &&
             # Creates a temp file excluding the line containing the source command for the plugin
-            grep -v "source $source_file" "$target_file" > "$target_file.tmp"
+            grep -v "source $source_file" "$target_file" > "$target_file.tmp" &&
             # Replaces the original file with the temp file
-            mv "$target_file.tmp" "$target_file"
+            mv "$target_file.tmp" "$target_file" &&
             echo >&2 Plugin deleted successfully.
         else
             echo >&2 Plugin is not installed.
