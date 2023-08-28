@@ -9,6 +9,7 @@ tap "mongodb/brew"
 tap "neovim/neovim"
 tap "puma/puma"
 tap "romkatv/powerlevel10k"
+tap "kardolus/chatgpt-cli"
 brew "ack"
 brew "aom"
 brew "autoconf"
@@ -180,3 +181,4 @@ mas "Pages", id: 409201541
 mas "Xcode", id: 497799835
 mas "Slack", id: 803453959
 mas "Wipr", id: 1320666476
+brew "chatgpt-cli"
