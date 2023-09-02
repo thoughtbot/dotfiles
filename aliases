@@ -28,3 +28,6 @@ alias -- -="cd -"
 if [[ -f ~/.aliases.local ]]; then
   source ~/.aliases.local
 fi
+
+# Editors
+alias code="cursor"

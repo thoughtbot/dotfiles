@@ -23,5 +23,7 @@
         "yaml": false,
         "plaintext": false,
         "markdown": false
-    }
+    },
+    "ai.completions.enabled": true,
+    "ai.completions.advanced": {},
 }
