@@ -152,7 +152,6 @@ cask "spotify"
 cask "steam"
 cask "transmission"
 cask "transmit"
-cask "visual-studio-code"
 cask "wkhtmltopdf"
 cask "zoom"
 cask "discord"
@@ -172,6 +171,7 @@ brew "docker-compose"
 cask "pgadmin4"
 cask "airbuddy"
 cask "graphql-playground"
+cask "cursor"
 mas "1Blocker", id: 1365531024
 mas "AdGuard for Safari", id: 1440147259
 mas "iMovie", id: 408981434

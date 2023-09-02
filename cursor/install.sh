@@ -41,8 +41,9 @@ pkglist=(
 )
 
 for i in ${pkglist[@]}; do
-  code --install-extension $i
+  cursor --install-extension $i
 done
 
-touch ~/Library/Application\ Support/Code/User/settings.json
-cp -f vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+touch ~/Library/Application\ Support/Cursor/User/settings.json
+cp -f cursor/settings.json ~/Library/Application\ Support/Cursor/User/settings.json
+
