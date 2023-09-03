@@ -25,3 +25,5 @@ fi
 
 # Editors
 alias code="cursor"
+
+alias commit='git diff | ( read -r git_changes && [ "$git_changes" ] && git add . && commit_message=$(echo "$git_changes" | chatgpt "Write a git commit message based on these changes:") && git commit -m "$commit_message" ) || echo "No changes to commit."'
