@@ -26,4 +26,10 @@
     },
     "ai.completions.enabled": true,
     "ai.completions.advanced": {},
+    "editor.stickyScroll.enabled": true,
+    "editor.rulers": [
+        80,
+        100,
+        120
+    ]
 }
