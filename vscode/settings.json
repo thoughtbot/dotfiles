@@ -23,5 +23,11 @@
         "yaml": false,
         "plaintext": false,
         "markdown": false
-    }
+    },
+    "editor.stickyScroll.enabled": true,
+    "editor.rulers": [
+        80,
+        100,
+        120
+    ]
 }
