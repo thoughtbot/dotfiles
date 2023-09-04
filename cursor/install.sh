@@ -7,12 +7,11 @@ pkglist=(
     bradlc.vscode-tailwindcss
     bung87.rails
     bung87.vscode-gemfile
-    castwide.ruby-debug
     ckolkman.vscode-postgres
     dbaeumer.vscode-eslint
     donjayamanne.githistory
     DotJoshJohnson.xml
-    dracula-theme.theme-dracula
+    GitHub.github-vscode-theme
     eamodio.gitlens
     eg2.vscode-npm-script
     GitHub.copilot
@@ -29,7 +28,6 @@ pkglist=(
     ms-vscode-remote.remote-containers
     msaraiva.surface
     phoenixframework.phoenix
-    rebornix.ruby
     redhat.vscode-commons
     redhat.vscode-yaml
     shanehofstetter.rails-i18n
@@ -37,7 +35,11 @@ pkglist=(
     tomoki1207.pdf
     wingrunr21.vscode-ruby
     yzhang.markdown-all-in-one
-    ruby-signature
+    sorbet.sorbet-vscode-extension
+    esbenp.prettier-vscode
+    aaron-bond.better-comments
+    streetsidesoftware.code-spell-checker
+    Shopify.ruby-lsp
 )
 
 for i in ${pkglist[@]}; do
