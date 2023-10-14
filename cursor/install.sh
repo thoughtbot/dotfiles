@@ -15,7 +15,6 @@ pkglist=(
     eamodio.gitlens
     eg2.vscode-npm-script
     GitHub.copilot
-    golang.go
     GrapeCity.gc-excelviewer
     JakeBecker.elixir-ls
     mechatroner.rainbow-csv
@@ -43,7 +42,7 @@ pkglist=(
 )
 
 for i in ${pkglist[@]}; do
-  cursor --install-extension $i
+  code --install-extension $i
 done
 
 touch ~/Library/Application\ Support/Cursor/User/settings.json
