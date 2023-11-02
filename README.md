@@ -224,6 +224,7 @@ configuration:
 
 Shell aliases and scripts:
 
+- `...` for quicker navigation to the parent's parent directory.
 - `b` for `bundle`.
 - `g` with no arguments is `git status` and with arguments acts like `git`.
 - `migrate` for `bin/rails db:migrate db:rollback && bin/rails db:migrate db:test:prepare`.
