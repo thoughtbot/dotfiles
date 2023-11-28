@@ -15,9 +15,10 @@ alias s="rspec"
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
-# Easier navigation: ..., ....
+# Easier navigation: ..., ...., .....
 alias ...="cd ../.."
 alias ....="cd ../../.."
+alias .....="cd ../../../.."
 
 # Include custom aliases
 if [[ -f ~/.aliases.local ]]; then
