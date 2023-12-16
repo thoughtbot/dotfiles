@@ -5,9 +5,7 @@ PATH="$HOME/.bin:/usr/local/sbin:$PATH"
 if [ -f "$HOME/.asdf/asdf.sh" ]; then
   . "$HOME/.asdf/asdf.sh"
 # Checking homebrew existance before loading asdf
-elif [ -d "/opt/homebrew" ] || 
-  [ -d "~/.linuxbrew" ] || 
-  [ -d "/home/linuxbrew" ]; then
+elif [[ $(command -v brew) != "" ]]; then
   . "$(brew --prefix asdf)/libexec/asdf.sh"
 fi
 
