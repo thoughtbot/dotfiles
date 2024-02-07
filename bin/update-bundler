@@ -1,0 +1,78 @@
+#!/bin/sh
+
+# Use Docker to update Bundler in several projects and open a PR for each one.
+#
+# Usage:
+#   update-bundler <BUNDLER_VERSION>
+# Example:
+#   update-bundler 2.5.4
+#
+# This script will update Bundler to the specified version in all projects listed in ~/.config/bundler-projects.
+#
+# You will require Docker and GitHub CLI to run this script.
+
+set -e
+
+BUNDLER_VERSION="$1"
+if [ -z "$BUNDLER_VERSION" ]; then
+    echo "Usage: Please provide a Bundler version. For example:"
+    echo "update-bundler 2.5.4"
+    exit 1
+fi
+
+BUNDLER_RELEASE="https://github.com/rubygems/rubygems/releases/tag/bundler-v$BUNDLER_VERSION"
+
+run_in_container() {
+	container_id=$1
+	shift
+	cmd=$*
+
+	docker exec --workdir /app "$container_id" bash -c "$cmd"
+}
+
+while IFS= read -r folder
+do
+	cd "$(eval echo $folder)"
+
+	echo
+	echo "================================================="
+	echo "Processing: $folder"
+	echo "BUNDLER_VERSION: $BUNDLER_VERSION"
+	echo "BUNDLER_RELEASE: $BUNDLER_RELEASE"
+
+	ruby_version=$(ruby -e 'puts RUBY_VERSION')
+
+	docker pull ruby:${ruby_version}
+
+	git stash -u
+	git checkout main
+	git pull
+
+	container_id=$(docker run -d -v .:/app ruby:${ruby_version} sleep infinity)
+
+	echo "Bundling..."
+	run_in_container "$container_id" "bundle install"
+	echo "Installing new version of bundler..."
+	run_in_container "$container_id" "gem install bundler --version ${BUNDLER_VERSION}"
+	echo "Updating bundler..."
+	run_in_container "$container_id" "bundle _${BUNDLER_VERSION}_ update --bundler"
+
+	echo "Tidying up container..."
+	docker stop "$container_id" > /dev/null
+	docker rm "$container_id" > /dev/null
+
+	if git diff-index --quiet HEAD -- Gemfile.lock; then
+		echo "Bundler is up to date. Moving to the next task."
+		continue
+	else
+		echo "Opening PR..."
+		branch="update-bundler-to-v$BUNDLER_VERSION"
+		git checkout -b $branch
+		git commit Gemfile.lock -m "Update Bundler to v$BUNDLER_VERSION" -m "$BUNDLER_RELEASE"
+		git push -u
+		gh pr create --fill --head $branch
+		git checkout main
+		git branch -d $branch
+	fi
+
+done < "$(eval echo ~/.config/bundler-projects)"
