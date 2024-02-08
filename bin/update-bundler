@@ -15,7 +15,7 @@ set -e
 
 BUNDLER_VERSION="$1"
 if [ -z "$BUNDLER_VERSION" ]; then
-    echo "Usage: Please provide a Bundler version. For example:"
+    echo "Usage: update-bundler BUNDLER_VERSION"
     echo "update-bundler 2.5.4"
     exit 1
 fi
