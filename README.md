@@ -242,7 +242,7 @@ in this project.
 
 ## License
 
-dotfiles is copyright © 2009-2024 thoughtbot. It is free software, and may be
+dotfiles is copyright © 2009 thoughtbot. It is free software, and may be
 redistributed under the terms specified in the [`LICENSE`] file.
 
 [`LICENSE`]: /LICENSE
