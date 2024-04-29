@@ -1,1 +1,2 @@
 --database=postgresql
+--skip-test
