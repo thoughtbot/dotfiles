@@ -216,11 +216,18 @@ configuration:
 
 [Rails](https://rubyonrails.org)
 
-- Adds [railsrc][] with `--database=postgresql`. If you need to use another
-  database, you can override this value like so: `rails new my_app --database=mysql` or
-`rails new my_app --no_rc`
+- Adds [railsrc][] with the following options to integrate with [Suspenders][].
+
+```
+--database=postgresql
+--skip-test
+-m=https://raw.githubusercontent.com/thoughtbot/suspenders/main/lib/install/web.rb
+```
+
+If you want to skip this file altogether, run `rails new my_app --no_rc`.
 
 [railsrc]: https://github.com/rails/rails/blob/7f7f9df8641e35a076fe26bd097f6a1b22cb4e2d/railties/lib/rails/generators/rails/app/USAGE#L5C1-L7
+[Suspenders]: https://github.com/thoughtbot/suspenders
 
 Shell aliases and scripts:
 
