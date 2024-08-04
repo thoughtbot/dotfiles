@@ -1,0 +1,24 @@
+#!/bin/sh
+
+set -e
+
+pull_request_number=$1
+local_branch_name=$2
+
+if [ -z "$pull_request_number" -o -z "$local_branch_name" ]; then
+  echo "usage: git co-upstream-pr <pull_request_number> <local_branch_name>"
+  exit 1
+fi
+
+if git remote -v | grep -q upstream; then
+  git fetch upstream "pull/$pull_request_number/head:$local_branch_name"
+  git checkout "$local_branch_name"
+else
+  cat <<HELP
+You don't have an upstream remote set.
+Use:
+  git remote add upstream {upstream_remote_url}
+
+to set the reference and then try again.
+HELP
+fi

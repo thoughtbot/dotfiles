@@ -18,6 +18,12 @@ alias fixup="git reset --soft HEAD^"
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
+# Easier navigation: ..., ...., ....., and -
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias -- -="cd -"
+
 # Include custom aliases
 if [[ -f ~/.aliases.local ]]; then
   source ~/.aliases.local

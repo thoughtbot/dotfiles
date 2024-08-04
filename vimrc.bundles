@@ -19,8 +19,12 @@ Plug 'christoomey/vim-run-interactive'
 
 " If fzf has already been installed via Homebrew, use the existing fzf
 " Otherwise, install fzf. The `--all` flag makes fzf accessible outside of vim
-if isdirectory("/usr/local/opt/fzf")
-  Plug '/usr/local/opt/fzf'
+if executable("brew")
+  let g:brew_fzf_path = trim(system("brew --prefix fzf"))
+endif
+
+if exists("g:brew_fzf_path") && isdirectory(g:brew_fzf_path)
+  Plug g:brew_fzf_path 
 else
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 endif
