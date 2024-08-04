@@ -51,3 +51,6 @@ _load_settings "$HOME/.zsh/configs"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Set locale
+export LC_ALL=en_US.UTF-8
