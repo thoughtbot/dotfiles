@@ -1,0 +1,43 @@
+{
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "autosave": "on_window_change",
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark"
+  },
+  "scrollbar": {
+    "show": "never"
+  },
+  "project_panel": {
+    "scrollbar": {
+      "show": "never"
+    }
+  },
+  "auto_install_extensions": {
+    "markdown-oxide": true,
+    "rainbow-csv": true,
+    "git-firefly": true,
+    "dockerfile": true,
+    "graphql": true,
+    "elixir": true,
+    "basher": true,
+    "svelte": true,
+    "astro": true,
+    "nginx": true,
+    "html": true,
+    "make": true,
+    "ruby": true,
+    "scss": true,
+    "slim": true,
+    "tmux": true,
+    "php": true,
+    "sql": true,
+    "vue": true,
+    "csv": true,
+    "env": true,
+    "log": true,
+    "xml": true
+  }
+}
