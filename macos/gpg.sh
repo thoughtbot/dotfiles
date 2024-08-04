@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
-mkdir ~/.gnupg
-echo 'use-agent' > ~/.gnupg/gpg.conf
-chmod 700 ~/.gnupg
+# Enable pinentry
+mkdir -m 0700 ~/.gnupg
+echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" | tee ~/.gnupg/gpg-agent.conf
+pkill -TERM gpg-agent
