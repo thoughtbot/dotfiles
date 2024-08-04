@@ -27,6 +27,7 @@
     "svelte": true,
     "astro": true,
     "nginx": true,
+    "java": true,
     "html": true,
     "make": true,
     "ruby": true,
