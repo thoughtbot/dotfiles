@@ -1,25 +1,26 @@
 {
-  "ui_font_size": 16,
-  "buffer_font_size": 16,
   "autosave": "on_window_change",
+  "buffer_font_size": 16,
+  "ui_font_size": 16,
   "theme": {
-    "mode": "system",
     "light": "One Light",
-    "dark": "One Dark"
-  },
-  "scrollbar": {
-    "show": "never"
+    "dark": "One Dark",
+    "mode": "system"
   },
   "project_panel": {
     "scrollbar": {
       "show": "never"
     }
   },
+  "scrollbar": {
+    "show": "never"
+  },
   "auto_install_extensions": {
     "markdown-oxide": true,
     "rainbow-csv": true,
     "git-firefly": true,
     "dockerfile": true,
+    "cucumber": true,
     "graphql": true,
     "elixir": true,
     "basher": true,
@@ -38,6 +39,7 @@
     "csv": true,
     "env": true,
     "log": true,
-    "xml": true
+    "xml": true,
+    "ini": true
   }
 }
