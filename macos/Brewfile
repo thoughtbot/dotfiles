@@ -171,7 +171,7 @@ brew "docker-compose"
 cask "pgadmin4"
 cask "airbuddy"
 cask "graphql-playground"
-cask "cursor"
+cask "zed"
 mas "1Blocker", id: 1365531024
 mas "AdGuard for Safari", id: 1440147259
 mas "iMovie", id: 408981434

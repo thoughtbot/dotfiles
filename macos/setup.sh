@@ -134,9 +134,6 @@ defaults write com.google.Chrome.canary ExtensionInstallSources -array "https://
 defaults write com.google.Chrome AppleEnableMouseSwipeNavigateWithScrolls -bool false
 defaults write com.google.Chrome.canary AppleEnableMouseSwipeNavigateWithScrolls -bool false
 
-defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false         # For VS Code
-defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false # For VS Code Insider
-
 # Allow to inspect web views in native apps
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 defaults write -g WebKitDeveloperExtras -bool YES

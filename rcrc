@@ -1,3 +1,3 @@
-EXCLUDES="*.md LICENSE macos vscode puma asdf install.sh"
+EXCLUDES="*.md LICENSE macos zed puma asdf install.sh"
 DOTFILES_DIRS="$HOME/.dotfiles-local $HOME/.dotfiles"
 COPY_ALWAYS="git_template/HEAD"
