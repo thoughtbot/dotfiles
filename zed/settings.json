@@ -1,7 +1,15 @@
 {
   "autosave": "on_window_change",
+  "wrap_guides": [120],
   "buffer_font_size": 16,
   "ui_font_size": 16,
+  "assistant": {
+    "default_open_ai_model": "gpt-4o",
+    "default_model": {
+      "provider": "openai",
+      "model": "gpt-4o"
+    }
+  },
   "theme": {
     "light": "One Light",
     "dark": "One Dark",

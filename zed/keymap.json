@@ -1,0 +1,18 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-k": "command_palette::Toggle"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {}
+  },
+  {
+    "context": "Editor && mode == full",
+    "bindings": {
+      "cmd-l": "assistant::InlineAssist"
+    }
+  }
+]
