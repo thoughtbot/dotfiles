@@ -9,7 +9,8 @@ alias v="$VISUAL"
 alias b="bundle"
 
 # Rails
-alias migrate="bin/rails db:migrate db:rollback && bin/rails db:migrate db:test:prepare"
+alias migrate="bin/rails db:migrate db:rollback && bin/rails db:migrate db:test:prepare && RAILS_ENV=test bin/rails db:environment:set && RAILS_ENV=test rails db:drop db:create db:migrate"
+alias rollback="bin/rails db:rollback"
 alias s="rspec"
 
 # Git
@@ -29,5 +30,5 @@ if [[ -f ~/.aliases.local ]]; then
   source ~/.aliases.local
 fi
 
-alias commit='git diff | ( read -r git_changes && [ "$git_changes" ] && git add . && commit_message=$(echo "$git_changes" | chatgpt "Write a git commit message based on these changes:") && git commit -m "$commit_message" ) || echo "No changes to commit."'
+# Zed
 alias code='zed'

@@ -9,7 +9,6 @@ tap "mongodb/brew"
 tap "neovim/neovim"
 tap "puma/puma"
 tap "romkatv/powerlevel10k"
-tap "kardolus/chatgpt-cli"
 brew "ack"
 brew "aom"
 brew "autoconf"
@@ -148,7 +147,6 @@ cask "quicklook-csv"
 cask "quicklook-json"
 cask "sketch"
 cask "skype"
-cask "spotify"
 cask "steam"
 cask "transmission"
 cask "transmit"
@@ -172,6 +170,7 @@ cask "pgadmin4"
 cask "airbuddy"
 cask "graphql-playground"
 cask "zed"
+cask "betterdisplay"
 mas "1Blocker", id: 1365531024
 mas "AdGuard for Safari", id: 1440147259
 mas "iMovie", id: 408981434
@@ -181,4 +180,3 @@ mas "Pages", id: 409201541
 mas "Xcode", id: 497799835
 mas "Slack", id: 803453959
 mas "Wipr", id: 1320666476
-brew "chatgpt-cli"

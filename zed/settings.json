@@ -4,10 +4,11 @@
   "buffer_font_size": 16,
   "ui_font_size": 16,
   "assistant": {
-    "default_open_ai_model": "gpt-4o",
+    "version": "2",
+    "default_open_ai_model": null,
     "default_model": {
-      "provider": "openai",
-      "model": "gpt-4o"
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-20240620"
     }
   },
   "theme": {
