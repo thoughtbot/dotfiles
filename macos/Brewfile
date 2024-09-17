@@ -9,6 +9,8 @@ tap "mongodb/brew"
 tap "neovim/neovim"
 tap "puma/puma"
 tap "romkatv/powerlevel10k"
+tap "oven-sh/bun"
+brew "bun"
 brew "ack"
 brew "aom"
 brew "autoconf"
@@ -153,14 +155,13 @@ cask "transmit"
 cask "wkhtmltopdf"
 cask "zoom"
 cask "discord"
-cask "cron"
+cask "notion-calendar"
 cask "grandperspective"
 cask "superhuman"
 cask "kindle"
 cask "send-to-kindle"
 cask "notion"
 cask "rectangle"
-cask "the-unarchiver"
 cask "loom"
 cask "font-lato"
 cask "font-consolas-for-powerline"
@@ -171,12 +172,29 @@ cask "airbuddy"
 cask "graphql-playground"
 cask "zed"
 cask "betterdisplay"
-mas "1Blocker", id: 1365531024
-mas "AdGuard for Safari", id: 1440147259
-mas "iMovie", id: 408981434
+cask "raycast"
+cask "nordvpn"
+cask "linear-linear"
+cask "whatsapp"
+cask "parallels"
+cask "figma"
+cask "obsidian"
 mas "Keynote", id: 409183694
+mas "Kindle Classic", id: 405399194
+mas "1Blocker", id: 1365531024
+mas "Hush", id: 1544743900
+mas "Skiff Desktop", id: 1615488683
+mas "Ad Block One", id: 1491889901
+mas "The Unarchiver", id: 425424353
+mas "Skitch", id: 425955336
+mas "Adblock Plus", id: 1432731683
 mas "GarageBand", id: 682658836
-mas "Pages", id: 409201541
-mas "Xcode", id: 497799835
-mas "Slack", id: 803453959
+mas "Codeshot", id: 1541665460
 mas "Wipr", id: 1320666476
+mas "Numbers", id: 409203825
+mas "Xcode", id: 497799835
+mas "Pages", id: 409201541
+mas "GrandPerspective", id: 1111570163
+mas "iMovie", id: 408981434
+mas "AdGuard for Safari", id: 1440147259
+mas "Slack", id: 803453959

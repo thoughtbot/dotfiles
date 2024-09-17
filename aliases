@@ -9,7 +9,7 @@ alias v="$VISUAL"
 alias b="bundle"
 
 # Rails
-alias migrate="bin/rails db:migrate db:rollback db:migrate"
+alias migrate="bin/rails db:migrate db:rollback && bin/rails db:migrate"
 alias test:migrate="RAILS_ENV=test bin/rails db:drop db:create db:migrate"
 alias rollback="bin/rails db:rollback"
 alias s="rspec"

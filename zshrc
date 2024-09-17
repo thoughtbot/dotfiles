@@ -44,13 +44,3 @@ _load_settings "$HOME/.zsh/configs"
 
 # Secrets
 [ -f ~/.secrets.zsh ] && source ~/.secrets.zsh
-
-# bun completions
-[ -s "/Users/kamil/.bun/_bun" ] && source "/Users/kamil/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# Set locale
-export LC_ALL=en_US.UTF-8
