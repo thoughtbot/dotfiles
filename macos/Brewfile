@@ -1,200 +1,201 @@
-tap "heroku/brew"
-tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/cask-fonts"
-tap "homebrew/cask-versions"
-tap "homebrew/core"
-tap "homebrew/services"
-tap "mongodb/brew"
-tap "neovim/neovim"
-tap "puma/puma"
-tap "romkatv/powerlevel10k"
-tap "oven-sh/bun"
-brew "bun"
-brew "ack"
-brew "aom"
-brew "autoconf"
-brew "autoenv"
-brew "gdbm"
-brew "readline"
-brew "sqlite"
-brew "xz"
-brew "awscli"
-brew "bash"
-brew "bat"
-brew "freetype"
-brew "gettext"
-brew "libffi"
-brew "pcre"
-brew "glib"
-brew "little-cms2"
-brew "libtool"
-brew "imagemagick"
-brew "chafa"
-brew "cmake"
-brew "cscope"
-brew "ctags"
-brew "direnv"
-brew "dnscrypt-proxy", restart_service: true
-brew "dog"
-brew "duf"
-brew "dust"
-brew "wxwidgets"
-brew "exa"
-brew "fd"
-brew "libogg"
-brew "gmp"
-brew "libevent"
-brew "harfbuzz"
-brew "lame"
-brew "libvorbis"
-brew "libsodium"
-brew "sdl2"
-brew "theora"
-brew "xvid"
-brew "ffmpeg"
-brew "figlet"
-brew "fish"
-brew "fzf"
-brew "gh"
-brew "gifsicle"
-brew "git"
-brew "git-delta"
-brew "gnu-tar"
-brew "go"
-brew "goreman"
-brew "gping"
-brew "httpie"
-brew "hub"
-brew "jemalloc"
-brew "oniguruma"
-brew "jq"
-brew "lazygit"
-brew "libgpg-error"
-brew "libssh2"
-brew "unibilium"
-brew "libtermkey"
-brew "libuv"
-brew "libvterm"
-brew "libxml2"
-brew "libyaml"
-brew "luajit"
-brew "mas"
-brew "memcached"
-brew "msgpack"
-brew "neofetch"
-brew "tree-sitter"
-brew "neovim"
-brew "nmap"
-brew "pdftk-java"
-brew "pidof"
-brew "pinentry-mac"
-brew "zstd"
-brew "poppler"
-brew "procs"
-brew "ranger"
-brew "asdf"
-brew "reattach-to-user-namespace"
-brew "ripgrep"
-brew "rsync"
-brew "rust"
-brew "s3cmd"
-brew "shellcheck"
-brew "smartmontools"
-brew "ssh-copy-id", link: true
-brew "starship"
-brew "tealdeer"
-brew "the_silver_searcher"
-brew "tig"
-brew "tmux"
-brew "tmuxinator"
-brew "transmission-cli"
-brew "tree"
-brew "truncate"
-brew "w3m"
-brew "watch"
-brew "wget"
-brew "yamllint"
-brew "youtube-dl"
-brew "yt-dlp"
-brew "z"
-brew "zsh"
-brew "zsh-completions"
-brew "zsh-syntax-highlighting"
-brew "cjbassi/ytop/ytop"
-brew "heroku/brew/heroku"
-brew "puma/puma/puma-dev"
-brew "rcm"
-brew "autojump"
-brew "vips"
-brew "gpg2"
-brew "gnupg"
-cask "alacritty"
-cask "backblaze"
-cask "bartender"
-cask "brave-browser"
-cask "chromedriver"
-cask "firefox"
-cask "firefox-developer-edition"
-cask "google-chrome"
-cask "google-chrome-canary"
-cask "gpg-suite-no-mail"
-cask "handbrake"
-cask "iina"
-cask "imagealpha"
-cask "imageoptim"
-cask "iterm2"
-cask "kitty"
-cask "quicklook-csv"
-cask "quicklook-json"
-cask "sketch"
-cask "skype"
-cask "steam"
-cask "transmission"
-cask "transmit"
-cask "wkhtmltopdf"
-cask "zoom"
-cask "discord"
-cask "notion-calendar"
-cask "grandperspective"
-cask "superhuman"
-cask "kindle"
-cask "send-to-kindle"
-cask "notion"
-cask "rectangle"
-cask "loom"
-cask "font-lato"
-cask "font-consolas-for-powerline"
-cask "docker"
-brew "docker-compose"
-cask "pgadmin4"
-cask "airbuddy"
-cask "graphql-playground"
-cask "zed"
-cask "betterdisplay"
-cask "raycast"
-cask "nordvpn"
-cask "linear-linear"
-cask "whatsapp"
-cask "parallels"
-cask "figma"
-cask "obsidian"
-mas "Keynote", id: 409183694
-mas "Kindle Classic", id: 405399194
-mas "1Blocker", id: 1365531024
-mas "Hush", id: 1544743900
-mas "Skiff Desktop", id: 1615488683
-mas "Ad Block One", id: 1491889901
-mas "The Unarchiver", id: 425424353
-mas "Skitch", id: 425955336
-mas "Adblock Plus", id: 1432731683
-mas "GarageBand", id: 682658836
-mas "Codeshot", id: 1541665460
-mas "Wipr", id: 1320666476
-mas "Numbers", id: 409203825
-mas "Xcode", id: 497799835
-mas "Pages", id: 409201541
-mas "GrandPerspective", id: 1111570163
-mas "iMovie", id: 408981434
-mas "AdGuard for Safari", id: 1440147259
-mas "Slack", id: 803453959
+tap 'heroku/brew'
+tap 'homebrew/bundle'
+tap 'homebrew/cask'
+tap 'homebrew/cask-fonts'
+tap 'homebrew/cask-versions'
+tap 'homebrew/core'
+tap 'homebrew/services'
+tap 'mongodb/brew'
+tap 'neovim/neovim'
+tap 'puma/puma'
+tap 'romkatv/powerlevel10k'
+tap 'oven-sh/bun'
+brew 'bun'
+brew 'ack'
+brew 'aom'
+brew 'autoconf'
+brew 'autoenv'
+brew 'gdbm'
+brew 'readline'
+brew 'sqlite'
+brew 'xz'
+brew 'awscli'
+brew 'bash'
+brew 'bat'
+brew 'freetype'
+brew 'gettext'
+brew 'libffi'
+brew 'pcre'
+brew 'glib'
+brew 'little-cms2'
+brew 'libtool'
+brew 'imagemagick'
+brew 'chafa'
+brew 'cmake'
+brew 'cscope'
+brew 'ctags'
+brew 'direnv'
+brew 'dnscrypt-proxy', restart_service: true
+brew 'dog'
+brew 'duf'
+brew 'dust'
+brew 'wxwidgets'
+brew 'exa'
+brew 'fd'
+brew 'libogg'
+brew 'gmp'
+brew 'libevent'
+brew 'harfbuzz'
+brew 'lame'
+brew 'libvorbis'
+brew 'libsodium'
+brew 'sdl2'
+brew 'theora'
+brew 'xvid'
+brew 'ffmpeg'
+brew 'figlet'
+brew 'fish'
+brew 'fzf'
+brew 'gh'
+brew 'gifsicle'
+brew 'git'
+brew 'git-delta'
+brew 'gnu-tar'
+brew 'go'
+brew 'goreman'
+brew 'gping'
+brew 'httpie'
+brew 'hub'
+brew 'jemalloc'
+brew 'oniguruma'
+brew 'jq'
+brew 'lazygit'
+brew 'libgpg-error'
+brew 'libssh2'
+brew 'unibilium'
+brew 'libtermkey'
+brew 'libuv'
+brew 'libvterm'
+brew 'libxml2'
+brew 'libyaml'
+brew 'luajit'
+brew 'mas'
+brew 'memcached'
+brew 'msgpack'
+brew 'neofetch'
+brew 'tree-sitter'
+brew 'neovim'
+brew 'nmap'
+brew 'pdftk-java'
+brew 'pidof'
+brew 'pinentry-mac'
+brew 'zstd'
+brew 'poppler'
+brew 'procs'
+brew 'ranger'
+brew 'asdf'
+brew 'reattach-to-user-namespace'
+brew 'ripgrep'
+brew 'rsync'
+brew 'rust'
+brew 's3cmd'
+brew 'shellcheck'
+brew 'smartmontools'
+brew 'ssh-copy-id', link: true
+brew 'starship'
+brew 'tealdeer'
+brew 'the_silver_searcher'
+brew 'tig'
+brew 'tmux'
+brew 'tmuxinator'
+brew 'transmission-cli'
+brew 'tree'
+brew 'truncate'
+brew 'w3m'
+brew 'watch'
+brew 'wget'
+brew 'yamllint'
+brew 'youtube-dl'
+brew 'yt-dlp'
+brew 'z'
+brew 'zsh'
+brew 'zsh-completions'
+brew 'zsh-syntax-highlighting'
+brew 'cjbassi/ytop/ytop'
+brew 'heroku/brew/heroku'
+brew 'puma/puma/puma-dev'
+brew 'rcm'
+brew 'autojump'
+brew 'vips'
+brew 'gpg2'
+brew 'gnupg'
+brew 'graphviz'
+cask 'alacritty'
+cask 'backblaze'
+cask 'bartender'
+cask 'brave-browser'
+cask 'chromedriver'
+cask 'firefox'
+cask 'firefox-developer-edition'
+cask 'google-chrome'
+cask 'google-chrome-canary'
+cask 'gpg-suite-no-mail'
+cask 'handbrake'
+cask 'iina'
+cask 'imagealpha'
+cask 'imageoptim'
+cask 'iterm2'
+cask 'kitty'
+cask 'quicklook-csv'
+cask 'quicklook-json'
+cask 'sketch'
+cask 'skype'
+cask 'steam'
+cask 'transmission'
+cask 'transmit'
+cask 'wkhtmltopdf'
+cask 'zoom'
+cask 'discord'
+cask 'notion-calendar'
+cask 'grandperspective'
+cask 'superhuman'
+cask 'kindle'
+cask 'send-to-kindle'
+cask 'notion'
+cask 'rectangle'
+cask 'loom'
+cask 'font-lato'
+cask 'font-consolas-for-powerline'
+cask 'docker'
+brew 'docker-compose'
+cask 'pgadmin4'
+cask 'airbuddy'
+cask 'graphql-playground'
+cask 'zed'
+cask 'betterdisplay'
+cask 'raycast'
+cask 'nordvpn'
+cask 'linear-linear'
+cask 'whatsapp'
+cask 'parallels'
+cask 'figma'
+cask 'obsidian'
+mas 'Keynote', id: 409_183_694
+mas 'Kindle Classic', id: 405_399_194
+mas '1Blocker', id: 1_365_531_024
+mas 'Hush', id: 1_544_743_900
+mas 'Skiff Desktop', id: 1_615_488_683
+mas 'Ad Block One', id: 1_491_889_901
+mas 'The Unarchiver', id: 425_424_353
+mas 'Skitch', id: 425_955_336
+mas 'Adblock Plus', id: 1_432_731_683
+mas 'GarageBand', id: 682_658_836
+mas 'Codeshot', id: 1_541_665_460
+mas 'Wipr', id: 1_320_666_476
+mas 'Numbers', id: 409_203_825
+mas 'Xcode', id: 497_799_835
+mas 'Pages', id: 409_201_541
+mas 'GrandPerspective', id: 1_111_570_163
+mas 'iMovie', id: 408_981_434
+mas 'AdGuard for Safari', id: 1_440_147_259
+mas 'Slack', id: 803_453_959
