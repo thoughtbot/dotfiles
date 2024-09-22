@@ -14,6 +14,7 @@ alias test:migrate="RAILS_ENV=test bin/rails db:drop db:create db:migrate"
 alias rollback="bin/rails db:rollback"
 alias s="rspec"
 alias m="migrate && test:migrate"
+alias r="rollback"
 
 # Git
 alias fixup="git reset --soft HEAD^"
