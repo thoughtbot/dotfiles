@@ -1,0 +1,15 @@
+ruby 2.7.4
+nodejs 16.8.0
+java adoptopenjdk-17.0.0+35
+rust 1.57.0
+postgres 14.1
+elixir 1.13.4
+erlang 26.2
+kubectl 1.21.9
+yarn 1.22.18
+python 3.10.5
+neovim 0.10.1
+pipx 1.5.0
+poetry 1.8.2
+golang 1.22.3
+bun 1.1.13
