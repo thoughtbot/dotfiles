@@ -70,7 +70,15 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 ## Set Rust path
-source /Users/rakesharunachalam/.asdf/installs/rust/1.57.0/env
+source ~/.asdf/installs/rust/1.57.0/env
 
 export PATH=$PATH:~/.asdf/installs/rust/1.57.0/bin
 export RUSTUP_HOME=$PATH:~/.asdf/installs/rust/1.57.0/bin
+# bun completions
+[ -s "~/.bun/_bun" ] && source "~/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+. ~/.asdf/plugins/golang/set-env.zsh
