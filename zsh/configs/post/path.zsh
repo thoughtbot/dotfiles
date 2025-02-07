@@ -5,7 +5,10 @@ PATH="$HOME/.bin:/usr/local/sbin:$PATH"
 if [ -f "$HOME/.asdf/asdf.sh" ]; then
   . "$HOME/.asdf/asdf.sh"
 elif which brew >/dev/null; then
-  . "$(brew --prefix asdf)/libexec/asdf.sh"
+  # AG - add required condition for NOT using asdf
+  if [ -f "$(brew --prefix asdf)/libexec/asdf.sh" ]; then
+    . "$(brew --prefix asdf)/libexec/asdf.sh"
+  fi
 fi
 
 # mkdir .git/safe in the root of repositories you trust
