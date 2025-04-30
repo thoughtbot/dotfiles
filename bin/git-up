@@ -5,7 +5,6 @@ set -e
 git fetch origin
 
 if git symbolic-ref --short refs/remotes/origin/HEAD >/dev/null; then
-  git fetch origin
   git rebase "$(git symbolic-ref --short refs/remotes/origin/HEAD)" "$@"
 else
   echo "You don't have a primary branch reference set for your origin remote.
