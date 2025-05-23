@@ -224,7 +224,7 @@ configuration:
 -m=https://raw.githubusercontent.com/thoughtbot/suspenders/main/lib/install/web.rb
 ```
 
-If you want to skip this file altogether, run `rails new my_app --no_rc`.
+If you want to skip this file altogether, run `rails new my_app --no-rc`.
 
 [railsrc]: https://github.com/rails/rails/blob/7f7f9df8641e35a076fe26bd097f6a1b22cb4e2d/railties/lib/rails/generators/rails/app/USAGE#L5C1-L7
 [Suspenders]: https://github.com/thoughtbot/suspenders
