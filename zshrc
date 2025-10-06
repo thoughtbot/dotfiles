@@ -39,3 +39,6 @@ _load_settings "$HOME/.zsh/configs"
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
+
+# Load local PATH configuration (not version controlled)
+[[ -f ~/.zshrc.paths ]] && source ~/.zshrc.paths
