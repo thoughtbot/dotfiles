@@ -1,10 +1,23 @@
-# load custom executable functions
+# ==============================================================================
+# ZSH Configuration
+# ==============================================================================
+# This file is the main zsh configuration entry point.
+# It loads modular configs from ~/.zsh/configs/ in order: pre -> main -> post
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Custom Functions
+# ------------------------------------------------------------------------------
+# Load all custom executable functions from ~/.zsh/functions/
 for function in ~/.zsh/functions/*; do
   source $function
 done
 
-# extra files in ~/.zsh/configs/pre , ~/.zsh/configs , and ~/.zsh/configs/post
-# these are loaded first, second, and third, respectively.
+# ------------------------------------------------------------------------------
+# Modular Config Loading
+# ------------------------------------------------------------------------------
+# Load config files from ~/.zsh/configs/pre, ~/.zsh/configs, and ~/.zsh/configs/post
+# in that order. This allows for proper dependency management.
 _load_settings() {
   _dir="$1"
   if [ -d "$_dir" ]; then
@@ -34,51 +47,61 @@ _load_settings() {
 }
 _load_settings "$HOME/.zsh/configs"
 
-# Local config
+# ------------------------------------------------------------------------------
+# Local Overrides
+# ------------------------------------------------------------------------------
+# Machine-specific config that shouldn't be in version control
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
-# aliases
+# Shell aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
+# ------------------------------------------------------------------------------
+# FZF - Fuzzy Finder
+# ------------------------------------------------------------------------------
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# tabtab source for packages
-# uninstall by removing these lines
+# ------------------------------------------------------------------------------
+# Tab Completions (tabtab)
+# ------------------------------------------------------------------------------
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
 
-## z
+# ------------------------------------------------------------------------------
+# Zsh Plugins
+# ------------------------------------------------------------------------------
+# z - Jump to frequently used directories
 source ~/.zsh/zsh-z/zsh-z.plugin.zsh
 
-## zsh-autosuggestions
+# zsh-autosuggestions - Fish-like autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-## zsh-syntax-highlighting
+# zsh-syntax-highlighting - Syntax highlighting for commands (load last)
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-## Set JAVA HOME
+# ------------------------------------------------------------------------------
+# ASDF Version Manager - Language Runtimes
+# ------------------------------------------------------------------------------
+# Java - Set JAVA_HOME automatically based on asdf version
 source ~/.asdf/plugins/java/set-java-home.zsh
 
-## Android SDK paths
+# Golang - Set Go environment variables
+. ~/.asdf/plugins/golang/set-env.zsh
+
+# ------------------------------------------------------------------------------
+# Android SDK
+# ------------------------------------------------------------------------------
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-## Set Rust path
-source ~/.asdf/installs/rust/1.57.0/env
+# ------------------------------------------------------------------------------
+# Bun - JavaScript Runtime
+# ------------------------------------------------------------------------------
+# Bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
-export PATH=$PATH:~/.asdf/installs/rust/1.57.0/bin
-export RUSTUP_HOME=$PATH:~/.asdf/installs/rust/1.57.0/bin
-# bun completions
-[ -s "~/.bun/_bun" ] && source "~/.bun/_bun"
-
-# bun
+# Bun path
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
-. ~/.asdf/plugins/golang/set-env.zsh
