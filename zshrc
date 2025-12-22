@@ -34,6 +34,8 @@ _load_settings() {
 }
 _load_settings "$HOME/.zsh/configs"
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
