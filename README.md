@@ -156,6 +156,22 @@ can add the `virtualenv` file, another `keys`, and a third `chpwd`.
 
 The `~/dotfiles-local/zshrc.local` is loaded after `~/dotfiles-local/zsh/configs`.
 
+## zsh History Configurations
+
+The zsh history is configured with several useful options:
+
+-   `hist_ignore_all_dups`: Removes duplicate commands from history
+
+-   `hist_ignore_space`: Commands starting with a space are not saved to history
+    (useful for sensitive commands)
+
+-   `inc_append_history`: Adds commands to history as they're executed, not just
+    when the shell exits
+
+-   `share_history`: Shares history across multiple zsh sessions in real-time
+
+History size is set to 8,192 entries providing ample command history.
+
 ## vim Configurations
 
 Similarly to the zsh configuration directory as described above, vim
