@@ -1,0 +1,19 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [[ \"$FILE_PATH\" == *.rb ]] && command -v bundle &>/dev/null && bundle show rubocop &>/dev/null; then bundle exec rubocop -A \"$FILE_PATH\" 2>&1 || true; fi"
+          },
+          {
+            "type": "command",
+            "command": "if [[ \"$FILE_PATH\" =~ \\.(js|jsx|ts|tsx)$ ]] && command -v yarn &>/dev/null && yarn eslint --version &>/dev/null; then yarn eslint --fix \"$FILE_PATH\" 2>&1 || true; fi"
+          }
+        ]
+      }
+    ]
+  }
+}
