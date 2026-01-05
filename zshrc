@@ -76,10 +76,10 @@ zinit lucid wait"1" for \
   zsh-users/zsh-syntax-highlighting
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '${HOME}/Develop/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jessearmand/Develop/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "${HOME}/Develop/google-cloud-sdk/path.zsh.inc" ]; then . "${HOME}/Develop/google-cloud-sdk/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '${HOME}/Develop/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jessearmand/Develop/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "${HOME}/Develop/google-cloud-sdk/completion.zsh.inc" ]; then . "${HOME}/Develop/google-cloud-sdk/completion.zsh.inc"; fi
 
 function gi() { curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/$@ ;}
 

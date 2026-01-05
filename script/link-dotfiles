@@ -16,9 +16,13 @@ EOF
 DRY_RUN=1
 FORCE=0
 
+if [ $# -eq 0 ]; then
+  # No arguments: default to dry-run (already set)
+  :
+fi
+
 for arg in "$@"; do
   case "$arg" in
-    --dry-run) DRY_RUN=1 ;;
     --force) FORCE=1; DRY_RUN=0 ;;
     -h|--help) usage; exit 0 ;;
     *)

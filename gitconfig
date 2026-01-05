@@ -1,3 +1,5 @@
+[push]
+	default = current
 [core]
 	editor = nvim
 	whitespace = fix,trailing-space,space-before-tab,cr-at-eol
