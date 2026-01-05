@@ -1,2 +1,5 @@
-!bin
-vim/bundle/
+.DS_Store
+*.swp
+*.swo
+*.swm
+*.bak

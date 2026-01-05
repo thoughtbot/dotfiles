@@ -1,40 +1,55 @@
-[init]
-	templatedir = ~/.git_template
-[push]
-	default = current
-[color]
-	ui = auto
-[alias]
-	aa = add --all
-	ap = add --patch
-	branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
-	ci = commit -v
-	co = checkout
-	pf = push --force-with-lease
-	st = status
 [core]
+	editor = nvim
+	whitespace = fix,trailing-space,space-before-tab,cr-at-eol
+	trustctime = false
 	excludesfile = ~/.gitignore
 	autocrlf = input
-	whitespace = trailing-space,space-before-tab
 [apply]
 	whitespace = fix
-[merge]
-	ff = only
 [commit]
 	template = ~/.gitmessage
 	gpgsign = true
+
 [fetch]
 	prune = true
+	recurseSubmodules = false
 [rebase]
 	autosquash = true
-[include]
-	path = ~/.gitconfig.local
+
+# Include a summary of changes in merge commit messages.
+#
+[merge]
+	summary = true
+	tool = nvimdiff4
+[mergetool "nvimdiff4"]
+	trustExitCode = true
+	cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[mergetool "nfugitive"]
+	cmd = nvim -f -c "Gdiff" "$MERGED"
+
 [diff]
-	colorMoved = zebra
+	tool = nvimdiff2
+[difftool "nvimdiff2"]
+	trustExitCode = true
+	cmd = nvim -d $LOCAL $REMOTE
+
+[gpg]
+	program = gpg2
+
+[alias]
+	dc = diff --cached
+	hist = log --graph --decorate --pretty=format:'%C(cyan)%h%Creset | %C(yellow)%ad%Creset | %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --date=short
+	unstage = reset HEAD
+	discard = reset --hard HEAD
+	lg = log -p
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	ls = ls-files
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[gpg]
-	program = gpg2
+
+[include]
+	path = ~/.gitconfig.private

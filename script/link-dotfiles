@@ -1,0 +1,96 @@
+#!/bin/sh
+set -eu
+
+usage() {
+  cat <<'EOF'
+Usage: script/link-dotfiles [--dry-run] [--force]
+
+Creates symlinks from this repo into your $HOME, prefixing filenames with ".".
+
+Examples:
+  script/link-dotfiles --dry-run
+  script/link-dotfiles --force
+EOF
+}
+
+DRY_RUN=1
+FORCE=0
+
+for arg in "$@"; do
+  case "$arg" in
+    --dry-run) DRY_RUN=1 ;;
+    --force) FORCE=1; DRY_RUN=0 ;;
+    -h|--help) usage; exit 0 ;;
+    *)
+      echo "Unknown argument: $arg" >&2
+      usage >&2
+      exit 2
+      ;;
+  esac
+done
+
+repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd -P)
+
+run() {
+  if [ "$DRY_RUN" -eq 1 ]; then
+    printf '[dry-run] %s\n' "$*"
+  else
+    "$@"
+  fi
+}
+
+ensure_private_gitconfig() {
+  private="$HOME/.gitconfig.private"
+  if [ -e "$private" ]; then
+    return 0
+  fi
+  run touch "$private"
+  if [ "$DRY_RUN" -eq 0 ]; then
+    chmod 600 "$private" || true
+  fi
+}
+
+link_one() {
+  name="$1"
+  src="$repo_root/$name"
+  dest="$HOME/.$name"
+
+  if [ ! -e "$src" ]; then
+    echo "Missing source: $src" >&2
+    exit 1
+  fi
+
+  if [ -L "$dest" ]; then
+    current=$(readlink "$dest" || true)
+    if [ "$current" = "$src" ]; then
+      printf 'ok: %s -> %s\n' "$dest" "$src"
+      return 0
+    fi
+  fi
+
+  if [ -e "$dest" ] || [ -L "$dest" ]; then
+    if [ "$FORCE" -ne 1 ]; then
+      echo "Refusing to overwrite existing: $dest (use --force)" >&2
+      exit 1
+    fi
+    ts=$(date +%Y%m%d%H%M%S)
+    run mv "$dest" "$dest.bak.$ts"
+  fi
+
+  run ln -s "$src" "$dest"
+}
+
+ensure_private_gitconfig
+
+for f in \
+  zshrc \
+  zshenv \
+  p10k.zsh \
+  tmux.conf \
+  gitconfig \
+  gitignore \
+  gitmessage \
+  ripgreprc
+do
+  link_one "$f"
+done

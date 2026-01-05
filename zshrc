@@ -1,110 +1,98 @@
-# modify the prompt to contain git branch name if applicable
-git_prompt_info() {
-  current_branch=$(git current-branch 2> /dev/null)
-  if [[ -n $current_branch ]]; then
-    echo " %{$fg_bold[green]%}$current_branch%{$reset_color%}"
-  fi
-}
-setopt promptsubst
-export
-PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info)
-%# '
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
-# all of our zsh files
-typeset -U config_files
-config_files=($DOTFILES/**/*.zsh)
+export LANG=en_US.UTF-8
 
-# load the path files
-for file in ${(M)config_files:#*/path.zsh}
-do
-  source $file
-done
+export PATH="${HOME}/.local/bin:$PATH"
 
-# load everything but the path and completion files
-for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
-do
-  source $file
-done
+eval "$(~/.local/bin/mise activate zsh)"
 
-# load custom executable functions
-for function in $ZSH/functions/*; do
-  source $function
-done
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# Load every completion after autocomplete loads
-for file in ${(M)config_files:#*/completion.zsh}
-do
-  source $file
-done
+export MATLAB_RUNTIME="/Applications/MATLAB/MATLAB_Runtime/v97"
+export DYLD_LIBRARY_PATH="${MATLAB_RUNTIME}/runtime/maci64:${MATLAB_RUNTIME}/sys/os/maci64:${MATLAB_RUNTIME}/bin/maci64"
 
-unset config_files
+# Added by LM Studio CLI tool (lms)
+export PATH="$PATH:${HOME}/.cache/lm-studio/bin"
+export PATH="${HOME}/.mint/bin:$PATH"
+export PATH="${HOME}/.bun/bin:$PATH"
 
-# makes color constants available
-autoload -U colors
-colors
+export PATH="${HOME}/Develop/google-cloud-sdk/bin:$PATH"
 
-# enable colored output from ls, etc
-export CLICOLOR=1
+### Alibaba cloud mirror for homebrew
+# export HOMEBREW_API_DOMAIN=https://mirrors.aliyun.com/homebrew-bottles/api
+# export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew-bottles
+# export HOMEBREW_BREW_GIT_REMOTE=https://mirrors.aliyun.com/homebrew/brew.git
 
-# history settings
-setopt hist_ignore_all_dups inc_append_history
-HISTFILE=~/.zhistory
-HISTSIZE=4096
-SAVEHIST=4096
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
 
-# awesome cd movements from zshkit
-setopt autocd autopushd pushdminus pushdsilent pushdtohome cdablevars
-DIRSTACKSIZE=5
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-# Enable extended globbing
-setopt extendedglob
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
 
-# Allow [ or ] whereever you want
-unsetopt nomatch
+### End of Zinit's installer chunk
+#
+# Load powerlevel10k theme
+zinit ice depth"1" # git clone depth
+zinit light romkatv/powerlevel10k
 
-# handy keybindings
-bindkey "^A" beginning-of-line
-bindkey "^E" end-of-line
-bindkey "^K" kill-line
-bindkey "^R" history-incremental-search-backward
-bindkey "^P" history-search-backward
-bindkey "^Y" accept-and-hold
-bindkey "^N" insert-last-word
-bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
+# Binary release in archive, from GitHub-releases page.
+# After automatic unpacking it provides program "fzf".
+zi ice from"gh-r" as"program"
+zi light junegunn/fzf
 
-# extra files in ~/.zsh/configs/pre , ~/.zsh/configs , and ~/.zsh/configs/post
-# these are loaded first, second, and third, respectively.
-_load_settings() {
-  _dir="$1"
-  if [ -d "$_dir" ]; then
-    if [ -d "$_dir/pre" ]; then
-      for config in "$_dir"/pre/**/*~*.zwc(N-.); do
-        . $config
-      done
-    fi
+# Load completion-related plugins with wait"0"
+zinit lucid wait"0" for \
+  lincheney/fzf-tab-completion \
+  alexiszamanidis/zsh-git-fzf \
+  laggardkernel/git-ignore
 
-    for config in "$_dir"/**/*(N-.); do
-      case "$config" in
-        "$_dir"/(pre|post)/*|*.zwc)
-          :
-          ;;
-        *)
-          . $config
-          ;;
-      esac
-    done
+zicompinit
+zinit cdreplay -q
 
-    if [ -d "$_dir/post" ]; then
-      for config in "$_dir"/post/**/*~*.zwc(N-.); do
-        . $config
-      done
-    fi
-  fi
-}
-_load_settings "$HOME/.zsh/configs"
+# Set up fzf key bindings (Ctrl-T/Ctrl-R/Alt-C) and fuzzy completion
+command -v fzf >/dev/null 2>&1 && source <(fzf --zsh)
 
-# Local config
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+zinit lucid wait"1" for \
+  zsh-users/zsh-syntax-highlighting
 
-# aliases
-[[ -f ~/.aliases ]] && source ~/.aliases
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '${HOME}/Develop/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jessearmand/Develop/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '${HOME}/Develop/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jessearmand/Develop/google-cloud-sdk/completion.zsh.inc'; fi
+
+function gi() { curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/$@ ;}
+
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+compdef _gnu_generic zed
+
+# bun completions
+[ -s "/opt/homebrew/share/zsh/site-functions/_bun" ] && source "/opt/homebrew/share/zsh/site-functions/_bun"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
