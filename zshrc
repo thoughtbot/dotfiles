@@ -34,6 +34,8 @@ _load_settings() {
 }
 _load_settings "$HOME/.zsh/configs"
 
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
