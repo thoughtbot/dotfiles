@@ -13,7 +13,7 @@ alias migrate="bin/rails db:migrate db:rollback && bin/rails db:migrate db:test:
 alias s="rspec"
 
 # Pretty print the path
-alias path='echo $PATH | tr -s ":" "\n"'
+alias path='echo -e ${PATH//:/\\n}'
 
 # Easier navigation: ..., ...., ....., and -
 alias ...="cd ../.."
