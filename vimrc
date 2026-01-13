@@ -10,6 +10,7 @@ set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitigno
 set history=50
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
+set termguicolors " make our colors pretty
 set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
@@ -169,6 +170,9 @@ set complete+=kspell
 
 " Always use vertical diffs
 set diffopt+=vertical
+
+" Use Catpuccin Latte as our default color scheme
+colorscheme catppuccin_latte
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
