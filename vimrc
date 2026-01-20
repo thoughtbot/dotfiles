@@ -91,8 +91,17 @@ set list listchars=tab:»·,trail:·,nbsp:·
 " Use one space, not two, after punctuation.
 set nojoinspaces
 
+" Use ripgrep https://github.com/BurntSushi/ripgrep
+if executable('rg')
+  " Use Rg over Grep
+  set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+
+  " Use rg in fzf for listing files. Lightning fast and respects .gitignore
+  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+
+  nnoremap \ :Rg<SPACE>
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
+elseif executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
 
