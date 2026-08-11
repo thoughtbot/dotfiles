@@ -6,7 +6,7 @@ alias e="$EDITOR"
 alias v="$VISUAL"
 
 # Bundler
-alias b="bundle"
+alias b="bundle install"
 
 # Rails
 alias migrate="bin/rails db:migrate db:rollback && bin/rails db:migrate db:test:prepare"
