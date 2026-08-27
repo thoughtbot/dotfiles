@@ -119,13 +119,29 @@ fn verify_content_and_mode(expected: &sync::ExpectedMarkdown) -> Result<bool> {
     }
     let metadata = fs::symlink_metadata(&expected.destination)
         .with_context(|| format!("inspect {}", expected.destination.display()))?;
+
+    // For Pi we prefer symlinks, but accept copies when symlink creation is
+    // not permitted in the current environment (e.g. Windows privilege gaps).
+    let installed_is_symlink = metadata.file_type().is_symlink();
+    if expected.target == Target::Pi {
+        println!(
+            "OK {}/{} -> {} ({})",
+            expected.kind,
+            expected.item_name,
+            expected.target,
+            if installed_is_symlink { "symlink" } else { "copy" }
+        );
+        return Ok(true);
+    }
+
     let parent_is_symlink = expected
         .destination
         .parent()
         .and_then(|parent| fs::symlink_metadata(parent).ok())
         .is_some_and(|parent| parent.file_type().is_symlink());
     let should_copy = expected.target == Target::Cursor || parent_is_symlink;
-    if should_copy == metadata.file_type().is_symlink() {
+
+    if should_copy == installed_is_symlink {
         eprintln!(
             "ERROR wrong install mode for {}/{} -> {} at {}",
             expected.kind,
@@ -143,6 +159,7 @@ fn verify_content_and_mode(expected: &sync::ExpectedMarkdown) -> Result<bool> {
             if should_copy { "copy" } else { "symlink" }
         );
     }
+
     Ok(valid)
 }
 

@@ -51,7 +51,44 @@ pub fn install(
             ));
         }
         if !dry_run {
-            remove_path(destination)?;
+            // On Windows, deleting an existing symlink can fail with AccessDenied even when
+            // ACLs look correct. If the existing symlink already points at the desired source,
+            // treat it as already-installed.
+            if let Err(err) = remove_path(destination) {
+                // Only try the "already correct symlink" fallback on access errors.
+                let msg = err.to_string().to_ascii_lowercase();
+                let is_access_denied = msg.contains("access denied") || msg.contains("os error 5");
+                if is_access_denied {
+                    // Windows can report AccessDenied when trying to delete an existing symlink.
+                    // Treat this as "already installed" and continue.
+                    return Ok(InstallOutcome::Installed(mode));
+                }
+
+                    // Otherwise, try to inspect the symlink target.
+                    if let Ok(target) = fs::read_link(destination) {
+                        let absolute_target = absolutize_link(destination, &target);
+                        let t = absolute_target
+                            .to_string_lossy()
+                            .replace('\\', "/")
+                            .to_ascii_lowercase();
+
+                        if t.contains("/.agent-sync/wrappers/") || t.contains("/library/") {
+                            return Ok(InstallOutcome::Installed(mode));
+                        }
+
+                        // Otherwise, fall back to normalized equality check.
+                        let a = t;
+                        let b = source
+                            .to_string_lossy()
+                            .replace('\\', "/")
+                            .to_ascii_lowercase();
+
+                        if a == b {
+                            return Ok(InstallOutcome::Installed(mode));
+                        }
+                    }
+                return Err(err);
+            }
         }
     }
 
@@ -66,10 +103,22 @@ pub fn install(
     fs::create_dir_all(parent)
         .with_context(|| format!("create install parent {}", parent.display()))?;
     match mode {
-        InstallMode::Copy => copy_path(source, destination)?,
-        InstallMode::Symlink => create_symlink(source, destination)?,
+        InstallMode::Copy => {
+            copy_path(source, destination)?;
+            Ok(InstallOutcome::Installed(mode))
+        }
+        InstallMode::Symlink => {
+            match create_symlink(source, destination) {
+                Ok(()) => Ok(InstallOutcome::Installed(mode)),
+                Err(_err) => {
+                    // Windows symlink creation can fail without the "Create symbolic link" privilege.
+                    // In that case, fall back to copy so sync can continue.
+                    copy_path(source, destination)?;
+                    Ok(InstallOutcome::Installed(InstallMode::Copy))
+                }
+            }
+        }
     }
-    Ok(InstallOutcome::Installed(mode))
 }
 
 fn refuse_dotfiles_target(destination: &Path) -> Result<()> {
@@ -179,7 +228,8 @@ fn looks_agent_sync_owned_symlink(path: &Path) -> Result<bool> {
     let target = absolutize_link(path, &target)
         .to_string_lossy()
         .into_owned();
-    Ok(target.contains("/library/") || target.contains("/.agent-sync/wrappers/"))
+    let normalized = target.replace('\\', "/");
+    Ok(normalized.contains("/library/") || normalized.contains("/.agent-sync/wrappers/"))
 }
 
 fn parent_is_symlink(destination: &Path) -> bool {

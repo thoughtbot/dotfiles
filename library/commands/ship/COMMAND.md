@@ -191,4 +191,4 @@ This feeds the self-improvement loop.
 - **Trivial fixes** (typo, one-line change): just do it directly
 - **Exploration / research**: use `/investigate` or skills directly
 - **Pure review** (no implementation): use `/review-fix-loop`
-- **Schema-only changes**: use `/psgen-workflow` directly
+- **Schema-only changes**: use `psgen-workflow` directly

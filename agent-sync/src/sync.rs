@@ -5,6 +5,7 @@ use std::path::{Path, PathBuf};
 use anyhow::{Context, Result};
 
 use crate::config::Config;
+use crate::frontmatter;
 use crate::hooks;
 use crate::install::{self, InstallMode, InstallOutcome};
 use crate::library::{Kind, Library};
@@ -147,6 +148,8 @@ fn print_unsupported(library: &Library) {
 }
 
 pub fn expected_markdown(config: &Config, library: &Library) -> Result<Vec<ExpectedMarkdown>> {
+    // helper stays in-module
+
     let skill_names = library
         .items
         .iter()
@@ -177,6 +180,14 @@ pub fn expected_markdown(config: &Config, library: &Library) -> Result<Vec<Expec
                 .destination(&config.target_home, item.kind, &fanout_name)
                 .context("supported target must have a destination")?;
             let main_destination = destination_main(&destination, item.kind, target);
+
+            let mut content = overlay::apply(&source, &item.manifest.overlay(target))?;
+
+            // Pi agents should not carry model invocation aliases.
+            if item.kind == Kind::Agents && target == Target::Pi {
+                content = remove_pi_agent_model_alias(&content)?;
+            }
+
             expected.push(ExpectedMarkdown {
                 kind: item.kind,
                 item_name: item.display_name(),
@@ -184,7 +195,7 @@ pub fn expected_markdown(config: &Config, library: &Library) -> Result<Vec<Expec
                 target,
                 destination,
                 main_destination,
-                content: overlay::apply(&source, &item.manifest.overlay(target))?,
+                content,
                 excluded: item.manifest.excludes(target) || cursor_command_shadowed,
             });
         }
@@ -198,6 +209,14 @@ fn destination_main(destination: &Path, kind: Kind, target: Target) -> PathBuf {
     } else {
         destination.to_path_buf()
     }
+}
+
+fn remove_pi_agent_model_alias(content: &str) -> Result<String> {
+    let mut md = frontmatter::parse(content)?;
+    if let Some(map) = md.frontmatter.as_mapping_mut() {
+        map.remove(&serde_yaml::Value::String("model".to_owned()));
+    }
+    frontmatter::render(&md)
 }
 
 fn wrapper_source(config: &Config, expected: &ExpectedMarkdown) -> PathBuf {
