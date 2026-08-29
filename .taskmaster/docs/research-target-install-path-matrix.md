@@ -21,7 +21,7 @@
 | **Cursor** | `~/.cursor/skills/<name>/SKILL.md` | `~/.cursor/commands/<name>.md` (legacy, deprecated Jul 2026) | `~/.cursor/agents/<name>.md` | `~/.cursor/hooks.json` (file); scripts under `~/.cursor/hooks/` |
 | **`.agents`** | `~/.agents/skills/<name>/SKILL.md` | `~/.agents/commands/<name>.md` | `~/.agents/subagents/<name>.md` | `~/.agents/hooks/<name>/HOOK.yaml` + sidecar scripts |
 | **OpenCode** | `~/.config/opencode/skills/<name>/SKILL.md` | `~/.config/opencode/commands/<name>.md` | `~/.config/opencode/agents/<name>.md` | UNSUPPORTED (requires JS/TS plugin; no native shell hooks) |
-| **Pi** | `~/.pi/agent/skills/<name>/SKILL.md` | UNSUPPORTED | UNSUPPORTED | UNSUPPORTED |
+| **Pi** | `~/.pi/agent/skills/<name>/SKILL.md` | as skills under `~/.pi/agent/skills/<name>/` (no native commands dir; invoke via `/skill:name`) | `~/.pi/agent/agents/<name>.md` (loaded by Pi subagent extension) | TypeScript extensions under `~/.pi/agent/extensions/*.ts` + managed registry `.agent-sync-managed.json` (Pi renamed `hooks/` → `extensions/` in 0.84) |
 
 ---
 
@@ -105,9 +105,9 @@
 | Kind | Global path | Format | Notes |
 |------|-------------|--------|-------|
 | **skills** | `~/.pi/agent/skills/<name>/SKILL.md` | Directory with `SKILL.md` | "Pi loads skills from: Global: `~/.pi/agent/skills/`, `~/.agents/skills/`" [Pi skills docs]. Pi also reads from `~/.agents/skills/` natively, so agent-sync can write to Pi's own dir or rely on the `.agents` target for shared coverage. |
-| **commands** | **UNSUPPORTED** | — | Pi has no "commands" directory. Slash commands are registered only via TypeScript extensions. `/skill:name` is how skills are explicitly invoked. `verify` should report skip. |
-| **agents** | **UNSUPPORTED** | — | Pi has no native agents/subagents concept. No directory for agent definitions. `verify` should report skip. |
-| **hooks** | **UNSUPPORTED** | — | Pi has no native hook system. Lifecycle automation requires TypeScript extensions. `verify` should report skip. |
+| **commands** | `~/.pi/agent/skills/<name>/` (as skill packages) | Directory with `SKILL.md` | Pi has no native commands directory. agent-sync fans Library `commands` out as skill packages under `~/.pi/agent/skills/` (invoked as `/skill:name`). |
+| **agents** | `~/.pi/agent/agents/<name>.md` | Markdown + YAML frontmatter | Official Pi subagent extension discovers agents from `~/.pi/agent/agents/*.md` (user) and `.pi/agents/*.md` (project). Core Pi does not load these without that extension (or equivalent). agent-sync strips `model` frontmatter for Pi. |
+| **hooks** | `~/.pi/agent/extensions/*.ts` | TypeScript extension modules | Pi 0.84 renamed `hooks/` → `extensions/`; a leftover `hooks/` dir triggers a deprecation warning and is not loaded. agent-sync writes thin `.ts` wrappers that `spawn` pack shell scripts, plus `~/.pi/agent/extensions/.agent-sync-managed.json` for ownership (no host JSON merge file). |
 
 ---
 
@@ -119,7 +119,7 @@
 | Cursor | ✓ | ✓ (legacy; prefer skills) | ✓ | ✓ (JSON file + scripts dir) |
 | `.agents` | ✓ | ✓ | ✓ (`subagents/`) | ✓ (YAML bundle) |
 | OpenCode | ✓ | ✓ | ✓ | ✗ |
-| Pi | ✓ | ✗ | ✗ | ✗ |
+| Pi | ✓ | ✓ (as skills) | ✓ (`agents/*.md` via subagent ext) | ✓ (`extensions/*.ts` + managed registry) |
 
 ---
 
@@ -177,9 +177,6 @@ Based on the matrix, `agent-sync verify` should emit a skip (not an error) for:
 | Target | Skip rule |
 |--------|-----------|
 | OpenCode | `hooks` kind → skip; no native shell hook support |
-| Pi | `commands` kind → skip; no commands directory |
-| Pi | `agents` kind → skip; no native agents concept |
-| Pi | `hooks` kind → skip; no native hook system |
 
 All other cells in the matrix are supported and should be verified as present.
 
@@ -191,7 +188,7 @@ All other cells in the matrix are supported and should be verified as present.
 
 2. **Cursor commands deprecated.** Agent-sync should fan out Library "commands" kind to `~/.cursor/skills/` (not `~/.cursor/commands/`) for the Cursor target, treating commands as skills. This aligns with Cursor's documented direction.
 
-3. **Pi reads `~/.agents/skills/` natively.** Writing to the `.agents` Target automatically covers Pi for skills. Agent-sync may choose to only write to `~/.pi/agent/skills/` if the user explicitly wants Pi as a separate target without agents-cli installed.
+3. **Pi commands → skills; agents + extensions.** Pi has no commands dir: fan Library commands to `~/.pi/agent/skills/`. Agents go to `~/.pi/agent/agents/*.md` (subagent extension convention). Hooks install as TypeScript under `~/.pi/agent/extensions/` (not deprecated `hooks/`), with `.agent-sync-managed.json` tracking ownership.
 
 4. **`.agents` subagents vs agents.** agents-cli uses `~/.agents/subagents/` for agent definitions, but Library uses `agents/` as the kind name. The adapter must map Library `agents/` → `.agents` target `subagents/`.
 

@@ -43,3 +43,27 @@ _Avoid_: skills-cursor (do not manage), builtin, forked skill
 **Tombstone**:
 A local-only marker under `~/dotfiles-local/library/` that skips Fan-out for a public `(kind, name)` on this machine without deleting the public item.
 _Avoid_: delete, gitignore (different mechanism)
+
+**Harness tombstone**:
+Staff preference (prefs `tombstones`) or `~/dotfiles-local/library/<kind>/<name>/.agent-sync-tombstone` that suppresses an org catalog item from pull/Fan-out.
+_Avoid_: deleting the public Library item, gitignore
+
+**Harness pin**:
+Staff preference that freezes an item to a content hash even when the `stable` channel tip moves.
+_Avoid_: editing cache files by hand, pinning via git checkout
+
+**Harness live_sync**:
+Client auto-pull policy; default `mode=stale_check` on channel `stable`. Set `mode=off` in `~/.agent-sync/preferences.json` or the staff prefs UI to disable sessionStart pulls.
+_Avoid_: always-on pull as the silent default, hard-failing the session on network error
+
+**Harness target off**:
+`targets_enabled.<target>=false` (e.g. `targets_enabled.pi=false`) skips that Target during hybrid sync.
+_Avoid_: uninstalling the Target, deleting Fan-out trees to "turn off" a host
+
+**MCP coexistence**:
+Where hosts support it, prefer org MCP `skills_*` tools (and command/agent twins) for progressive disclosure; filesystem `andrew-*` Fan-out stays dual-run until the MCP exit criterion. If `npx skills` wipes first-party Fan-outs, recover with `agent-sync sync --source hybrid`.
+_Avoid_: treating MCP as sole source of truth before exit criterion, relying on `npx skills` to manage `andrew-*` trees
+
+**Pi install paths**:
+Pi is a first-class Target: skills under `~/.pi/agent/skills/`, agents at `~/.pi/agent/agents/<name>.md`, hooks via `~/.pi/agent/extensions/` (Pi renamed `hooks/` → `extensions/`). Library commands fan out as skill packages under skills (invoked as `/skill:name`).
+_Avoid_: writing into a legacy `~/.pi/agent/hooks/` dir, inventing a separate Pi commands directory
