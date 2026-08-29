@@ -1,0 +1,18 @@
+version = "1.0.0"
+exclude = ["opencode"]
+
+[hooks.cursor]
+sessionStart = [
+  { command = "./pull-if-stale.sh" }
+]
+
+[hooks.claude]
+SessionStart = [
+  { command = "./pull-if-stale.sh" }
+]
+
+# Pi: Task 10 adapter installs a .ts wrapper under extensions/ that execs this script.
+[hooks.pi]
+session_start = [
+  { command = "./pull-if-stale.sh" }
+]

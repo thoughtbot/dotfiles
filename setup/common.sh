@@ -162,8 +162,9 @@ run_agent_sync() {
     log_warn "agent-sync binary not found; skipping sync"
     return 0
   fi
-  log_info "Running agent-sync sync..."
-  DOTFILES_DIR="${dotfiles_dir}" "${bin}" sync || log_warn "agent-sync sync failed"
+  log_info "Running agent-sync pull --if-stale then sync --source hybrid..."
+  DOTFILES_DIR="${dotfiles_dir}" "${bin}" pull --if-stale || log_warn "harness pull skipped"
+  DOTFILES_DIR="${dotfiles_dir}" "${bin}" sync --source hybrid || log_warn "agent-sync sync failed"
   if [[ "${verify}" == "1" ]]; then
     DOTFILES_DIR="${dotfiles_dir}" "${bin}" verify || log_warn "agent-sync verify failed"
   fi
