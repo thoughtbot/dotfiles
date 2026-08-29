@@ -10,16 +10,25 @@ publish = false
 name = "agent-sync"
 path = "src/main.rs"
 
+[lib]
+name = "agent_sync"
+path = "src/lib.rs"
+
 [dependencies]
 anyhow = "1"
+base64 = "0.22"
 chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
 clap = { version = "4", features = ["derive", "env"] }
 fs_extra = "1"
+hex = "0.4"
 regex = "1"
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "json", "blocking"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 serde_yaml = "0.9"
+sha2 = "0.10"
 toml = "0.8"
+uuid = { version = "1", features = ["v4"] }
 walkdir = "2"
 
 [dev-dependencies]

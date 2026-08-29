@@ -8,7 +8,7 @@ use crate::config::Config;
 use crate::frontmatter;
 use crate::hooks;
 use crate::install::{self, InstallMode, InstallOutcome};
-use crate::library::{Kind, Library};
+use crate::library::{Kind, Library, SourceMode};
 use crate::overlay;
 use crate::state::{InstalledPath, State};
 use crate::target::Target;
@@ -26,7 +26,11 @@ pub struct ExpectedMarkdown {
 }
 
 pub fn run(config: &Config, dry_run: bool) -> Result<()> {
-    let library = Library::scan(config)?;
+    run_with_source(config, dry_run, SourceMode::Library)
+}
+
+pub fn run_with_source(config: &Config, dry_run: bool, source: SourceMode) -> Result<()> {
+    let library = Library::scan_with_source(config, source)?;
     for diagnostic in &library.diagnostics {
         eprintln!("WARN {}", diagnostic.message);
     }
@@ -171,11 +175,12 @@ pub fn expected_markdown(config: &Config, library: &Library) -> Result<Vec<Expec
             if !target.supports(item.kind) {
                 continue;
             }
-            // Cursor installs commands into the skills tree; skip when a skill
+            // Cursor/Pi install commands into the skills tree; skip when a skill
             // already owns that fan-out name so verify/sync do not thrash.
-            let cursor_command_shadowed = item.kind == Kind::Commands
-                && target == Target::Cursor
-                && skill_names.contains(&item.name);
+            let command_as_skill = item.kind == Kind::Commands
+                && matches!(target, Target::Cursor | Target::Pi);
+            let command_shadowed =
+                command_as_skill && skill_names.contains(&item.name);
             let destination = target
                 .destination(&config.target_home, item.kind, &fanout_name)
                 .context("supported target must have a destination")?;
@@ -196,7 +201,7 @@ pub fn expected_markdown(config: &Config, library: &Library) -> Result<Vec<Expec
                 destination,
                 main_destination,
                 content,
-                excluded: item.manifest.excludes(target) || cursor_command_shadowed,
+                excluded: item.manifest.excludes(target) || command_shadowed,
             });
         }
     }
@@ -204,7 +209,9 @@ pub fn expected_markdown(config: &Config, library: &Library) -> Result<Vec<Expec
 }
 
 fn destination_main(destination: &Path, kind: Kind, target: Target) -> PathBuf {
-    if kind == Kind::Skills || (kind == Kind::Commands && target == Target::Cursor) {
+    if kind == Kind::Skills
+        || (kind == Kind::Commands && matches!(target, Target::Cursor | Target::Pi))
+    {
         destination.join("SKILL.md")
     } else {
         destination.to_path_buf()
@@ -214,7 +221,7 @@ fn destination_main(destination: &Path, kind: Kind, target: Target) -> PathBuf {
 fn remove_pi_agent_model_alias(content: &str) -> Result<String> {
     let mut md = frontmatter::parse(content)?;
     if let Some(map) = md.frontmatter.as_mapping_mut() {
-        map.remove(&serde_yaml::Value::String("model".to_owned()));
+        map.remove(serde_yaml::Value::String("model".to_owned()));
     }
     frontmatter::render(&md)
 }
@@ -235,7 +242,8 @@ fn wrapper_source(config: &Config, expected: &ExpectedMarkdown) -> PathBuf {
 fn materialize_wrapper(expected: &ExpectedMarkdown, wrapper: &Path) -> Result<()> {
     install::remove_path(wrapper)?;
     let directory_install = expected.kind == Kind::Skills
-        || (expected.kind == Kind::Commands && expected.target == Target::Cursor);
+        || (expected.kind == Kind::Commands
+            && matches!(expected.target, Target::Cursor | Target::Pi));
     if directory_install {
         install::copy_path(&expected.source_root, wrapper)?;
         install::remove_path(&wrapper.join("manifest.toml"))?;

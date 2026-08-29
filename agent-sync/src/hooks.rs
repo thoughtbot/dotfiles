@@ -13,6 +13,7 @@ use crate::state::{InstalledPath, State};
 use crate::target::Target;
 
 const MANAGED_PREFIX: &str = "agent-sync:";
+const HOOK_TARGETS: [Target; 3] = [Target::Claude, Target::Cursor, Target::Pi];
 
 pub fn sync(
     config: &Config,
@@ -22,7 +23,7 @@ pub fn sync(
 ) -> Result<Vec<InstalledPath>> {
     let mut installed = Vec::new();
 
-    for target in [Target::Claude, Target::Cursor] {
+    for target in HOOK_TARGETS {
         let mut target_entries: BTreeMap<String, Vec<Map<String, Value>>> = BTreeMap::new();
         for pack in packs {
             if pack.manifest.excludes(target) {
@@ -69,7 +70,12 @@ pub fn sync(
                 }
             }
         }
-        merge_config(config, target, target_entries, dry_run)?;
+
+        if target == Target::Pi {
+            installed.extend(sync_pi_extensions(config, &target_entries, dry_run)?);
+        } else {
+            merge_config(config, target, target_entries, dry_run)?;
+        }
     }
 
     Ok(installed)
@@ -77,7 +83,14 @@ pub fn sync(
 
 pub fn verify(config: &Config, packs: &[&LibraryItem]) -> Result<bool> {
     let mut valid = true;
-    for target in [Target::Claude, Target::Cursor] {
+    for target in HOOK_TARGETS {
+        if target == Target::Pi {
+            if !verify_pi(config, packs)? {
+                valid = false;
+            }
+            continue;
+        }
+
         let expected = expected_managed(config, packs, target)?;
         let config_path = target
             .hooks_config(&config.target_home)
@@ -117,15 +130,19 @@ pub fn verify(config: &Config, packs: &[&LibraryItem]) -> Result<bool> {
 }
 
 pub fn remove_managed(config: &Config) -> Result<()> {
-    for target in [Target::Claude, Target::Cursor] {
-        merge_config(config, target, BTreeMap::new(), false)?;
+    for target in HOOK_TARGETS {
+        if target == Target::Pi {
+            clear_pi_managed(config)?;
+        } else {
+            merge_config(config, target, BTreeMap::new(), false)?;
+        }
     }
     Ok(())
 }
 
 pub fn expected_script_paths(config: &Config, packs: &[&LibraryItem]) -> Result<Vec<PathBuf>> {
     let mut paths = Vec::new();
-    for target in [Target::Claude, Target::Cursor] {
+    for target in HOOK_TARGETS {
         for pack in packs {
             if pack.manifest.excludes(target)
                 || pack
@@ -142,10 +159,344 @@ pub fn expected_script_paths(config: &Config, packs: &[&LibraryItem]) -> Result<
                     .map(|(_, destination, _)| destination),
             );
         }
+        if target == Target::Pi {
+            let wrappers = pi_wrapper_plan(config, packs)?;
+            if !wrappers.is_empty() {
+                for (wrapper, _) in wrappers {
+                    paths.push(wrapper);
+                }
+                if let Some(registry) = target.hooks_managed_registry(&config.target_home) {
+                    paths.push(registry);
+                }
+            }
+        }
     }
     paths.sort();
     paths.dedup();
     Ok(paths)
+}
+
+fn sync_pi_extensions(
+    config: &Config,
+    entries: &BTreeMap<String, Vec<Map<String, Value>>>,
+    dry_run: bool,
+) -> Result<Vec<InstalledPath>> {
+    let hooks_dir = Target::Pi
+        .hooks_dir(&config.target_home)
+        .context("Pi must have an extensions directory")?;
+    let registry_path = Target::Pi
+        .hooks_managed_registry(&config.target_home)
+        .context("Pi must have a managed registry path")?;
+
+    if entries.is_empty() && !registry_path.exists() {
+        return Ok(Vec::new());
+    }
+
+    let registry_entries = pi_registry_entries(entries)?;
+    let count = registry_entries.len();
+    if dry_run {
+        println!(
+            "PLAN hooks/pi -> {} ({count} TypeScript wrappers)",
+            hooks_dir.display()
+        );
+        return Ok(Vec::new());
+    }
+
+    clear_pi_managed(config)?;
+    fs::create_dir_all(&hooks_dir)
+        .with_context(|| format!("create Pi extensions dir {}", hooks_dir.display()))?;
+
+    let mut installed = Vec::new();
+    for entry in &registry_entries {
+        let tag = entry
+            .get("_as")
+            .and_then(Value::as_str)
+            .unwrap_or("agent-sync:unknown");
+        let event = entry
+            .get("event")
+            .and_then(Value::as_str)
+            .context("Pi registry entry missing event")?;
+        let command = entry
+            .get("command")
+            .and_then(Value::as_str)
+            .context("Pi registry entry missing command")?;
+        let wrapper_name = entry
+            .get("wrapper")
+            .and_then(Value::as_str)
+            .context("Pi registry entry missing wrapper")?;
+        let wrapper_path = hooks_dir.join(wrapper_name);
+        let body = pi_ts_wrapper(event, command, tag);
+        fs::write(&wrapper_path, body)
+            .with_context(|| format!("write Pi wrapper {}", wrapper_path.display()))?;
+        println!("SYNC hooks/pi -> {} (typescript)", wrapper_path.display());
+        installed.push(InstalledPath::new(
+            PathBuf::from(format!("hooks/pi/{wrapper_name}")),
+            Target::Pi.id(),
+            wrapper_path,
+            InstallMode::Copy.as_str(),
+            "hooks",
+            "pi-extension",
+        ));
+    }
+
+    let registry = Value::Object(Map::from_iter([
+        ("version".to_owned(), Value::from(1)),
+        ("entries".to_owned(), Value::Array(registry_entries)),
+    ]));
+    write_json_atomic(&registry_path, &registry)?;
+    println!("SYNC hooks/pi registry -> {}", registry_path.display());
+    installed.push(InstalledPath::new(
+        PathBuf::from("hooks/pi/.agent-sync-managed.json"),
+        Target::Pi.id(),
+        registry_path,
+        InstallMode::Copy.as_str(),
+        "hooks",
+        "pi-extension",
+    ));
+    Ok(installed)
+}
+
+fn verify_pi(config: &Config, packs: &[&LibraryItem]) -> Result<bool> {
+    let mut valid = true;
+    let expected = expected_pi_registry(config, packs)?;
+    let registry_path = Target::Pi
+        .hooks_managed_registry(&config.target_home)
+        .context("Pi must have a managed registry path")?;
+
+    if expected.is_empty() {
+        if registry_path.exists() {
+            let value = read_config(&registry_path)?;
+            let entries = value
+                .get("entries")
+                .and_then(Value::as_array)
+                .cloned()
+                .unwrap_or_default();
+            if !entries.is_empty() {
+                eprintln!(
+                    "ERROR hooks pi: unexpected managed entries in {}",
+                    registry_path.display()
+                );
+                valid = false;
+            }
+        }
+        return Ok(valid);
+    }
+
+    if !registry_path.exists() {
+        eprintln!(
+            "ERROR hooks pi: missing managed registry {}",
+            registry_path.display()
+        );
+        return Ok(false);
+    }
+
+    let actual = read_config(&registry_path)?;
+    let actual_entries = actual
+        .get("entries")
+        .and_then(Value::as_array)
+        .cloned()
+        .unwrap_or_default();
+    if actual_entries != expected {
+        eprintln!(
+            "ERROR hooks pi: managed entries differ in {}",
+            registry_path.display()
+        );
+        valid = false;
+    }
+
+    let hooks_dir = Target::Pi
+        .hooks_dir(&config.target_home)
+        .context("Pi must have an extensions directory")?;
+    for entry in &expected {
+        if let Some(wrapper) = entry.get("wrapper").and_then(Value::as_str) {
+            let path = hooks_dir.join(wrapper);
+            if !install::path_exists(&path) {
+                eprintln!("ERROR hooks pi: missing wrapper {}", path.display());
+                valid = false;
+            }
+        }
+        if let Some(command) = entry.get("command").and_then(Value::as_str) {
+            if command.contains('/') && !install::path_exists(Path::new(command)) {
+                eprintln!("ERROR hooks pi: missing script {command}");
+                valid = false;
+            }
+        }
+    }
+
+    for pack in packs {
+        if pack.manifest.excludes(Target::Pi)
+            || pack
+                .manifest
+                .hooks
+                .get(&Target::Pi)
+                .is_none_or(BTreeMap::is_empty)
+        {
+            continue;
+        }
+        for (_, destination, _) in script_plan(config, pack, Target::Pi)? {
+            if !install::path_exists(&destination) {
+                eprintln!(
+                    "ERROR hooks pi: missing script {}",
+                    destination.display()
+                );
+                valid = false;
+            }
+        }
+    }
+    Ok(valid)
+}
+
+fn expected_pi_registry(config: &Config, packs: &[&LibraryItem]) -> Result<Vec<Value>> {
+    let mut target_entries: BTreeMap<String, Vec<Map<String, Value>>> = BTreeMap::new();
+    for pack in packs {
+        if pack.manifest.excludes(Target::Pi) {
+            continue;
+        }
+        let Some(events) = pack.manifest.hooks.get(&Target::Pi) else {
+            continue;
+        };
+        let scripts = script_plan(config, pack, Target::Pi)?;
+        let rewrites = scripts
+            .into_iter()
+            .map(|(source, destination, _)| (source, destination))
+            .collect::<Vec<_>>();
+        for (event, event_entries) in events {
+            let output = target_entries.entry(event.clone()).or_default();
+            for (ordinal, entry) in event_entries.iter().enumerate() {
+                let mut entry = entry.clone();
+                rewrite_commands(&mut entry, &rewrites);
+                entry.insert(
+                    "_as".to_owned(),
+                    Value::String(format!(
+                        "agent-sync:{}:{}:{event}:{ordinal}",
+                        pack.name, pack.manifest.version
+                    )),
+                );
+                output.push(entry);
+            }
+        }
+    }
+    pi_registry_entries(&target_entries)
+}
+
+fn pi_registry_entries(
+    entries: &BTreeMap<String, Vec<Map<String, Value>>>,
+) -> Result<Vec<Value>> {
+    let mut registry = Vec::new();
+    for (event, event_entries) in entries {
+        for entry in event_entries {
+            let tag = entry
+                .get("_as")
+                .and_then(Value::as_str)
+                .context("Pi hook entry missing _as tag")?
+                .to_owned();
+            let command = entry
+                .get("command")
+                .and_then(Value::as_str)
+                .with_context(|| format!("Pi hook {tag} missing command"))?
+                .to_owned();
+            let (pack, ordinal) = parse_as_pack_ordinal(&tag)
+                .with_context(|| format!("parse Pi hook tag {tag}"))?;
+            let wrapper_name = format!("as-{pack}-{event}-{ordinal}.ts");
+            registry.push(Value::Object(Map::from_iter([
+                ("_as".to_owned(), Value::String(tag)),
+                ("event".to_owned(), Value::String(event.clone())),
+                ("wrapper".to_owned(), Value::String(wrapper_name)),
+                ("command".to_owned(), Value::String(command)),
+            ])));
+        }
+    }
+    Ok(registry)
+}
+
+fn parse_as_pack_ordinal(tag: &str) -> Result<(String, String)> {
+    // agent-sync:<pack>:<version>:<event>:<ordinal>
+    let rest = tag
+        .strip_prefix(MANAGED_PREFIX)
+        .with_context(|| format!("tag {tag} missing {MANAGED_PREFIX} prefix"))?;
+    let mut parts = rest.split(':');
+    let pack = parts
+        .next()
+        .filter(|part| !part.is_empty())
+        .context("tag missing pack")?
+        .to_owned();
+    let _version = parts.next().context("tag missing version")?;
+    let mut remainder = parts.collect::<Vec<_>>();
+    let ordinal = remainder
+        .pop()
+        .filter(|part| !part.is_empty())
+        .context("tag missing ordinal")?
+        .to_owned();
+    if remainder.is_empty() {
+        bail!("tag {tag} missing event");
+    }
+    Ok((pack, ordinal))
+}
+
+fn pi_wrapper_plan(
+    config: &Config,
+    packs: &[&LibraryItem],
+) -> Result<Vec<(PathBuf, String)>> {
+    let hooks_dir = Target::Pi
+        .hooks_dir(&config.target_home)
+        .context("Pi must have an extensions directory")?;
+    expected_pi_registry(config, packs)?
+        .into_iter()
+        .filter_map(|entry| {
+            let wrapper = entry.get("wrapper")?.as_str()?.to_owned();
+            let tag = entry.get("_as")?.as_str()?.to_owned();
+            Some((hooks_dir.join(wrapper), tag))
+        })
+        .map(Ok)
+        .collect()
+}
+
+fn clear_pi_managed(config: &Config) -> Result<()> {
+    let registry_path = Target::Pi
+        .hooks_managed_registry(&config.target_home)
+        .context("Pi must have a managed registry path")?;
+    let hooks_dir = Target::Pi
+        .hooks_dir(&config.target_home)
+        .context("Pi must have an extensions directory")?;
+    if registry_path.exists() {
+        let value = read_config(&registry_path)?;
+        if let Some(entries) = value.get("entries").and_then(Value::as_array) {
+            for entry in entries {
+                if let Some(wrapper) = entry.get("wrapper").and_then(Value::as_str) {
+                    install::remove_path(&hooks_dir.join(wrapper))?;
+                }
+            }
+        }
+        install::remove_path(&registry_path)?;
+    }
+    Ok(())
+}
+
+fn pi_ts_wrapper(event: &str, command: &str, tag: &str) -> String {
+    // Escape for embedding in a TypeScript single-quoted string.
+    let command_lit = command.replace('\\', "\\\\").replace('\'', "\\'");
+    let tag_lit = tag.replace('\\', "\\\\").replace('\'', "\\'");
+    let event_lit = event.replace('\\', "\\\\").replace('\'', "\\'");
+    format!(
+        r#"// Generated by agent-sync — do not edit.
+// {tag_lit}
+import type {{ ExtensionAPI }} from "@earendil-works/pi-coding-agent";
+import {{ spawn }} from "node:child_process";
+
+export default function (pi: ExtensionAPI) {{
+  pi.on('{event_lit}', async () => {{
+    await new Promise<void>((resolve, reject) => {{
+      const child = spawn('{command_lit}', {{ stdio: "inherit", shell: true }});
+      child.on("error", reject);
+      child.on("close", (code) => {{
+        if (code === 0) resolve();
+        else reject(new Error(`agent-sync hook exited ${{code}}`));
+      }});
+    }});
+  }});
+}}
+"#
+    )
 }
 
 fn install_scripts(

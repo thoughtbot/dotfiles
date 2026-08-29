@@ -4,6 +4,12 @@
 OpenCode, and Pi. Cursor receives copies; other Targets receive symlinks unless
 their destination parent is itself a symlink.
 
+Pi notes (Task 10 spike): skills and command-as-skills under
+`~/.pi/agent/skills/`; agents under `~/.pi/agent/agents/*.md` (subagent
+extension convention); hooks as TypeScript under `~/.pi/agent/extensions/`
+(Pi 0.84 renamed `hooks/` → `extensions/`) with
+`.agent-sync-managed.json` ownership registry.
+
 ## Build
 
 ```sh

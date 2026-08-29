@@ -7,6 +7,7 @@ use crate::config::Config;
 use crate::hooks;
 use crate::install;
 use crate::library::{Kind, Library};
+use crate::prefs;
 use crate::state::State;
 use crate::sync;
 use crate::target::Target;
@@ -41,9 +42,82 @@ pub fn run(config: &Config) -> Result<bool> {
     }
 
     valid &= verify_state(config, &library, &state, &expected_paths);
+    valid &= verify_cache_when_present(config)?;
 
     if valid {
         println!("OK verify passed");
+    }
+    Ok(valid)
+}
+
+/// When a harness cache library exists, compare installed skill trees to cache copies.
+fn verify_cache_when_present(config: &Config) -> Result<bool> {
+    let cache_library = config.cache_library();
+    let skills_root = cache_library.join("skills");
+    if !skills_root.is_dir() {
+        return Ok(true);
+    }
+
+    let prefs = prefs::load(&config.home).unwrap_or_default();
+    let mut valid = true;
+    let entries = match fs::read_dir(&skills_root) {
+        Ok(entries) => entries,
+        Err(_) => return Ok(true),
+    };
+
+    for entry in entries.flatten() {
+        if !entry.file_type().map(|t| t.is_dir()).unwrap_or(false) {
+            continue;
+        }
+        let name = entry.file_name();
+        let name = name.to_string_lossy();
+        if prefs.is_tombstoned(name.as_ref()) {
+            continue;
+        }
+        let cache_skill = entry.path().join("SKILL.md");
+        if !cache_skill.is_file() {
+            continue;
+        }
+        let cache_body = fs::read_to_string(&cache_skill).with_context(|| {
+            format!("read cache skill {}", cache_skill.display())
+        })?;
+        let fanout = config.fanout_name(name.as_ref(), None);
+        // Compare against Claude install when present; otherwise Cursor / Pi.
+        let candidates = [
+            Target::Claude
+                .destination(&config.target_home, Kind::Skills, &fanout)
+                .map(|p| p.join("SKILL.md")),
+            Target::Cursor
+                .destination(&config.target_home, Kind::Skills, &fanout)
+                .map(|p| p.join("SKILL.md")),
+            Target::Pi
+                .destination(&config.target_home, Kind::Skills, &fanout)
+                .map(|p| p.join("SKILL.md")),
+        ];
+        let mut found = false;
+        for path in candidates.into_iter().flatten() {
+            if !path.is_file() {
+                continue;
+            }
+            found = true;
+            let installed = fs::read_to_string(&path)
+                .with_context(|| format!("read installed skill {}", path.display()))?;
+            if installed != cache_body {
+                eprintln!(
+                    "ERROR harness cache mismatch for skill '{name}' at {}",
+                    path.display()
+                );
+                valid = false;
+            } else {
+                println!(
+                    "OK harness cache match skills/{name} -> {}",
+                    path.display()
+                );
+            }
+        }
+        if !found {
+            println!("INFO harness cache skill '{name}' not installed on any Target (skip)");
+        }
     }
     Ok(valid)
 }

@@ -32,9 +32,8 @@ impl Target {
     #[must_use]
     pub const fn supports(self, kind: Kind) -> bool {
         match self {
-            Self::Claude | Self::Cursor => true,
+            Self::Claude | Self::Cursor | Self::Pi => true,
             Self::Opencode => !matches!(kind, Kind::Hooks),
-            Self::Pi => matches!(kind, Kind::Skills),
         }
     }
 
@@ -46,9 +45,6 @@ impl Target {
 
         Some(match (self, kind) {
             (Self::Opencode, Kind::Hooks) => "native hooks are unsupported",
-            (Self::Pi, Kind::Commands) => "commands are unsupported",
-            (Self::Pi, Kind::Agents) => "agents are unsupported",
-            (Self::Pi, Kind::Hooks) => "hooks are unsupported",
             _ => "kind is unsupported",
         })
     }
@@ -78,7 +74,13 @@ impl Target {
             (Self::Opencode, Kind::Agents) => home
                 .join(".config/opencode/agents")
                 .join(format!("{fanout_name}.md")),
-            (Self::Pi, Kind::Skills) => home.join(".pi/agent/skills").join(fanout_name),
+            // Commands map to skill packages: Pi has no native commands dir.
+            (Self::Pi, Kind::Skills | Kind::Commands) => {
+                home.join(".pi/agent/skills").join(fanout_name)
+            }
+            (Self::Pi, Kind::Agents) => home
+                .join(".pi/agent/agents")
+                .join(format!("{fanout_name}.md")),
             _ => return None,
         };
         Some(path)
@@ -89,6 +91,7 @@ impl Target {
         match self {
             Self::Claude => Some(home.join(".claude/settings.json")),
             Self::Cursor => Some(home.join(".cursor/hooks.json")),
+            // Pi uses TypeScript extensions + a managed registry file (no JSON merge).
             Self::Opencode | Self::Pi => None,
         }
     }
@@ -98,7 +101,21 @@ impl Target {
         match self {
             Self::Claude => Some(home.join(".claude/hooks")),
             Self::Cursor => Some(home.join(".cursor/hooks")),
-            Self::Opencode | Self::Pi => None,
+            // Spike (Pi 0.84): hooks/ was renamed to extensions/; Pi warns if hooks/ exists.
+            Self::Pi => Some(home.join(".pi/agent/extensions")),
+            Self::Opencode => None,
+        }
+    }
+
+    /// Registry file for targets that do not merge into a host JSON settings file.
+    #[must_use]
+    pub fn hooks_managed_registry(self, home: &Path) -> Option<PathBuf> {
+        match self {
+            Self::Pi => Some(
+                home.join(".pi/agent/extensions")
+                    .join(".agent-sync-managed.json"),
+            ),
+            _ => None,
         }
     }
 }

@@ -23,6 +23,7 @@ pub fn run(config: &Config) -> Result<()> {
             match item.source {
                 ItemSource::Public => "public",
                 ItemSource::Local => "local",
+                ItemSource::Cache => "cache",
             }
         };
         let fanout = config.fanout_name(&item.name, item.vendor_origin.as_deref());

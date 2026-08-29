@@ -4,6 +4,7 @@ use std::path::{Path, PathBuf};
 use anyhow::{bail, Context, Result};
 
 use crate::config::Config;
+use crate::http;
 
 const MANAGED_RELS: &[&str] = &[
     ".claude/skills",
@@ -24,6 +25,8 @@ struct LinkIssue {
 }
 
 pub fn run(config: &Config, fix: bool) -> Result<()> {
+    warn_harness_token_if_needed();
+
     let mut issues = Vec::new();
     for relative in MANAGED_RELS {
         let path = config.target_home.join(relative);
@@ -74,6 +77,16 @@ pub fn run(config: &Config, fix: bool) -> Result<()> {
     }
     println!("OK doctor: detached legacy symlinks; run `agent-sync sync` next");
     Ok(())
+}
+
+/// Warn when harness URL is configured but no staff PAT is available.
+fn warn_harness_token_if_needed() {
+    if http::harness_url_set() && !http::token_present() {
+        println!(
+            "WARN AGENT_SYNC_HARNESS_URL is set but no token found \
+             (set AGENT_SYNC_HARNESS_TOKEN or ~/.agent-sync/credentials)"
+        );
+    }
 }
 
 fn legacy_repo_symlink(config: &Config, path: &Path) -> Result<Option<LinkIssue>> {

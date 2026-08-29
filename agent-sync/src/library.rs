@@ -1,7 +1,8 @@
-use std::collections::BTreeMap;
+use std::collections::{BTreeMap, BTreeSet};
 use std::fmt;
 use std::fs;
 use std::path::{Path, PathBuf};
+use std::str::FromStr;
 
 use anyhow::{Context, Result};
 
@@ -46,10 +47,48 @@ impl fmt::Display for Kind {
     }
 }
 
+/// Where sync resolves Library items from.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, clap::ValueEnum)]
+pub enum SourceMode {
+    /// Local + public libraries only (historical default).
+    #[default]
+    Library,
+    /// Harness pull cache only.
+    Cache,
+    /// local_library > cache_library > public_library; tombstones still win.
+    Hybrid,
+}
+
+impl fmt::Display for SourceMode {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::Library => formatter.write_str("library"),
+            Self::Cache => formatter.write_str("cache"),
+            Self::Hybrid => formatter.write_str("hybrid"),
+        }
+    }
+}
+
+impl FromStr for SourceMode {
+    type Err = String;
+
+    fn from_str(value: &str) -> Result<Self, Self::Err> {
+        match value {
+            "library" => Ok(Self::Library),
+            "cache" => Ok(Self::Cache),
+            "hybrid" => Ok(Self::Hybrid),
+            other => Err(format!(
+                "unknown source '{other}'; expected library, cache, or hybrid"
+            )),
+        }
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum ItemSource {
     Public,
     Local,
+    Cache,
 }
 
 impl fmt::Display for ItemSource {
@@ -57,6 +96,7 @@ impl fmt::Display for ItemSource {
         match self {
             Self::Public => formatter.write_str("public"),
             Self::Local => formatter.write_str("local"),
+            Self::Cache => formatter.write_str("cache"),
         }
     }
 }
@@ -113,62 +153,107 @@ enum Candidate {
 }
 
 impl Library {
+    /// Scan with the historical library-only source (local > public).
     pub fn scan(config: &Config) -> Result<Self> {
-        let mut public = scan_root(&config.public_library, ItemSource::Public)?;
-        let local = if config.local_library == config.public_library {
-            BTreeMap::new()
-        } else {
-            scan_root(&config.local_library, ItemSource::Local)?
-        };
-        let mut result = Self::default();
+        Self::scan_with_source(config, SourceMode::Library)
+    }
 
-        for (key, candidate) in local {
-            let public_item = public.remove(&key);
+    /// Scan using the requested source mode.
+    pub fn scan_with_source(config: &Config, mode: SourceMode) -> Result<Self> {
+        let layers: Vec<(PathBuf, ItemSource)> = match mode {
+            SourceMode::Library => {
+                if config.local_library == config.public_library {
+                    vec![(config.public_library.clone(), ItemSource::Public)]
+                } else {
+                    vec![
+                        (config.local_library.clone(), ItemSource::Local),
+                        (config.public_library.clone(), ItemSource::Public),
+                    ]
+                }
+            }
+            SourceMode::Cache => vec![(config.cache_library(), ItemSource::Cache)],
+            SourceMode::Hybrid => {
+                let mut layers = Vec::new();
+                if config.local_library != config.public_library {
+                    layers.push((config.local_library.clone(), ItemSource::Local));
+                }
+                layers.push((config.cache_library(), ItemSource::Cache));
+                layers.push((config.public_library.clone(), ItemSource::Public));
+                layers
+            }
+        };
+        merge_layers(&layers)
+    }
+}
+
+fn merge_layers(layers: &[(PathBuf, ItemSource)]) -> Result<Library> {
+    let scanned: Vec<(ItemSource, BTreeMap<ItemKey, Candidate>)> = layers
+        .iter()
+        .map(|(root, source)| Ok((*source, scan_root(root, *source)?)))
+        .collect::<Result<_>>()?;
+
+    let mut claimed = BTreeSet::new();
+    let mut result = Library::default();
+
+    for (index, (source, map)) in scanned.iter().enumerate() {
+        for (key, candidate) in map {
+            if claimed.contains(key) {
+                continue;
+            }
+            claimed.insert(key.clone());
             match candidate {
                 Candidate::Tombstone(path) => {
-                    let label = key_label(&key);
+                    let label = key_label(key);
                     result.tombstones.push(label.clone());
-                    if public_item.is_none() {
+                    let lower_has_item = scanned[index + 1..]
+                        .iter()
+                        .any(|(_, lower)| matches!(lower.get(key), Some(Candidate::Item(_))));
+                    if !lower_has_item {
                         result.diagnostics.push(LibraryDiagnostic {
                             message: format!("orphan tombstone {label} at {}", path.display()),
                         });
                     }
                 }
-                Candidate::Item(mut item) => {
-                    item.shadows_public = public_item.is_some();
-                    if !item.shadows_public {
+                Candidate::Item(item) => {
+                    let mut item = item.clone();
+                    let lower_has_item = scanned[index + 1..]
+                        .iter()
+                        .any(|(_, lower)| matches!(lower.get(key), Some(Candidate::Item(_))));
+                    item.shadows_public = lower_has_item;
+                    if *source == ItemSource::Local && !item.shadows_public {
                         result.diagnostics.push(LibraryDiagnostic {
-                            message: format!("local orphan override {}", key_label(&key)),
+                            message: format!("local orphan override {}", key_label(key)),
                         });
-                    } else if key.vendor_origin.is_some() {
+                    } else if *source == ItemSource::Local
+                        && item.shadows_public
+                        && key.vendor_origin.is_some()
+                    {
                         result.diagnostics.push(LibraryDiagnostic {
-                            message: format!("local vendor shadow {}", key_label(&key)),
+                            message: format!("local vendor shadow {}", key_label(key)),
                         });
                     }
                     result.items.push(item);
                 }
             }
         }
-
-        for candidate in public.into_values() {
-            if let Candidate::Item(item) = candidate {
-                result.items.push(item);
-            }
-        }
-        result.items.sort_by(|left, right| {
-            (left.kind, &left.vendor_origin, &left.name).cmp(&(
-                right.kind,
-                &right.vendor_origin,
-                &right.name,
-            ))
-        });
-        result.tombstones.sort();
-        Ok(result)
     }
+
+    result.items.sort_by(|left, right| {
+        (left.kind, &left.vendor_origin, &left.name).cmp(&(
+            right.kind,
+            &right.vendor_origin,
+            &right.name,
+        ))
+    });
+    result.tombstones.sort();
+    Ok(result)
 }
 
 fn scan_root(root: &Path, source: ItemSource) -> Result<BTreeMap<ItemKey, Candidate>> {
     let mut found = BTreeMap::new();
+    if !root.is_dir() {
+        return Ok(found);
+    }
     for kind in Kind::ALL {
         let kind_root = root.join(kind.dir_name());
         if !kind_root.is_dir() {

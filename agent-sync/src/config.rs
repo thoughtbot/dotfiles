@@ -14,6 +14,8 @@ pub struct Config {
     pub state_file: PathBuf,
     pub wrapper_root: PathBuf,
     pub backup_root: PathBuf,
+    /// Harness channel whose cache is used for `--source cache|hybrid` (default `stable`).
+    pub harness_channel: String,
 }
 
 impl Config {
@@ -44,6 +46,18 @@ impl Config {
             bail!("owner_prefix must contain only ASCII letters, numbers, and hyphens");
         }
 
+        let harness_channel =
+            env::var("AGENT_SYNC_HARNESS_CHANNEL").unwrap_or_else(|_| "stable".to_owned());
+        if harness_channel.is_empty()
+            || !harness_channel
+                .chars()
+                .all(|c| c.is_ascii_alphanumeric() || c == '-' || c == '_')
+        {
+            bail!(
+                "harness_channel must contain only ASCII letters, numbers, hyphens, or underscores"
+            );
+        }
+
         Ok(Self {
             public_library: dotfiles_dir.join("library"),
             local_library: home.join("dotfiles-local/library"),
@@ -54,7 +68,17 @@ impl Config {
             dotfiles_dir,
             home,
             owner_prefix,
+            harness_channel,
         })
+    }
+
+    /// `~/.agent-sync/cache/<channel>/library` from the last pull for this channel.
+    #[must_use]
+    pub fn cache_library(&self) -> PathBuf {
+        self.home
+            .join(".agent-sync/cache")
+            .join(&self.harness_channel)
+            .join("library")
     }
 
     #[must_use]

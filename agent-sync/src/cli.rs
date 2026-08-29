@@ -2,6 +2,8 @@ use std::path::PathBuf;
 
 use clap::{Args, Parser, Subcommand};
 
+use crate::library::SourceMode;
+
 #[derive(Debug, Parser)]
 #[command(name = "agent-sync", version, about)]
 pub struct Cli {
@@ -21,6 +23,10 @@ pub enum Command {
     Migrate(MigrateArgs),
     /// Detect (and optionally fix) legacy home→repo Target symlinks.
     Doctor(DoctorArgs),
+    /// Publish allowlisted platform-repo `.claude` items to harness `latest`.
+    Publish(PublishArgs),
+    /// Pull harness channel revisions into `~/.agent-sync/cache/<channel>/`.
+    Pull(PullArgs),
 }
 
 #[derive(Debug, Args)]
@@ -29,9 +35,28 @@ pub struct SyncArgs {
     #[arg(long)]
     pub dry_run: bool,
 
+    /// Library resolution: `library` (default), `cache`, or `hybrid`.
+    #[arg(long, value_enum, default_value_t = SourceMode::Library)]
+    pub source: SourceMode,
+
     /// Override the Target home base (for sandboxes and tests).
     #[arg(long, value_name = "SANDBOX")]
     pub root: Option<PathBuf>,
+}
+
+#[derive(Debug, Args)]
+pub struct PullArgs {
+    /// Harness channel to pull (`stable` or `latest`).
+    #[arg(long, default_value = "stable")]
+    pub channel: String,
+
+    /// Send If-None-Match from the cached ETAG; keep cache on 304.
+    #[arg(long)]
+    pub if_stale: bool,
+
+    /// harness API base URL (default: AGENT_SYNC_HARNESS_URL or http://localhost:8081).
+    #[arg(long, value_name = "URL", env = "AGENT_SYNC_HARNESS_URL")]
+    pub base_url: Option<String>,
 }
 
 #[derive(Debug, Args)]
@@ -82,4 +107,23 @@ pub struct DoctorArgs {
     /// Override the Target home base (for sandboxes and tests).
     #[arg(long, value_name = "SANDBOX")]
     pub root: Option<PathBuf>,
+}
+
+#[derive(Debug, Args)]
+pub struct PublishArgs {
+    /// Comma-separated pilot skill/command names (must be in the closed allowlist).
+    #[arg(long, value_name = "NAMES")]
+    pub items: String,
+
+    /// Path to platform repo root (contains `.claude`) (contains `.claude/skills|commands`).
+    #[arg(long, value_name = "PATH")]
+    pub platform_root: PathBuf,
+
+    /// Print the publish envelope without POSTing.
+    #[arg(long)]
+    pub dry_run: bool,
+
+    /// harness API base URL (default: AGENT_SYNC_HARNESS_URL or http://localhost:8081).
+    #[arg(long, value_name = "URL", env = "AGENT_SYNC_HARNESS_URL")]
+    pub base_url: Option<String>,
 }
